@@ -1,0 +1,13 @@
+method,pop mae,seg mae median,seg mae mean,gap_r,gap_slope,dispersion,country
+claude zero-shot,4.85,4.98,6.29,0.54,0.36,0.65,Singapore
+record-anchored (trained abroad),3.92,4.21,6.33,0.7,0.52,0.78,Singapore
+claude level + record-anchored differences,4.85,5.04,6.21,0.7,0.52,0.72,Singapore
+human level + record-anchored differences,0.0,2.07,2.71,0.7,0.52,0.75,Singapore
+human level + claude differences,0.0,2.36,3.01,0.54,0.36,0.63,Singapore
+everyone is average (human level only),0.0,2.56,4.2,,0.0,0.0,Singapore
+claude zero-shot,3.68,3.45,5.33,0.45,0.25,0.79,China
+record-anchored (trained abroad),4.16,4.12,4.85,0.71,0.79,1.04,China
+claude level + record-anchored differences,3.68,3.66,5.27,0.71,0.79,1.04,China
+human level + record-anchored differences,0.0,1.31,1.7,0.71,0.79,1.02,China
+human level + claude differences,0.0,1.39,1.78,0.45,0.25,0.79,China
+everyone is average (human level only),0.0,1.17,1.71,,0.0,0.0,China

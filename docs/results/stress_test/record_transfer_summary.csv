@@ -1,0 +1,8 @@
+method,pop mae,seg mae median,seg mae mean,gap_r,gap_slope,dispersion,exp
+small-sample crosstab,0.59,1.29,1.58,0.91,0.94,1.0,sg_small_sample
+small sample -> demographics model,0.59,1.27,1.62,0.9,0.79,0.71,sg_small_sample
+small sample -> demographics + record model,1.16,1.66,1.96,0.92,0.8,0.69,sg_small_sample
+record-anchored (trained abroad),3.92,4.21,6.33,0.7,0.52,0.78,sg_cross_country
+claude zero-shot,4.85,4.98,6.29,0.54,0.36,0.65,sg_cross_country
+record-anchored (trained abroad),4.16,4.12,4.85,0.71,0.79,1.04,cn_cross_country
+claude zero-shot,3.68,3.45,5.33,0.45,0.25,0.79,cn_cross_country

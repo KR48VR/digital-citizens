@@ -90,6 +90,22 @@ government, make decisions", 63% of Chinese respondents said bad or very bad, wh
 respondents endorse science (40% at the top of the scale, predicted 23%) and democracy as important (47%
 at the top, predicted 34%).
 
+## Remedies tested (see `docs/06_how_to_make_it_work.md` for the full table)
+
+| Singapore, segment cells | error (pts, median / mean) | share of real group differences recovered |
+|---|---|---|
+| Zero-shot model | 5.0 / 6.3 | 36% (r 0.54) |
+| + gap scaling or power calibration (leave-one-question-out) | 5.1 / 6.3 | 33% |
+| In-context anchors (round 2, 12 new questions; zero-shot vs anchored) | 4.3 / 5.6 vs 4.9 / 6.2 | 52% vs 51% |
+| Record-anchored citizens, mapping learned from US + China respondents, no LLM | 4.2 / 6.3 | 52% (r 0.70) |
+| Human level + record-anchored differences | **2.1 / 2.7** | 52% |
+| Human level + model differences | 2.4 / 3.0 | 36% |
+| "Everyone is average" (human level only) | 2.6 / 4.2 | 0% |
+| 300 real answers to the question itself | 1.3 / 1.6 | 94% |
+
+China: record anchoring recovers 79% of group differences vs 25% zero-shot; levels are best left to
+humans. Files: `record_transfer_summary.csv`, `combination_summary.csv`, `score_wvs_singapore_round2_*.md`.
+
 ## What this changes in the plan
 
 1. **Population-level is workable, segment-level is not yet, outside the US.** On population shares the

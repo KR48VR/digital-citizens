@@ -31,7 +31,7 @@ from the model's imagination), and an **LLM response engine** whose output is co
 | 1. Real-respondent anchor | A real (anonymous) survey respondent's answers to 50-200 items | US: GSS 2024 respondents (`data/gss.py`); Singapore: WVS-7 respondents (download by form); China: CGSS | Research shows real records carry the individual signal that demographics alone cannot |
 | 2. Narrative (optional) | Short life description | Nemotron persona text, or an LLM summary of the record | Adds realism; but can add stereotype, so it is switchable and ablated (`--persona-style`) |
 | 3. Response engine | The LLM answering as the persona, or predicting a group's shares | Anthropic models by default (`simulate/llm.py`); country-specific models (Qwen, DeepSeek, SEA-LION) pluggable via the same interface | Two modes because the evidence says distribution prompts are usually better and cheaper, but role-play is needed for individual-level and for free-text reactions |
-| 4. Calibration | Correct systematic bias and re-weight | Rectification against a human sample (to build in phase 1); raking to census margins (`population/synth.py`) | The only remedy with strong evidence |
+| 4. Calibration | Correct systematic bias and re-weight | `evaluate/calibrate.py` (human level + simulated differences; gap scaling; power); raking to census margins (`population/synth.py`) | The only remedy with strong evidence; tested in `docs/06_how_to_make_it_work.md` |
 | 5. Validation | Score vs real people | `evaluate/` | See `docs/02_how_we_measure_accuracy.md` |
 
 ## 3. What is in this repository now (v0)
