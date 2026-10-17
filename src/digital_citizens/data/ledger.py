@@ -54,8 +54,21 @@ def _parse_map(option_map: str, n_options: int) -> list[list[int]]:
 
 def to_pseudocounts(row: pd.Series, k: int, reference: np.ndarray | None = None) -> np.ndarray:
     """Pseudo-counts over the benchmark's k options for one ledger row."""
-    shares = np.array([float(x) for x in str(row["shares"]).split("|")], dtype=float)
-    blocks = _parse_map(str(row["option_map"]), k)
+    shares_str = str(row["shares"]).strip()
+    if shares_str.startswith("mean="):  # a published mean on a 1..k scale: discretise a normal over the options
+        from scipy.stats import norm
+
+        parts = dict(x.split("=") for x in shares_str.split(";"))
+        mu, sd = float(parts["mean"]), float(parts.get("sd", 1.0))
+        edges = np.array([-np.inf] + [i + 0.5 for i in range(1, k)] + [np.inf])
+        probs = np.diff(norm.cdf(edges, loc=mu, scale=sd))
+        if str(row["option_map"]).strip() == "reverse":
+            probs = probs[::-1]
+        shares = 100 * probs / probs.sum()
+        blocks = [[i] for i in range(k)]
+    else:
+        shares = np.array([float(x) for x in shares_str.split("|")], dtype=float)
+        blocks = _parse_map(str(row["option_map"]), k)
     if len(blocks) != len(shares):
         raise ValueError(f"{row['ledger_id']}: {len(shares)} shares vs {len(blocks)} option_map blocks")
     eff_n = float(row["n"]) * float(row["confidence"]) if pd.notna(row["n"]) else 0.0

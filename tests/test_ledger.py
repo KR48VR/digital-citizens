@@ -20,3 +20,11 @@ def test_pseudocounts_respect_shares_and_reference_split():
 def test_confidence_scales_evidence_and_missing_dk_leaves_mass_out():
     counts = L.to_pseudocounts(_row(confidence=0.5, shares="50|30"), k=4)
     assert abs(counts.sum() - 400) < 1e-9  # 1000 * 0.5 * 80%
+
+
+def test_mean_rows_discretise_and_reverse():
+    r = _row(shares="mean=3.5;sd=0.8", option_map="identity")
+    c = L.to_pseudocounts(r, k=4)
+    assert c.argmax() in (2, 3) and abs(c.sum() - 1000) < 1e-9
+    rr = L.to_pseudocounts(_row(shares="mean=3.5;sd=0.8", option_map="reverse"), k=4)
+    assert rr.argmax() in (0, 1)
