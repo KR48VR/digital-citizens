@@ -1,0 +1,6 @@
+method,pop_mae_median,pop_mae_mean,seg_mae_median,seg_mae_mean,seg_mae_over_floor,gap_r,gap_slope,n_items,n_cells
+uniform,14.73,15.72,15.78,16.25,14.33,,0.0,31,651
+"everyone is average (true level, no spread) [oracle]",0.0,0.0,2.87,3.71,1.5,,0.0,31,651
+"library 2024: matched GSS question, used as is",11.1,11.71,10.73,12.4,9.33,0.6,0.52,31,651
+"library 2022: matched GSS question, used as is",10.25,12.1,11.21,12.92,9.91,0.56,0.59,31,651
+"library 2024: headline only, no spread",11.1,11.71,11.34,12.46,10.06,,0.0,31,651
