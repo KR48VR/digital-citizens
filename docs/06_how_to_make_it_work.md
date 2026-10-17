@@ -20,7 +20,9 @@ out-of-sample. Details and files are in `docs/results/stress_test/`.
 | 300 real answers to the question itself | A small survey; segment shares read straight off it (fresh sample, scored on the other respondents, 5 repeats; corrected 17 Oct, see docs/08 §4) | **3.2 pts; 82%** (2.9 pts with record spread; 2.6 / 2.3 with 600 answers) | Still the best realistic option, and record spread improves it at every sample size. The earlier figure here (1.3 pts; 94%) averaged samples before scoring and overlapped the truth. |
 
 US comparison: the zero-shot model already recovered 81% of group differences; "human level + model
-differences" cut segment error from 3.8 to 2.2 points. China: groups differ so little on these items
+differences" cut segment error from 3.8 to 2.3 points. Record citizens, tested later on the same 25
+questions with the mapping learned from GSS 2022, did better still: 1.8 points with the human level, 2.4
+on their own, 92% of group differences recovered (`results/stress_test/us_records_vs_chatbot.md`). China: groups differ so little on these items
 (1.2 points) that nothing beats "everyone is average", but record anchoring fixes the direction of the
 differences (79% recovered vs 25%).
 

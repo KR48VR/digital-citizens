@@ -126,3 +126,7 @@ humans. Files: `record_transfer_summary.csv`, `combination_summary.csv`, `score_
 ## Correction (17 Oct, later): small-survey rows
 
 `record_transfer_summary.csv` rows marked `sg_small_sample` averaged five random samples' predictions before scoring and scored against a truth that included the sampled people, which made a 300-person survey look like a 1,500-person one. `small_survey_holdout.md` re-runs them with a fresh sample scored on the other respondents; use those numbers (Singapore, 300 answers: 3.2 points per group straight off the survey, 2.9 with record spread).
+
+## Added later: US record citizens on the same packet
+
+`us_records_vs_chatbot.md` scores record citizens (mapping learned from GSS 2022) on the same 25 questions and 6 groups as the chatbot. Typical group error with the real overall number: chatbot differences 2.3 points, record citizens 1.8, everyone-the-same 3.8. On their own: chatbot 4.3, record citizens 2.4. The record citizens had an easier task here than in Singapore (same survey, two years earlier, rather than other countries).
