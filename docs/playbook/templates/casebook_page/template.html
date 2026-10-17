@@ -112,8 +112,8 @@
     <div class="flow" aria-label="The method in four steps">
       <div><b>Real survey records</b><span>Public surveys where every person's answers to many questions are published.</span></div>
       <div><b>Two kinds of digital citizen</b><span>The chatbot kind answers in character. Record citizens predict each real person's answer from their record.</span></div>
-      <div><b>Hide the answers, then predict</b><span>Each method predicts how each group answered questions it never saw.</span></div>
-      <div><b>Score against the truth</b><span>Points off for each group, and how much error each method removes compared with No AI.</span></div>
+      <div><b>Draw small surveys</b><span>Small surveys of 150, 300 and 600 people are drawn many times from a large real one.</span></div>
+      <div><b>Score against the truth</b><span>Each group's answer, with and without AI, is checked against the people not drawn: points off, and less error than the survey alone.</span></div>
     </div>
 
     <h3>The data</h3>
@@ -144,13 +144,15 @@
       <li><strong>The United States, like for like.</strong> Starting from the real overall answer, record citizens filled in US groups more closely than the chatbot: 1.8 against 2.3 points off.</li>
       <li><strong>Which groups stand out.</strong> Checked in the data: Indian and Malay Singaporeans and young adults most often in Singapore; Republicans, Democrats and Black Americans in the US.</li>
       <li><strong>Independent audit.</strong> A helper agent recomputed every number on the scorecard from the raw results. Its biggest catch: the "standout groups" figures were really averages over all groups. Re-done properly, they showed the chatbot kind does not help most groups in Singapore but helps its standout groups about as much as record citizens. The page was rewritten to match (QA log, finding 24).</li>
+      <li><strong>One method for everything.</strong> King noticed the page mixed setups: the headline blended both kinds of AI, while the chatbot section used a different comparison. One new test now produces every headline number: small surveys drawn ten times, each group's answer worked out with and without each kind of AI in the same way. It confirmed the main result (in Singapore, 300 people with record citizens matched 600 alone, both 2.7 points off), showed the chatbot adds nothing on top of record citizens, and showed standout groups gain no more than others compared with the survey alone (QA log, finding 47).</li>
     </ol>
 
     <h3>How accuracy is measured</h3>
     <ul class="list">
       <li><strong>Points off:</strong> the gap between an estimate and the real answer, in percentage points per answer option, for each group.</li>
-      <li><strong>Most groups and standout groups:</strong> across all questions in a country, the quarter of group answers furthest from the national average are standout groups; the rest are most groups. Each figure is the middle result within its set.</li>
-      <li><strong>No AI:</strong> every group gets the real overall answer. Every method is compared with it, as "less error".</li>
+      <li><strong>Typical group:</strong> the middle result across all groups and questions. Half of all group answers land closer than this, half further off.</li>
+      <li><strong>Survey alone:</strong> each group's answer read straight off the people in the survey. Every method is compared with it, as "less error".</li>
+      <li><strong>Combining:</strong> each group's own answers are combined with an AI estimate; the fewer people a group has, the more the estimate counts. How much each kind of AI counts is fitted on other questions only.</li>
       <li><strong>The floor:</strong> about 1.3 points, how far a full national survey is from the true answer by chance alone. No method can be scored closer than that.</li>
       <li><strong>Hold-out scoring:</strong> a small sample is always scored against people not in it, and scores, not predictions, are averaged over repeat draws.</li>
     </ul>
@@ -197,7 +199,7 @@
       <figcaption>One dot per message from King, coloured by the kind of interaction that followed. Numbers mark where each task first appears; later lines show where King switched back to it. Hover or tab to a dot for the message.</figcaption>
       <div class="legend"><span><i class="sw" style="background:var(--tool)"></i>Tool</span><span><i class="sw" style="background:var(--team)"></i>Teammate</span><span><i class="sw" style="background:var(--ind)"></i>Independent</span></div>
       <div class="wrap">{{TIMELINE}}</div>
-      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; and many quick tool-style edits at the end, as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim.</p>
+      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; and many quick tool-style edits at the end, as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim. The last of those, King asking why the methods were mixed, set off one more independent rebuild.</p>
     </figure>
 
     <h3>Examples of each kind</h3>
@@ -256,7 +258,7 @@
       <li><strong>Frame the question:</strong> exact wording, and the groups the decision turns on.</li>
       <li><strong>Find rich public records:</strong> surveys that publish every person's answers to many questions; note when they were collected.</li>
       <li><strong>Build record citizens:</strong> learn the pattern from other countries, or from your own small survey with standard questions included.</li>
-      <li><strong>Measure with the scorecard:</strong> points off for most groups and for standout groups, and how much less error than No AI, worked out from unrounded results.</li>
+      <li><strong>Measure with the scorecard:</strong> one test for every number; points off for a typical group, and how much less error than the survey alone, worked out from unrounded results.</li>
       <li><strong>Pilot before relying on it:</strong> 600 people; record citizens fill in the groups from 300; compare with all 600.</li>
       <li><strong>Decide with the five rules.</strong></li>
       <li><strong>Report for a C-suite reader:</strong> agreed terms, define before use, one running example, numbers with their meaning.</li>

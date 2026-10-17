@@ -67,6 +67,10 @@
   "T17": [
    "Asked for a thorough QA and this record.",
    "Ran QA with an independent helper agent, fixed findings, wrote this page and the reusable package."
+  ],
+  "T18": [
+   "Checked the conclusion, added the small-groups line, asked what the blend meant, and challenged the mixed methods.",
+   "Ran one test for every number, found the chatbot blend and the standout-groups claim did not hold, and rebuilt the page and package from it."
   ]
  },
  "examples": {
@@ -88,18 +92,18 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 10 hours",
-  "N_TASKS": 17,
+  "HOURS": "about 11.5 hours",
+  "N_TASKS": 18,
   "N_SHOTS": 14,
-  "N_AGENTS": 6,
-  "N_BG": 11,
-  "N_HOOKS": 5,
+  "N_AGENTS": 7,
+  "N_BG": 16,
+  "N_HOOKS": 10,
   "N_IDEAS": 12,
-  "N_CHALLENGES": 7,
+  "N_CHALLENGES": 8,
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "40",
+  "N_VERSIONS": "41",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

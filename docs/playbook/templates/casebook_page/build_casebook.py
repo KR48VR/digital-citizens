@@ -23,19 +23,26 @@ for tid, (name, _) in TASKS.items():
                      f'<td class="num">{c.get("tool",0)}</td><td class="num">{c.get("teammate",0)}</td><td class="num">{c.get("independent",0)}</td></tr>')
 
 # ---------- timeline dots (every interaction in order)
-W, X0, step = 700, 10, 10.4
+W, X0 = 700, 10
+step = (W - 2 * X0 - 10) / (len(rows) - 1)
 dots = []
 prev_task = None
 seen_tasks = set()
+last_lab_x = -99
 for i, r in enumerate(rows):
     x = X0 + i * step
     cls = {"tool": "d-tool", "teammate": "d-team", "independent": "d-ind"}[r["type"]]
     dots.append(f'<circle class="dot {cls}" cx="{x:.1f}" cy="30" r="4.2" tabindex="0" data-tip="#{r["n"]} {r["time"]} · {TYPE_LABEL[r["type"]]} · King: {e(r["king"][:90])}"/>')
     if r["task"] != prev_task:
-        lab = f'<text class="tl" x="{x-3:.1f}" y="10">{r["task"][1:]}</text>' if r["task"] not in seen_tasks else ""
+        lab = ""
+        if r["task"] not in seen_tasks:
+            ly = 10 if x - last_lab_x >= 16 else 58  # a label too close to the previous one goes below the line
+            lab = f'<text class="tl" x="{x-3:.1f}" y="{ly}">{r["task"][1:]}</text>'
+            if ly == 10:
+                last_lab_x = x
         dots.append(f'<line class="tick" x1="{x-5.2:.1f}" y1="14" x2="{x-5.2:.1f}" y2="46"/>{lab}')
         prev_task = r["task"]; seen_tasks.add(r["task"])
-timeline = f'<svg viewBox="0 0 {W} 64" role="img" aria-label="Timeline of all {len(rows)} interactions in order, coloured by type: {cnt["tool"]} tool, {cnt["teammate"]} teammate, {cnt["independent"]} independent. Numbers above mark where each task starts.">{"".join(dots)}<text class="tl" x="10" y="62">01:38</text><text class="tl" x="{W-10}" y="62" text-anchor="end">11:50</text></svg>'
+timeline = f'<svg viewBox="0 0 {W} 78" role="img" aria-label="Timeline of all {len(rows)} interactions in order, coloured by type: {cnt["tool"]} tool, {cnt["teammate"]} teammate, {cnt["independent"]} independent. Numbers mark where each task starts.">{"".join(dots)}<text class="tl" x="10" y="76">01:38</text><text class="tl" x="{W-10}" y="76" text-anchor="end">{rows[-1]["time"]}</text></svg>'
 
 # ---------- full interaction log
 log_rows = []

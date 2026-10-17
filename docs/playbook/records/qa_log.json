@@ -366,5 +366,85 @@
   "fix": "Corrected document 07 to 2.9 and 2.6.",
   "status": "Fixed",
   "id": 46
+ },
+ {
+  "when": "King's challenge",
+  "area": "Method",
+  "finding": "The page mixed three setups. The '300 + AI = 600' box and the small-groups table blended both kinds of AI with a small survey; the chatbot section started from the full survey's overall answer (the 'No AI' comparison); the short answer credited record citizens alone.",
+  "fix": "Ran one test for every headline number (scripts/one_method_experiment.py: small surveys of 150, 300 and 600 drawn ten times, Singapore and the US, every method combined the same way, scored against the people not drawn) and rebuilt the page from it. Tables, chart and numbers in the text are now filled straight from its results.",
+  "status": "Fixed",
+  "id": 47
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Accuracy",
+  "finding": "Under one method, 'the gain is biggest for standout groups' did not hold. Compared with the survey alone, standout groups gained no more than others (29% less error for both, Singapore, 300 people).",
+  "fix": "Removed from the short answer and the rules. Kept as an analysts' note that explains why the earlier comparison showed it.",
+  "status": "Fixed",
+  "id": 48
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Accuracy",
+  "finding": "The chatbot kind added nothing on top of record citizens in either country, so blending it into the headline was unnecessary.",
+  "fix": "The headline now uses record citizens alone. Rule 3 says the chatbot adds nothing once record citizens are used.",
+  "status": "Fixed",
+  "id": 49
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Accuracy",
+  "finding": "The limit 'a simpler shortcut came close' came from a different setup, and its model had no ethnicity in Singapore although the page said it did.",
+  "fix": "Retested in the same run with ethnicity included: it did worse than record citizens at 150 and 300 people in both countries. Limit removed; result shown in the analysts' table.",
+  "status": "Fixed",
+  "id": 50
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Method",
+  "finding": "The page described record citizens learning from your own survey, for a brand-new question, but its result came from a different setup.",
+  "fix": "Tested in the same run. A new section, 'A brand-new question', reports it: it helps, a little less than learning from past surveys.",
+  "status": "Fixed",
+  "id": 51
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Accuracy",
+  "finding": "'Our tests shared about 76 standard questions' was true for Singapore only; the US test used 83.",
+  "fix": "Now 'about 80'.",
+  "status": "Fixed",
+  "id": 52
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Language",
+  "finding": "'Typical group' was used without being explained.",
+  "fix": "Defined in 'How we measure accuracy': half of all group answers land closer than this, half further off.",
+  "status": "Fixed",
+  "id": 53
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Language",
+  "finding": "The box read '2.7 points off against 2.7'.",
+  "fix": "Now 'both are 2.7 points off'.",
+  "status": "Fixed",
+  "id": 54
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Layout",
+  "finding": "In the new chart, end labels drifted away from their lines where values were close, and the chart's text was small on phones.",
+  "fix": "Labels are centred on their points with a short coloured key; text enlarged on narrow screens.",
+  "status": "Fixed",
+  "id": 55
+ },
+ {
+  "when": "One-method rebuild",
+  "area": "Accessibility",
+  "finding": "The chart's light-mode green has 2.8:1 contrast against the background, below 3:1 for chart marks.",
+  "fix": "Kept: the palette checker passes it when every line is labelled directly and a table gives the same numbers, and both are on the page.",
+  "status": "Noted",
+  "id": 56
  }
 ]
