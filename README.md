@@ -7,6 +7,25 @@ Status (October 2026): v0. The measurement machinery runs end to end on real hum
 States, Singapore and China; the model-driven simulation runs with a mock and is ready for an API key.
 A first in-session stress test (the model writing answer shares blind, then scored) is in `docs/results/stress_test/`.
 
+## The result in one line
+
+AI pretending to be people flattens groups. Real survey records fix most of that. A few hundred real answers,
+with the records filling in the groups, is the best recipe you can actually run. Copying another survey's
+closest question does not work.
+
+| The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
+|---|---|---|---|
+| 1. AI alone (a chatbot pretends to be people from each group) | 5 points | No, groups come out nearly alike | Drop |
+| 2. Citizens built from real people's past survey answers (no chatbot) | under 4 points | Yes, mostly | Keep |
+| 3. Copy the closest question from a different survey | 11 points | Partly, but the overall number is far off | Drop |
+| 4. Ask 300 real people, let the record citizens fill in the groups | 3 points | Yes | Keep: this is the plan |
+| The best it can ever be (exact national number, then fill in) | 2 points | Yes | Only chance is left |
+
+"How far off" is the gap between our estimate and the real survey, in percentage points, for a typical group;
+survey noise alone gives about 1.4, guessing blind about 16. The "AI" that works is the pattern-finding kind
+(real records plus a statistical formula), not the chatbot kind. The plain-language scorecard with charts is
+at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page).
+
 ## Read first
 
 | Document | What it answers |
