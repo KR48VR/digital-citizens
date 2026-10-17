@@ -1,0 +1,800 @@
+{
+ "rows": [
+  {
+   "n": 1,
+   "time": "01:38",
+   "task": "T1",
+   "type": "independent",
+   "king": "i wanna build AI/digital citizens so that i can simulate for segments of the population or the entire population, and eventually across segments and populations in different cities \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Researched the evidence and datasets with three helper agents, wrote the measurement plan and country recommendation, built the first code and ran baselines on real US data, about an hour of work before reporting back.",
+   "actions": 41
+  },
+  {
+   "n": 2,
+   "time": "02:27",
+   "task": "T2",
+   "type": "teammate",
+   "king": "why do i need an anthropic API key when i am already in claude? for 2, 3, and 4, can't you just run it against publicly available data \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Agreed and changed plan: stood in for the model to make blind predictions, downloaded the World Values Survey through a headless browser instead of King's own browser, and stress-tested the US, Singapore and China.",
+   "actions": 36
+  },
+  {
+   "n": 3,
+   "time": "03:11",
+   "task": "T3",
+   "type": "independent",
+   "king": "how can you improve on what we have done? for example, and especially, such that it works instead of regresses",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Tested five remedies on my own; three failed, and anchoring each citizen to a real survey record worked (Singapore group differences reproduced 52% vs 36%).",
+   "actions": 11
+  },
+  {
+   "n": 4,
+   "time": "03:27",
+   "task": "T4",
+   "type": "tool",
+   "king": "i dont understand fully. explain simply to me",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Re-explained with an everyday analogy: the AI gives an 'average Singaporean' answer to every group.",
+   "actions": 0
+  },
+  {
+   "n": 5,
+   "time": "03:34",
+   "task": "T5",
+   "type": "independent",
+   "king": "are you able to 1) show me how much better the results were with the fixes that worked? 2) can we comb more publicly available surveys to enhance \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Built the first scorecard page and downloaded all 62 World Values Survey countries in the background, then trained record citizens on 61 of them.",
+   "actions": 19
+  },
+  {
+   "n": 6,
+   "time": "03:41",
+   "task": "T5",
+   "type": "teammate",
+   "king": "we might also look at publicly available data found only in each country, in addition to large surveys that are across countries? then we can finesse each country/city/segment's \u2026",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Took up King's idea mid-task: built a pooling layer that weights each source by its track record, the 'superforecasting' approach King described.",
+   "actions": 7
+  },
+  {
+   "n": 7,
+   "time": "05:02",
+   "task": "T4",
+   "type": "tool",
+   "king": "Explain to me simply and plainly",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained the pooling results simply.",
+   "actions": 3
+  },
+  {
+   "n": 8,
+   "time": "05:07",
+   "task": "T6",
+   "type": "teammate",
+   "king": "For this: That knowledge sits in Singapore's own published surveys (IPS, the statistics department, government feedback polls). Feeding those tables into the weighting layer is the next step. \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Took up King's challenge: two helper agents combed news, polls and reports; 96 published Singapore findings were turned into evidence and tested. Result: worth about 1% of face value.",
+   "actions": 8
+  },
+  {
+   "n": 9,
+   "time": "06:13",
+   "task": "T4",
+   "type": "tool",
+   "king": "What is the conclusion in plain language?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Gave the conclusion in one sentence and a short plain version.",
+   "actions": 0
+  },
+  {
+   "n": 10,
+   "time": "06:33",
+   "task": "T4",
+   "type": "tool",
+   "king": "I\u2019m still not understanding",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Re-explained with the 'one actor playing a thousand roles' picture.",
+   "actions": 0
+  },
+  {
+   "n": 11,
+   "time": "06:38",
+   "task": "T4",
+   "type": "tool",
+   "king": "How does ai help by spreading ?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained 'spreading' with a 300-person survey example.",
+   "actions": 0
+  },
+  {
+   "n": 12,
+   "time": "06:46",
+   "task": "T7",
+   "type": "teammate",
+   "king": "Does that mean we can use different surveys found online to build different digital citizens , and depending on the questions asked, we can check which previous survey \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Built on King's library idea: set out three conditions for it to work, then offered to test it.",
+   "actions": 0
+  },
+  {
+   "n": 13,
+   "time": "06:48",
+   "task": "T7",
+   "type": "independent",
+   "king": "Can you test how well this library works?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Designed and ran the library test on two US surveys (about 50 actions, a 26-minute background run); found and corrected my own earlier error in scoring small surveys.",
+   "actions": 47
+  },
+  {
+   "n": 14,
+   "time": "08:18",
+   "task": "T4",
+   "type": "tool",
+   "king": "this is too much info. can you just explain it simply to me?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Cut the library findings down to three parts: search works, borrowing numbers does not, filling in groups works.",
+   "actions": 0
+  },
+  {
+   "n": 15,
+   "time": "08:31",
+   "task": "T8",
+   "type": "tool",
+   "king": "can you summarise all these techniques, what works and what does, and how many points within etc into a simple to understand table",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Built a summary table of every technique and its points off.",
+   "actions": 0
+  },
+  {
+   "n": 16,
+   "time": "08:34",
+   "task": "T8",
+   "type": "teammate",
+   "king": "we need to make the table easier to understand. The Reading the table in one line para is very helpful and useful - maybe we should build the \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rebuilt the table around King's suggestion: the one-line summary became the spine of the table.",
+   "actions": 0
+  },
+  {
+   "n": 17,
+   "time": "08:35",
+   "task": "T8",
+   "type": "tool",
+   "king": "and what does points off mean? and group differences captured etc? make the language easier to. understand?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Defined 'points off' and 'group differences captured' with worked examples.",
+   "actions": 0
+  },
+  {
+   "n": 18,
+   "time": "08:40",
+   "task": "T8",
+   "type": "teammate",
+   "king": "so the benefit is that with AI, we can start with smaller samples than before without AI, which means for the same budget to execute surveys, we could \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed King's business reading (smaller or more frequent surveys) and added four cautions, including that the overall number does not improve.",
+   "actions": 0
+  },
+  {
+   "n": 19,
+   "time": "08:42",
+   "task": "T8",
+   "type": "tool",
+   "king": "what do you mean \"citizens spread it\"? and what do you mean by headline number, and exchange rate, and signal? please stop using jargon",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Replaced my jargon: 'spread' became 'fill in the groups', 'headline number' became 'the overall number'.",
+   "actions": 0
+  },
+  {
+   "n": 20,
+   "time": "08:45",
+   "task": "T9",
+   "type": "teammate",
+   "king": "isn't citizens spreading it just using AI?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "King's question surfaced the key distinction: the chatbot kind versus the pattern-finding kind built on real records.",
+   "actions": 0
+  },
+  {
+   "n": 21,
+   "time": "09:01",
+   "task": "T9",
+   "type": "tool",
+   "king": "we need to make this clear then? can you do so in the artifact, as well as update the artifact with the one liner + ensuing table, with \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Put the one-liner, the story table and the two-kinds explanation on the page.",
+   "actions": 6
+  },
+  {
+   "n": 22,
+   "time": "09:10",
+   "task": "T10",
+   "type": "tool",
+   "king": "can you review the scorecard and see how we can streamline it so that it becomes clear what AI can and cannot help, and the implications going forward",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Reviewed the page, found it said the same thing four ways, and rebuilt it around what AI can and cannot do.",
+   "actions": 7
+  },
+  {
+   "n": 23,
+   "time": "09:26",
+   "task": "T10",
+   "type": "tool",
+   "king": "this is hard to understand. can you make it easier to grasp?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Rewrote the two-kinds box around one example person, a 62-year-old woman.",
+   "actions": 2
+  },
+  {
+   "n": 24,
+   "time": "09:29",
+   "task": "T9",
+   "type": "teammate",
+   "king": "is the chatbot kind based on what a person like a 62 year old is likely to answer in general? whereas real records is based on what a \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed King's reading and refined it: her record holds her answers to other questions, not to the new one.",
+   "actions": 0
+  },
+  {
+   "n": 25,
+   "time": "09:33",
+   "task": "T9",
+   "type": "teammate",
+   "king": "i think we should put this into the artifact. i feel we should also make clear and show how in the USA it is possible to use the \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added the two-women example and a chart showing the chatbot reproduces 81% of group differences in the US against 36% in Singapore.",
+   "actions": 6
+  },
+  {
+   "n": 26,
+   "time": "09:36",
+   "task": "T11",
+   "type": "teammate",
+   "king": "isn't 2.6 to 2.4 pretty good?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Reframed against the no-AI baseline: the chatbot's real contribution in Singapore was 0.2 points; conceded 'barely helped' was too harsh for standout groups.",
+   "actions": 0
+  },
+  {
+   "n": 27,
+   "time": "09:37",
+   "task": "T11",
+   "type": "teammate",
+   "king": "yes. and why did we not test the united states one?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained the gap honestly, then ran the missing US test: record citizens beat the chatbot in the US too (1.8 vs 2.3 points).",
+   "actions": 5
+  },
+  {
+   "n": 28,
+   "time": "09:56",
+   "task": "T12",
+   "type": "tool",
+   "king": "the result in one line i.e. AI pretending to be people flattens groups. Real survey records fix most of that. A few hundred real answers, with the records \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rewrote the one-line result to open with the role of AI.",
+   "actions": 2
+  },
+  {
+   "n": 29,
+   "time": "09:58",
+   "task": "T12",
+   "type": "teammate",
+   "king": "sounds good. and for this: We know this because the new question was asked in other countries, so we can see how people with answers like hers replied. \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added how AI learns across 61 countries, with the 2-vs-61 evidence, and flagged cities as untested.",
+   "actions": 1
+  },
+  {
+   "n": 30,
+   "time": "09:59",
+   "task": "T12",
+   "type": "tool",
+   "king": "i suggest not using two columns like this because it might be perceived as following from the chatbot vs real records columns",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Stacked the 'helps / does not help' lists so they no longer line up under the two kinds of AI.",
+   "actions": 1
+  },
+  {
+   "n": 31,
+   "time": "10:02",
+   "task": "T12",
+   "type": "tool",
+   "king": "we should make clear what are typical and what are big misses and why?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Explained 'typical' and 'big misses' under the table.",
+   "actions": 1
+  },
+  {
+   "n": 32,
+   "time": "10:03",
+   "task": "T12",
+   "type": "tool",
+   "king": "still a little hard to understand. see if you can simplify it?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Replaced the statistics with a commute comparison.",
+   "actions": 4
+  },
+  {
+   "n": 33,
+   "time": "10:05",
+   "task": "T12",
+   "type": "teammate",
+   "king": "can we follow on from the 62 year old example so that hte reader doesn't have to juggle so many new ideas?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rewrote the explanation through the 62-year-old woman, as King suggested, so readers meet one person throughout.",
+   "actions": 1
+  },
+  {
+   "n": 34,
+   "time": "10:08",
+   "task": "T12",
+   "type": "tool",
+   "king": "we shouldn't use \"worst cases\" - it sounds negative. is there a better phrase?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed 'standout groups' and 'most groups' and applied them everywhere.",
+   "actions": 2
+  },
+  {
+   "n": 35,
+   "time": "10:10",
+   "task": "T13",
+   "type": "teammate",
+   "king": "ok now does it mean if we are just looking at most groups in Singapore (and anywhere outside of the USA), what the AI can find from real \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Corrected King's reading: the first column is no AI at all; showed the share of error each kind removes.",
+   "actions": 0
+  },
+  {
+   "n": 36,
+   "time": "10:12",
+   "task": "T13",
+   "type": "tool",
+   "king": "ok we need to make this easy to understand for people. how do you propose doing so?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed reframing around 'how much error AI removes' with a chart and three takeaways.",
+   "actions": 0
+  },
+  {
+   "n": 37,
+   "time": "10:14",
+   "task": "T13",
+   "type": "teammate",
+   "king": "so are we saying that in singapore, the chatbot type AI only removes a little of the errors, but the record type AI removes a lot more. and \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed King's summary with one refinement: the chatbot catches up for standout groups.",
+   "actions": 0
+  },
+  {
+   "n": 38,
+   "time": "10:15",
+   "task": "T13",
+   "type": "tool",
+   "king": "turning this into when to use AI for digital citizens, how would we phrase this?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Turned the findings into a 'when to use which' guide.",
+   "actions": 0
+  },
+  {
+   "n": 39,
+   "time": "10:16",
+   "task": "T13",
+   "type": "tool",
+   "king": "it's confusing. expolain it more simply",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Reduced the guide to three steps and one 'don't'.",
+   "actions": 0
+  },
+  {
+   "n": 40,
+   "time": "10:17",
+   "task": "T13",
+   "type": "teammate",
+   "king": "i think you need to use the same language as we had agreed on earlier. that's one way to help people navigate all these nuances",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Adopted King's principle: re-wrote the guide in the page's agreed terms only.",
+   "actions": 0
+  },
+  {
+   "n": 41,
+   "time": "10:18",
+   "task": "T14",
+   "type": "teammate",
+   "king": "why did you write this: It is good at writing questions and finding similar past ones. => is it needed? and shouldn't we also be talking about reducing \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Admitted the claim was untested, removed it from the page, and added error-reduction figures to every step.",
+   "actions": 4
+  },
+  {
+   "n": 42,
+   "time": "10:20",
+   "task": "T15",
+   "type": "tool",
+   "king": "ok now given all we discussed, can you redo a streamlined artifact so that it is clear to a c-suite how they should use AI for digital citizens?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rebuilt the whole page as a C-suite guide: four rules, what it is worth, two kinds of AI, one chart.",
+   "actions": 15
+  },
+  {
+   "n": 43,
+   "time": "10:29",
+   "task": "T15",
+   "type": "teammate",
+   "king": "here we talk about chatbot kind, and real records even before we have eefined them. and we bring in the idea of closest questions which is also confusing. \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Re-ordered the page so every term is defined before use, and replaced 'closest question' with a plain rule.",
+   "actions": 3
+  },
+  {
+   "n": 44,
+   "time": "10:33",
+   "task": "T15",
+   "type": "teammate",
+   "king": "for this: The AI that does this well learns from real people's past survey answers. A chatbot asked to play people does it well only in the United \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Kept King's wording and fixed two small things: 'stretches' and a shorter phrase for the chatbot.",
+   "actions": 2
+  },
+  {
+   "n": 45,
+   "time": "10:37",
+   "task": "T15",
+   "type": "teammate",
+   "king": "to help people link \"The AI that stretches a small survey is the kind that learns from patterns in real people's past survey answers.\" to record citizens, shall \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Split the short answer into three paragraphs as King drafted, and named the chatbot kind too for symmetry.",
+   "actions": 2
+  },
+  {
+   "n": 46,
+   "time": "10:38",
+   "task": "T15",
+   "type": "teammate",
+   "king": "and for this: 90,000 people in 61 other countries. The AI looks across all of them to learn how people whose answers resemble hers tend to reply, then \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained the 90,000, and surfaced a bigger gap: a new product question is never asked abroad, so the AI must learn from King's own survey, which needs standard questions.",
+   "actions": 2
+  },
+  {
+   "n": 47,
+   "time": "10:41",
+   "task": "T15",
+   "type": "tool",
+   "king": "given the above, seee if you need to streamline what we say in the first screenshot. and then i think what follows after this section is the second \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Merged two paragraphs and moved 'what it is worth' after the definitions.",
+   "actions": 3
+  },
+  {
+   "n": 48,
+   "time": "10:43",
+   "task": "T15",
+   "type": "tool",
+   "king": "we should just show this (see first screenshot). the other screenshots that mention points - these need additional background and should be moved elsewhere",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Cut the 'worth' section to the comparison box only and moved the points explanation later.",
+   "actions": 3
+  },
+  {
+   "n": 49,
+   "time": "10:48",
+   "task": "T15",
+   "type": "tool",
+   "king": "following what it is worth (see first screenshot), we then explain using the second screenshot, and then the third screenshot, but both are rewritten to make it easy \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Rebuilt the middle of the page into worth, how we measure, then points to error removed, as King laid out.",
+   "actions": 4
+  },
+  {
+   "n": 50,
+   "time": "10:55",
+   "task": "T15",
+   "type": "tool",
+   "king": "first screenshot - highlighted => it is not clear what two sides of the box refer to - i think you are referring to the 300 and 600. \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Named both sides of the box and tied the table intro to the short answer; changed 'simplest option' to 'no AI'.",
+   "actions": 5
+  },
+  {
+   "n": 51,
+   "time": "11:04",
+   "task": "T15",
+   "type": "teammate",
+   "king": "see highlighed part in screenshot - we introdue new ideas here that are confusing. is it better to say in a new para \"The gain is biggest for \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Agreed, and pointed out that 'small groups' and 'standout groups' are two different ideas; built the section in three steps.",
+   "actions": 3
+  },
+  {
+   "n": 52,
+   "time": "11:08",
+   "task": "T15",
+   "type": "tool",
+   "king": "what does this mean? and it is sorta hanging in mid-air now (see screenshot) Here \"AI\" is record citizens and the chatbot kind together, with record citizens counting \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Explained the footnote and folded it into one plain sentence.",
+   "actions": 2
+  },
+  {
+   "n": 53,
+   "time": "11:10",
+   "task": "T14",
+   "type": "teammate",
+   "king": "and is this backed up? as people over 60 often do.",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Checked the data: people over 60 were the most distinctive group on 0 of 20 questions; replaced with Malay Singaporeans and young adults.",
+   "actions": 1
+  },
+  {
+   "n": 54,
+   "time": "11:11",
+   "task": "T15",
+   "type": "tool",
+   "king": "the two highlighted sentences are the same. it confuses readers es when we say these two kinds of AI are different",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Rewrote the two identical bullets to say how each kind of AI differs.",
+   "actions": 1
+  },
+  {
+   "n": 55,
+   "time": "11:11",
+   "task": "T15",
+   "type": "tool",
+   "king": "and this highlighted sentence is confusing and hanging in mid-air too",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Moved the 'reading a cell' note to before the table.",
+   "actions": 2
+  },
+  {
+   "n": 56,
+   "time": "11:15",
+   "task": "T15",
+   "type": "teammate",
+   "king": "when we say this: The page now says \u201cas Malay Singaporeans and young adults often do.\u201d The 62-year-old woman still introduces the idea that one person belongs to \u2026",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Made the standout-groups point general with test examples, and capitalised 'No AI' wherever it names the column.",
+   "actions": 5
+  },
+  {
+   "n": 57,
+   "time": "11:17",
+   "task": "T16",
+   "type": "teammate",
+   "king": "given all that we discussed, do we think we need to revise the four pints in this screenshot - discuss with me",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Reviewed each rule against what we had learned and proposed revisions and a new heading.",
+   "actions": 0
+  },
+  {
+   "n": 58,
+   "time": "11:28",
+   "task": "T16",
+   "type": "tool",
+   "king": "\u201cFour rules for using AI for digital citizens\u201d is good. We can make it Five Rules, as explained below. For Rule 1, we should say record citizens is \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Wrote the five rules as King specified, checking each number (published findings made estimates slightly worse).",
+   "actions": 2
+  },
+  {
+   "n": 59,
+   "time": "11:31",
+   "task": "T16",
+   "type": "teammate",
+   "king": "I don't think we need a What to do next section anymore. lastly for this (see screenshot), where do you think it now fits?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Recommended keeping the limits after the rules, folded in the pilot step, and added the three-countries limit.",
+   "actions": 2
+  },
+  {
+   "n": 60,
+   "time": "11:36",
+   "task": "T16",
+   "type": "teammate",
+   "king": "shoild it read \"Area for further experimentation\"? For this: Check it on your own questions first. Every test used attitude and values questions. Before relying on it for \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed 'Limits, and areas for further experimentation' and a split-sample pilot instead of 'check against a larger survey'.",
+   "actions": 0
+  },
+  {
+   "n": 61,
+   "time": "11:39",
+   "task": "T16",
+   "type": "tool",
+   "king": "ok do it",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Applied the agreed wording.",
+   "actions": 2
+  },
+  {
+   "n": 62,
+   "time": "11:41",
+   "task": "T14",
+   "type": "teammate",
+   "king": "can you say where you got this from \"n our test, 52% of Malay Singaporeans were very worried about losing their job, against 30% of all adults.\"? this \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Traced the figure to the World Values Survey file and recomputed it; reworded the pilot around '300 + record citizens = 600'.",
+   "actions": 3
+  },
+  {
+   "n": 63,
+   "time": "11:43",
+   "task": "T14",
+   "type": "teammate",
+   "king": "well 2020 - was that conducted during covid?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Found the fieldwork dates (Nov 2019 to Mar 2020) via the Institute of Policy Studies and put them on the page.",
+   "actions": 8
+  },
+  {
+   "n": 64,
+   "time": "11:45",
+   "task": "T14",
+   "type": "teammate",
+   "king": "and our estimates is based on what we think malays would have answred during that same timeframe, or now?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Checked what each method was asked: record citizens are tied to that survey window, the chatbot to no date at all.",
+   "actions": 1
+  },
+  {
+   "n": 65,
+   "time": "11:47",
+   "task": "T16",
+   "type": "tool",
+   "king": "then maybe we leave out the example \"AI cannot know local facts it was never shown\" , and just state it as \"AI cannot know local facts it \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Replaced the example with a short plain statement.",
+   "actions": 2
+  },
+  {
+   "n": 66,
+   "time": "11:50",
+   "task": "T17",
+   "type": "independent",
+   "king": "now do thorough QA from accuracy, to accessibility, to aesthetics etc. Update and rectify anything arising from the thorough QA. after you are done, do a new artifact \u2026",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Running a full QA pass with an independent helper agent, then writing this record and the reusable package.",
+   "actions": 13
+  }
+ ],
+ "tasks": {
+  "T1": [
+   "Set the goal and build the first version",
+   "King"
+  ],
+  "T2": [
+   "Stress-test the chatbot on public data",
+   "King"
+  ],
+  "T3": [
+   "Fix the flattening problem",
+   "King"
+  ],
+  "T4": [
+   "Explain the findings in plain language",
+   "King"
+  ],
+  "T5": [
+   "Add more data and weigh sources by track record",
+   "King"
+  ],
+  "T6": [
+   "Test news, polls and reports as evidence",
+   "King"
+  ],
+  "T7": [
+   "Test the survey-library idea",
+   "King"
+  ],
+  "T8": [
+   "Summarise every technique in one table",
+   "King"
+  ],
+  "T9": [
+   "Separate the two kinds of AI",
+   "King"
+  ],
+  "T10": [
+   "Streamline the scorecard page",
+   "King"
+  ],
+  "T11": [
+   "Compare the United States with Singapore",
+   "King"
+  ],
+  "T12": [
+   "Polish the page's language",
+   "King"
+  ],
+  "T13": [
+   "Turn findings into guidance",
+   "King"
+  ],
+  "T14": [
+   "Fact-check claims on the page",
+   "King"
+  ],
+  "T15": [
+   "Rebuild the page for a C-suite reader",
+   "King"
+  ],
+  "T16": [
+   "Write the five rules and the limits",
+   "King"
+  ],
+  "T17": [
+   "QA and documentation",
+   "King"
+  ]
+ }
+}
