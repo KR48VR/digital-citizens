@@ -9,9 +9,10 @@ A first in-session stress test (the model writing answer shares blind, then scor
 
 ## The result in one line
 
-AI pretending to be people flattens groups. Real survey records fix most of that. A few hundred real answers,
-with the records filling in the groups, is the best recipe you can actually run. Copying another survey's
-closest question does not work.
+The role of AI is to fill in the groups, not to replace the people. A few hundred real people give the
+overall answer. AI built on real survey records then works out how each group differs, as accurately as a
+survey twice the size. A chatbot pretending to be people does this poorly outside the United States, and
+copying another survey's closest question does not work.
 
 | The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
 |---|---|---|---|
