@@ -845,6 +845,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Added the two points to the scorecard, checked against the data, and set out a staged plan with a measurable target."
+  },
+  {
+   "n": 79,
+   "time": "22:39",
+   "task": "T20",
+   "type": "teammate",
+   "king": "Is this backed up by evidence? - People don't fully agree with themselves. Asked the same question twice, most people give the same answer only about 70–80% of the time. And you have mentioned letting the ai read the detailed records via an api a few times. What does that look like, why do you need an api and how much will it cost",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Checked the claim against the Stanford paper and our own data, corrected the wording, and explained the record-reading test, why it needs a paid key, and its likely cost."
+  },
+  {
+   "n": 80,
+   "time": "22:50",
+   "task": "T20",
+   "type": "teammate",
+   "king": "Ok let me see if I can get you the api key in a few hours. And the percentages in point 1 sound important enough to put into the two artifacts?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Measured how much group answers move when the same people answer twice, added the figures to both pages with sources, and fixed two errors the check turned up."
   }
  ],
  "tasks": {
@@ -922,6 +942,10 @@
   ],
   "T19": [
    "Test more ways to make AI more accurate",
+   "King"
+  ],
+  "T20": [
+   "Check the evidence and plan the next test",
    "King"
   ]
  }

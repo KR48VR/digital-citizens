@@ -19,7 +19,7 @@ from ..schema import Persona, Question
 
 DIR = Path("data/raw/twin2k")
 DEMO_QIDS = {  # wave 1 demographics (QuestionIDs from the catalog) -> attribute name
-    "QID9": "region", "QID10": "sex", "QID11": "age", "QID12": "education", "QID13": "race", "QID14": "religion", "QID16": "politics", "QID17": "income",
+    "QID11": "region", "QID12": "sex", "QID13": "age", "QID14": "education", "QID15": "race", "QID18": "religion", "QID20": "politics", "QID21": "income",
 }
 
 
@@ -84,8 +84,9 @@ def demographic_table(w13: pd.DataFrame) -> pd.DataFrame:
 
 def test_retest_accuracy(w13: pd.DataFrame, w4: pd.DataFrame, items: list[str]) -> pd.Series:
     acc = {}
+    w13, w4 = w13.set_index("pid"), w4.set_index("pid")
     for c in items:
-        a, b = w13[c], w4[c]
+        a, b = w13[c].align(w4[c], join="inner")
         m = a.notna() & b.notna()
         acc[c] = float((a[m].astype(str) == b[m].astype(str)).mean()) if m.sum() else np.nan
     return pd.Series(acc, name="retest_accuracy")

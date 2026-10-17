@@ -75,6 +75,10 @@
   "T19": [
    "Asked for alternative methods, then chose three to test: a panel of chatbots, fewer standard questions, boosting small groups.",
    "Ran the three tests on the one-method design, with blind predictions from four more models, and wrote them up with 95% ranges."
+  ],
+  "T20": [
+   "Asked whether a claim was backed by evidence, what reading records through a paid key involves and costs, and to add the figures to both pages.",
+   "Checked the claim against the source paper and our own data, measured how much group answers move, priced the next test, and updated both pages."
   ]
  },
  "examples": {
@@ -97,17 +101,17 @@
  },
  "scalars": {
   "HOURS": "about 21 hours",
-  "N_TASKS": 19,
+  "N_TASKS": 20,
   "N_SHOTS": 14,
   "N_AGENTS": 13,
   "N_BG": 36,
   "N_HOOKS": 10,
   "N_IDEAS": 13,
-  "N_CHALLENGES": 8,
+  "N_CHALLENGES": 9,
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "43",
+  "N_VERSIONS": "44",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

@@ -48,6 +48,14 @@ def test_twin2k_retest_items():
     assert acc.between(0, 1).all()
 
 
+@pytest.mark.skipif(not HAVE_TWIN, reason="Twin-2K-500 not downloaded")
+def test_twin2k_demographics_are_the_right_questions():
+    w13, _ = twin2k.load_responses()
+    d = twin2k.demographic_table(w13)
+    assert set(d["sex"].unique()) <= {"Female", "Male", "nan"}
+    assert "18-29" in set(d["age"]) and "White" in set(d["race"]) and "Democrat" in set(d["politics"])
+
+
 @pytest.mark.skipif(not HAVE_SG, reason="Nemotron Singapore shard not downloaded")
 def test_nemotron_personas():
     df = nemotron.load(columns=["uuid", "sex", "age", "marital_status", "education_level", "occupation", "industry", "planning_area", "persona", "cultural_background"]).head(20)

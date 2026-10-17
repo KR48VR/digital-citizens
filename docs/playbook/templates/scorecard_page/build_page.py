@@ -13,6 +13,7 @@ OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "scorecard.html"
 TITLE = "Digital Citizens Scorecard"
 
 import csv
+import json
 import re
 import pandas as pd
 RES = HERE.parents[3] / "docs" / "results" / "stress_test"
@@ -207,8 +208,17 @@ for t in TAGS:
     WORTH[t] = float(m_.group(1))
 
 
+SELF = json.load(open(RES.parent / "self_agreement_twin2k.json"))  # same people asked twice (scripts/self_agreement_twin2k.py)
+SELF_FMT = {"match": lambda d: str(round(100 * d["match"])), "match_yes_no": lambda d: str(round(100 * d["match_yes_no"])),
+            "match_6_7": lambda d: str(round(100 * d["match_6_7_options"])), "shift_everyone": lambda d: f1(d["shift_everyone"]),
+            "shift_group": lambda d: f1(d["shift_typical_group"]), "questions": lambda d: str(d["questions"]),
+            "people": lambda d: f"{d['people']:,}"}
+
+
 def inline(m):
     kind, args = m.group(1), m.group(2).split("|")
+    if kind == "self":
+        return SELF_FMT[args[0]](SELF)
     if kind == "floor":
         return f1(FLOOR[args[0]])
     if kind == "worth":
@@ -237,6 +247,8 @@ for t in TAGS:  # rule 2: a panel does about as well as the best single chatbot;
 # rule 1: 20 standard questions almost as good as all of them in Singapore (within 0.15 points)
 assert med(sg, "+ record citizens (own survey, 20 standard questions)", 300) - med(sg, "+ record citizens (own survey)", 300) < 0.15
 assert pct(med(us, "survey alone", 300), med(us, "+ chatbot kind", 300)) > pct(med(sg, "survey alone", 300), med(sg, "+ chatbot kind", 300))
+# "the changes mostly cancel out ... more for small groups"; "no AI can predict one person much better"
+assert SELF["shift_typical_group"] < 2 and SELF["group_size_vs_shift_spearman"] < -0.5 and SELF["match_6_7_options"] < 0.5
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),
          "US chatbot vs own RC, 300 (about the same)": (f1(med(us, "+ chatbot kind", 300)), f1(med(us, "+ record citizens (own survey)", 300))),
          "SG RC past vs + chatbot (adds nothing)": (f1(med(sg, "+ record citizens", 300)), f1(med(sg, "+ record citizens + chatbot kind", 300))),
@@ -251,7 +263,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 

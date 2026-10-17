@@ -542,5 +542,37 @@
   "fix": "Checked the exact values: 3.8 and 3.0.",
   "status": "Fixed",
   "id": 68
+ },
+ {
+  "when": "Checking the evidence",
+  "area": "Accuracy",
+  "finding": "Claude told King that \"most people give the same answer only about 70-80% of the time\". That is an average across people and questions, not most people, and the 81% figure in the methods notes had no source.",
+  "fix": "Checked against the Stanford paper (81.25%, 1,052 US adults, two weeks apart) and our own Twin-2K-500 calculation (69%); corrected the wording and added both sources.",
+  "status": "Fixed",
+  "id": 69
+ },
+ {
+  "when": "Checking the evidence",
+  "area": "Accuracy",
+  "finding": "The casebook gave the floor as about 1.3 points, a figure from an earlier test; the one-method scorecard uses 1.5 in Singapore and 1.7 in the United States.",
+  "fix": "Casebook now matches the scorecard.",
+  "status": "Fixed",
+  "id": 70
+ },
+ {
+  "when": "Checking the evidence",
+  "area": "Method",
+  "finding": "The Twin-2K-500 loader labelled its groups from the wrong questions, shifted by one (region was read as age, sex as education, and so on). Only an old baseline used them.",
+  "fix": "Labels corrected, a test added, and the baseline rerun: its average moved from 52.79% to 52.80%, and no published figure changed.",
+  "status": "Fixed",
+  "id": 71
+ },
+ {
+  "when": "Checking the evidence",
+  "area": "Accuracy",
+  "finding": "The casebook still said about 4,100 lines of Python and 31 passing tests; the code has grown since.",
+  "fix": "Recounted: about 4,800 lines in the code and scripts folders, 32 passing tests.",
+  "status": "Fixed",
+  "id": 72
  }
 ]

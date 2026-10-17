@@ -1,0 +1,83 @@
+{
+ "people": 2058,
+ "questions": 105,
+ "match": 0.6916744423305916,
+ "match_yes_no": 0.8086819846286223,
+ "match_6_7_options": 0.44274576955720985,
+ "match_6_7_options_max_item": 0.5728862973760933,
+ "shift_everyone": 1.166180758017496,
+ "shift_typical_group": 1.7357834788679807,
+ "group_size_vs_shift_spearman": -0.9780219780219781,
+ "groups": [
+  {
+   "group": "age: 18-29",
+   "n": 388.0,
+   "shift": 2.0202020202020208
+  },
+  {
+   "group": "age: 30-49",
+   "n": 735.0,
+   "shift": 1.4965986394557818
+  },
+  {
+   "group": "age: 50-64",
+   "n": 658.0,
+   "shift": 1.6717325227963515
+  },
+  {
+   "group": "age: 65+",
+   "n": 277.0,
+   "shift": 2.166064981949458
+  },
+  {
+   "group": "politics: Democrat",
+   "n": 847.0,
+   "shift": 1.5348288075560794
+  },
+  {
+   "group": "politics: Independent",
+   "n": 609.0,
+   "shift": 1.576354679802956
+  },
+  {
+   "group": "politics: Republican",
+   "n": 540.0,
+   "shift": 1.8518518518518516
+  },
+  {
+   "group": "race: Asian",
+   "n": 140.0,
+   "shift": 2.857142857142857
+  },
+  {
+   "group": "race: Black",
+   "n": 251.0,
+   "shift": 2.3904382470119523
+  },
+  {
+   "group": "race: Hispanic",
+   "n": 194.0,
+   "shift": 2.47422680412371
+  },
+  {
+   "group": "race: Other",
+   "n": 112.0,
+   "shift": 2.397959183673469
+  },
+  {
+   "group": "race: White",
+   "n": 1361.0,
+   "shift": 1.322556943423953
+  },
+  {
+   "group": "sex: Female",
+   "n": 1044.0,
+   "shift": 1.3957307060755342
+  },
+  {
+   "group": "sex: Male",
+   "n": 1014.0,
+   "shift": 1.4344262295081984
+  }
+ ]
+}
