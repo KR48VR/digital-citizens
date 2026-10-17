@@ -39,8 +39,16 @@ The free baselines are already strong. Numbers from `docs/results/` (this reposi
 | Twin-2K-500 (US, 105 retest items) | A person's answer two weeks later | Nearest-neighbour respondents (no AI) | 54.8% correct vs 69.4% test-retest ceiling = 0.79 normalized accuracy |
 | GlobalOpinionQA (WVS + Pew; 1,252 questions, 12 countries) | A country's answer shares | Average of the other countries asked | 6.8 points overall (US 7.0, China 6.4, Singapore 3.6; JSD 0.031 / 0.039 / 0.027); guessing evenly: 16 points |
 
+| WVS wave 7 microdata (Singapore n = 2,012; China 3,036; US 2,596; 74-77 items each) | Shares in segments (sex, age, education, income, religion, ethnicity, urban/rural) | "Everyone is average" | Singapore 2.1 pts median (3.0 mean); China 1.4 (2.3): groups differ modestly on most items, strongly on ethnicity and religion |
+
 (Per-option error is smaller on questions with many options, which is why Singapore's WVS-heavy set
 scores lower; JSD is the fairer cross-dataset comparison.)
+
+**First blind stress test (this session's model, no calibration; `docs/results/stress_test/`):** population
+shares within 2-5 points in all three countries, better than the free cross-country baseline; but
+segment differences were reproduced at 81% of their real size in the US and only 36% in Singapore and
+25% in China. The regression-to-the-mean problem is therefore real for Asian populations and is now
+measurable with this harness (gap slope and dispersion ratio).
 
 For comparison, Pew's 2026 digital twins (Claude Opus 4.6) had a 12.4-point average error on new
 questions in the "new question, known population" regime. So the realistic goal for a first version is

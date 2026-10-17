@@ -30,9 +30,9 @@ depend on them; the next phase does.
    Qwen or DeepSeek, which can be self-hosted or via their APIs). Which models are you willing to use and
    where may data be sent?
 
-7. **Data access I cannot complete alone.** World Values Survey wave 7 (Singapore and China microdata)
-   must be downloaded through a web form; CGSS and CFPS need a registration or application in your name or
-   an institution's; Pew ATP and ANES need free accounts. Are you happy to create those accounts, or should
+7. **Data access I cannot complete alone.** World Values Survey wave 7 microdata for Singapore, China and
+   the US is now downloaded (no login needed; done with the container browser). CGSS and CFPS need a
+   registration or application in your name or an institution's; Pew ATP and ANES need free accounts. Are you happy to create those accounts, or should
    we route through a university partner?
 
 8. **Languages for Singapore.** Should the first Singapore version be English only (how most surveys are

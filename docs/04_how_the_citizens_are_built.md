@@ -40,7 +40,9 @@ from the model's imagination), and an **LLM response engine** whose output is co
 - `data/`: loaders that turn real data into benchmarks:
   GSS 2022/2024 with exact codebook wording for 84 attitude items and 10 segment types;
   GlobalOpinionQA (WVS + Pew) for 100+ countries including the US, China and Singapore;
-  Twin-2K-500 for individual-level tests; Nemotron-Personas-Singapore as a persona skeleton.
+  Twin-2K-500 for individual-level tests; WVS wave 7 microdata for Singapore, China and the US (77 items,
+  segments by ethnicity, religion, age, education, income, urban/rural; `scripts/download_wvs.py` fetches
+  the files with the container browser); Nemotron-Personas-Singapore as a persona skeleton.
 - `population/synth.py`: iterative proportional fitting and raking to make a persona bank match census
   margins, plus sampling a synthetic population of any size.
 - `simulate/`: prompt builders for both response modes, option shuffling to detect order effects, answer
@@ -48,12 +50,13 @@ from the model's imagination), and an **LLM response engine** whose output is co
 - `evaluate/`: the metrics, the free baselines (uniform, "everyone is average", last wave, demographic
   regression, other-countries' average, modal, demographic-cell, k-NN), the scoring harness, and the
   individual-level protocol for Twin-2K-500.
-- `cli.py`: `dc baselines gss|goqa|twin2k`, `dc personas singapore`, `dc simulate gss|goqa [--mock]`.
-- `tests/`: 18 tests (metrics, raking, prompts, mock end-to-end, loader smoke tests on the real files).
+- `cli.py`: `dc baselines gss|goqa|twin2k|wvs`, `dc personas singapore`, `dc simulate gss|goqa [--mock]`,
+  and the blind-test workflow `dc packet` (export questions without answers) / `dc score-packet`.
+- `tests/`: 19 tests (metrics, raking, prompts, mock end-to-end, loader smoke tests on the real files).
 - `docs/results/`: the baseline reports produced on the real data.
 
 Not yet built (phase 1): the calibration/rectification layer; the effects (L4) runner for experiments
-and pricing; fine-tuning; WVS-7 Singapore and CGSS loaders (both need a form or registration to download);
+and pricing; fine-tuning; a CGSS loader (needs registration);
 Mandarin/Malay/Tamil prompt variants; cost tracking; a results dashboard.
 
 ## 4. Running it

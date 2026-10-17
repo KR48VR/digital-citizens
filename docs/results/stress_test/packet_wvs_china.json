@@ -1,0 +1,201 @@
+{
+ "benchmark": "wvs",
+ "country": "China",
+ "groups": [
+  "ALL",
+  "urban_rural=Urban",
+  "urban_rural=Rural",
+  "age_band=18-29",
+  "age_band=60+",
+  "education3=Lower",
+  "education3=Higher"
+ ],
+ "group_descriptions": {
+  "ALL": "all adults in China",
+  "urban_rural=Urban": "adults in China with urban rural: Urban",
+  "urban_rural=Rural": "adults in China with urban rural: Rural",
+  "age_band=18-29": "adults in China with age band: 18-29",
+  "age_band=60+": "adults in China with age band: 60+",
+  "education3=Lower": "adults in China with education: Lower",
+  "education3=Higher": "adults in China with education: Higher"
+ },
+ "questions": [
+  {
+   "id": "Q3",
+   "text": "For each of the following aspects, indicate how important it is in your life. Would you say it is very important, rather important, not very important or not important at all Leisure time",
+   "options": [
+    "Very important",
+    "Rather important",
+    "Not very important",
+    "Not at all important"
+   ]
+  },
+  {
+   "id": "Q5",
+   "text": "For each of the following aspects, indicate how important it is in your life. Would you say it is very important, rather important, not very important or not important at all Work",
+   "options": [
+    "Very important",
+    "Rather important",
+    "Not very important",
+    "Not at all important"
+   ]
+  },
+  {
+   "id": "Q18",
+   "text": "On this list are various groups of people. Could you please mention any that you would not like to have as neighbors? Drug addicts",
+   "options": [
+    "Mentioned",
+    "Not mentioned"
+   ]
+  },
+  {
+   "id": "Q49",
+   "text": "All things considered, how satisfied are you with your life as a whole these days? Please use this card to help with your answer.",
+   "options": [
+    "Completely dissatisfied",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "Completely satisfied"
+   ]
+  },
+  {
+   "id": "Q64",
+   "text": "I am going to name a number of organizations. For each one, could you tell me how much confidence you have in them: is it a great deal of confidence, quite a lot of confidence, not very much confidence or none at all? The Churches (mosque, temple etc.)",
+   "options": [
+    "A great deal",
+    "Quite a lot",
+    "Not very much",
+    "None at all"
+   ]
+  },
+  {
+   "id": "Q66",
+   "text": "I am going to name a number of organizations. For each one, could you tell me how much confidence you have in them: is it a great deal of confidence, quite a lot of confidence, not very much confidence or none at all? The press",
+   "options": [
+    "A great deal",
+    "Quite a lot",
+    "Not very much",
+    "None at all"
+   ]
+  },
+  {
+   "id": "Q71",
+   "text": "I am going to name a number of organizations. For each one, could you tell me how much confidence you have in them: is it a great deal of confidence, quite a lot of confidence, not very much confidence or none at all? The government (in your nation\u2019s capital)",
+   "options": [
+    "A great deal",
+    "Quite a lot",
+    "Not very much",
+    "None at all"
+   ]
+  },
+  {
+   "id": "Q109",
+   "text": "Now I'd like you to tell me your views on various issues. How would you place your views on this scale? 1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right; and if your views fall somewhere in between, you can choose any number in between. Competition good or harmful",
+   "options": [
+    "Competition is good{1}",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "Competition is harmful{10}"
+   ]
+  },
+  {
+   "id": "Q110",
+   "text": "Now I'd like you to tell me your views on various issues. How would you place your views on this scale? 1 means you agree completely with the statement on the left; 10 means you agree completely with the statement on the right; and if your views fall somewhere in between, you can chose any number in between. Hard work brings success",
+   "options": [
+    "In the long run, hard work usually brings a better life{1}",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "Hard work doesn't generally bring success - it's more a matter of luck and connections{10}"
+   ]
+  },
+  {
+   "id": "Q144",
+   "text": "Have you been the victim of a crime during the past year? Respondent",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "Q163",
+   "text": "All things considered, would you say that the world is better off, or worse off, because of science and technology? Please tell me which comes closest to your view on this scale: 1 means that \u201cthe world is a lot worse off,\u201d and 10 means that \u201cthe world is a lot better off.\u201d The world is better off, or worse off, because of science and technology",
+   "options": [
+    "A lot worse off",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A lot better off"
+   ]
+  },
+  {
+   "id": "Q236",
+   "text": "I'm going to describe various types of political systems and ask what you think about each as a way of governing this country. For each one, would you say it is a very good, fairly good, fairly bad or very bad way of governing this country? Having experts, not government, make decisions according to what they think is best for the country",
+   "options": [
+    "Very good",
+    "Fairly good",
+    "Fairly bad",
+    "Very bad"
+   ]
+  },
+  {
+   "id": "Q250",
+   "text": "How important is it for you to live in a country that is governed democratically? On this scale where 1 means it is \u201cnot at all important\u201d and 10 means \u201cabsolutely important\u201d what position would you choose?",
+   "options": [
+    "Not at all important",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "Absolutely important"
+   ]
+  },
+  {
+   "id": "Q253",
+   "text": "How much respect is there for individual human rights nowadays in this country?",
+   "options": [
+    "A great deal of respect",
+    "Fairly much  respect",
+    "Not much respect",
+    "No respect at all"
+   ]
+  },
+  {
+   "id": "Q254",
+   "text": "How proud are you to be of nationality of this country?",
+   "options": [
+    "Very proud",
+    "Quite proud",
+    "Not very proud",
+    "Not at all proud",
+    "I am not [nationality]"
+   ]
+  }
+ ]
+}

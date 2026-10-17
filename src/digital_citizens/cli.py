@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .data import globalopinionqa, gss, nemotron
+from .data import globalopinionqa, gss, nemotron, wvs
 from .evaluate import baselines as B
 from .evaluate import harness as H
 from .evaluate.individual import evaluate_twin2k
@@ -69,6 +69,29 @@ def baselines_gss(args: argparse.Namespace) -> None:
     lines += [H.to_markdown(piv), ""]
     _write("baselines_gss2024.md", "\n".join(lines))
     scored.to_csv(RESULTS / "baselines_gss2024_cells.csv", index=False)
+
+
+def baselines_wvs(args: argparse.Namespace) -> None:
+    country = (args.countries or ["Singapore"])[0]
+    b = wvs.benchmark(country)
+    preds = {"uniform": B.uniform(b), "population_marginal_for_segments": B.population_marginal(b)}
+    scored = pd.concat([H.score(p, b, name) for name, p in preds.items()], ignore_index=True)
+    scored["level"] = np.where(scored["group"] == "ALL", "population", "segment")
+    scored["segment_type"] = scored["group"].str.split("=").str[0]
+    floor = H.noise_floor(b)
+    floor["level"] = np.where(floor["group"] == "ALL", "population", "segment")
+    tag = wvs.COUNTRY_FILES[country].lower()
+    lines = [f"# Baselines on WVS wave 7, {country}", "",
+             f"Questions: {len(b.questions)}; respondents: {len(b.respondents)}; cells: {len(b.real)}; segments: {', '.join(b.segment_keys)}.", "",
+             "## Population level", "", H.to_markdown(H.summarise(scored[scored.level == 'population'], ('method',))), "",
+             f"Sampling-noise floor: median JSD {floor[floor.level=='population'].jsd_noise_floor.median():.4f}", "",
+             "## Segment level", "", H.to_markdown(H.summarise(scored[scored.level == 'segment'], ('method',))), "",
+             f"Sampling-noise floor at segment level: median JSD {floor[floor.level=='segment'].jsd_noise_floor.median():.4f}", "",
+             "## 'Everyone is average' error by segment type (median mae_pts): how much segments actually differ", "",
+             H.to_markdown(scored[(scored.level == 'segment') & (scored.method == 'population_marginal_for_segments')].groupby('segment_type')[['mae_pts', 'jsd']].median().reset_index()), "",
+             "## Segment groups available", "", ", ".join(b.groups()), ""]
+    _write(f"baselines_wvs7_{tag}.md", "\n".join(lines))
+    scored.to_csv(RESULTS / f"baselines_wvs7_{tag}_cells.csv", index=False)
 
 
 def baselines_goqa(args: argparse.Namespace) -> None:
@@ -169,7 +192,7 @@ def simulate(args: argparse.Namespace) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="dc", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("baselines"); p.add_argument("benchmark", choices=["gss", "goqa", "twin2k"]); p.add_argument("--countries", nargs="*"); p.add_argument("--k", type=int, default=25); p.add_argument("--limit", type=int)
+    p = sub.add_parser("baselines"); p.add_argument("benchmark", choices=["gss", "goqa", "twin2k", "wvs"]); p.add_argument("--countries", nargs="*"); p.add_argument("--k", type=int, default=25); p.add_argument("--limit", type=int)
     p = sub.add_parser("personas"); p.add_argument("country", choices=["singapore"])
     p = sub.add_parser("simulate"); p.add_argument("benchmark", choices=["gss", "goqa"]); p.add_argument("--mode", choices=["distribution", "roleplay"], default="distribution"); p.add_argument("--model", default="claude-sonnet-5-5"); p.add_argument("--mock", action="store_true"); p.add_argument("--limit", type=int, default=20); p.add_argument("--personas", type=int, default=200); p.add_argument("--persona-style", default="full"); p.add_argument("--temperature", type=float, default=1.0); p.add_argument("--repeats", type=int, default=1); p.add_argument("--workers", type=int, default=8); p.add_argument("--countries", nargs="*")
     _extend_parser(ap)
@@ -181,7 +204,7 @@ def main(argv: list[str] | None = None) -> int:
         score_packet(args)
         return 0
     if args.cmd == "baselines":
-        {"gss": baselines_gss, "goqa": baselines_goqa, "twin2k": baselines_twin2k}[args.benchmark](args)
+        {"gss": baselines_gss, "goqa": baselines_goqa, "twin2k": baselines_twin2k, "wvs": baselines_wvs}[args.benchmark](args)
     elif args.cmd == "personas":
         personas_report(args)
     elif args.cmd == "simulate":
@@ -204,6 +227,14 @@ def make_packet(args: argparse.Namespace) -> None:
         qids = [q.id for q in b.questions if q.id not in exclude and all((q.id, g) in b.real for g in GSS_PACKET_GROUPS)]
         pick = sorted(rng.choice(qids, size=min(args.n, len(qids)), replace=False).tolist())
         packet = {"benchmark": "gss", "groups": GSS_PACKET_GROUPS, "group_descriptions": {g: ("all adults in the United States" if g == "ALL" else f"US adults with {g.split('=')[0].replace('_', ' ')}: {g.split('=', 1)[1]}") for g in GSS_PACKET_GROUPS},
+                  "questions": [{"id": q.id, "text": q.text, "options": q.options} for q in b.questions if q.id in pick]}
+    elif args.benchmark == "wvs":
+        country = (args.countries or ["Singapore"])[0]
+        b = wvs.benchmark(country)
+        groups = args.groups or ["ALL", "ethnic=Chinese", "ethnic=Malay", "ethnic=Indian", "age_band=18-29", "age_band=60+", "education3=Lower", "education3=Higher", "religion=Muslim", "religion=No religion"]
+        qids = [q.id for q in b.questions if q.id not in exclude and all((q.id, g) in b.real for g in groups)]
+        pick = sorted(rng.choice(qids, size=min(args.n, len(qids)), replace=False).tolist())
+        packet = {"benchmark": "wvs", "country": country, "groups": groups, "group_descriptions": {g: (f"all adults in {country}" if g == "ALL" else f"adults in {country} with {g.split('=')[0].replace('_', ' ').replace('3', '')}: {g.split('=', 1)[1]}") for g in groups},
                   "questions": [{"id": q.id, "text": q.text, "options": q.options} for q in b.questions if q.id in pick]}
     else:
         countries = args.countries or ["United States", "China", "Singapore"]
@@ -233,6 +264,11 @@ def score_packet(args: argparse.Namespace) -> None:
         for q in b.questions:
             reg.update(B.demographic_regression(b22.respondents, b24.respondents, q.id, q.options, ["age_band", "sex", "race_eth", "education", "region", "party3", "ideology3", "income4", "religion4", "urbanicity"], b24.segment_keys))
         methods["demographic_regression_2022->2024"] = {k: v for k, v in reg.items() if k in cells}
+    elif packet["benchmark"] == "wvs":
+        b = wvs.benchmark(packet["country"]).subset(qids)
+        cells = {k for k in b.real if k[1] in packet["groups"]}
+        b.real = {k: v for k, v in b.real.items() if k in cells}
+        methods = {args.name: pred, "population_marginal_for_segments": B.population_marginal(b), "uniform": B.uniform(b)}
     else:
         countries = [g.split("=", 1)[1] for g in packet["groups"]]
         bfull = globalopinionqa.benchmark(GOQA_COUNTRIES + [c for c in countries if c not in GOQA_COUNTRIES], min_countries=2)
@@ -242,12 +278,12 @@ def score_packet(args: argparse.Namespace) -> None:
         b.real = {k: v for k, v in b.real.items() if k in cells}
         methods = {args.name: pred, "other_countries_mean": {k: v for k, v in lo.items() if k in cells}, "uniform": B.uniform(b)}
     scored = pd.concat([H.score(p, b, name) for name, p in methods.items()], ignore_index=True)
-    scored["level"] = np.where(scored["group"] == "ALL", "population", "segment") if packet["benchmark"] == "gss" else "country"
+    scored["level"] = np.where(scored["group"] == "ALL", "population", "segment") if packet["benchmark"] in {"gss", "wvs"} else "country"
     lines = [f"# Stress test: {args.name} on {packet['benchmark']} packet `{Path(args.packet).name}`", "",
              f"{len(qids)} questions x {len(packet['groups'])} groups; predictions written without access to the answers; scored against the real shares. Lower is better for jsd/tv/mae_pts.", ""]
     for lvl, sub in scored.groupby("level"):
         lines += [f"## {lvl}", "", H.to_markdown(H.summarise(sub, ("method",))), ""]
-    if packet["benchmark"] == "gss":
+    if packet["benchmark"] in {"gss", "wvs"}:
         seg = pd.concat([H.segment_fidelity(p, b, name) for name, p in methods.items() if name != "population_marginal_for_segments"], ignore_index=True)
         lines += ["## Segment differences (gap recovery; dispersion ratio ideal = 1)", "", H.to_markdown(seg.groupby("method")[["gap_r", "gap_slope", "dispersion_ratio"]].median().reset_index()), ""]
         lines += ["## By group (median mae_pts)", "", H.to_markdown(scored.pivot_table(index="group", columns="method", values="mae_pts", aggfunc="median").reset_index()), ""]
@@ -263,7 +299,7 @@ def score_packet(args: argparse.Namespace) -> None:
 
 def _extend_parser(ap: argparse.ArgumentParser) -> None:
     sub = ap._subparsers._group_actions[0]  # type: ignore[attr-defined]
-    p = sub.add_parser("packet"); p.add_argument("benchmark", choices=["gss", "goqa"]); p.add_argument("--n", type=int, default=30); p.add_argument("--seed", type=int, default=7); p.add_argument("--out", required=True); p.add_argument("--exclude", nargs="*"); p.add_argument("--countries", nargs="*")
+    p = sub.add_parser("packet"); p.add_argument("benchmark", choices=["gss", "goqa", "wvs"]); p.add_argument("--groups", nargs="*"); p.add_argument("--n", type=int, default=30); p.add_argument("--seed", type=int, default=7); p.add_argument("--out", required=True); p.add_argument("--exclude", nargs="*"); p.add_argument("--countries", nargs="*")
     p = sub.add_parser("score-packet"); p.add_argument("--packet", required=True); p.add_argument("--predictions", required=True); p.add_argument("--name", required=True); p.add_argument("--out", required=True)
 
 

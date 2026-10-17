@@ -28,6 +28,8 @@ uv venv .venv && uv pip install --python .venv/bin/python -e .
 .venv/bin/python -I -m digital_citizens.cli baselines gss
 .venv/bin/python -I -m digital_citizens.cli baselines goqa
 .venv/bin/python -I -m digital_citizens.cli baselines twin2k
+.venv/bin/python scripts/download_wvs.py data/raw/wvs      # WVS wave 7 Singapore/China/US via headless browser
+.venv/bin/python -I -m digital_citizens.cli baselines wvs --countries Singapore
 .venv/bin/python -I -m digital_citizens.cli personas singapore
 .venv/bin/python -I -m digital_citizens.cli simulate gss --mock --limit 5                 # dry run
 ANTHROPIC_API_KEY=... .venv/bin/python -I -m digital_citizens.cli simulate gss --mode distribution --limit 20
@@ -38,7 +40,7 @@ ANTHROPIC_API_KEY=... .venv/bin/python -I -m digital_citizens.cli simulate gss -
 ```
 src/digital_citizens/
   schema.py            Persona, Question, Distribution, Response
-  data/                gss.py (US GSS 2022/2024), globalopinionqa.py (WVS+Pew, 100+ countries),
+  data/                gss.py (US GSS 2022/2024), wvs.py (WVS-7 Singapore/China/US microdata), globalopinionqa.py (WVS+Pew, 100+ countries),
                        twin2k.py (US panel with retest), nemotron.py (Singapore persona skeleton), benchmark.py
   population/synth.py  IPF / raking to census margins; synthetic population sampling
   simulate/            prompts.py (role-play + distribution modes), llm.py (Anthropic client, cache, mock), runner.py
@@ -52,6 +54,7 @@ data/raw, data/cache   (git-ignored)
 
 ## Data and licences
 
-GSS (NORC, public use), GlobalOpinionQA (Anthropic, CC BY-NC-SA 4.0: validation only, not commercial
-training), Twin-2K-500 (CC BY 4.0), Nemotron-Personas (NVIDIA, CC BY 4.0). WVS, CGSS, CFPS, Pew ATP and
-ANES microdata need a form or account and are not downloaded automatically.
+GSS (NORC, public use), WVS wave 7 (WVS Association terms: research use, cite, do not redistribute; fetched
+by `scripts/download_wvs.py`), GlobalOpinionQA (Anthropic, CC BY-NC-SA 4.0: validation only, not commercial
+training), Twin-2K-500 (CC BY 4.0), Nemotron-Personas (NVIDIA, CC BY 4.0). CGSS, CFPS, Pew ATP and ANES
+microdata need a registration or account and are not downloaded automatically.

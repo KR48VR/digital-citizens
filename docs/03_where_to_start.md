@@ -54,7 +54,10 @@ overstate how well the method travels. That is exactly why Singapore runs in par
   GlobalOpinionQA already carries 271 Singapore questions, which our harness scores today.
 - **Nobody has published a Singapore benchmark.** Being first to measure how well LLMs reproduce
   Singaporean opinion, across four ethnic groups and in four languages, is a publishable result and a
-  credibility asset for everything that follows.
+  credibility asset for everything that follows. Our own first blind test (WVS-7 Singapore microdata,
+  20 questions x 10 groups) found population shares within about 5 points but group differences
+  flattened to a third of their real size, so the Singapore work must start from real respondent records,
+  not from the model's general knowledge (`docs/results/stress_test/`).
 - **The government side is receptive**: AI Singapore co-launched the persona dataset, and the Social Science
   Research Council funded a five-year programme on computational social simulations for policy design
   (NUS, with NTU, SMU, SUTD). These are natural partners for panel access and for fieldwork.
@@ -75,7 +78,8 @@ overstate how well the method travels. That is exactly why Singapore runs in par
   under the Personal Information Protection Law, and any new validation survey must be run by a licensed
   domestic agency with statistics-bureau approval. Everything in the test plan that needs *new* human
   answers (L4, L5, calibration) therefore needs a Chinese partner.
-- **The models are weakest here.** Every published test (Zuobiao, WVS, Hofstede, CGSS-based) finds that
+- **The models are weakest here.** Our blind test on WVS-7 China found a 35-point directional miss on
+  attitudes to technocratic rule and group differences reproduced at a quarter of their real size. Every published test (Zuobiao, WVS, Hofstede, CGSS-based) finds that
   Qwen, DeepSeek and GLM answer value questions closer to American than Chinese respondents, and homogenise
   within groups. Mandarin prompting narrows but does not close the gap.
 - **Thin cross-national coverage going forward**: China is not in the WVS-8 country list nor in Asian

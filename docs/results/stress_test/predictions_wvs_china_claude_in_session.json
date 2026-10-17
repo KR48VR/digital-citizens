@@ -1,0 +1,1241 @@
+[
+{
+"question_id": "Q3",
+"group": "ALL",
+"probs": [
+0.28,
+0.5,
+0.19,
+0.03
+]
+},
+{
+"question_id": "Q3",
+"group": "urban_rural=Urban",
+"probs": [
+0.3,
+0.5,
+0.17,
+0.03
+]
+},
+{
+"question_id": "Q3",
+"group": "urban_rural=Rural",
+"probs": [
+0.25,
+0.49,
+0.22,
+0.04
+]
+},
+{
+"question_id": "Q3",
+"group": "age_band=18-29",
+"probs": [
+0.33,
+0.5,
+0.15,
+0.02
+]
+},
+{
+"question_id": "Q3",
+"group": "age_band=60+",
+"probs": [
+0.24,
+0.47,
+0.24,
+0.05
+]
+},
+{
+"question_id": "Q3",
+"group": "education3=Lower",
+"probs": [
+0.23,
+0.48,
+0.24,
+0.05
+]
+},
+{
+"question_id": "Q3",
+"group": "education3=Higher",
+"probs": [
+0.34,
+0.5,
+0.14,
+0.02
+]
+},
+{
+"question_id": "Q5",
+"group": "ALL",
+"probs": [
+0.45,
+0.43,
+0.09,
+0.03
+]
+},
+{
+"question_id": "Q5",
+"group": "urban_rural=Urban",
+"probs": [
+0.44,
+0.44,
+0.09,
+0.03
+]
+},
+{
+"question_id": "Q5",
+"group": "urban_rural=Rural",
+"probs": [
+0.47,
+0.42,
+0.08,
+0.03
+]
+},
+{
+"question_id": "Q5",
+"group": "age_band=18-29",
+"probs": [
+0.42,
+0.46,
+0.1,
+0.02
+]
+},
+{
+"question_id": "Q5",
+"group": "age_band=60+",
+"probs": [
+0.44,
+0.39,
+0.11,
+0.06
+]
+},
+{
+"question_id": "Q5",
+"group": "education3=Lower",
+"probs": [
+0.46,
+0.4,
+0.09,
+0.05
+]
+},
+{
+"question_id": "Q5",
+"group": "education3=Higher",
+"probs": [
+0.45,
+0.45,
+0.08,
+0.02
+]
+},
+{
+"question_id": "Q18",
+"group": "ALL",
+"probs": [
+0.85,
+0.15
+]
+},
+{
+"question_id": "Q18",
+"group": "urban_rural=Urban",
+"probs": [
+0.86,
+0.14
+]
+},
+{
+"question_id": "Q18",
+"group": "urban_rural=Rural",
+"probs": [
+0.84,
+0.16
+]
+},
+{
+"question_id": "Q18",
+"group": "age_band=18-29",
+"probs": [
+0.83,
+0.17
+]
+},
+{
+"question_id": "Q18",
+"group": "age_band=60+",
+"probs": [
+0.85,
+0.15
+]
+},
+{
+"question_id": "Q18",
+"group": "education3=Lower",
+"probs": [
+0.84,
+0.16
+]
+},
+{
+"question_id": "Q18",
+"group": "education3=Higher",
+"probs": [
+0.87,
+0.13
+]
+},
+{
+"question_id": "Q49",
+"group": "ALL",
+"probs": [
+0.01,
+0.01,
+0.02,
+0.03,
+0.12,
+0.11,
+0.2,
+0.27,
+0.11,
+0.12
+]
+},
+{
+"question_id": "Q49",
+"group": "urban_rural=Urban",
+"probs": [
+0.01,
+0.01,
+0.02,
+0.03,
+0.11,
+0.11,
+0.2,
+0.28,
+0.11,
+0.12
+]
+},
+{
+"question_id": "Q49",
+"group": "urban_rural=Rural",
+"probs": [
+0.01,
+0.01,
+0.03,
+0.04,
+0.14,
+0.11,
+0.19,
+0.25,
+0.1,
+0.12
+]
+},
+{
+"question_id": "Q49",
+"group": "age_band=18-29",
+"probs": [
+0.01,
+0.01,
+0.02,
+0.03,
+0.1,
+0.11,
+0.22,
+0.28,
+0.11,
+0.11
+]
+},
+{
+"question_id": "Q49",
+"group": "age_band=60+",
+"probs": [
+0.01,
+0.01,
+0.03,
+0.03,
+0.13,
+0.1,
+0.17,
+0.25,
+0.12,
+0.15
+]
+},
+{
+"question_id": "Q49",
+"group": "education3=Lower",
+"probs": [
+0.01,
+0.01,
+0.03,
+0.04,
+0.14,
+0.11,
+0.18,
+0.24,
+0.11,
+0.13
+]
+},
+{
+"question_id": "Q49",
+"group": "education3=Higher",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.03,
+0.09,
+0.1,
+0.22,
+0.3,
+0.12,
+0.11
+]
+},
+{
+"question_id": "Q64",
+"group": "ALL",
+"probs": [
+0.07,
+0.3,
+0.4,
+0.23
+]
+},
+{
+"question_id": "Q64",
+"group": "urban_rural=Urban",
+"probs": [
+0.06,
+0.28,
+0.41,
+0.25
+]
+},
+{
+"question_id": "Q64",
+"group": "urban_rural=Rural",
+"probs": [
+0.09,
+0.33,
+0.38,
+0.2
+]
+},
+{
+"question_id": "Q64",
+"group": "age_band=18-29",
+"probs": [
+0.05,
+0.27,
+0.43,
+0.25
+]
+},
+{
+"question_id": "Q64",
+"group": "age_band=60+",
+"probs": [
+0.09,
+0.32,
+0.38,
+0.21
+]
+},
+{
+"question_id": "Q64",
+"group": "education3=Lower",
+"probs": [
+0.09,
+0.33,
+0.38,
+0.2
+]
+},
+{
+"question_id": "Q64",
+"group": "education3=Higher",
+"probs": [
+0.05,
+0.26,
+0.43,
+0.26
+]
+},
+{
+"question_id": "Q66",
+"group": "ALL",
+"probs": [
+0.12,
+0.55,
+0.27,
+0.06
+]
+},
+{
+"question_id": "Q66",
+"group": "urban_rural=Urban",
+"probs": [
+0.11,
+0.54,
+0.29,
+0.06
+]
+},
+{
+"question_id": "Q66",
+"group": "urban_rural=Rural",
+"probs": [
+0.14,
+0.57,
+0.24,
+0.05
+]
+},
+{
+"question_id": "Q66",
+"group": "age_band=18-29",
+"probs": [
+0.09,
+0.53,
+0.31,
+0.07
+]
+},
+{
+"question_id": "Q66",
+"group": "age_band=60+",
+"probs": [
+0.16,
+0.57,
+0.22,
+0.05
+]
+},
+{
+"question_id": "Q66",
+"group": "education3=Lower",
+"probs": [
+0.15,
+0.57,
+0.23,
+0.05
+]
+},
+{
+"question_id": "Q66",
+"group": "education3=Higher",
+"probs": [
+0.09,
+0.52,
+0.32,
+0.07
+]
+},
+{
+"question_id": "Q71",
+"group": "ALL",
+"probs": [
+0.5,
+0.42,
+0.06,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "urban_rural=Urban",
+"probs": [
+0.48,
+0.43,
+0.07,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "urban_rural=Rural",
+"probs": [
+0.53,
+0.4,
+0.05,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "age_band=18-29",
+"probs": [
+0.44,
+0.46,
+0.08,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "age_band=60+",
+"probs": [
+0.56,
+0.38,
+0.04,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "education3=Lower",
+"probs": [
+0.55,
+0.39,
+0.04,
+0.02
+]
+},
+{
+"question_id": "Q71",
+"group": "education3=Higher",
+"probs": [
+0.45,
+0.45,
+0.08,
+0.02
+]
+},
+{
+"question_id": "Q109",
+"group": "ALL",
+"probs": [
+0.2,
+0.12,
+0.16,
+0.11,
+0.18,
+0.08,
+0.06,
+0.04,
+0.02,
+0.03
+]
+},
+{
+"question_id": "Q109",
+"group": "urban_rural=Urban",
+"probs": [
+0.21,
+0.13,
+0.17,
+0.11,
+0.17,
+0.08,
+0.06,
+0.04,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q109",
+"group": "urban_rural=Rural",
+"probs": [
+0.18,
+0.11,
+0.15,
+0.11,
+0.2,
+0.09,
+0.07,
+0.04,
+0.02,
+0.03
+]
+},
+{
+"question_id": "Q109",
+"group": "age_band=18-29",
+"probs": [
+0.22,
+0.14,
+0.18,
+0.11,
+0.16,
+0.08,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q109",
+"group": "age_band=60+",
+"probs": [
+0.18,
+0.11,
+0.14,
+0.1,
+0.21,
+0.09,
+0.07,
+0.05,
+0.02,
+0.03
+]
+},
+{
+"question_id": "Q109",
+"group": "education3=Lower",
+"probs": [
+0.18,
+0.11,
+0.14,
+0.1,
+0.21,
+0.09,
+0.07,
+0.05,
+0.02,
+0.03
+]
+},
+{
+"question_id": "Q109",
+"group": "education3=Higher",
+"probs": [
+0.23,
+0.14,
+0.18,
+0.12,
+0.15,
+0.07,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q110",
+"group": "ALL",
+"probs": [
+0.28,
+0.15,
+0.15,
+0.1,
+0.14,
+0.06,
+0.05,
+0.03,
+0.01,
+0.03
+]
+},
+{
+"question_id": "Q110",
+"group": "urban_rural=Urban",
+"probs": [
+0.27,
+0.15,
+0.16,
+0.1,
+0.14,
+0.06,
+0.05,
+0.03,
+0.01,
+0.03
+]
+},
+{
+"question_id": "Q110",
+"group": "urban_rural=Rural",
+"probs": [
+0.3,
+0.15,
+0.14,
+0.1,
+0.14,
+0.06,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q110",
+"group": "age_band=18-29",
+"probs": [
+0.25,
+0.15,
+0.17,
+0.11,
+0.14,
+0.07,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q110",
+"group": "age_band=60+",
+"probs": [
+0.32,
+0.15,
+0.13,
+0.09,
+0.14,
+0.06,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q110",
+"group": "education3=Lower",
+"probs": [
+0.31,
+0.15,
+0.13,
+0.09,
+0.15,
+0.06,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q110",
+"group": "education3=Higher",
+"probs": [
+0.25,
+0.15,
+0.17,
+0.11,
+0.14,
+0.07,
+0.05,
+0.03,
+0.01,
+0.02
+]
+},
+{
+"question_id": "Q144",
+"group": "ALL",
+"probs": [
+0.04,
+0.96
+]
+},
+{
+"question_id": "Q144",
+"group": "urban_rural=Urban",
+"probs": [
+0.04,
+0.96
+]
+},
+{
+"question_id": "Q144",
+"group": "urban_rural=Rural",
+"probs": [
+0.04,
+0.96
+]
+},
+{
+"question_id": "Q144",
+"group": "age_band=18-29",
+"probs": [
+0.05,
+0.95
+]
+},
+{
+"question_id": "Q144",
+"group": "age_band=60+",
+"probs": [
+0.03,
+0.97
+]
+},
+{
+"question_id": "Q144",
+"group": "education3=Lower",
+"probs": [
+0.04,
+0.96
+]
+},
+{
+"question_id": "Q144",
+"group": "education3=Higher",
+"probs": [
+0.04,
+0.96
+]
+},
+{
+"question_id": "Q163",
+"group": "ALL",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.1,
+0.08,
+0.15,
+0.25,
+0.14,
+0.23
+]
+},
+{
+"question_id": "Q163",
+"group": "urban_rural=Urban",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.09,
+0.08,
+0.15,
+0.25,
+0.15,
+0.23
+]
+},
+{
+"question_id": "Q163",
+"group": "urban_rural=Rural",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.12,
+0.08,
+0.15,
+0.24,
+0.13,
+0.23
+]
+},
+{
+"question_id": "Q163",
+"group": "age_band=18-29",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.08,
+0.08,
+0.16,
+0.27,
+0.15,
+0.215
+]
+},
+{
+"question_id": "Q163",
+"group": "age_band=60+",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.12,
+0.08,
+0.14,
+0.22,
+0.13,
+0.26
+]
+},
+{
+"question_id": "Q163",
+"group": "education3=Lower",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.12,
+0.08,
+0.14,
+0.23,
+0.13,
+0.25
+]
+},
+{
+"question_id": "Q163",
+"group": "education3=Higher",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.08,
+0.08,
+0.16,
+0.27,
+0.15,
+0.215
+]
+},
+{
+"question_id": "Q236",
+"group": "ALL",
+"probs": [
+0.22,
+0.55,
+0.19,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "urban_rural=Urban",
+"probs": [
+0.22,
+0.55,
+0.19,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "urban_rural=Rural",
+"probs": [
+0.22,
+0.56,
+0.18,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "age_band=18-29",
+"probs": [
+0.21,
+0.56,
+0.19,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "age_band=60+",
+"probs": [
+0.24,
+0.54,
+0.18,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "education3=Lower",
+"probs": [
+0.24,
+0.55,
+0.17,
+0.04
+]
+},
+{
+"question_id": "Q236",
+"group": "education3=Higher",
+"probs": [
+0.2,
+0.55,
+0.21,
+0.04
+]
+},
+{
+"question_id": "Q250",
+"group": "ALL",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.1,
+0.08,
+0.12,
+0.19,
+0.12,
+0.345
+]
+},
+{
+"question_id": "Q250",
+"group": "urban_rural=Urban",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.09,
+0.08,
+0.12,
+0.19,
+0.13,
+0.345
+]
+},
+{
+"question_id": "Q250",
+"group": "urban_rural=Rural",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.12,
+0.08,
+0.12,
+0.18,
+0.11,
+0.34
+]
+},
+{
+"question_id": "Q250",
+"group": "age_band=18-29",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.09,
+0.08,
+0.13,
+0.2,
+0.13,
+0.325
+]
+},
+{
+"question_id": "Q250",
+"group": "age_band=60+",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.11,
+0.07,
+0.11,
+0.17,
+0.12,
+0.37
+]
+},
+{
+"question_id": "Q250",
+"group": "education3=Lower",
+"probs": [
+0.01,
+0.01,
+0.01,
+0.02,
+0.12,
+0.08,
+0.11,
+0.17,
+0.11,
+0.36
+]
+},
+{
+"question_id": "Q250",
+"group": "education3=Higher",
+"probs": [
+0.01,
+0.005,
+0.01,
+0.02,
+0.08,
+0.08,
+0.13,
+0.21,
+0.13,
+0.325
+]
+},
+{
+"question_id": "Q253",
+"group": "ALL",
+"probs": [
+0.25,
+0.55,
+0.17,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "urban_rural=Urban",
+"probs": [
+0.23,
+0.55,
+0.19,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "urban_rural=Rural",
+"probs": [
+0.28,
+0.55,
+0.14,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "age_band=18-29",
+"probs": [
+0.2,
+0.57,
+0.2,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "age_band=60+",
+"probs": [
+0.3,
+0.53,
+0.14,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "education3=Lower",
+"probs": [
+0.3,
+0.53,
+0.14,
+0.03
+]
+},
+{
+"question_id": "Q253",
+"group": "education3=Higher",
+"probs": [
+0.2,
+0.56,
+0.21,
+0.03
+]
+},
+{
+"question_id": "Q254",
+"group": "ALL",
+"probs": [
+0.55,
+0.37,
+0.06,
+0.01,
+0.01
+]
+},
+{
+"question_id": "Q254",
+"group": "urban_rural=Urban",
+"probs": [
+0.52,
+0.39,
+0.07,
+0.01,
+0.01
+]
+},
+{
+"question_id": "Q254",
+"group": "urban_rural=Rural",
+"probs": [
+0.59,
+0.35,
+0.05,
+0.01,
+0.0
+]
+},
+{
+"question_id": "Q254",
+"group": "age_band=18-29",
+"probs": [
+0.5,
+0.41,
+0.07,
+0.01,
+0.01
+]
+},
+{
+"question_id": "Q254",
+"group": "age_band=60+",
+"probs": [
+0.62,
+0.32,
+0.05,
+0.01,
+0.0
+]
+},
+{
+"question_id": "Q254",
+"group": "education3=Lower",
+"probs": [
+0.6,
+0.33,
+0.05,
+0.01,
+0.01
+]
+},
+{
+"question_id": "Q254",
+"group": "education3=Higher",
+"probs": [
+0.48,
+0.43,
+0.07,
+0.01,
+0.01
+]
+}
+]

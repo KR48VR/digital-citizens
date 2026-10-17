@@ -54,3 +54,19 @@ def test_nemotron_personas():
     ps = nemotron.to_personas(df)
     assert len(ps) == 20 and ps[0].attributes["planning_area"] and ps[0].narrative
     assert nemotron.infer_ethnicity("grew up in a Malay household in Bedok") == "Malay"
+
+
+HAVE_WVS = any(Path("data/raw/wvs").glob("*Singapore_Csv_v*"))
+
+
+@pytest.mark.skipif(not HAVE_WVS, reason="WVS files not downloaded (scripts/download_wvs.py)")
+def test_wvs_singapore_benchmark():
+    from digital_citizens.data import wvs
+    b = wvs.benchmark("Singapore", items=["Q1", "Q57", "Q182", "Q130"])
+    assert ("Q57", "ALL") in b.real and b.real[("Q57", "ALL")].n > 1900
+    assert b.qmap["Q57"].options == ["Most people can be trusted", "Need to be very careful"]
+    assert ("Q182", "ethnic=Malay") in b.real and ("Q182", "religion=Muslim") in b.real
+    for d in b.real.values():
+        assert abs(sum(d.probs) - 1) < 1e-9
+    ps = wvs.to_personas(b.respondents.head(3), b.qmap, ["Q1", "Q130"], "Singapore")
+    assert ps[0].attributes["ethnic"] in {"Chinese", "Malay", "Indian", "Others"} and ps[0].record
