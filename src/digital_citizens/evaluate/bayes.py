@@ -22,6 +22,7 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from ..data.benchmark import Benchmark, Key
+from ..schema import Distribution
 from . import harness as H
 from . import metrics as M
 
@@ -66,24 +67,42 @@ def fit_alphas(cells: Sequence[tuple[Mapping[str, Sequence[float]], Sequence[flo
     return {n: float(min(np.exp(v), cap)) for n, v in zip(names, res.x)}
 
 
-def _draw_counts(df: pd.DataFrame, q: str, options: Sequence[str], groups: Sequence[str], design: str, n: int, rng: np.random.Generator) -> dict[str, np.ndarray]:
+def _gmask(df: pd.DataFrame, g: str) -> np.ndarray:
+    return np.ones(len(df), bool) if g == "ALL" else (df[g.split("=", 1)[0]].astype(str) == g.split("=", 1)[1]).to_numpy()
+
+
+def _draw_counts(df: pd.DataFrame, q: str, options: Sequence[str], groups: Sequence[str], design: str, n: int, rng: np.random.Generator, holdout: bool = False):
     """Simulate a local survey. design='per_group': n respondents from each group separately (optimistic).
-    design='total': one survey of n respondents overall; each group gets whoever fell into it (realistic)."""
+    design='total': one survey of n respondents overall; each group gets whoever fell into it (realistic).
+
+    With ``holdout=True`` also returns the weighted shares of the respondents NOT drawn, per group: the truth a
+    fresh sample should be scored against, so the sample never overlaps the people it is compared with."""
     valid = df[q].notna().to_numpy()
+    w = df["weight"].to_numpy() if "weight" in df.columns else np.ones(len(df))
+    y = df[q].to_numpy()
     out: dict[str, np.ndarray] = {}
+    truth: dict[str, list[float]] = {}
+    taken = np.zeros(len(df), bool)
     if design == "total":
         take = rng.choice(np.where(valid)[0], size=min(n, int(valid.sum())), replace=False)
-        sub = df.iloc[take]
+        taken[take] = True
         for g in groups:
-            m = np.ones(len(sub), bool) if g == "ALL" else (sub[g.split("=", 1)[0]].astype(str) == g.split("=", 1)[1]).to_numpy()
-            out[g] = np.array([float((sub[q][m] == o).sum()) for o in options])
+            m = taken & _gmask(df, g)
+            out[g] = np.array([float((y[m] == o).sum()) for o in options])
+    else:
+        for g in groups:
+            idx = np.where(valid & _gmask(df, g))[0]
+            take = rng.choice(idx, size=min(n, len(idx)), replace=False)
+            taken[take] = True
+            out[g] = np.array([float((y[take] == o).sum()) for o in options])
+    if not holdout:
         return out
     for g in groups:
-        mask = valid if g == "ALL" else valid & (df[g.split("=", 1)[0]].astype(str) == g.split("=", 1)[1]).to_numpy()
-        idx = np.where(mask)[0]
-        take = rng.choice(idx, size=min(n, len(idx)), replace=False)
-        out[g] = np.array([float((df[q].iloc[take] == o).sum()) for o in options])
-    return out
+        h = valid & ~taken & _gmask(df, g)
+        v = np.array([float(w[h][y[h] == o].sum()) for o in options])
+        if v.sum() > 0:
+            truth[g] = (v / v.sum()).tolist()
+    return out, truth
 
 
 def loo_bayes_evaluate(
@@ -114,6 +133,7 @@ def loo_bayes_evaluate(
         if n > 0:
             variants[f"local survey of {n} alone"] = {}
     fitted = []
+    draw_sets: dict[tuple[str, int], tuple[dict, dict]] = {}
     for q in items:
         options = bench.qmap[q].options
         for n_loc in local_n:
@@ -129,30 +149,43 @@ def loo_bayes_evaluate(
             alphas = fit_alphas(cal_cells, names)
             fitted.append({"held_out": q, "local_n": n_loc, **alphas})
             tag = "prior only (no local answers)" if n_loc == 0 else f"pooled + local survey of {n_loc}"
-            acc_pool: dict[str, list] = {g: [] for g in groups}
-            acc_alone: dict[str, list] = {g: [] for g in groups}
-            for _ in range(draws if n_loc > 0 else 1):
-                counts = _draw_counts(df, q, options, groups, design, n_loc, rng) if n_loc > 0 else {}
+            if n_loc == 0:
                 for g in groups:
                     key = (q, g)
                     if key not in real or not all(key in source_preds[s] for s in names):
                         continue
                     src = {s: source_preds[s][key] for s in names}
+                    variants[tag][key] = list(pool(src, alphas))
+                    for s in names:
+                        variants[f"{s} alone"][key] = list(_norm(source_preds[s][key]))
+                continue
+            # a fresh local sample per draw, scored against the respondents NOT in it; scores (not predictions) are averaged
+            for d in range(draws):
+                counts, truth_h = _draw_counts(df, q, options, groups, design, n_loc, rng, holdout=True)
+                for g in groups:
+                    key = (q, g)
+                    if key not in real or g not in truth_h or not all(key in source_preds[s] for s in names):
+                        continue
+                    src = {s: source_preds[s][key] for s in names}
                     c = counts.get(g)
-                    acc_pool[g].append(pool(src, alphas, c))
-                    if n_loc > 0:
-                        acc_alone[g].append(_norm(c) if c is not None and c.sum() > 0 else pool(src, alphas))
-            for g in groups:
-                key = (q, g)
-                if acc_pool[g]:
-                    variants[tag][key] = np.mean(acc_pool[g], axis=0).tolist()
-                    if n_loc == 0:
-                        for s in names:
-                            variants[f"{s} alone"][key] = list(_norm(source_preds[s][key]))
-                    else:
-                        variants[f"local survey of {n_loc} alone"][key] = np.mean(acc_alone[g], axis=0).tolist()
-    scored = pd.concat([H.score(v, bench, name) for name, v in variants.items() if v], ignore_index=True)
+                    draw_sets.setdefault((tag, d), ({}, {}))
+                    draw_sets[(tag, d)][0][key] = list(pool(src, alphas, c)); draw_sets[(tag, d)][1][key] = truth_h[g]
+                    alone_tag = f"local survey of {n_loc} alone"
+                    draw_sets.setdefault((alone_tag, d), ({}, {}))
+                    draw_sets[(alone_tag, d)][0][key] = list(_norm(c) if c is not None and c.sum() > 0 else pool(src, alphas)); draw_sets[(alone_tag, d)][1][key] = truth_h[g]
+    scored_parts = [H.score(v, bench, name) for name, v in variants.items() if v]
+    seg_parts = [H.segment_fidelity(v, bench, name) for name, v in variants.items() if v]
+    per_draw_scores, per_draw_segs = [], []
+    for (name, d), (pred, truth_h) in draw_sets.items():
+        b = Benchmark(name=bench.name, country=bench.country, questions=bench.questions, real={k: Distribution(question_id=k[0], group=k[1], probs=v, n=0) for k, v in truth_h.items()}, segment_keys=bench.segment_keys)
+        per_draw_scores.append(H.score(pred, b, name)); per_draw_segs.append(H.segment_fidelity(pred, b, name))
+    if per_draw_scores:
+        ds = pd.concat(per_draw_scores, ignore_index=True)
+        num = [c for c in ["jsd", "tv", "mae_pts", "top_box_err", "max_abs_err", "entropy_ratio", "wd", "representativeness"] if c in ds.columns]
+        scored_parts.append(ds.groupby(["method", "question_id", "group"], as_index=False).agg({"k": "first", "ordinal": "first", "n_real": "first", **{c: "mean" for c in num}}))
+        seg_parts.append(pd.concat(per_draw_segs, ignore_index=True).groupby(["method", "question_id"], as_index=False).agg({"n_segments": "first", "gap_r": "mean", "gap_slope": "mean", "dispersion_ratio": "mean"}))
+    scored = pd.concat(scored_parts, ignore_index=True)
     scored = scored[scored.group.isin(groups)]
     scored["level"] = np.where(scored.group == "ALL", "population", "segment")
-    seg = pd.concat([H.segment_fidelity(v, bench, name) for name, v in variants.items() if v], ignore_index=True)
+    seg = pd.concat(seg_parts, ignore_index=True)
     return {"scored": scored, "segment": seg, "alphas": pd.DataFrame(fitted)}

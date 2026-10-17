@@ -143,3 +143,62 @@ def cross_country_transfer(train_benches: list[Benchmark], test_bench: Benchmark
             if v.sum() > 0:
                 out[(t, g)] = (v / v.sum()).tolist()
     return out
+
+
+def small_survey_holdout(bench: Benchmark, targets: list[str], demo_cols: list[str], groups: list[str], n_cal: int = 300, reps: int = 5, C: float = 0.3, seed: int = 0, min_n: int = 30) -> list[dict[str, dict[Key, list[float]]]]:
+    """A fresh small survey, scored honestly: ``n_cal`` random respondents answer the target question; the truth is
+    computed on everyone else (so the sample never overlaps the people it is scored against); each repeat is
+    returned separately so that scores, not predictions, are averaged over repeats.
+
+    Per repeat: ``truth`` (hold-out shares by group), ``crosstab`` (the sample's own shares by group), and two
+    models fitted on the sample and applied to the hold-out respondents' records: ``demographics model`` and
+    ``demographics + record model``.
+    """
+    df = bench.respondents
+    items = [q.id for q in bench.questions if q.id in df.columns]
+    w = df["weight"].to_numpy()
+    rng = np.random.default_rng(seed)
+    out = []
+    for _ in range(reps):
+        rep: dict[str, dict[Key, list[float]]] = {"truth": {}, "crosstab": {}, "demographics model": {}, "demographics + record model": {}}
+        for t in targets:
+            options = bench.qmap[t].options
+            y_all = df[t]
+            valid = y_all.notna().to_numpy()
+            cal_idx = rng.choice(np.where(valid)[0], size=min(n_cal, int(valid.sum())), replace=False)
+            cal = np.zeros(len(df), bool); cal[cal_idx] = True
+            hold = valid & ~cal
+            others = [i for i in items if i != t]
+            feats = {"demographics model": df[demo_cols].astype(str), "demographics + record model": pd.concat([df[demo_cols].astype(str), df[others].astype(str)], axis=1)}
+            P = {}
+            if y_all[cal].nunique() >= 2:
+                for name, X in feats.items():
+                    enc = OneHotEncoder(handle_unknown="ignore")
+                    clf = LogisticRegression(C=C, max_iter=3000)
+                    clf.fit(enc.fit_transform(X[cal]), y_all[cal].astype(str), sample_weight=w[cal])
+                    pr = clf.predict_proba(enc.transform(X))
+                    M = np.zeros((len(df), len(options)))
+                    for j, o in enumerate(options):
+                        if o in clf.classes_:
+                            M[:, j] = pr[:, list(clf.classes_).index(o)]
+                    P[name] = M
+            for g in groups:
+                gm = np.ones(len(df), bool) if g == "ALL" else (df[g.split("=", 1)[0]].astype(str) == g.split("=", 1)[1]).to_numpy()
+                hm = hold & gm
+                if hm.sum() < min_n:
+                    continue
+                v = np.array([float(w[hm][(y_all[hm] == o).to_numpy()].sum()) for o in options])
+                if v.sum() <= 0:
+                    continue
+                rep["truth"][(t, g)] = (v / v.sum()).tolist()
+                cm = cal & gm
+                if cm.sum() >= 5:
+                    c = np.array([float(w[cm][(y_all[cm] == o).to_numpy()].sum()) for o in options])
+                    if c.sum() > 0:
+                        rep["crosstab"][(t, g)] = (c / c.sum()).tolist()
+                for name, M in P.items():
+                    u = (M[hm] * w[hm, None]).sum(axis=0)
+                    if u.sum() > 0:
+                        rep[name][(t, g)] = (u / u.sum()).tolist()
+        out.append(rep)
+    return out

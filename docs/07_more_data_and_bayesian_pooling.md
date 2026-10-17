@@ -85,12 +85,16 @@ learned on the other 19 questions with local samples of the same size, so they a
 | Model zero-shot alone | 4.9 | 5.0 / 6.3 | 36% |
 | Record-anchored citizens alone | 3.0 | 3.7 / 4.5 | 42% |
 | **Pooled prior, no local data** | **2.5** | **3.4 / 4.5** | 40% |
-| Local survey of 150 alone | 1.0 | 2.4 / 2.9 | 95% |
-| Pooled + local survey of 150 | 1.2 | 2.3 / 3.0 | 62% |
-| Local survey of 300 alone | 0.8 | 1.7 / 1.9 | 99% |
-| Pooled + local survey of 300 | 0.8 | 1.6 / 2.2 | 79% |
-| Local survey of 600 alone | 0.4 | 1.1 / 1.2 | 96% |
-| Pooled + local survey of 600 | 0.4 | 1.1 / 1.4 | 86% |
+| Local survey of 150 alone | 2.2 | 4.8 / 5.3 | 84% |
+| Pooled + local survey of 150 | 1.9 | 3.0 / 3.6 | 57% |
+| Local survey of 300 alone | 1.8 | 3.6 / 3.9 | 90% |
+| Pooled + local survey of 300 | 1.6 | 2.7 / 3.1 | 69% |
+| Local survey of 600 alone | 1.4 | 2.7 / 3.0 | 89% |
+| Pooled + local survey of 600 | 1.4 | 2.4 / 2.7 | 77% |
+
+(Local-survey rows corrected 17 Oct, later in the day: each simulated survey is now scored against the
+respondents not in it and the scores, not the predictions, are averaged over draws. The first version
+averaged three draws before scoring, which made a 150-person survey behave like one of 450. See docs/08 §4.)
 
 Learned weights: the record-anchored citizens are worth about 27-36 real respondents per group, the
 model's own guesses about 8-11. The "other countries' average" was tried as a third source and received
@@ -100,21 +104,23 @@ What this says, plainly:
 
 1. **Pooling the two simulators beats either alone** (2.5 vs 3.0 and 4.9 points on population shares;
    3.4 vs 3.7 and 5.0 on segments). This is the right default when there is no local data.
-2. **A small local survey beats the simulators quickly.** 150 real Singaporeans, spread across groups as
-   they fall, already give lower error than any simulator, and capture 95% of the real group differences.
-3. **Adding the simulators to a local survey helps only the typical cell, slightly, and hurts the big
-   gaps.** With 150 local answers the pooled estimate improves the median cell (2.3 vs 2.4) but shrinks the
-   large real differences (size captured 62% vs 95%), so the mean error is no better. By 600 the prior is
-   irrelevant. The simulators' remaining value is therefore for questions with no local data at all, and
-   for the smallest groups inside a small survey. The per-group breakdown
-   (`bayes_pooling_singapore_total_cells.csv`) confirms this only for the smallest group: with a 150-person
-   survey, pooling cuts the error for Indian respondents (about 14 people in such a survey) from 3.9 to 3.3
-   points and for the no-religion group from 2.6 to 2.1, but it *worsens* Malays (4.0 → 4.4), people aged
-   60+ (2.4 → 3.0) and the young (2.8 → 3.4), because the simulators pull these distinctive groups toward
-   the average. A better pooling rule would weight the prior by group size, not one weight for all.
-4. **The honest ranking for a new Singapore question is:** ask 150-300 real people if you can (cheap, and
-   it wins); if you cannot, use the pooled prior (record-anchored citizens plus the model) and expect about
-   3.5 points of error on segments with group differences under-stated by half; never use the model alone.
+2. **A small local survey plus the simulators beats both.** 150 real Singaporeans, spread across groups
+   as they fall, give 4.8 points of error on groups when read straight off the survey (a group of 15-20
+   people is noisy); pooled with the simulators, 3.0. At 300 answers the pair is 3.6 vs 2.7; at 600, 2.7
+   vs 2.4. The simulators are worth most for the smallest groups: with 150 answers the error for Indian
+   respondents falls from 8.2 to 2.9 points, Malays 6.2 to 3.6, Muslims 6.5 to 3.9, while the big Chinese
+   group barely moves (2.5 to 2.3). The learned weights say why: the record-anchored citizens count for
+   about 27-36 real respondents per group, the model for 8-11, so they matter where a survey has fewer
+   real people than that.
+3. **The price is flattened differences.** A small survey's group differences come out too large (noise
+   inflates them: 2.1 times the real spread at 150 answers), the pooled estimate's too small (57% of the
+   real size at 150, 69% at 300, 77% at 600). Use the pooled numbers for each group's level and for
+   which groups differ most; as the survey grows, trust its own differences for how large a gap is.
+   A better pooling rule would weight the prior by group size rather than one weight for all.
+4. **The honest ranking for a new Singapore question is:** ask 150-300 real people if you can and pool
+   them with the simulators (3.0 / 2.7 points on groups); if you cannot, use the pooled prior
+   (record-anchored citizens plus the model) and expect about 3.4 points on segments with group
+   differences under-stated by half; never use the model alone (5.0).
 
 This also answers the "superforecasting" idea precisely: the machinery for weighting sources by track
 record and updating with evidence works and is built, but the evidence it is fed matters more than the

@@ -17,7 +17,7 @@ out-of-sample. Details and files are in `docs/results/stress_test/`.
 | Record-anchored citizens, no LLM | Each real Singapore respondent's answers to the other 70 questions predict their answer to the new one, using a mapping learned from US and Chinese respondents, then aggregated by group | 4.2 pts; **52%** (r = 0.70 vs 0.54); population error 3.9 vs 4.9 | **Helps.** Real records carry group structure the model's priors lack. In China: 79% of gaps recovered vs 25%. |
 | Human level + record-anchored differences | Humans supply each question's population shares; records supply how groups differ | **2.1 pts median, 2.7 mean** vs 2.6 / 4.2 for "everyone is average" | **Best.** 35% lower mean error than copying the population to every group, and far below any model-only method. |
 | Human level + model differences | Same, with the zero-shot model's group differences | 2.4 / 3.0 | Helps, less |
-| 300 real answers to the question itself | A small survey; segment shares read straight off it | **1.3 pts; 94%** | Beats everything. For questions you can afford to ask 300 people, do not simulate. |
+| 300 real answers to the question itself | A small survey; segment shares read straight off it (fresh sample, scored on the other respondents, 5 repeats; corrected 17 Oct, see docs/08 §4) | **3.2 pts; 82%** (2.9 pts with record spread; 2.6 / 2.3 with 600 answers) | Still the best realistic option, and record spread improves it at every sample size. The earlier figure here (1.3 pts; 94%) averaged samples before scoring and overlapped the truth. |
 
 US comparison: the zero-shot model already recovered 81% of group differences; "human level + model
 differences" cut segment error from 3.8 to 2.2 points. China: groups differ so little on these items

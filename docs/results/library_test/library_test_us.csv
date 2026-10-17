@@ -4,3 +4,12 @@ uniform,14.73,15.72,15.78,16.25,14.33,,0.0,31,651
 "library 2024: matched GSS question, used as is",11.1,11.71,10.73,12.4,9.33,0.6,0.52,31,651
 "library 2022: matched GSS question, used as is",10.25,12.1,11.21,12.92,9.91,0.56,0.59,31,651
 "library 2024: headline only, no spread",11.1,11.71,11.34,12.46,10.06,,0.0,31,651
+"record citizens alone (61-country model, no library)",5.16,5.71,5.21,6.0,3.73,0.81,0.55,31,651
+library 2024 headline + record spread,11.1,11.71,11.1,12.01,9.65,0.81,0.55,31,651
+"library 2024 as is, averaged with headline + record spread",11.1,11.71,10.8,12.11,9.49,0.76,0.47,31,651
+true level + record spread [oracle level],0.0,0.0,1.84,2.29,0.51,0.81,0.55,31,651
+fresh small survey (n=300): crosstab only,2.75,3.06,5.14,5.69,3.85,0.52,0.82,31,651
+fresh small survey (n=300) + record spread,2.66,2.83,3.35,3.6,2.05,0.83,0.75,31,651
+fresh small survey (n=300) + demographics-only spread,2.5,2.84,3.96,4.3,2.63,0.54,0.53,31,651
+"library 2024 as is, averaged with small survey (n=300) + record spread",5.39,5.96,5.66,6.5,4.21,0.79,0.61,31,651
+library 2024 + survey-difference shift learned from the other 9 confidence questions (anchors) [confidence items only],7.92,8.43,8.69,9.35,7.5,0.48,0.41,10,210

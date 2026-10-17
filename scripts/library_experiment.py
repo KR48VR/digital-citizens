@@ -24,7 +24,8 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from digital_citizens.data import gss, wvs  # noqa: E402
 from digital_citizens.evaluate import harness as H  # noqa: E402
-from digital_citizens.evaluate.transfer import cross_country_transfer, small_sample_transfer  # noqa: E402
+from digital_citizens.data.benchmark import Benchmark  # noqa: E402
+from digital_citizens.evaluate.transfer import cross_country_transfer, small_survey_holdout  # noqa: E402
 from digital_citizens.library import crosswalk_us as X  # noqa: E402
 from digital_citizens.library import harmonise as HM  # noqa: E402
 from digital_citizens.library.search import match_questions  # noqa: E402
@@ -70,14 +71,30 @@ def record_model(bench, targets, groups, items):
     return pred
 
 
+def bench_like(template: Benchmark, real: dict) -> Benchmark:
+    from digital_citizens.schema import Distribution
+    return Benchmark(name=template.name, country=template.country, questions=template.questions, real={k: Distribution(question_id=k[0], group=k[1], probs=v, n=0) for k, v in real.items()}, segment_keys=template.segment_keys)
+
+
 def summarise(variants, truth, groups, floor):
+    """``variants`` values are a prediction dict, or a list of (prediction dict, truth dict) pairs for methods
+    that are repeated on fresh random samples: each repeat is scored against its own hold-out truth and the
+    per-cell scores are averaged over repeats."""
     rows, cells = [], []
     for name, pred in variants.items():
-        s = H.score(pred, truth, name)
+        if isinstance(pred, list):
+            ss, segs = [], []
+            for p_rep, t_rep in pred:
+                b = bench_like(truth, t_rep)
+                ss.append(H.score(p_rep, b, name)); segs.append(H.segment_fidelity(p_rep, b, name))
+            s = pd.concat(ss).groupby(["method", "question_id", "group"], as_index=False).agg({"k": "first", "ordinal": "first", "n_real": "first", "jsd": "mean", "tv": "mean", "mae_pts": "mean", "top_box_err": "mean", "max_abs_err": "mean", "entropy_ratio": "mean"})
+            seg = pd.concat(segs).groupby(["method", "question_id"], as_index=False)[["gap_r", "gap_slope", "dispersion_ratio"]].mean()
+        else:
+            s = H.score(pred, truth, name)
+            seg = H.segment_fidelity(pred, truth, name)
         s = s[s.group.isin(groups)]
         s = s.merge(floor[["question_id", "group", "mae_floor"]], on=["question_id", "group"], how="left")
         cells.append(s)
-        seg = H.segment_fidelity(pred, truth, name)
         pop, sg = s[s.group == "ALL"], s[s.group != "ALL"]
         rows.append({"method": name, "pop_mae_median": pop.mae_pts.median(), "pop_mae_mean": pop.mae_pts.mean(), "seg_mae_median": sg.mae_pts.median(), "seg_mae_mean": sg.mae_pts.mean(),
                      "seg_mae_over_floor": (sg.mae_pts - sg.mae_floor).median(), "gap_r": seg.gap_r.median(), "gap_slope": seg.gap_slope.median(), "n_items": pop.question_id.nunique(), "n_cells": len(s)})
@@ -140,10 +157,12 @@ def main() -> None:
         variants["library 2024 headline + record spread"] = HM.relevel(rec, headline24, groups)
         variants["library 2024 as is, averaged with headline + record spread"] = HM.average(lib24, HM.relevel(rec, headline24, groups))
         variants["true level + record spread [oracle level]"] = HM.relevel(rec, real, groups)
-        ss = small_sample_transfer(us, targets, DEMO, groups, n_cal=SMALL_N, reps=5, min_n=MIN_GROUP_N)
-        variants[f"fresh small survey (n={SMALL_N}): crosstab only"] = HM.map_to_bins(ss["small-sample crosstab"], pairs)
-        variants[f"fresh small survey (n={SMALL_N}) + record spread"] = HM.map_to_bins(ss["small sample -> demographics + record model"], pairs)
-        variants[f"library 2024 as is, averaged with small survey (n={SMALL_N}) + record spread"] = HM.average(lib24, variants[f"fresh small survey (n={SMALL_N}) + record spread"])
+        reps = small_survey_holdout(us, targets, DEMO, groups, n_cal=SMALL_N, reps=5, min_n=MIN_GROUP_N)
+        tr = [HM.map_to_bins(r["truth"], pairs) for r in reps]
+        variants[f"fresh small survey (n={SMALL_N}): crosstab only"] = [(HM.map_to_bins(r["crosstab"], pairs), t) for r, t in zip(reps, tr)]
+        variants[f"fresh small survey (n={SMALL_N}) + record spread"] = [(HM.map_to_bins(r["demographics + record model"], pairs), t) for r, t in zip(reps, tr)]
+        variants[f"fresh small survey (n={SMALL_N}) + demographics-only spread"] = [(HM.map_to_bins(r["demographics model"], pairs), t) for r, t in zip(reps, tr)]
+        variants[f"library 2024 as is, averaged with small survey (n={SMALL_N}) + record spread"] = [(HM.average(lib24, HM.map_to_bins(r["demographics + record model"], pairs)), t) for r, t in zip(reps, tr)]
 
     conf = [p["wvs"] for p in pairs if p["label"].startswith("Confidence")]
     anchored = {}
@@ -181,14 +200,16 @@ def main() -> None:
             if (q, g) in real:
                 row = {"question": f"{label[q]}: {truth.qmap[q].options[bin_i]}", "group": g, "real": 100 * real[(q, g)][bin_i]}
                 for m in key_methods:
-                    row[m] = 100 * variants[m][(q, g)][bin_i] if (q, g) in variants[m] else None
+                    v = variants[m][0][0] if isinstance(variants[m], list) else variants[m]
+                    row[m] = 100 * v[(q, g)][bin_i] if (q, g) in v else None
                 ex.append(row)
     exdf = pd.DataFrame(ex)
 
     lines = ["# Library test: United States (GSS as the library, WVS as the new questions)", "", f"Generated {time.strftime('%Y-%m-%d %H:%M')} UTC; runtime {time.time()-t0:.0f}s.", "",
              f"New questions: {len(targets)} WVS-7 US items (exact {sum(v=='exact' for v in quality.values())}, close {sum(v=='close' for v in quality.values())}, loose {sum(v=='loose' for v in quality.values())} matches). "
              f"Truth: WVS US (n={len(us.respondents):,}, fielded 2017) on common bins, {len(groups)} groups ({len(groups)-1} segments, min n={MIN_GROUP_N}). Library: GSS 2024 (n={len(g24):,}) and GSS 2022 (n={len(g22):,}). "
-             f"Noise floor: median {floor[floor.group=='ALL'].mae_floor.median():.1f} pts (population), {floor[floor.group!='ALL'].mae_floor.median():.1f} pts (segments). All errors are mean absolute error per bin, in percentage points.", "",
+             f"Noise floor: median {floor[floor.group=='ALL'].mae_floor.median():.1f} pts (population), {floor[floor.group!='ALL'].mae_floor.median():.1f} pts (segments). All errors are mean absolute error per bin, in percentage points. "
+             f"'Fresh small survey' rows: {SMALL_N} random respondents answer the question; scored against the other respondents (no overlap), 5 repeats, scores averaged.", "",
              "## Step 1: can a wording search find the right library question?", "",
              f"Two automatic matchers, scored against the hand-checked crosswalk over all {len(wvs_texts)} WVS items ({len(gss_of)} have a GSS match, {len(wvs_texts)-len(gss_of)} do not):", "",
              H.to_markdown(msum, 2), "",

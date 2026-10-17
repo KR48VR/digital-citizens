@@ -1,0 +1,38 @@
+# Small real survey, re-checked with a hold-out design
+
+Generated 2026-10-17 07:45 UTC; runtime 204s.
+
+A fresh random sample of n respondents answers the question; the truth is computed on everyone else; 5 repeats; scores (not predictions) are averaged. Errors are mean absolute error per answer option, in points. Items and groups are the Singapore / China stress-test packets.
+
+| country | n_answers | method | pop_mae_median | seg_mae_median | seg_mae_mean | gap_r | gap_slope | n_cells |
+|---|---|---|---|---|---|---|---|---|
+| Singapore | 150 | small survey: read groups straight off it | 2.00 | 4.43 | 5.21 | 0.51 | 0.85 | 200 |
+| Singapore | 150 | small survey + demographics-only spread | 1.96 | 3.23 | 3.92 | 0.52 | 0.52 | 200 |
+| Singapore | 150 | small survey + record spread | 2.83 | 3.38 | 4.05 | 0.71 | 0.62 | 200 |
+| Singapore | 300 | small survey: read groups straight off it | 1.57 | 3.20 | 3.96 | 0.60 | 0.82 | 200 |
+| Singapore | 300 | small survey + demographics-only spread | 1.54 | 2.71 | 3.31 | 0.66 | 0.65 | 200 |
+| Singapore | 300 | small survey + record spread | 2.14 | 2.86 | 3.25 | 0.78 | 0.71 | 200 |
+| Singapore | 600 | small survey: read groups straight off it | 1.24 | 2.59 | 3.00 | 0.74 | 0.80 | 200 |
+| Singapore | 600 | small survey + demographics-only spread | 1.22 | 2.32 | 2.76 | 0.75 | 0.66 | 200 |
+| Singapore | 600 | small survey + record spread | 1.33 | 2.32 | 2.74 | 0.81 | 0.71 | 200 |
+| China | 150 | small survey: read groups straight off it | 2.11 | 3.43 | 4.06 | 0.44 | 0.83 | 105 |
+| China | 150 | small survey + demographics-only spread | 2.14 | 2.51 | 3.01 | 0.50 | 0.52 | 105 |
+| China | 150 | small survey + record spread | 2.10 | 2.43 | 2.91 | 0.68 | 0.51 | 105 |
+| China | 300 | small survey: read groups straight off it | 1.61 | 2.62 | 3.04 | 0.53 | 0.77 | 105 |
+| China | 300 | small survey + demographics-only spread | 1.58 | 2.12 | 2.54 | 0.58 | 0.57 | 105 |
+| China | 300 | small survey + record spread | 1.77 | 2.05 | 2.35 | 0.68 | 0.65 | 105 |
+| China | 600 | small survey: read groups straight off it | 1.31 | 1.96 | 2.22 | 0.73 | 0.90 | 105 |
+| China | 600 | small survey + demographics-only spread | 1.24 | 1.81 | 2.01 | 0.74 | 0.69 | 105 |
+| China | 600 | small survey + record spread | 1.40 | 1.74 | 1.93 | 0.80 | 0.74 | 105 |
+
+## What the first version reported for Singapore (n=300), and why it was too good
+
+The earlier rows averaged the five samples' predictions before scoring (so they behaved like one sample of 1,500) and scored them against a truth that included the sampled people:
+
+| method | pop mae | seg mae median | seg mae mean | gap_r | gap_slope | dispersion |
+|---|---|---|---|---|---|---|
+| small-sample crosstab | 0.59 | 1.29 | 1.58 | 0.91 | 0.94 | 1.00 |
+| small sample -> demographics model | 0.59 | 1.27 | 1.62 | 0.90 | 0.79 | 0.71 |
+| small sample -> demographics + record model | 1.16 | 1.66 | 1.96 | 0.92 | 0.80 | 0.69 |
+
+The hold-out numbers above replace these in docs/06.

@@ -122,3 +122,7 @@ humans. Files: `record_transfer_summary.csv`, `combination_summary.csv`, `score_
 2. The next real run should test **new** questions (post-cutoff Pew/GSS 2026 items or a commissioned
    survey), not these classic ones, and should add the calibration layer, since the errors are systematic.
 3. Group-level distribution prompts are the right default; individual twins remain unproven here.
+
+## Correction (17 Oct, later): small-survey rows
+
+`record_transfer_summary.csv` rows marked `sg_small_sample` averaged five random samples' predictions before scoring and scored against a truth that included the sampled people, which made a 300-person survey look like a 1,500-person one. `small_survey_holdout.md` re-runs them with a fresh sample scored on the other respondents; use those numbers (Singapore, 300 answers: 3.2 points per group straight off the survey, 2.9 with record spread).
