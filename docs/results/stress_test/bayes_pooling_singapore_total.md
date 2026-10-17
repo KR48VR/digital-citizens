@@ -1,6 +1,6 @@
 # Bayesian pooling, Singapore (20 questions x 10 groups), leave-one-question-out, design = total
 
-Generated 2026-10-17 04:53 UTC; runtime 1804s.
+Generated 2026-10-17 04:56 UTC; runtime 117s.
 
 Design 'total' = one local survey of n respondents, each group gets whoever fell into it (realistic); 'per_group' = n from each group. Errors in points per answer option, average of 3 draws.
 
