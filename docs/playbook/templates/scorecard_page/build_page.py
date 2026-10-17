@@ -169,6 +169,8 @@ NAMES = dict(LABELS)
 cmp_rows = []
 for tag, name in [("singapore", "Singapore"), ("us", "United States")]:
     for r in csv.DictReader(open(RES / f"one_method_{tag}_comparisons.csv")):
+        if r["a"] not in NAMES or r["b"] not in NAMES:  # later experiments (panel, short question sets) are reported elsewhere
+            continue
         a = NAMES[r["a"]].replace("With ", "").replace("with ", "")
         b = NAMES[r["b"]].replace("With ", "").replace("with ", "")
         cmp_rows.append(f'<tr><td>{name}<span class="cut">{a[0].upper() + a[1:]}, {r["n_a"]} people, against {b[0].lower() + b[1:]}, {r["n_b"]} people</span></td>'

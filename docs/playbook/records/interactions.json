@@ -805,6 +805,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "King chose the framing Claude proposed after the audit: organise the page by whether your question has been asked before. Claude rebuilt the page, had the audit agent check every claim again, and softened 15 wordings it flagged."
+  },
+  {
+   "n": 75,
+   "time": "15:08",
+   "task": "T19",
+   "type": "teammate",
+   "king": "given what you know we are trying to do, and what you QA-ed, can you think of alternative methods and strategies where the AI can be more accurate and representative?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed ten ideas, each tied to a weak spot the QA had found and to published evidence, and recommended three to test first."
+  },
+  {
+   "n": 76,
+   "time": "15:12",
+   "task": "T19",
+   "type": "independent",
+   "king": "can you do 2 too, in addition to 4 and 7?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Tested a panel of five chatbots (three Claude models via helper agents and a small Asian-built open model run locally), short standard-question sets, and boosted small groups, about two hours of computing; found and fixed a weight-fitting bug along the way."
   }
  ],
  "tasks": {
@@ -878,6 +898,10 @@
   ],
   "T18": [
    "Check the conclusion and rebuild on one method",
+   "King"
+  ],
+  "T19": [
+   "Test more ways to make AI more accurate",
    "King"
   ]
  }

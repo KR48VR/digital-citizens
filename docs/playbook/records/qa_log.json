@@ -526,5 +526,21 @@
   "fix": "All three sizes shown, two decimals, and explicit labels. Added the comparisons that support each wording claim.",
   "status": "Fixed",
   "id": 66
+ },
+ {
+  "when": "Testing more ideas",
+  "area": "Method",
+  "finding": "When several sources were combined, capping each source's weight separately after fitting could distort the balance between them. It showed up as an odd result in a new combination (3.2 points off where each part alone did better).",
+  "fix": "The cap now applies inside the fit. All runs were redone. Published figures were unchanged except two analysts' comparisons that moved by 0.01 to 0.02 points, now corrected on the page.",
+  "status": "Fixed",
+  "id": 67
+ },
+ {
+  "when": "Testing more ideas",
+  "area": "Accuracy",
+  "finding": "Two figures in the write-up of the new tests were rounded from the wrong side of .x5 (3.75 shown as 3.7; 3.05 as 3.1).",
+  "fix": "Checked the exact values: 3.8 and 3.0.",
+  "status": "Fixed",
+  "id": 68
  }
 ]
