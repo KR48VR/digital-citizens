@@ -13,28 +13,32 @@ AI cannot replace asking real people, but it can stretch a small survey a long w
 people answer your question. AI then fills in each group's answer, about as accurately as a survey twice
 the size.
 
-The AI that stretches a small survey is the kind that learns from patterns in real people's past survey
-answers. We call the digital citizens built this way record citizens.
+The AI that stretches a small survey best is the kind that learns from patterns in real people's past
+survey answers. We call the digital citizens built this way record citizens.
 
 The gain is biggest for small groups.
 
-The more common use of AI, a chatbot answering in place of people, helps less. It did better in the United
-States than in Singapore, and added nothing once record citizens were used. We call this the chatbot kind.
+The more common use of AI, a chatbot answering in place of people, also helps. For a brand-new question,
+combining it with record citizens worked best. We call this the chatbot kind.
 
-All of this comes from one test (`scripts/one_method_experiment.py`): small surveys of 150, 300 and 600
-people drawn ten times from a large real survey, each group's answer worked out the same way with and
-without each kind of AI, and checked against the people not drawn.
+Which AI to add depends on whether your question has been asked before: brand new (most product and policy
+questions) - record citizens learned from your own survey plus the chatbot kind; asked in large surveys in
+other countries - record citizens learned from those countries, no chatbot needed; asked recently in the
+same large survey - reuse those answers.
 
-| Points off for a typical group | Survey of 150 | 300 | 600 |
-|---|---|---|---|
-| Singapore, survey alone | 5.1 | 3.7 | 2.7 |
-| + chatbot kind | 3.5 | 3.2 | 2.6 |
-| + record citizens (learned from 61 other countries) | 2.9 | 2.7 | 2.3 |
-| + record citizens (learned from your own survey) | 3.6 | 2.9 | 2.5 |
-| United States, survey alone | 6.4 | 4.9 | 3.7 |
-| + chatbot kind | 3.8 | 3.4 | 3.2 |
-| + record citizens (learned from the same survey two years earlier) | 2.4 | 2.4 | 2.4 |
-| + record citizens (learned from your own survey) | 4.2 | 3.5 | 2.9 |
+All of this comes from one test (`scripts/one_method_experiment.py`, write-up in docs/09): small surveys of
+150, 300 and 600 people drawn ten times from a large real survey, each group's answer worked out the same way
+with and without each kind of AI, and checked against the people not drawn.
+
+| Points off for a typical group, survey of 300 | Singapore | United States |
+|---|---|---|
+| Survey alone | 3.7 | 4.9 |
+| Brand-new question: + chatbot kind | 3.2 | 3.4 |
+| Brand-new question: + record citizens learned from your survey | 2.9 | 3.5 |
+| Brand-new question: + both | 2.7 | 2.9 |
+| Asked in other countries: + record citizens learned from them | 2.7 | not tested |
+| Asked two years earlier in the same survey: + those answers | not tested | 2.4 |
+| For comparison: survey of 600 alone | 2.7 | 3.7 |
 
 Separate checks: borrowing the most similar question from a different survey was typically 11 points off,
 and published findings 8 points off; neither helped.

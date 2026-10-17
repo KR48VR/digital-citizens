@@ -7,11 +7,12 @@ and docs/results/.
 
 ## The recipe in one line
 
-A few hundred real people answer the question. Record citizens (AI built on real people's past survey answers)
-fill in each group's answer: the group's own answers are combined with record citizens' estimate, and the fewer
-people a group has, the more the estimate counts. The chatbot kind (a chatbot answering in character) helps less
-and adds nothing on top of record citizens. Never borrow numbers from other surveys or published reports.
-Always show the scorecard, against the survey alone.
+A few hundred real people answer the question. AI fills in each group's answer: the group's own answers are
+combined with an AI estimate, and the fewer people a group has, the more the estimate counts. Which AI depends on
+whether the question has been asked before. Brand new: record citizens learned from your own survey plus the
+chatbot kind. Asked in large surveys in other countries: record citizens learned from them, no chatbot. Asked
+recently in the same large survey: reuse those answers. Never borrow numbers from other surveys or published
+reports. Always show the scorecard, against the survey alone.
 
 ## Step 1. Frame the question
 
@@ -45,7 +46,11 @@ Always show the scorecard, against the survey alone.
   estimate = (worth x record citizens' shares + the group's answers) / (worth + people in the group).
   Fit the worth on other questions only (leave one question out). In Singapore it came out at about 58 people
   for record citizens learned from other countries.
-- Do not add the chatbot kind on top: in the one-method test it made no difference in either country.
+- For a brand-new question, also combine the chatbot kind's estimate (same formula, its own fitted worth):
+  record citizens from your own survey plus the chatbot kind did best at every survey size in both countries.
+  When record citizens learned from other countries that asked the question, the chatbot added nothing.
+- If the same question was asked recently in the same large survey, its answers by group are the best prior
+  (US: answers from two years earlier were 2.4 points off without any new survey).
 
 ## Step 4. Measure with the scorecard
 
@@ -79,23 +84,25 @@ Always show the scorecard, against the survey alone.
 
 Run one pilot with 600 people on your real question plus the standard questions. Let record citizens fill
 in the groups from 300 of them and compare with what all 600 said. If they agree, later surveys can use 300.
-In Singapore, 300 real people + record citizens were about as accurate for each group as 600 people alone
-(both 2.7 points off for a typical group).
+In Singapore, 300 real people + AI were about as accurate for each group as 600 people alone (both 2.7 points
+off for a typical group). The pilot also shows how much the chatbot kind adds on a truly new question, which our
+tests (on well-known survey questions it may have read about) could not.
 
 ## Step 6. Decide with the five rules
 
-1. Use AI as record citizens, to stretch a smaller real survey (smaller or more frequent surveys).
-2. Record citizens help most with small groups.
-3. Chatbots help less, and add nothing once you use record citizens.
-4. Don't borrow numbers from other surveys or published reports (typically 11 and 8 points off).
-5. Insist on the scorecard, group by group, against real answers.
+1. Use AI to stretch a smaller real survey, not to replace it (smaller or more frequent surveys).
+2. Pick the AI by asking whether your question has been asked before (three routes above).
+3. AI helps most with small groups.
+4. Don't borrow numbers from other surveys or published reports (typically 11 and 8 points off); the exception
+   is the same question in a recent round of the same large survey.
+5. Insist on the scorecard, group by group, against the survey alone.
 
 ## Step 7. Report for a C-suite reader
 
 Use the `c-suite-explainer` skill and `glossary.md`. Page order that worked:
 short answer → two ways to build a digital citizen, shown with one person → what it is worth →
-how we measure accuracy → where AI helps most (small groups; record citizens or the chatbot kind; a
-brand-new question; why the chatbot works better in the US) → five rules → limits and areas for further experimentation → full evidence folded away.
+how we measure accuracy → where AI helps most (which AI, by whether the question was asked before; small
+groups; why the chatbot works better in the US) → five rules → limits and areas for further experimentation → full evidence folded away.
 Template: `templates/scorecard_page/`.
 
 ## Step 8. QA before sharing
