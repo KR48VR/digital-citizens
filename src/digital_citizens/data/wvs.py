@@ -35,7 +35,9 @@ def available_countries(raw: Path = RAW) -> dict[str, str]:
         m = re.search(r"WVS_Wave_7_(.+?)_Csv_v", d.name)
         if m and d.is_dir() and any(d.glob("*.csv")):
             tag = m.group(1)
-            out.setdefault(tag.replace("_", " "), tag)
+            has_text = any(t.is_dir() and any(t.glob("*.csv")) for t in raw.glob(f"*WVS_Wave_7_{tag}_CsvText_v*"))
+            if has_text:
+                out.setdefault(tag.replace("_", " "), tag)
     return out
 
 # Curated items (variable -> topic). Everything with >2 ordered codes is treated as ordinal unless listed in NOMINAL.
