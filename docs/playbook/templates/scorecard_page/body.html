@@ -1,3 +1,4 @@
+<script>document.documentElement.lang = "en";</script>
 <main>
   <header>
     <div class="eyebrow">Digital citizens · tested in the United States, Singapore and China · October 2026</div>
@@ -9,76 +10,85 @@
     <h2 class="eyebrow">The short answer</h2>
     <div class="verdict">
       <p>AI cannot replace asking real people, but it can stretch a small survey a long way. A few hundred real people answer your question. AI then fills in each group's answer. For a typical group, that is about as accurate as a survey twice the size.</p>
-      <p>The AI that stretches a small survey best is the kind that learns from patterns in real people's past survey answers. We call the digital citizens built this way record citizens.</p>
       <p>The gain is biggest for small groups.</p>
-      <p>The more common use of AI, a chatbot answering in place of people, also helps. For a brand-new question, adding it to record citizens helped further, most clearly in smaller surveys. We call this the chatbot kind.</p>
+      <p>Two kinds of AI can fill in. The more common is a chatbot answering in place of people; we call this the chatbot kind. The other learns from patterns in real people's survey answers; we call the digital citizens built this way record citizens.</p>
+      <p>For a brand-new question, the two did about as well as each other, and best together, most clearly in smaller surveys. If your question has already been asked in large surveys, record citizens learned from those answers beat the chatbot, and adding the chatbot did not help.</p>
     </div>
   </section>
 
   <section>
-    <h2 class="eyebrow">Two ways to build a digital citizen, shown with one person</h2>
+    <h2>Two ways to build a digital citizen, shown with one person</h2>
     <div class="kinds">
       <div class="chat">
         <h3>The chatbot kind</h3>
-        <p>A chatbot is told something like "You are a 62-year-old Singaporean woman" and asked to answer in character.</p>
+        <p>A chatbot is told something like "You are a 62-year-old Singaporean woman" and asked to answer in character. In our tests, it was asked directly for each group's answers.</p>
         <p>It can only go on what it has read about people like her in general. So everyone in a group ends up sounding alike.</p>
       </div>
       <div class="rec">
         <h3>Record citizens</h3>
         <p>We start from a real person instead: an anonymous 62-year-old woman who answered a long survey about her views and values.</p>
-        <p>Her record does not include your new question, because nobody asked her it. But her other answers, such as how often she goes to religious services or how much she trusts the government, tell us how she is likely to answer it.</p>
-        <p>This is where the AI comes in. It learns how people whose answers resemble hers tend to reply, from people who have answered both the new question and her other questions. Then it applies that to her. It can learn from two places.</p>
-        <p><strong>Past surveys.</strong> The World Values Survey, a public survey, asks the same questions in dozens of countries. That gave about 90,000 people in 61 other countries to learn from, and a computer can learn from all of them in under half an hour. In an earlier test, learning from 61 countries made it noticeably more accurate than learning from 2.</p>
-        <p><strong>Your own small survey.</strong> A question about a new product or policy won't have been asked anywhere. Then the AI learns the same pattern from the few hundred real people you ask. For that, your survey also needs some of the big survey's standard questions, so your respondents can be linked to the records. Our tests used about 80 of them; a later test found that about 20 did almost as well.</p>
-        <p>We do this for thousands of real people and add up the results by group. No chatbot is involved.</p>
+        <p>Her record does not include your new question, because nobody asked her. But her other answers, such as how often she goes to religious services or how much she trusts the government, tell us how she is likely to answer it.</p>
+        <p>This is where the AI comes in. It learns how people whose answers resemble hers tend to reply, from people who have answered both the new question and her other questions. Then it applies that to her. We do this for thousands of real people and add up the results by group. No chatbot is involved.</p>
       </div>
     </div>
-    <p><strong>Why the difference matters.</strong> Take two real 62-year-old women. One goes to religious services every week and trusts the government. The other never goes and distrusts it. The chatbot sees only their age, sex and country, so it gives them the same answer. As record citizens they get different answers, because what they said before differs. Across thousands of people, that keeps the real differences between groups. Without it, every group looks alike, which is the main way digital citizens fail.</p>
+    <h3>Where record citizens learn from</h3>
+    <div class="sources">
+      <div>
+        <p><strong>Past surveys.</strong> The World Values Survey, a public survey, asks the same questions in dozens of countries. That gave about 90,000 people in 61 other countries to learn from, and a computer can learn from all of them in under half an hour. In an earlier test, learning from 61 countries made it noticeably more accurate than learning from 2.</p>
+      </div>
+      <div>
+        <p><strong>Your own small survey.</strong> A question about a new product or policy won't have been asked anywhere. Then the AI learns the same pattern from the few hundred real people you ask. For that, your survey also needs some of the big survey's standard questions, so your respondents can be linked to the records. Our tests used about 80.</p>
+      </div>
+    </div>
+    <p><strong>Why the difference matters.</strong> Take two real 62-year-old women. One goes to religious services every week and trusts the government. The other never goes and distrusts it. The chatbot sees only their age, sex and country, so it gives them the same answer. As record citizens they get different answers, because what they said before differs. Groups differ partly because their members differ in ways like these, so across thousands of people, record citizens keep the real differences between groups. Working only from age, sex and country, a chatbot tends to make every group look alike, which is the main way digital citizens fail.</p>
   </section>
 
   <section>
-    <h2 class="eyebrow">What it is worth</h2>
-    <div class="worth">
-      <div class="side"><span class="big">300 real people + AI</span></div>
-      <div class="eq" aria-hidden="true">=</div>
-      <div class="side"><span class="big">600 real people alone</span></div>
-      <p class="cap">About as accurate for a typical group. In Singapore, both are {{v:singapore|+ record citizens (own survey) + chatbot kind|300}} points off.</p>
-    </div>
-    <p><strong>How we measure accuracy.</strong> We draw a small survey, many times over, from a large real one. Each estimate is checked against what the people not drawn actually said, group by group, and we count the gap in percentage points. If 40% of older Singaporeans really support a policy and we estimate 45%, that is 5 points off. We report the typical group: half of all group answers land closer than this, half further off.</p>
+    <h2>How we measure accuracy</h2>
+    <p>The results that follow all come from one test, unless marked as separate. We took a large real survey and drew small surveys of 150, 300 and 600 people from it, ten times each. For each group, such as Malay Singaporeans or people over 60, we worked out its answer from the people drawn, either on their own (we call this the survey alone) or combined with an AI estimate for that group. That is what we mean by AI filling in each group's answer. The fewer people a group has in the survey, the more the AI's estimate counts. How much each kind of AI counts was set by how accurate it had been on other questions.</p>
+    <p>We then checked each answer against what the people not drawn actually said, and counted the gap in percentage points. If 40% of older Singaporeans really support a policy and we estimate 45%, that is 5 points off. We report the typical group: half of all group answers land closer than this, half further off.</p>
+    <p class="howto">How to read points off, for a typical group:</p>
     <div class="scale">
-      <div><b>{{floor:singapore}}</b><span>The best possible in these tests. Even a perfect estimate lands about this far off, because the people we check against are a sample too.</span></div>
+      <div><b>{{floor:singapore}}–{{floor:us}}</b><span>The best possible. Even a perfect estimate lands this far off, by chance.</span></div>
       <div class="target"><b>3</b><span>Good enough to act on.</span></div>
       <div><b>5</b><span>The rough level only.</span></div>
       <div><b>15</b><span>Guessing blind.</span></div>
     </div>
-    <p><strong>Why we score groups, not individuals.</strong> People don't fully agree with themselves. In a Stanford study, 1,052 Americans answered the same survey questions twice, two weeks apart, and on average 81% of their answers matched. In another US study we checked, {{self:people}} people matched {{self:match}}% of their answers a few weeks later: {{self:match_yes_no}}% on two-choice questions, {{self:match_6_7}}% on questions with six or seven choices. So no AI can predict one person much better than that. Across a group, though, the changes mostly cancel out. In that study, the share giving each answer moved by only {{self:shift_group}} points for a typical group, and more for small groups. That is why we judge digital citizens by group answers.</p>
-    <p><strong>So what.</strong> For a brand-new question in Singapore, 300 real people with AI and 600 real people alone are both {{v:singapore|survey alone|600}} points off for a typical group. That is good enough to act on, with half the people. Group by group it varies: 300 with AI did better for the smallest groups, such as Indian Singaporeans, and somewhat worse for some others, such as people over 60. So you can survey about half as many people for the same detail by group, or survey more often, as long as the standard questions each person also answers cost less than the people saved. In the United States, 300 people with AI did better than 600 alone ({{v:us|+ record citizens (own survey) + chatbot kind|300}} against {{v:us|survey alone|600}}), partly because the US survey adjusts its answers to match the population, which makes 600 answers about as precise as 330.</p>
-    <p>The next section shows which AI to add, and where the gain is biggest.</p>
+    <p>Gaps under about half a point between methods are often within chance, so we call those about the same. The analysts' section gives the ranges.</p>
+    <p><strong>Why we score groups, not individuals.</strong> People don't fully agree with themselves. In a Stanford study, 1,052 Americans answered the same survey questions twice, two weeks apart, and on average 81% of their answers matched. In another US study we checked, {{self:people}} people matched {{self:match}}% of their answers a few weeks later, and only {{self:match_6_7}}% on questions with six or seven choices. So no AI can predict one person much better than that. Across a group, though, the changes mostly cancel out. In that study, the share giving each answer moved by only {{self:shift_group}} points for a typical group, well under the 3 points we treat as good enough to act on, though more for small groups. That is why we judge digital citizens by group answers.</p>
   </section>
 
   <section>
-    <div class="eyebrow">How much each kind of AI helps</div>
-    <h2>Where AI helps most</h2>
-    <p>Every result in this section comes from one test. We drew small surveys of 150, 300 and 600 people, ten times each, from a large real survey. For each group we took the answers of the people in the survey and, apart from the survey alone, combined them with an AI estimate for that group. The fewer people a group has in your survey, the more the AI's estimate counts. How much each kind of AI counts was set by how accurate it had been on other questions.</p>
+    <h2>What it is worth</h2>
+    <div class="worth">
+      <div class="side"><span class="big">300 real people + AI</span></div>
+      <div class="eq" aria-hidden="true">=</div>
+      <div class="side"><span class="big">600 real people alone</span></div>
+      <p class="cap">For a typical group, for a brand-new question, with both kinds of AI. In Singapore, both are {{v:singapore|+ record citizens (own survey) + chatbot kind|300}} points off.</p>
+    </div>
+    <p><strong>So what.</strong> That is good enough to act on, with half the people. You can survey about half as many people for the same detail by group, or survey more often, as long as the standard questions each person also answers cost less than the people saved. Group by group the results varied, within chance: closer for Indian Singaporeans ({{grp:IND|+ record citizens (own survey) + chatbot kind|300}} against {{grp:IND|survey alone|600}} points off), further for people over 60 ({{grp:OLD|+ record citizens (own survey) + chatbot kind|300}} against {{grp:OLD|survey alone|600}}).</p>
+    <p><strong>In the United States,</strong> 300 people with AI did better than 600 alone ({{v:us|+ record citizens (own survey) + chatbot kind|300}} against {{v:us|survey alone|600}} points off), partly because the US survey adjusts its answers to match the population, which makes 600 answers about as precise as 330. So the US comparison flatters AI a little; Singapore's is the fairer guide.</p>
+  </section>
+
+  <section>
+    <h2>Which AI to add, and where it helps most</h2>
 
     <h3>1. Which AI to add depends on one question: has yours been asked before?</h3>
     <ul class="list">
-      <li><strong>Brand new,</strong> as most product and policy questions are. Record citizens learn from your own survey. Adding the chatbot kind as well helped further, most clearly in smaller surveys.</li>
+      <li><strong>Brand new,</strong> as most product and policy questions are. Record citizens learn from your own survey, with the chatbot kind added.</li>
       <li><strong>Asked in large surveys in other countries.</strong> Record citizens learn from those countries. The chatbot kind added nothing.</li>
       <li><strong>Asked recently in the same large survey.</strong> Reuse those answers. In the United States, answers to the same attitude questions from two years earlier were as accurate as anything else we tried, even with no new survey.</li>
     </ul>
-    <p>Each cell shows how many points off a survey of 300 lands for a typical group, with that addition. Underneath is how much smaller that is than the survey alone. For example, for a brand-new question in Singapore the survey alone is {{v:singapore|survey alone|300}} points off and {{v:singapore|+ record citizens (own survey) + chatbot kind|300}} with both kinds of AI, so the AI leaves about {{pct:singapore|+ record citizens (own survey) + chatbot kind|300}}% less error.</p>
+    <p>Each cell shows how many points off a survey of 300 lands for a typical group, with that addition. Underneath is how much smaller that is than the survey alone. For example, for a brand-new question in Singapore the survey alone is {{v:singapore|survey alone|300}} points off and {{v:singapore|+ record citizens (own survey) + chatbot kind|300}} with both kinds of AI, so the AI cuts the error by about {{pct:singapore|+ record citizens (own survey) + chatbot kind|300}}%.</p>
     {{TABLE_ROUTES}}
     <figure>
       <h4>Points off as the survey grows, for a brand-new question</h4>
-      <p class="howto">For a typical group. Lower is better. The AI here is record citizens learned from the survey, plus the chatbot kind.</p>
-      <div class="legend"><span><i class="sw" style="background:var(--muted)"></i>Survey alone</span><span><i class="sw" style="background:var(--s1)"></i>Survey + AI</span></div>
+      <p class="howto">For a typical group. Lower is better. AI here is both kinds together: record citizens learned from the survey, plus the chatbot kind.</p>
       {{CHART}}
     </figure>
     <p><strong>So what.</strong></p>
     <ul class="list">
-      <li><strong>For a brand-new question,</strong> neither kind of AI was clearly better than the other on its own. Together they did better than either alone with 150 people in both countries, and with 300 people in the United States; with more people the gain was too small to be sure of. With 300 people, together they cut the error by {{pct:singapore|+ record citizens (own survey) + chatbot kind|300}}% in Singapore and {{pct:us|+ record citizens (own survey) + chatbot kind|300}}% in the United States.</li>
-      <li><strong>If your question was asked in other countries,</strong> record citizens learned from them do as well on their own. The chatbot kind is not needed.</li>
+      <li><strong>For a brand-new question, use both kinds of AI.</strong> Neither was clearly better than the other on its own. Together they did better than either alone with 150 people in both countries, and with 300 people in the United States. With 300 people, together they cut the error by {{pct:singapore|+ record citizens (own survey) + chatbot kind|300}}% in Singapore and {{pct:us|+ record citizens (own survey) + chatbot kind|300}}% in the United States.</li>
       <li><strong>The bigger the survey, the less AI adds.</strong> With 600 people in Singapore, AI cut the error by {{pct:singapore|+ record citizens (own survey) + chatbot kind|600}}% for a brand-new question.</li>
     </ul>
 
@@ -87,43 +97,47 @@
     {{TABLE_SMALL}}
     <p><strong>So what.</strong> The fewer people a group has in your survey, the more the AI adds. For the largest group it changes little.</p>
 
-    <h3>3. Why the chatbot seems to work better in the United States than in Singapore</h3>
-    <p>When combined with a survey, the chatbot kind's estimate counted for as much as about {{worth:us}} real people per group in the United States, but about {{worth:singapore}} in Singapore. How much it counts was set by how accurate it had been on other questions. Asked with no survey at all, it was {{v:us|chatbot kind alone, no survey|300}} points off in the United States and {{v:singapore|chatbot kind alone, no survey|300}} in Singapore. The likely reason is that a chatbot learns from what has been written. Americans have been surveyed continuously since the 1970s, and the results by age, race, religion and party are published and argued over constantly, in English. Singapore and China have far fewer such surveys, and their results by group are rarely written about, so the chatbot falls back on general impressions. In an earlier, separate test it reproduced 81% of the real differences between groups in the United States, 36% in Singapore and 25% in China. Part of its American advantage may also be that it had already seen these exact surveys. Record citizens do not depend on what has been written, because they start from what real people in each country said.</p>
+    <h3>3. Why the chatbot works better in the United States than in Singapore</h3>
+    <p>Combined with a survey, the chatbot kind's estimate counted for as much as about {{worth:us}} real people per group in the United States. In Singapore it counted for only about {{worth:singapore}}. That is partly because it had been less accurate there on other questions, and partly because US answers are adjusted to match the population, so each real answer counts for a little less. Asked with no survey at all, it was {{v:us|chatbot kind alone, no survey|300}} points off in the United States and {{v:singapore|chatbot kind alone, no survey|300}} in Singapore: on its own, the rough level only, and in Singapore about the same as a 150-person survey alone ({{v:singapore|survey alone|150}}).</p>
+    <p>The likely reason is that a chatbot learns from what has been written. Americans have been surveyed continuously since the 1970s, and the results by age, race, religion and party are published and argued over constantly, in English. Singapore has far fewer such surveys, and its results by group are rarely written about, so the chatbot falls back on general impressions. Part of its American advantage may also be that it had already seen these exact surveys.</p>
+    <p><strong>So what.</strong> Record citizens do not depend on what has been written, because they start from what real people in each country said. That matters most outside the United States. If you use a chatbot, use the best one available: we tried five, and combining them did about as well as the best one alone, while a simple average of them did worse, clearly so in the United States.</p>
   </section>
 
   <section>
-    <div class="eyebrow">The takeaway</div>
     <h2>Five rules for using AI for digital citizens</h2>
     <ol class="steps">
-      <li><h3>Use AI to stretch a smaller real survey, not to replace it.</h3><p>Ask a few hundred people your exact question, plus about 20 standard questions from a large public survey so record citizens can be linked to them. In Singapore, 20 standard questions did almost as well as 80 ({{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} points off with 300 people), and a little less well in the United States. AI then fills in each group's answer. In Singapore, 300 real people with AI were about as accurate for a typical group as 600 people alone, both {{v:singapore|survey alone|600}} points off. That is the real upside: about half the people for the same detail by group, or more frequent surveys, as long as the standard questions cost less than the people saved.</p></li>
-      <li><h3>Pick the AI by asking whether your question has been asked before.</h3><p>If it is brand new, combine record citizens learned from your own survey with the chatbot kind: with 300 people that was {{v:singapore|+ record citizens (own survey) + chatbot kind|300}} points off in Singapore and {{v:us|+ record citizens (own survey) + chatbot kind|300}} in the United States. If it was asked in large surveys in other countries, use record citizens learned from them; the chatbot kind adds nothing. If it was asked recently in the same large survey, reuse those answers. If you use a chatbot, use the best one available: combining five chatbots did about as well as the best one alone, and a simple average of them did worse.</p></li>
-      <li><h3>AI helps most with small groups.</h3><p>In a 150-person survey, Indian Singaporeans went from {{grp:IND|survey alone}} points off to {{grp:IND|+ record citizens (own survey) + chatbot kind}}, and Malay Singaporeans from {{grp:MAL|survey alone}} to {{grp:MAL|+ record citizens (own survey) + chatbot kind}}, while Chinese Singaporeans, the largest group, barely moved ({{grp:CHI|survey alone}} to {{grp:CHI|+ record citizens (own survey) + chatbot kind}}). The bigger the survey, the less AI adds.</p></li>
-      <li><h3>Don't borrow numbers from other surveys or published reports.</h3><p>In separate tests, we also tried using numbers that already exist, and they did not work. Borrowing the most similar question from a different survey was typically 11 points off, and about 10 even where the wording was near-identical, because surveys reach different people, in different ways and years. About 100 published findings on Singapore, from research institutes and polling firms, were typically 8 points off on their own, and adding them to record citizens did not improve the estimates. The one exception is the same question in a recent round of the same large survey (rule 2).</p></li>
-      <li><h3>Insist on the scorecard.</h3><p>Any digital citizens, ours or a vendor's, should show how many points off they are for each group, checked against real people's answers, and how much less error that is than the survey alone. Ask in particular about small groups, because that is where AI either earns its keep or fails. The test behind this page can be rerun on every new question.</p></li>
+      <li><h3>Use AI to stretch a smaller real survey, not to replace it.</h3><p>Ask a few hundred people your exact question, plus about 20 standard questions from a large public survey so record citizens can be linked to them. AI then fills in each group's answer: for a typical group, about as accurate as a survey twice the size. In Singapore, 20 standard questions did almost as well as all 76 ({{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} points off with 300 people), and a little less well in the United States.</p></li>
+      <li><h3>Pick the AI by asking whether your question has been asked before.</h3><p>Follow the three cases above. Most product and policy questions are brand new, which means record citizens learned from your own survey plus the chatbot kind. If you use a chatbot, use the best one available.</p></li>
+      <li><h3>AI helps most with small groups.</h3><p>In a 150-person survey, Indian Singaporeans went from {{grp:IND|survey alone}} points off to {{grp:IND|+ record citizens (own survey) + chatbot kind}}, while Chinese Singaporeans, the largest group, barely moved ({{grp:CHI|survey alone}} to {{grp:CHI|+ record citizens (own survey) + chatbot kind}}).</p></li>
+      <li><h3>Don't borrow numbers from other surveys or published reports.</h3><p>In separate tests, borrowing the most similar question from a different survey was typically 11 points off, and about 9 even where the wording was near-identical, because surveys reach different people, in different ways and years. About 100 published findings on Singapore, from research institutes and polling firms, were typically 8 points off, and adding them to record citizens and the chatbot did not help. The one exception is the same question in a recent round of the same large survey, as above.</p></li>
+      <li><h3>Insist on a scorecard.</h3><p>Any digital citizens, ours or a vendor's, should come with a scorecard like this one: how many points off they are for each group, checked against real people's answers, and how much less error that is than the survey alone. Ask especially about small groups, because that is where AI either earns its keep or fails. The test behind this page can be rerun on every new topic, with a pilot (see Limits).</p></li>
     </ol>
   </section>
 
   <section>
-    <h2 class="eyebrow">Limits, and areas for further experimentation</h2>
+    <h2>Limits, and what to test next</h2>
     <ul class="list">
-      <li><strong>Check it on your own questions first.</strong> Every test used attitude and values questions from large surveys: trust, religion, politics, confidence in institutions. On a product, price or policy question, check that 300 real people plus AI still match 600 real people. Run one pilot with 600 people. Let AI fill in the groups using only 300 of them, and compare that with what all 600 said. If the two agree, later surveys can use 300 people. The pilot also shows whether about 20 standard questions are enough for your topic.</li>
-      <li><strong>The chatbot may have had a head start.</strong> Our questions came from well-known surveys whose results are published, and the chatbot may have read them. On a truly new product question it has not, so how much it adds there is untested. The pilot will show it.</li>
-      <li><strong>Small differences are chance.</strong> Gaps under about half a point between methods are often within chance, so we call those about the same. The analysts' section gives the ranges.</li>
-      <li><strong>AI cannot know local facts it was never shown.</strong> It sounds obvious, but it bears remembering. AI can only reflect the data it learned from, so a recent local change shows up only when real people are asked.</li>
+      <li><strong>Run a pilot on your own questions first.</strong> Every test used attitude and values questions from large surveys: trust, religion, politics, confidence in institutions. Run one pilot with 600 people. Let AI fill in the groups using only 300 of them, and compare that with what all 600 said. If the two agree, later surveys can use 300 people. The pilot also shows three things we could not test:
+        <ul class="sub">
+          <li>whether about 20 standard questions are enough for your topic;</li>
+          <li>whether a survey run by a different firm lines up with the records;</li>
+          <li>how much the chatbot adds on a truly new question, which it cannot have read about.</li>
+        </ul>
+      </li>
+      <li><strong>AI cannot know local facts it was never shown.</strong> It only reflects the data it learned from, so a recent local change shows up only when real people are asked.</li>
       <li><strong>Reactions to change are untested.</strong> How people respond to a different price or wording has not yet been checked against real experiments.</li>
       <li><strong>Records age.</strong> Singapore's survey was carried out from November 2019 to March 2020. Whether differences between groups hold up over time has not been tested, so record citizens should be rebuilt as surveys are refreshed.</li>
       <li><strong>Two countries tested in full.</strong> We tested the whole method in Singapore and the United States, and the chatbot kind in China too. Other countries, and cities within them, need their own check before use.</li>
-      <li><strong>Different survey firms were not tested.</strong> Our small surveys were drawn from the same survey as the records. A new survey, run by a different firm in a different way, may not line up as cleanly. The pilot will show it.</li>
-      <li><strong>The chatbot kind may improve.</strong> It was tested writing its estimates directly. Letting it read each real person's record first may do better, and is the next test. In the Stanford study, a chatbot got 71% of the way to people's own consistency when told only their age, race and similar facts, 76% when it read their other survey answers, and 85% when it read a two-hour interview with them.</li>
+      <li><strong>Next: letting the chatbot read each person's record.</strong> The chatbot kind was tested writing its estimates directly. Letting it read each real person's record first may do better. In the Stanford study, a chatbot told only people's age, race and similar facts got 71% of the way to their own consistency. Reading their other survey answers took it to 76%, and reading a two-hour interview with them to 85%.</li>
     </ul>
   </section>
 
   <details>
     <summary><h2 class="sumh">The evidence in full, for analysts</h2></summary>
 
-    <h3>The one test behind every result above</h3>
+    <h3>The one test behind the main results</h3>
     {{TABLE_ONE_METHOD}}
-    <p class="note">Points off are percentage points per answer option. For each group and question, the error is averaged over ten draws of the survey, each checked against the people not drawn; the table shows the middle result across groups and questions, with the average in brackets. How much each AI counts was fitted on the other questions only. "Learned from your own survey" models are trained on the drawn people alone. Record citizens from past surveys learned from 61 other countries in Singapore, and from the same survey two years earlier in the United States, which is close to reusing last round's answers. The demographics model uses age, sex, ethnicity or race, religion, education, income and, in Singapore, whether born there; its fitted weight was very large, so it acts as the model alone. The 20 standard questions were chosen on other data (ten Asia-Pacific neighbours for Singapore, the 2022 survey for the United States). The five chatbots are Claude Fable 5.1 (the chatbot kind above), Claude Opus, Sonnet and Haiku, and a small open model built by Alibaba (Qwen2.5-3B), each shown only the questions. Part of every score is chance in the people the estimate is checked against: a perfect estimate would score about {{floor:singapore}} points in Singapore and {{floor:us}} in the United States. US survey weights vary a lot, so 600 weighted answers there are about as precise as 330 unweighted ones, which makes the survey alone look weaker in the United States. Singapore: 20 questions from the World Values Survey (fieldwork November 2019 to March 2020) across nine groups. United States: 25 questions from the General Social Survey 2024 across six groups. Code: scripts/one_method_experiment.py; results: docs/results/stress_test/one_method_*.md.</p>
+    <p class="note">Points off are percentage points per answer option. For each group and question, the error is averaged over ten draws of the survey, each checked against the people not drawn; the table shows the middle result across groups and questions, with the average in brackets. How much each AI counts was fitted on the other questions only. "Learned from your own survey" models are trained on the drawn people alone. Record citizens from past surveys learned from 61 other countries in Singapore, and from the same survey two years earlier in the United States, which is close to reusing last round's answers. The demographics model uses age, sex, ethnicity or race, religion, education and income, plus whether born there in Singapore and region in the United States; in Singapore its fitted weight was very large, so it acts as the model alone. The 20 standard questions were chosen on other data (ten Asia-Pacific neighbours for Singapore, the 2022 survey for the United States). The five chatbots are Claude Fable 5.1 (the chatbot kind above), Claude Opus, Sonnet and Haiku, and a small open model built by Alibaba (Qwen2.5-3B), each shown only the questions. Part of every score is chance in the people the estimate is checked against: a perfect estimate would score about {{floor:singapore}} points in Singapore and {{floor:us}} in the United States. US survey weights vary a lot, so 600 weighted answers there are about as precise as 330 unweighted ones, which makes the survey alone look weaker in the United States. Singapore: 20 questions from the World Values Survey (fieldwork November 2019 to March 2020) across nine groups. United States: 25 questions from the General Social Survey 2024 across six groups. Code: scripts/one_method_experiment.py; results: docs/results/stress_test/one_method_*.md.</p>
 
     <h3>Key comparisons, with 95% ranges</h3>
     {{TABLE_COMPARE}}
@@ -138,27 +152,14 @@
         <tr><td>Record citizens learned from 2 countries, no survey (Singapore, 10 groups including everyone, against the full survey)</td><td class="num">4.2</td><td class="num">6.3</td></tr>
         <tr><td>Record citizens learned from 61 countries, same test</td><td class="num">3.7</td><td class="num">4.5</td></tr>
         <tr><td>Published findings from research institutes and pollsters, used as evidence (Singapore)</td><td class="num">8.0</td><td class="num">8.3</td></tr>
-        <tr><td>Most similar question borrowed from another survey (US, 31 questions × 20 groups, answer options merged to match; 2 near-identical)</td><td class="num">10.7</td><td class="num">12.4</td></tr>
+        <tr><td>Most similar question borrowed from another survey (US, 31 questions × 20 groups plus everyone, answer options merged to match; 2 near-identical)</td><td class="num">10.7</td><td class="num">12.4</td></tr>
       </tbody>
     </table>
     </div>
     <p class="note">These tests were scored in different ways from the one test above, so compare them only within this table.</p>
-    <p class="note"><strong>People's own consistency.</strong> Stanford: Park and colleagues (2024), <cite>Generative Agent Simulations of 1,000 People</cite>, arXiv:2411.10109. 1,052 US adults answered 177 General Social Survey questions twice, two weeks apart, and repeated 81.25% of their answers; the chatbot there was GPT-4o, and "of the way" means its accuracy divided by that 81.25%. Ours: Twin-2K-500, {{self:people}} US adults; {{self:questions}} questions, a mix of opinion questions and short decision puzzles, were answered again in a fourth wave two weeks after the third, two to four weeks after the first answer. {{self:match}}% of answers were repeated. Answer shares moved {{self:shift_everyone}} points for everyone and {{self:shift_group}} for a typical group of at least 100 people (by age, sex, race and party; unweighted), and more the smaller the group. Code: scripts/self_agreement_twin2k.py; results: docs/results/self_agreement_twin2k.md.</p>
-    <p class="note"><strong>Standout groups.</strong> Groups whose answers sit far from the national average (here, the quarter of group answers furthest from it) gained about as much from AI as other groups did, compared with the survey alone, with no detectable difference: {{SO_TXT}} in Singapore with 300 people and record citizens learned from other countries. An earlier version of this page compared AI with giving every group the overall answer instead; on that comparison standout groups gain most, because that is where copying the average misses most. A real survey does not have that weakness, so the gain follows how few people a group has.</p>
+    <p class="note"><strong>Group differences, chatbot only.</strong> In other separate tests, the chatbot kind was asked for every group's answers with no survey. It reproduced 81% of the real differences between groups in the United States, 36% in Singapore and 25% in China.</p>
+    <p class="note"><strong>People's own consistency.</strong> Stanford: Park and colleagues (2024), <cite>Generative Agent Simulations of 1,000 People</cite>, arXiv:2411.10109. 1,052 US adults answered 177 General Social Survey questions twice, two weeks apart, and repeated 81.25% of their answers; the chatbot there was GPT-4o, and "of the way" means its accuracy divided by that 81.25%. Ours: Twin-2K-500, {{self:people}} US adults; {{self:questions}} questions, a mix of opinion questions and short decision puzzles, were answered again in a fourth wave two weeks after the third, two to four weeks after the first answer. {{self:match}}% of answers were repeated: {{self:match_yes_no}}% on two-choice questions and {{self:match_6_7}}% on questions with six or seven choices. Answer shares moved {{self:shift_everyone}} points for everyone and {{self:shift_group}} for a typical group of at least 100 people (by age, sex, race and party; unweighted), and more the smaller the group. Code: scripts/self_agreement_twin2k.py; results: docs/results/self_agreement_twin2k.md.</p>
+    <p class="note"><strong>Standout groups.</strong> Groups whose answers sit far from the national average (here, the quarter of group answers furthest from it) gained about as much from AI as other groups did, compared with the survey alone, with no detectable difference: {{SO_TXT}} in Singapore with 300 people and record citizens learned from other countries. Compared with giving every group the overall answer instead, standout groups would gain most, because that is where copying the average misses most. A real survey does not have that weakness, so the gain follows how few people a group has.</p>
   </details>
   <p class="note foot">How this page was made, every check on it, and a playbook for next time: <a href="https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2" target="_blank" rel="noopener">Digital Citizens Casebook</a>. Private: ask King for access.</p>
 </main>
-<div id="tip" role="status" aria-live="polite"></div>
-<script>
-  (function () {
-    var tip = document.getElementById('tip');
-    function place(x, y) { var w = tip.offsetWidth, h = tip.offsetHeight; if (x + w > window.innerWidth - 8) x = x - w - 24; if (y + h > window.innerHeight - 8) y = y - h - 28; tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
-    document.querySelectorAll('[data-tip]').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { tip.textContent = el.getAttribute('data-tip'); tip.style.opacity = '1'; });
-      el.addEventListener('mousemove', function (e) { place(e.clientX + 12, e.clientY + 14); });
-      el.addEventListener('mouseleave', function () { tip.style.opacity = '0'; });
-      el.addEventListener('focus', function () { var b = el.getBoundingClientRect(); tip.textContent = el.getAttribute('data-tip'); tip.style.opacity = '1'; place(b.left + 8, b.bottom + 8); });
-      el.addEventListener('blur', function () { tip.style.opacity = '0'; });
-    });
-  })();
-</script>

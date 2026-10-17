@@ -13,13 +13,15 @@ AI cannot replace asking real people, but it can stretch a small survey a long w
 people answer your question. AI then fills in each group's answer, about as accurately as a survey twice
 the size.
 
-The AI that stretches a small survey best is the kind that learns from patterns in real people's past
-survey answers. We call the digital citizens built this way record citizens.
-
 The gain is biggest for small groups.
 
-The more common use of AI, a chatbot answering in place of people, also helps. For a brand-new question,
-combining it with record citizens worked best. We call this the chatbot kind.
+Two kinds of AI can fill in. The more common is a chatbot answering in place of people; we call this the
+chatbot kind. The other learns from patterns in real people's survey answers; we call the digital citizens
+built this way record citizens.
+
+For a brand-new question, the two did about as well as each other, and best together, most clearly in
+smaller surveys. If your question has already been asked in large surveys, record citizens learned from
+those answers beat the chatbot, and adding the chatbot did not help.
 
 Which AI to add depends on whether your question has been asked before: brand new (most product and policy
 questions) - record citizens learned from your own survey plus the chatbot kind; asked in large surveys in

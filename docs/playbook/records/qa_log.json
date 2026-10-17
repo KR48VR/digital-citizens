@@ -574,5 +574,85 @@
   "fix": "Recounted: about 4,800 lines in the code and scripts folders, 32 passing tests.",
   "status": "Fixed",
   "id": 72
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "The short answer said record citizens stretch a small survey best. For a brand-new question the two kinds of AI were within chance of each other at every survey size; record citizens clearly beat the chatbot only when the question had been asked before.",
+  "fix": "Short answer and README rewritten to say exactly that; a build check now stops the page if the data stop supporting it.",
+  "status": "Fixed",
+  "id": 73
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "\"300 with AI did better for the smallest groups ... and somewhat worse for people over 60\": every group-by-group difference was within chance, and Malay Singaporeans came out the same.",
+  "fix": "Reworded as varying within chance, with the Indian and over-60 figures read from the data (3.5 against 4.4; 2.8 against 2.3).",
+  "status": "Fixed",
+  "id": 74
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "The chatbot card described role-play (\"You are a 62-year-old Singaporean woman\"), but in the tests the chatbot was asked directly for each group's answers.",
+  "fix": "Added: \"In our tests, it was asked directly for each group's answers.\"",
+  "status": "Fixed",
+  "id": 75
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "The chatbot's worth (93 real people per group in the United States against 32 in Singapore) was explained by accuracy alone; part of the gap comes from US weighting, which makes each real answer count for less.",
+  "fix": "Both reasons now given.",
+  "status": "Fixed",
+  "id": 76
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "Smaller points: a simple average of five chatbots was clearly worse only in the United States; near-identical borrowed questions were about 9 points off, not 10; Singapore's full set was 76 standard questions, not 80; the best possible was shown only for Singapore; the borrowed-question test had 20 groups plus everyone; the demographics note was wrong for the US; published findings were added to record citizens and the chatbot; a rerun needs a pilot.",
+  "fix": "All corrected on the page and in the analysts' notes.",
+  "status": "Fixed",
+  "id": 77
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Language",
+  "finding": "\"We call this the chatbot kind\" could be read as naming the combination; \"survey alone\" and \"filling in\" were used before being defined; one paragraph used 81% for two different things; the combination of both kinds had six names; several sentences ran over 40 words.",
+  "fix": "Short answer reordered; both terms defined in \"How we measure accuracy\"; one name, \"both kinds of AI\"; second 81% moved to the analysts' note; long sentences split.",
+  "status": "Fixed",
+  "id": 78
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Layout",
+  "finding": "Results came before the explanation of how accuracy is measured; the three cases for choosing an AI were explained three times; the rules repeated the evidence; three limits all said \"the pilot will show it\"; a changelog note had been left in the analysts' section.",
+  "fix": "Page reordered (measurement first), each finding said once, rules shortened to point back, pilot limits merged into one, note removed.",
+  "status": "Fixed",
+  "id": 79
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accessibility",
+  "finding": "No language set on the page; chart values reachable only by hovering or tabbing, on 8px targets; table headers at 11px on phones and some key text at 12px; row labels were not marked as headers.",
+  "fix": "Language set; values printed beside every chart point; sizes raised to 12-13px; row labels marked as row headers. axe-core: no violations.",
+  "status": "Fixed",
+  "id": 80
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Layout",
+  "finding": "The Singapore chart's two end labels overlapped; table text wrapped raggedly on phones; green marked both record citizens and the \"good enough\" card; the footer rule was shorter than the others; the \"=\" sat alone on phones; the comparisons table mixed both countries.",
+  "fix": "Labels spaced, wrapping fixed, \"good enough\" card made neutral, footer full width, \"is about as accurate as\" on phones, one comparisons table per country with true minus signs.",
+  "status": "Fixed",
+  "id": 81
+ },
+ {
+  "when": "Streamlining and third audit",
+  "area": "Accuracy",
+  "finding": "The casebook's downloadable interaction log had not been refreshed at the last publish, and the playbook and explainer skill still gave 1.3 points as the best possible.",
+  "fix": "Package rebuilt with the page; notes corrected to about 1.5 to 1.7.",
+  "status": "Fixed",
+  "id": 82
  }
 ]

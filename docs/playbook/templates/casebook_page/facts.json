@@ -79,6 +79,10 @@
   "T20": [
    "Asked whether a claim was backed by evidence, what reading records through a paid key involves and costs, and to add the figures to both pages.",
    "Checked the claim against the source paper and our own data, measured how much group answers move, priced the next test, and updated both pages."
+  ],
+  "T21": [
+   "Asked whether individuals need to be asked repeatedly, then asked for a thorough QA and a smoother, more accessible scorecard.",
+   "Answered from the data, reordered and tightened the page, ran independent number and accessibility reviews, and fixed every finding."
   ]
  },
  "examples": {
@@ -100,8 +104,8 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 21 hours",
-  "N_TASKS": 20,
+  "HOURS": "about 22 hours",
+  "N_TASKS": 21,
   "N_SHOTS": 14,
   "N_AGENTS": 13,
   "N_BG": 36,
@@ -111,7 +115,7 @@
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "44",
+  "N_VERSIONS": "45",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

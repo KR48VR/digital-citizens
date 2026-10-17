@@ -69,14 +69,15 @@ def panel(country, tag, ymax=7.0):
     for key, label, colour in SERIES:
         pts = [(xs[n], y(med(tag, key, n))) for n in SIZES]
         g.append(f'<polyline class="ln" points="{" ".join(f"{a:.1f},{b:.1f}" for a, b in pts)}" stroke="{colour}"/>')
+        above = key == "survey alone"  # survey alone is the higher line at every size (asserted below)
         for n, (a, b) in zip(SIZES, pts):
-            g.append(f'<circle class="pt" cx="{a:.1f}" cy="{b:.1f}" r="4.5" fill="{colour}" tabindex="0" '
-                     f'data-tip="{country}, survey of {n}, {label.lower()}: {f1(med(tag, key, n))} points off"/>')
+            g.append(f'<circle class="pt" cx="{a:.1f}" cy="{b:.1f}" r="4.5" fill="{colour}"/>'
+                     f'<text class="vlab" x="{a:.1f}" y="{b - 9 if above else b + 17:.1f}" text-anchor="middle" aria-hidden="true">{f1(med(tag, key, n))}</text>')
         ends.append([pts[-1][1], label, colour])
     ends.sort(key=lambda e: e[0])
     orig = [e[0] for e in ends]
     for i in range(1, len(ends)):
-        ends[i][0] = max(ends[i][0], ends[i - 1][0] + 15)
+        ends[i][0] = max(ends[i][0], ends[i - 1][0] + 18)
     shift = sum(orig) / len(orig) - sum(e[0] for e in ends) / len(ends)
     for (yy, label, colour), y0 in zip(ends, orig):
         yy = yy + shift
@@ -92,13 +93,22 @@ def panel(country, tag, ymax=7.0):
 chart = '<div class="panels">' + panel("Singapore", "singapore") + panel("United States", "us") + "</div>"
 
 # ---- the decision table: survey of 300, what to add
+NOT_TESTED = '<td class="num"><b aria-hidden="true">–</b><span class="cut">not tested</span></td>'
+for t in TAGS:  # chart value labels sit above the survey-alone line and below the AI line
+    assert all(med(t, "survey alone", n) > med(t, BOTH, n) for n in SIZES), t
+
+
+def minus(x):
+    return f"{x:+.2f}".replace("-", "\u2212")
+
+
 def cell(tag, config, n=300, base=True):
     if (config, n) not in M[tag]:
-        return '<td class="num"><span class="cut">not tested</span></td>'
+        return NOT_TESTED
     v = med(tag, config, n)
     sub = "starting point" if config == "survey alone" else cut_txt(pct(med(tag, "survey alone", n), v))
     if config == "+ last round's answers":
-        sub = "about the same with no new survey"
+        sub += '</span><span class="cut wr">the same with no new survey'
         assert abs(med(tag, "last round's answers alone, no survey", n) - v) < 0.1
     return f'<td class="num"><b>{f1(v)}</b><span class="cut">{sub}</span></td>'
 
@@ -106,22 +116,22 @@ def cell(tag, config, n=300, base=True):
 route_rows = [
     ("", "Nothing: the survey of 300 alone", "survey alone"),
     ("If your question is brand new", "The chatbot kind", "+ chatbot kind"),
-    ("If your question is brand new", "Record citizens learned from your survey", "+ record citizens (own survey)"),
-    ("If your question is brand new", "Both of the above", BOTH),
+    ("If your question is brand new", "Record citizens learned from your own survey", "+ record citizens (own survey)"),
+    ("If your question is brand new", "Both kinds of AI", BOTH),
     ("If it was asked in other countries", "Record citizens learned from those countries", "+ record citizens"),
     ("If it was asked recently in the same survey", "Last round's answers to the same question", "+ last round's answers"),
 ]
 rows_html = []
 for q_, add, cfg in route_rows:
     sg = cell("singapore", cfg)
-    us = cell("us", cfg) if cfg != "+ record citizens" else '<td class="num"><span class="cut">not tested</span></td>'
+    us = cell("us", cfg) if cfg != "+ record citizens" else NOT_TESTED
     if cfg == "+ last round's answers":
-        sg = '<td class="num"><span class="cut">not tested</span></td>'
+        sg = NOT_TESTED
     label = f'{add}<span class="cut">{q_}</span>' if q_ else add
-    rows_html.append(f"<tr><td>{label}</td>{sg}{us}</tr>")
+    rows_html.append(f'<tr><th scope="row">{label}</th>{sg}{us}</tr>')
 ref = [f'<td class="num"><b>{f1(med(t, "survey alone", 600))}</b><span class="cut">for comparison</span></td>' for t in TAGS]
-rows_html.append(f'<tr><td>A survey of 600 alone, no AI</td>{"".join(ref)}</tr>')
-TABLE_ROUTES = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for a typical group with a survey of 300, and how much less error than the survey alone</caption>\n'
+rows_html.append(f'<tr><th scope="row">Survey alone, 600 people</th>{"".join(ref)}</tr>')
+TABLE_ROUTES = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for a typical group with a survey of 300, and how much less error than the survey alone. Percentages use unrounded figures.</caption>\n'
                 '      <thead><tr><th>What you add to the survey</th><th class="num">Singapore</th><th class="num">United States</th></tr></thead>\n      <tbody>\n        '
                 + "\n        ".join(rows_html) + "\n      </tbody>\n    </table>\n    </div>")
 
@@ -129,10 +139,11 @@ TABLE_ROUTES = ('<div class="wrap">\n    <table class="pts">\n      <caption>Poi
 CELLS = pd.read_csv(RES / "one_method_singapore_cells.csv")
 PC = CELLS.groupby(["config", "n", "question_id", "group"], as_index=False).agg(mae=("mae_pts", "mean"), ng=("n_group", "mean"))
 GROUPS = {"CHI": ("ethnic=Chinese", "Chinese Singaporeans"), "MAL": ("ethnic=Malay", "Malay Singaporeans"), "IND": ("ethnic=Indian", "Indian Singaporeans")}
+OTHER_GROUPS = {"OLD": ("age_band=60+", "people over 60")}  # quoted in the text, not in the small-groups table
 
 
 def grp(key, config, n=150):
-    v = PC[(PC.n == n) & (PC.group == GROUPS[key][0]) & (PC.config == config)]
+    v = PC[(PC.n == n) & (PC.group == {**GROUPS, **OTHER_GROUPS}[key][0]) & (PC.config == config)]
     return v.mae.median(), v.ng.mean()
 
 
@@ -140,8 +151,8 @@ small_rows = []
 for key, (g, label) in GROUPS.items():
     a_, ng = grp(key, "survey alone")
     b_, _ = grp(key, BOTH)
-    small_rows.append(f'<tr><td>{label}</td><td class="num">about {round(ng)}</td><td class="num"><b>{f1(a_)}</b></td><td class="num"><b>{f1(b_)}</b></td></tr>')
-TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 150-person survey in Singapore, brand-new question</caption>\n'
+    small_rows.append(f'<tr><th scope="row">{label}</th><td class="num">about {round(ng)}</td><td class="num"><b>{f1(a_)}</b></td><td class="num"><b>{f1(b_)}</b></td></tr>')
+TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 150-person survey in Singapore, brand-new question. AI here is both kinds together.</caption>\n'
                '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With AI</th></tr></thead>\n      <tbody>\n        '
                + "\n        ".join(small_rows) + "\n      </tbody>\n    </table>\n    </div>")
 
@@ -164,25 +175,27 @@ for tag, name in [("singapore", "Singapore"), ("us", "United States")]:
     for k, lab in LABELS:
         if (k, 150) not in M[tag]:
             continue
-        rows_.append(f'<tr><td>{lab}</td>' + "".join(f'<td class="num">{M[tag][(k, n)]["median"]:.1f} <span class="cut">({M[tag][(k, n)]["mean"]:.1f})</span></td>' for n in SIZES) + "</tr>")
+        rows_.append(f'<tr><th scope="row">{lab}</th>' + "".join(f'<td class="num">{M[tag][(k, n)]["median"]:.1f} <span class="cut">({M[tag][(k, n)]["mean"]:.1f})</span></td>' for n in SIZES) + "</tr>")
     one_tables.append(f'<div class="wrap">\n    <table>\n      <caption>{name}: points off for a typical group (average in brackets)</caption>\n'
                       '      <thead><tr><th>Method</th>' + "".join(f'<th class="num">Survey of {n}</th>' for n in SIZES) + '</tr></thead>\n      <tbody>\n        '
                       + "\n        ".join(rows_) + "\n      </tbody>\n    </table>\n    </div>")
 TABLE_ONE_METHOD = "\n    ".join(one_tables)
 
 NAMES = dict(LABELS)
-cmp_rows = []
+cmp_tables = []
 for tag, name in [("singapore", "Singapore"), ("us", "United States")]:
+    cmp_rows = []
     for r in csv.DictReader(open(RES / f"one_method_{tag}_comparisons.csv")):
         if r["a"] not in NAMES or r["b"] not in NAMES:  # later experiments (panel, short question sets) are reported elsewhere
             continue
         a = NAMES[r["a"]].replace("With ", "").replace("with ", "")
         b = NAMES[r["b"]].replace("With ", "").replace("with ", "")
-        cmp_rows.append(f'<tr><td>{name}<span class="cut">{a[0].upper() + a[1:]}, {r["n_a"]} people, against {b[0].lower() + b[1:]}, {r["n_b"]} people</span></td>'
-                        f'<td class="num">{float(r["difference"]):+.2f}</td><td class="num">{float(r["low"]):+.2f} to {float(r["high"]):+.2f}</td></tr>')
-TABLE_COMPARE = ('<div class="wrap">\n    <table>\n      <caption class="sr">Key comparisons with 95% ranges</caption>\n'
-                 '      <thead><tr><th>Comparison</th><th class="num">Difference</th><th class="num">95% range</th></tr></thead>\n      <tbody>\n        '
-                 + "\n        ".join(cmp_rows) + "\n      </tbody>\n    </table>\n    </div>")
+        cmp_rows.append(f'<tr><th scope="row">{a[0].upper() + a[1:]}, {r["n_a"]} people, against {b[0].lower() + b[1:]}, {r["n_b"]} people</th>'
+                        f'<td class="num">{minus(float(r["difference"]))}</td><td class="num"><span class="nw">{minus(float(r["low"]))} to {minus(float(r["high"]))}</span></td></tr>')
+    cmp_tables.append(f'<div class="wrap">\n    <table>\n      <caption>{name}: key comparisons, with 95% ranges</caption>\n'
+                      '      <thead><tr><th>Comparison</th><th class="num">Difference</th><th class="num">95% range</th></tr></thead>\n      <tbody>\n        '
+                      + "\n        ".join(cmp_rows) + "\n      </tbody>\n    </table>\n    </div>")
+TABLE_COMPARE = "\n    ".join(cmp_tables)
 
 # ---- standout check (Singapore, 300, record citizens from other countries)
 st = pd.read_csv(RES / "standout_cells.csv")
@@ -230,7 +243,7 @@ def inline(m):
     if kind == "ppl":
         return str(round(grp(args[0], "survey alone")[1]))
     if kind == "grp":
-        return f1(grp(args[0], args[1])[0])
+        return f1(grp(args[0], args[1], *(int(a) for a in args[2:]))[0])
     raise KeyError(kind)
 
 
@@ -247,6 +260,17 @@ for t in TAGS:  # rule 2: a panel does about as well as the best single chatbot;
 # rule 1: 20 standard questions almost as good as all of them in Singapore (within 0.15 points)
 assert med(sg, "+ record citizens (own survey, 20 standard questions)", 300) - med(sg, "+ record citizens (own survey)", 300) < 0.15
 assert pct(med(us, "survey alone", 300), med(us, "+ chatbot kind", 300)) > pct(med(sg, "survey alone", 300), med(sg, "+ chatbot kind", 300))
+CMP = {}
+for t in TAGS:
+    for r in csv.DictReader(open(RES / f"one_method_{t}_comparisons.csv")):
+        CMP[(t, r["a"], r["b"], int(r["n_a"]), int(r["n_b"]))] = (float(r["low"]), float(r["high"]))
+for t in TAGS:  # short answer: brand new, the two kinds about as good as each other; asked before, record citizens beat the chatbot and adding it did not help
+    for n in SIZES:
+        lo, hi = CMP[(t, "+ chatbot kind", "+ record citizens (own survey)", n, n)]
+        assert lo < 0 < hi, ("two kinds differ", t, n)
+    lo, hi = CMP[(t, "+ record citizens + chatbot kind", "+ record citizens", 300, 300)]
+    assert lo < 0 < hi, ("chatbot helped record citizens", t)
+    assert med(t, "+ record citizens", 300) < med(t, "+ chatbot kind", 300), t
 # "the changes mostly cancel out ... more for small groups"; "no AI can predict one person much better"
 assert SELF["shift_typical_group"] < 2 and SELF["group_size_vs_shift_spearman"] < -0.5 and SELF["match_6_7_options"] < 0.5
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),

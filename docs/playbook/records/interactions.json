@@ -865,6 +865,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Measured how much group answers move when the same people answer twice, added the figures to both pages with sources, and fixed two errors the check turned up."
+  },
+  {
+   "n": 81,
+   "time": "22:59",
+   "task": "T21",
+   "type": "teammate",
+   "king": "Does that also mean that when studying individuals, we need to ask them the question often enough to average/smooth out the differences and inconsistencies?\n\nAnd When you are done, Can you do a thorough QA? And also streamline the flow, accessibility, design, and language etc of the scorecard?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Answered from the data (most changes are small; averaging related questions steadies a person's score), then restructured the scorecard and had two independent reviewers check it, fixing every finding, including an overstated claim in the short answer."
   }
  ],
  "tasks": {
@@ -946,6 +956,10 @@
   ],
   "T20": [
    "Check the evidence and plan the next test",
+   "King"
+  ],
+  "T21": [
+   "Streamline and QA the scorecard",
    "King"
   ]
  }
