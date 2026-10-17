@@ -11,8 +11,9 @@ A first in-session stress test (the model writing answer shares blind, then scor
 
 AI cannot replace asking real people, but it can stretch a small survey a long way. A few hundred real
 people give the overall answer. AI then works out how each group differs, as accurately as a survey twice
-the size. The AI that does this well learns from real people's past survey answers. A chatbot asked to play
-people does it well only in the United States.
+the size. The AI that stretches a small survey is the kind that learns from patterns in real people's past
+survey answers. The more common use of AI, a chatbot answering in place of people, works well only in the
+United States.
 
 | The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
 |---|---|---|---|
