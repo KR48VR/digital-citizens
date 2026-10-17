@@ -151,6 +151,10 @@ LABELS = [("survey alone", "Survey alone"), ("+ chatbot kind", "With the chatbot
           ("+ record citizens + chatbot kind", "With record citizens from past surveys and the chatbot kind"),
           ("+ last round's answers", "With last round's answers to the same question"),
           ("+ demographics only (own survey)", "With a demographics-only model learned from your own survey"),
+          ("+ record citizens (own survey, 20 standard questions)", "With record citizens learned from your own survey, 20 standard questions"),
+          ("+ chatbot (Opus)", "With the best single chatbot in our tests (Opus)"),
+          ("+ chatbot panel, averaged", "With five chatbots, simple average"),
+          ("+ chatbot panel, each weighted", "With five chatbots, each counted by how accurate it had been"),
           ("chatbot kind alone, no survey", "Chatbot kind alone, no survey"), ("record citizens alone, no survey", "Record citizens from past surveys alone, no survey"),
           ("last round's answers alone, no survey", "Last round's answers alone, no survey")]
 one_tables = []
@@ -227,6 +231,11 @@ for n in SIZES:
         assert med(t, BOTH, n) < min(med(t, "+ chatbot kind", n), med(t, "+ record citizens (own survey)", n)), ("both best", t, n)
 assert f1(med(sg, BOTH, 300)) == f1(med(sg, "survey alone", 600)) == f1(med(sg, "+ record citizens", 300)), "Singapore: both 2.7"
 assert med(us, BOTH, 300) < med(us, "survey alone", 600)
+for t in TAGS:  # rule 2: a panel does about as well as the best single chatbot; a simple average does worse than the chatbot kind
+    assert abs(med(t, "+ chatbot panel, each weighted", 300) - med(t, "+ chatbot (Opus)", 300)) < 0.1, t
+    assert med(t, "+ chatbot panel, averaged", 300) > med(t, "+ chatbot kind", 300), t
+# rule 1: 20 standard questions almost as good as all of them in Singapore (within 0.15 points)
+assert med(sg, "+ record citizens (own survey, 20 standard questions)", 300) - med(sg, "+ record citizens (own survey)", 300) < 0.15
 assert pct(med(us, "survey alone", 300), med(us, "+ chatbot kind", 300)) > pct(med(sg, "survey alone", 300), med(sg, "+ chatbot kind", 300))
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),
          "US chatbot vs own RC, 300 (about the same)": (f1(med(us, "+ chatbot kind", 300)), f1(med(us, "+ record citizens (own survey)", 300))),

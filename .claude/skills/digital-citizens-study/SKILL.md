@@ -10,7 +10,8 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
 - **Recipe:** a few hundred real people answer; AI fills in each group's answer (group's own answers combined
   with an AI estimate, worth fitted leave-one-question-out). Which AI depends on whether the question was asked
   before: brand new - record citizens learned from your survey plus the chatbot kind; asked in other countries -
-  record citizens learned from them; asked recently in the same survey - reuse those answers. Never borrow
+  record citizens learned from them; asked recently in the same survey - reuse those answers. About 20 standard
+  questions are enough to link respondents; use the best available chatbot rather than several. Never borrow
   numbers from other surveys or published reports.
 - **Environment:** Python in `.venv` (create with `uv venv .venv && uv pip install --python .venv/bin/python -e .`).
   Run scripts with `.venv/bin/python -I`. Raw data in `data/raw/` is git-ignored; fetch with

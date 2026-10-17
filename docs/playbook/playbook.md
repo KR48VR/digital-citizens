@@ -41,7 +41,8 @@ reports. Always show the scorecard, against the survey alone.
      `evaluate/transfer.py::cross_country_transfer` (61 countries, about 90,000 people, under half an hour).
   2. **From your own small survey** when the question is new: the model is trained on your respondents
      (see `scripts/one_method_experiment.py::draw_cells`). Your survey must include a set of the big survey's
-     **standard questions** (our tests used about 80), so your respondents link to the records.
+     **standard questions** so your respondents link to the records. About 20 are enough: they kept 80-90% of
+     the benefit of 80 (`scripts/rank_standard_questions.py` picks them on other data; docs/10).
 - Combine each group's own survey answers with record citizens' estimate:
   estimate = (worth x record citizens' shares + the group's answers) / (worth + people in the group).
   Fit the worth on other questions only (leave one question out). In Singapore it came out at about 58 people
@@ -49,6 +50,8 @@ reports. Always show the scorecard, against the survey alone.
 - For a brand-new question, also combine the chatbot kind's estimate (same formula, its own fitted worth):
   record citizens from your own survey plus the chatbot kind did best at every survey size in both countries.
   When record citizens learned from other countries that asked the question, the chatbot added nothing.
+- If you use a chatbot, use the best one available. Five chatbots combined by track record did about as well as
+  the best alone; a simple average did worse; a small open model added nothing (docs/10).
 - If the same question was asked recently in the same large survey, its answers by group are the best prior
   (US: answers from two years earlier were 2.4 points off without any new survey).
 
