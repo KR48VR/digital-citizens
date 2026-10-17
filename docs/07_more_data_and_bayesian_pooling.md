@@ -106,8 +106,12 @@ What this says, plainly:
    gaps.** With 150 local answers the pooled estimate improves the median cell (2.3 vs 2.4) but shrinks the
    large real differences (size captured 62% vs 95%), so the mean error is no better. By 600 the prior is
    irrelevant. The simulators' remaining value is therefore for questions with no local data at all, and
-   for the smallest groups inside a small survey (per-group breakdown in
-   `bayes_pooling_singapore_total_cells.csv` when the run finishes).
+   for the smallest groups inside a small survey. The per-group breakdown
+   (`bayes_pooling_singapore_total_cells.csv`) confirms this only for the smallest group: with a 150-person
+   survey, pooling cuts the error for Indian respondents (about 14 people in such a survey) from 3.9 to 3.3
+   points and for the no-religion group from 2.6 to 2.1, but it *worsens* Malays (4.0 → 4.4), people aged
+   60+ (2.4 → 3.0) and the young (2.8 → 3.4), because the simulators pull these distinctive groups toward
+   the average. A better pooling rule would weight the prior by group size, not one weight for all.
 4. **The honest ranking for a new Singapore question is:** ask 150-300 real people if you can (cheap, and
    it wins); if you cannot, use the pooled prior (record-anchored citizens plus the model) and expect about
    3.5 points of error on segments with group differences under-stated by half; never use the model alone.
