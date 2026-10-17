@@ -22,8 +22,9 @@ closest question does not work.
 | The best it can ever be (exact national number, then fill in) | 2 points | Yes | Only chance is left |
 
 "How far off" is the gap between our estimate and the real survey, in percentage points, for a typical group;
-survey noise alone gives about 1.4, guessing blind about 16. The "AI" that works is the pattern-finding kind
-(real records plus a statistical formula), not the chatbot kind. The plain-language scorecard with charts is
+survey noise alone gives about 1.4, guessing blind about 16. The "AI" that works starts from real people: each
+record citizen is a real, anonymous survey respondent whose own past answers predict their answer to a new
+question. The chatbot kind, which guesses from a description of a person, is the part that flattens groups. The plain-language scorecard with charts is
 at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page).
 
 ## Read first
