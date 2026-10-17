@@ -16,6 +16,8 @@ twice the size.
 The AI that stretches a small survey is the kind that learns from patterns in real people's past survey
 answers. We call the digital citizens built this way record citizens.
 
+The gain is biggest for small groups, and for groups whose views stand out from the average.
+
 The more common use of AI, a chatbot answering in place of people, is less reliable. It filled in the groups
 well in the United States. In Singapore it helped only with groups that stand out from the average. We call
 this the chatbot kind.
