@@ -74,4 +74,45 @@ which is what the Bayesian layer is for.
 
 ## 4. Results: Bayesian pooling with local data
 
-(filled in by `scripts/pool_experiment.py`)
+Setup (`scripts/pool_experiment.py`, `evaluate/bayes.py`): two sources, the model's zero-shot guesses and
+the record-anchored citizens (61-country mapping), are pooled as weighted priors and then updated with one
+simulated local survey of 150, 300 or 600 Singaporeans, where each group gets whoever happened to fall
+into the sample (a 150-person survey contains about 18 Malays and 40 people aged 60+). Source weights are
+learned on the other 19 questions with local samples of the same size, so they are out-of-sample.
+
+| Singapore, 20 questions x 10 groups | Population error (median) | Segment error, median / mean | Group differences, size captured |
+|---|---|---|---|
+| Model zero-shot alone | 4.9 | 5.0 / 6.3 | 36% |
+| Record-anchored citizens alone | 3.0 | 3.7 / 4.5 | 42% |
+| **Pooled prior, no local data** | **2.5** | **3.4 / 4.5** | 40% |
+| Local survey of 150 alone | 1.0 | 2.4 / 2.9 | 95% |
+| Pooled + local survey of 150 | 1.2 | 2.3 / 3.0 | 62% |
+| Local survey of 300 alone | 0.8 | 1.7 / 1.9 | 99% |
+| Pooled + local survey of 300 | 0.8 | 1.6 / 2.2 | 79% |
+| Local survey of 600 alone | 0.4 | 1.1 / 1.2 | 96% |
+| Pooled + local survey of 600 | 0.4 | 1.1 / 1.4 | 86% |
+
+Learned weights: the record-anchored citizens are worth about 27-36 real respondents per group, the
+model's own guesses about 8-11. The "other countries' average" was tried as a third source and received
+zero weight for segments, as it should (it is the same for every group).
+
+What this says, plainly:
+
+1. **Pooling the two simulators beats either alone** (2.5 vs 3.0 and 4.9 points on population shares;
+   3.4 vs 3.7 and 5.0 on segments). This is the right default when there is no local data.
+2. **A small local survey beats the simulators quickly.** 150 real Singaporeans, spread across groups as
+   they fall, already give lower error than any simulator, and capture 95% of the real group differences.
+3. **Adding the simulators to a local survey helps only the typical cell, slightly, and hurts the big
+   gaps.** With 150 local answers the pooled estimate improves the median cell (2.3 vs 2.4) but shrinks the
+   large real differences (size captured 62% vs 95%), so the mean error is no better. By 600 the prior is
+   irrelevant. The simulators' remaining value is therefore for questions with no local data at all, and
+   for the smallest groups inside a small survey (per-group breakdown in
+   `bayes_pooling_singapore_total_cells.csv` when the run finishes).
+4. **The honest ranking for a new Singapore question is:** ask 150-300 real people if you can (cheap, and
+   it wins); if you cannot, use the pooled prior (record-anchored citizens plus the model) and expect about
+   3.5 points of error on segments with group differences under-stated by half; never use the model alone.
+
+This also answers the "superforecasting" idea precisely: the machinery for weighting sources by track
+record and updating with evidence works and is built, but the evidence it is fed matters more than the
+weighting. The sources that would make it shine are Singapore's own published crosstabs (IPS, DOS,
+REACH), which carry the local facts no foreign record can, and those are the next thing to comb.

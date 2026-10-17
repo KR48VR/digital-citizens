@@ -17,6 +17,7 @@ A first in-session stress test (the model writing answer shares blind, then scor
 | [docs/04_how_the_citizens_are_built.md](docs/04_how_the_citizens_are_built.md) | Architecture, what is in the code, how to run it, rough costs |
 | [docs/05_open_questions.md](docs/05_open_questions.md) | Decisions needed from you |
 | [docs/06_how_to_make_it_work.md](docs/06_how_to_make_it_work.md) | Remedies for regression-to-the-mean, tested on real data, and the build plan that follows |
+| [docs/07_more_data_and_bayesian_pooling.md](docs/07_more_data_and_bayesian_pooling.md) | Combing more public surveys (61 WVS countries, CES) and pooling sources the Bayesian way: what it bought |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |
 
@@ -46,7 +47,7 @@ src/digital_citizens/
   population/synth.py  IPF / raking to census margins; synthetic population sampling
   simulate/            prompts.py (role-play + distribution modes), llm.py (Anthropic client, cache, mock), runner.py
   evaluate/            metrics.py, baselines.py, harness.py, individual.py, calibrate.py (human-level + model-difference
-                       corrections), transfer.py (record-anchored citizens without an LLM)
+                       corrections), transfer.py (record-anchored citizens without an LLM), bayes.py (weighted-source pooling)
   cli.py               dc baselines | personas | simulate
 scripts/download_data.py
 tests/

@@ -103,7 +103,9 @@ at the top, predicted 34%).
 | Human level + record-anchored differences (61 countries) | **1.9 / 2.6** | 42% (r 0.73) |
 | Human level + model differences | 2.4 / 3.0 | 36% |
 | "Everyone is average" (human level only) | 2.6 / 4.2 | 0% |
-| 300 real answers to the question itself | 1.3 / 1.6 | 94% |
+| Bayesian pool of model + record-anchored citizens, no local data | 3.4 / 4.5 | 40% |
+| One local survey of 150 people (groups as they fall) alone / pooled | 2.4 / 2.9 vs 2.3 / 3.0 | 95% / 62% |
+| 300 real answers per group to the question itself | 1.3 / 1.6 | 94% |
 
 China: record anchoring recovers 79% of group differences vs 25% zero-shot; levels are best left to
 humans. Files: `record_transfer_summary.csv`, `combination_summary.csv`, `score_wvs_singapore_round2_*.md`.

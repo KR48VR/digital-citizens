@@ -52,6 +52,7 @@ def main() -> None:
              H.to_markdown(summary), "", "Fitted source weights (worth in respondents, median over folds), by local sample size:", "", H.to_markdown(al), ""]
     (OUT / f"bayes_pooling_{country.lower().replace(' ', '_')}_{design}.md").write_text("\n".join(lines))
     summary.to_csv(OUT / f"bayes_pooling_{country.lower().replace(' ', '_')}_{design}.csv", index=False)
+    s.to_csv(OUT / f"bayes_pooling_{country.lower().replace(' ', '_')}_{design}_cells.csv", index=False)
     print("\n".join(lines))
 
 
