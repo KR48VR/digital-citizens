@@ -18,16 +18,18 @@ A first in-session stress test (the model writing answer shares blind, then scor
 | [docs/05_open_questions.md](docs/05_open_questions.md) | Decisions needed from you |
 | [docs/06_how_to_make_it_work.md](docs/06_how_to_make_it_work.md) | Remedies for regression-to-the-mean, tested on real data, and the build plan that follows |
 | [docs/07_more_data_and_bayesian_pooling.md](docs/07_more_data_and_bayesian_pooling.md) | Combing more public surveys (61 WVS countries, CES, 96 published Singapore findings) and pooling sources the Bayesian way: what it bought |
+| [docs/08_library_test.md](docs/08_library_test.md) | The 'library' idea tested end to end on the US: search for the closest previously asked question, use that survey as the base, spread with record citizens |
 | [docs/sources/singapore_published_findings.md](docs/sources/singapore_published_findings.md) | Singapore sources combed for the evidence ledger, with trust levels and what was unusable |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |
+| [docs/results/library_test/](docs/results/library_test/library_test_us.md) | Library test numbers: 31 WVS questions answered from the GSS library, with and without record spread |
 
 ## Quick start
 
 ```
 uv venv .venv && uv pip install --python .venv/bin/python -e .
 .venv/bin/python -I scripts/download_data.py     # ~190 MB: GSS 2022/2024, GlobalOpinionQA, Twin-2K-500, Nemotron-Personas-Singapore
-.venv/bin/python -I -m pytest -q                  # 18 tests
+.venv/bin/python -I -m pytest -q                  # 31 tests
 .venv/bin/python -I -m digital_citizens.cli baselines gss
 .venv/bin/python -I -m digital_citizens.cli baselines goqa
 .venv/bin/python -I -m digital_citizens.cli baselines twin2k
@@ -50,8 +52,10 @@ src/digital_citizens/
   simulate/            prompts.py (role-play + distribution modes), llm.py (Anthropic client, cache, mock), runner.py
   evaluate/            metrics.py, baselines.py, harness.py, individual.py, calibrate.py (human-level + model-difference
                        corrections), transfer.py (record-anchored citizens without an LLM), bayes.py (weighted-source pooling)
+  library/             crosswalk_us.py (WVS<->GSS question pairs on common bins), harmonise.py (common segments, bins,
+                       re-levelling), search.py (closest-question search: word overlap or local sentence embeddings)
   cli.py               dc baselines | personas | simulate
-scripts/download_data.py
+scripts/                 download_data.py, download_wvs.py, *_experiment.py (each writes a report under docs/results/)
 tests/
 docs/
 data/raw, data/cache   (git-ignored)
