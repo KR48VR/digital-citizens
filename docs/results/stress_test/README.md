@@ -105,6 +105,7 @@ at the top, predicted 34%).
 | "Everyone is average" (human level only) | 2.6 / 4.2 | 0% |
 | Bayesian pool of model + record-anchored citizens, no local data | 3.4 / 4.5 | 40% |
 | One local survey of 150 people (groups as they fall) alone / pooled | 2.4 / 2.9 vs 2.3 / 3.0 | 95% / 62% |
+| Pooled prior + 96 published Singapore findings (ledger), learned weight, 67 covered cells | 4.0 / 4.5 vs 3.8 / 4.4 without | n/a |
 | 300 real answers per group to the question itself | 1.3 / 1.6 | 94% |
 
 China: record anchoring recovers 79% of group differences vs 25% zero-shot; levels are best left to

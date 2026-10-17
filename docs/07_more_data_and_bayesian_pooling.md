@@ -120,3 +120,47 @@ This also answers the "superforecasting" idea precisely: the machinery for weigh
 record and updating with evidence works and is built, but the evidence it is fed matters more than the
 weighting. The sources that would make it shine are Singapore's own published crosstabs (IPS, DOS,
 REACH), which carry the local facts no foreign record can, and those are the next thing to comb.
+
+## 5. Results: Singapore's own published findings as evidence (the ledger)
+
+Two research passes combed Singapore's official, academic and commercial sources (list and verdicts in
+`docs/sources/singapore_published_findings.md`). 96 findings with group breakdowns were mapped onto 25 of
+the World Values Survey questions we test, with a confidence score for how close the wording, population
+and year are (`data/ledger/singapore.csv`). Each finding enters the pool as pseudo-respondents: sample size
+times confidence, spread over the answer options. Scored against the WVS-7 Singapore answers on the 67
+cells the ledger covers (`docs/results/stress_test/ledger_experiment_singapore.md`):
+
+| Estimate for the covered cells | Error, median / mean (points) |
+|---|---|
+| Pooled prior: record-anchored citizens + model, no local evidence | **3.8 / 4.4** |
+| Published findings alone | 8.0 / 8.3 |
+| Pooled prior + published findings at face value | 6.8 / 7.2 |
+| Pooled prior + published findings with a learned weight | 4.0 / 4.5 |
+| Everyone is average (real population level) | 2.9 / 4.4 |
+
+The learned weight, fitted question by question on the other questions, settles at about **1% of face
+value**: a published result from 1,000 people is worth about 10 respondents when it is asked in different
+words, by a different survey, in a different year. Even the 16 rows with near-identical wording were a
+median 4.7 points from the WVS answer; rows with loose wording matches were 9-10 points off; opt-in online
+polls 19 points. Part of this is genuine change between 2020 and 2024, but most of it is what survey
+researchers call house and wording effects, and it is larger than the simulators' own error.
+
+Where published numbers did help, even at face value, was where the prior was weak and the wording close:
+unwillingness to have neighbours of another race (error 10.5 → 5.9), signing petitions among the young
+(2.4 → 1.7), attending demonstrations, satisfaction with how the political system works, importance of
+democracy, feeling safe. Where they hurt, badly, was wherever a plausible-looking match was really a
+different question: "following politics closely" (an opt-in poll's 76%) against "interested in politics",
+"get rid of elections and let experts decide" against "experts make decisions", a 2016 reading of trust
+against a 2020 one.
+
+**What this means for the plan.**
+
+1. Public findings are worth collecting, but as a *check* and as *priors with learned weights*, never at
+   face value. The pooling layer now learns that weight, so the machinery is safe to feed.
+2. The only published evidence worth much is a question asked in the same words, of the same population,
+   recently. That argues for *running* the questions you care about, even on a small sample, over mining
+   other people's questions; a 150-person survey beat every simulator and every published proxy in section 4.
+3. The record-anchored citizens remain the best starting point when nothing local exists. Their value is
+   that they carry the structure of a person, which published tables do not.
+4. News reports, social media and commercial polls were the weakest tier (opt-in polls 19 points off) and
+   should be treated as topic salience signals, not as answer shares.

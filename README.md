@@ -17,7 +17,8 @@ A first in-session stress test (the model writing answer shares blind, then scor
 | [docs/04_how_the_citizens_are_built.md](docs/04_how_the_citizens_are_built.md) | Architecture, what is in the code, how to run it, rough costs |
 | [docs/05_open_questions.md](docs/05_open_questions.md) | Decisions needed from you |
 | [docs/06_how_to_make_it_work.md](docs/06_how_to_make_it_work.md) | Remedies for regression-to-the-mean, tested on real data, and the build plan that follows |
-| [docs/07_more_data_and_bayesian_pooling.md](docs/07_more_data_and_bayesian_pooling.md) | Combing more public surveys (61 WVS countries, CES) and pooling sources the Bayesian way: what it bought |
+| [docs/07_more_data_and_bayesian_pooling.md](docs/07_more_data_and_bayesian_pooling.md) | Combing more public surveys (61 WVS countries, CES, 96 published Singapore findings) and pooling sources the Bayesian way: what it bought |
+| [docs/sources/singapore_published_findings.md](docs/sources/singapore_published_findings.md) | Singapore sources combed for the evidence ledger, with trust levels and what was unusable |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |
 
@@ -42,7 +43,8 @@ ANTHROPIC_API_KEY=... .venv/bin/python -I -m digital_citizens.cli simulate gss -
 ```
 src/digital_citizens/
   schema.py            Persona, Question, Distribution, Response
-  data/                gss.py (US GSS 2022/2024), wvs.py (WVS-7 Singapore/China/US microdata), globalopinionqa.py (WVS+Pew, 100+ countries),
+  data/                gss.py (US GSS 2022/2024), wvs.py (WVS-7, any of 62 countries), ledger.py (published findings as priors),
+                       globalopinionqa.py (WVS+Pew, 100+ countries),
                        twin2k.py (US panel with retest), nemotron.py (Singapore persona skeleton), benchmark.py
   population/synth.py  IPF / raking to census margins; synthetic population sampling
   simulate/            prompts.py (role-play + distribution modes), llm.py (Anthropic client, cache, mock), runner.py
