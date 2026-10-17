@@ -262,12 +262,18 @@ def _jsd(a, b, mask):
     return (0.5 * ka + 0.5 * kb) / np.log(2)
 
 
+LOG_LO, LOG_HI = np.log(0.01), np.log(5000.0)
+
+
 def fit_worth(P, C, nvec, T, mask):
-    """Worth in respondents for each source, minimising mean JSD (as evaluate/bayes.py does), vectorised."""
+    """Worth in respondents for each source, minimising mean JSD (as evaluate/bayes.py does), vectorised.
+
+    Worths are limited to 0.01-5,000 respondents inside the search, so the balance between sources that is
+    actually used is the one that was optimised (capping each source afterwards would distort it)."""
     def loss(x):
-        return float(_jsd(_blend(np.exp(x), P, C, nvec), T, mask).mean())
+        return float(_jsd(_blend(np.exp(np.clip(x, LOG_LO, LOG_HI)), P, C, nvec), T, mask).mean())
     res = minimize(loss, np.full(len(P), np.log(50.0)), method="Nelder-Mead", options={"maxiter": 400 * len(P), "xatol": 1e-3, "fatol": 1e-7})
-    return np.minimum(np.exp(res.x), 5000.0)
+    return np.exp(np.clip(res.x, LOG_LO, LOG_HI))
 
 
 def evaluate(rows, tg):
@@ -369,7 +375,14 @@ def main() -> None:
     design = sys.argv[3] if len(sys.argv) > 3 else "standard"
     title, bench, tg, groups, demo, ext = setup(country)
     tag0 = "us" if country == "us" else "singapore"
-    rows = draw_cells(bench, tg, groups, demo, ext, draws, design=design, ranking=_ranking(tag0), tag=tag0)
+    cache = Path("data/cache") / f"one_method_{tag0}_{design}_{draws}_rows.pkl"
+    if cache.exists():
+        rows = pd.read_pickle(cache)
+        print(f"reused {len(rows)} cached cells from {cache}", flush=True)
+    else:
+        rows = draw_cells(bench, tg, groups, demo, ext, draws, design=design, ranking=_ranking(tag0), tag=tag0)
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        pd.to_pickle(rows, cache)
     print(f"{len(rows)} cells drawn in {time.time() - t0:.0f}s", flush=True)
     cells, worth = evaluate(rows, tg)
     tag = tag0 + ("_boost" if design == "boost" else "")
