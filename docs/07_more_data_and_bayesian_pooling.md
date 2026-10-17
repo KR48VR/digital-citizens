@@ -41,6 +41,37 @@ Rule of thumb: for a new city or segment, the Bayesian layer lets us start from 
 records and the country's published tables on day one, and improve every time a local number arrives,
 instead of waiting for a full local survey.
 
-## 3. Results
+## 3. Results: feeding the record-based fix 61 countries instead of 2
 
-(filled in by `scripts/transfer_all_countries.py` and `scripts/pool_experiment.py`; see section 4)
+Record-anchored citizens predict a Singapore respondent's answer to a new question from their answers to
+the other 70 questions, using a mapping learned from respondents elsewhere. With the mapping learned from
+US and Chinese respondents only (5,600 people) the method already beat the model's own guesses on group
+differences. Learning it from all 61 other WVS-7 countries (90,669 people) improves it further
+(`docs/results/stress_test/record_transfer_all_countries.md`; leave-nothing-in: Singapore's own data is
+never used in the mapping):
+
+| Singapore, 20 questions x 10 groups | Population error (pts) | Segment error, median / mean (pts) | Group differences: direction (r) / size captured |
+|---|---|---|---|
+| Model zero-shot | 4.9 | 5.0 / 6.3 | 0.54 / 36% |
+| Record-anchored, mapping from 2 countries | 3.9 | 4.2 / 6.3 | 0.70 / 52% |
+| Record-anchored, mapping from 61 countries | **3.0** | **3.7 / 4.5** | **0.73** / 42% |
+| Human level + record differences (2 countries) | (human) | 2.1 / 2.7 | 0.70 / 52% |
+| Human level + record differences (61 countries) | (human) | **1.9 / 2.6** | 0.73 / 42% |
+| Everyone is average (human level only) | (human) | 2.6 / 4.2 | 0 |
+
+China (15 questions x 7 groups): record-anchored from 61 countries gets the population within 3.2 points
+(model: 3.7) and, with human levels, segment error of 1.0 / 1.4 points, now below the "everyone is
+average" floor (1.2 / 1.7).
+
+What more countries buy: the *direction* of group differences gets more reliable (r 0.54 → 0.73) and the
+levels get much closer, but the *size* of the differences is still under-stated (42-52% of the real
+gaps). Concrete cells in Singapore: lower-educated residents who would never sign a petition, real 88%:
+model 57%, record-anchored (2 countries) 59%, record-anchored (61 countries) 75%, with human level 83%.
+Malay respondents very worried about losing their job, real 52%: model 25%, 2 countries 16%, 61 countries
+29%, with human level 36%. The second case shows the remaining gap: no amount of foreign data knows
+Singapore-specific facts like the Malay community's economic anxiety; that needs Singapore's own data,
+which is what the Bayesian layer is for.
+
+## 4. Results: Bayesian pooling with local data
+
+(filled in by `scripts/pool_experiment.py`)

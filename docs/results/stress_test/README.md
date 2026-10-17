@@ -98,7 +98,9 @@ at the top, predicted 34%).
 | + gap scaling or power calibration (leave-one-question-out) | 5.1 / 6.3 | 33% |
 | In-context anchors (round 2, 12 new questions; zero-shot vs anchored) | 4.3 / 5.6 vs 4.9 / 6.2 | 52% vs 51% |
 | Record-anchored citizens, mapping learned from US + China respondents, no LLM | 4.2 / 6.3 | 52% (r 0.70) |
-| Human level + record-anchored differences | **2.1 / 2.7** | 52% |
+| Record-anchored citizens, mapping learned from 61 countries (90,669 people) | 3.7 / 4.5 | 42% (r 0.73) |
+| Human level + record-anchored differences (2 countries) | 2.1 / 2.7 | 52% |
+| Human level + record-anchored differences (61 countries) | **1.9 / 2.6** | 42% (r 0.73) |
 | Human level + model differences | 2.4 / 3.0 | 36% |
 | "Everyone is average" (human level only) | 2.6 / 4.2 | 0% |
 | 300 real answers to the question itself | 1.3 / 1.6 | 94% |

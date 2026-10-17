@@ -1,0 +1,13 @@
+experiment,method,pop_mae,seg_mae_median,seg_mae_mean,gap_r,gap_slope,dispersion
+Singapore,claude zero-shot,4.85,4.98,6.29,0.54,0.36,0.65
+Singapore,"record-anchored, trained on 2 countries",3.92,4.21,6.33,0.7,0.52,0.78
+Singapore,"record-anchored, trained on 61 countries (90,669 people)",2.95,3.66,4.54,0.73,0.42,0.66
+Singapore,human level + record differences (2 countries),0.0,2.07,2.71,0.7,0.52,0.75
+Singapore,human level + record differences (61 countries),0.0,1.91,2.58,0.73,0.42,0.66
+Singapore,everyone is average (human level only),0.0,2.56,4.2,,0.0,0.0
+China,claude zero-shot,3.68,3.45,5.33,0.45,0.25,0.79
+China,"record-anchored, trained on 2 countries",4.16,4.12,4.85,0.71,0.79,1.04
+China,"record-anchored, trained on 61 countries (89,645 people)",3.24,3.49,5.04,0.74,0.46,0.8
+China,human level + record differences (2 countries),0.0,1.31,1.7,0.71,0.79,1.02
+China,human level + record differences (61 countries),0.0,1.0,1.4,0.74,0.46,0.7
+China,everyone is average (human level only),0.0,1.17,1.71,,0.0,0.0
