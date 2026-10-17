@@ -27,6 +27,17 @@ RAW = Path("data/raw/wvs")
 WORDING = json.loads((Path(__file__).parent / "wvs7_wording.json").read_text())
 COUNTRY_FILES = {"Singapore": "Singapore", "China": "China", "United States": "United_States"}
 
+
+def available_countries(raw: Path = RAW) -> dict[str, str]:
+    """Country display name -> file tag, for every WVS7 country file present under data/raw/wvs."""
+    out: dict[str, str] = dict(COUNTRY_FILES)
+    for d in sorted(raw.glob("*WVS_Wave_7_*_Csv_v*")):
+        m = re.search(r"WVS_Wave_7_(.+?)_Csv_v", d.name)
+        if m and d.is_dir() and any(d.glob("*.csv")):
+            tag = m.group(1)
+            out.setdefault(tag.replace("_", " "), tag)
+    return out
+
 # Curated items (variable -> topic). Everything with >2 ordered codes is treated as ordinal unless listed in NOMINAL.
 ITEMS: dict[str, str] = {
     "Q1": "values", "Q2": "values", "Q3": "values", "Q4": "values", "Q5": "values", "Q6": "values",
@@ -51,8 +62,12 @@ DEFAULT_SEGMENTS = ["sex", "age_band", "education3", "income3", "religion", "eth
 RELIGION_SHORT = {"Do not belong to a denomination": "No religion", "Catholic (Roman/Greek/etc)": "Catholic", "Protestant": "Protestant", "Orthodox (Russian/Greek/etc.)": "Orthodox", "Jew": "Jewish", "Muslim": "Muslim", "Hindu": "Hindu", "Buddhist": "Buddhist", "Other Christian (Jehova witnesses, Mormons, etc.)": "Other Christian", "Other": "Other religion"}
 
 
+def _tag(country: str) -> str:
+    return available_countries().get(country) or COUNTRY_FILES.get(country) or country.replace(" ", "_")
+
+
 def _read(country: str, kind: str) -> pd.DataFrame:
-    tag = COUNTRY_FILES[country]
+    tag = _tag(country)
     files = glob.glob(str(RAW / f"*{tag}_{kind}_v*" / "*.csv"))
     if not files:
         raise FileNotFoundError(f"no WVS {kind} file for {country}; run scripts/download_wvs.py")
@@ -98,20 +113,25 @@ def load_respondents(country: str, items: list[str] | None = None) -> tuple[pd.D
     num, txt = load_country(country)
     items = [i for i in (list(ITEMS) if items is None else items) if i in num.columns]
     out = pd.DataFrame(index=num.index)
-    out["pid"] = [f"wvs7_{COUNTRY_FILES[country]}_{i}" for i in range(len(num))]
+    out["pid"] = [f"wvs7_{_tag(country)}_{i}" for i in range(len(num))]
     out["weight"] = num["W_WEIGHT"].astype(float)
-    out["sex"] = txt["Q260"].astype(str)
-    out["age"] = num["Q262"].astype(float)
+    def col(var: str, fn, default: str = "NA") -> pd.Series:
+        if var not in num.columns:
+            return pd.Series(default, index=num.index)
+        return fn(num[var], txt[var])
+
+    out["sex"] = col("Q260", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["age"] = col("Q262", lambda n, t: n.astype(float), default=float("nan"))
     out["age_band"] = out["age"].map(_age_band)
-    out["education3"] = txt["Q275R"].astype(str).where(num["Q275R"] >= 0, "NA")
-    out["income3"] = txt["Q288R"].astype(str).where(num["Q288R"] >= 0, "NA")
-    out["religion"] = txt["Q289"].astype(str).map(_religion).where(num["Q289"] >= 0, "NA")
-    out["ethnic"] = txt["Q290"].map(_ethnic)
-    out["born_in_country"] = np.where(num["Q263"] == 1, "Born here", np.where(num["Q263"] == 2, "Immigrant", "NA"))
-    out["marital"] = txt["Q273"].astype(str).where(num["Q273"] >= 0, "NA")
-    out["employment"] = txt["Q279"].astype(str).where(num["Q279"] >= 0, "NA")
-    out["urban_rural"] = txt["H_URBRURAL"].astype(str).where(num["H_URBRURAL"] >= 0, "NA") if "H_URBRURAL" in num else "NA"
-    out["region"] = txt["N_REGION_WVS"].astype(str) if "N_REGION_WVS" in txt else "NA"
+    out["education3"] = col("Q275R", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["income3"] = col("Q288R", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["religion"] = col("Q289", lambda n, t: t.astype(str).map(_religion).where(n >= 0, "NA"))
+    out["ethnic"] = col("Q290", lambda n, t: t.map(_ethnic))
+    out["born_in_country"] = col("Q263", lambda n, t: pd.Series(np.where(n == 1, "Born here", np.where(n == 2, "Immigrant", "NA")), index=n.index))
+    out["marital"] = col("Q273", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["employment"] = col("Q279", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["urban_rural"] = col("H_URBRURAL", lambda n, t: t.astype(str).where(n >= 0, "NA"))
+    out["region"] = col("N_REGION_WVS", lambda n, t: t.astype(str))
     questions: dict[str, Question] = {}
     for it in items:
         codes, labels = option_labels(num[it], txt[it])
@@ -149,7 +169,7 @@ def benchmark(country: str, items: list[str] | None = None, segment_keys: list[s
                 probs, n = _weighted_shares(grp[it], grp["weight"], q.options)
                 if n >= min_n:
                     real[(it, f"{key}={val}")] = Distribution(question_id=it, group=f"{key}={val}", probs=probs, n=n)
-    return Benchmark(name=f"wvs7_{COUNTRY_FILES[country].lower()}", country=country, questions=list(qmap.values()), real=real, respondents=df, segment_keys=seg_keys, notes="WVS wave 7 country file v5.1; weighted by W_WEIGHT; DK/NA treated as missing.")
+    return Benchmark(name=f"wvs7_{_tag(country).lower()}", country=country, questions=list(qmap.values()), real=real, respondents=df, segment_keys=seg_keys, notes="WVS wave 7 country file v5.1; weighted by W_WEIGHT; DK/NA treated as missing.")
 
 
 def to_personas(df: pd.DataFrame, qmap: dict[str, Question], record_items: list[str], country: str) -> list[Persona]:
