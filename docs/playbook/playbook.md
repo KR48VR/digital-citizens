@@ -23,7 +23,8 @@ Never borrow numbers from other surveys, polls or the news. Always show the scor
 - You need surveys that publish **every person's answers to many questions**, not headlines.
   Good: World Values Survey (all countries, `scripts/download_wvs.py`), US General Social Survey
   (`scripts/download_data.py`), Asian Barometer, national social surveys, Cooperative Election Study.
-  Useless as records: news stories, press releases, opt-in online polls.
+  Not usable as records: news stories, press releases and published reports (they give group results,
+  not each person's answers).
 - Record the **fieldwork dates** and mode (face-to-face, online). Records describe people as they were then.
   Example: Singapore's World Values Survey ran November 2019 to March 2020, as COVID was arriving.
 - Check licences: WVS is research use with citation; do not redistribute raw files.
@@ -42,13 +43,16 @@ Never borrow numbers from other surveys, polls or the news. Always show the scor
 ## Step 4. Measure with the scorecard
 
 - **Points off**: gap between estimate and real answer, percentage points per answer option, per group.
-  - "Most groups" = middle result (median over group-by-question cells).
-  - "Including standout groups" = average (mean), which standout misses push up.
+  - **Standout groups** = across all questions in a country, the quarter of group-by-question cells with the
+    largest No AI error (the group answers furthest from the national average). **Most groups** = the rest.
+    Report the middle result (median) within each set. Do not use the mean over all cells as a stand-in
+    for standout groups (that mislabel was caught in the audit on 17 Oct 2026).
+  - Script: `scripts/standout_split.py` (writes `docs/results/stress_test/standout_split.{md,csv}`).
 - **No AI** = the real overall answer given to every group. Always report against it.
-- **Less error** = (No AI points off − method points off) / No AI points off.
-- Noise floor: about 1.4 points (two surveys of the same people differ this much by chance).
-  Reading guide: 1.4 as close as any survey can get, about 3 good enough to act on, 5 rough level only,
-  16 guessing blind.
+- **Less error** = (No AI points off − method points off) / No AI points off, from unrounded values.
+- Noise floor: about 1.3 points (how far a full national survey is from the true answer by chance alone;
+  two separate surveys would differ by about 1.9). Reading guide: 1.3 the best possible, about 3 good enough
+  to act on, 5 rough level only, 15 guessing blind.
 - Group differences reproduced (gap slope) shows flattening: chatbot kind 81% US, 36% Singapore, 25% China.
 - Harness: `evaluate/harness.py` (`score`, `segment_fidelity`); scripts in `scripts/*_experiment.py`.
 
@@ -56,7 +60,10 @@ Never borrow numbers from other surveys, polls or the news. Always show the scor
 - Score a small sample against the people **not** in it, and average scores across draws, not predictions.
   (Averaging predictions first made a 300-person survey look like 1,500 and was corrected on 17 Oct 2026.)
 - Never claim a capability that was not tested (the chatbot "drafting questions" claim was removed).
-- Check example groups in the data before naming them (people over 60 were not a standout group in Singapore).
+- Check example groups in the data before naming them (people over 60 were not a standout group in Singapore;
+  Indian and Malay Singaporeans and young adults were, and in the US Republicans, Democrats and Black Americans).
+- Check that every example uses a question that is actually in the records (prayer was not; religious services was).
+- Do not generalise from too few cases (an online-polls claim rested on 3 polls and was removed).
 
 ## Step 5. Pilot before relying on it
 
@@ -70,7 +77,7 @@ In our tests, 300 real people + record citizens were about as accurate for each 
 1. Use AI as record citizens, to stretch a smaller real survey (smaller or more frequent surveys).
 2. Record citizens help most with small groups and standout groups.
 3. Chatbots are much less useful, except in the United States.
-4. Don't borrow numbers from other surveys, polls or the news (11, 8 and 19 points off).
+4. Don't borrow numbers from other surveys or published reports (typically 11 and 8 points off).
 5. Insist on the scorecard, group by group, against real answers.
 
 ## Step 7. Report for a C-suite reader
@@ -78,7 +85,7 @@ In our tests, 300 real people + record citizens were about as accurate for each 
 Use the `c-suite-explainer` skill and `glossary.md`. Page order that worked:
 short answer → two ways to build a digital citizen, shown with one person → what it is worth →
 how we measure accuracy → where AI helps most (small groups, standout groups, why the chatbot works
-only in the US) → five rules → limits and areas for further experimentation → full evidence folded away.
+better in the US) → five rules → limits and areas for further experimentation → full evidence folded away.
 Template: `templates/scorecard_page/`.
 
 ## Step 8. QA before sharing

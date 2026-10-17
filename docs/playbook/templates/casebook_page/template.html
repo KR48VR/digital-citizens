@@ -1,0 +1,308 @@
+<title>Digital Citizens Casebook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one reading column, same visual system as the scorecard; four sections reached from a contents bar; long logs in scroll boxes. */
+  :root {
+    --bg: #f7f6f2; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #6b6a65; --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+    --tool: #2a78d6; --team: #1baf7a; --ind: #eb6834; --tool-ink: #1f5fae; --team-ink: #147a55; --ind-ink: #b84a1c; --good: #006300;
+    --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #121211; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a9890; --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --tool: #3987e5; --team: #199e70; --ind: #d95926; --tool-ink: #5aa0ee; --team-ink: #2fc08b; --ind-ink: #ee7a48; --good: #0ca30c; color-scheme: dark } }
+  :root[data-theme="dark"] { --bg: #121211; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #9a9890; --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10); --tool: #3987e5; --team: #199e70; --ind: #d95926; --tool-ink: #5aa0ee; --team-ink: #2fc08b; --ind-ink: #ee7a48; --good: #0ca30c; color-scheme: dark }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  main { max-width: 860px; margin: 0 auto; display: grid; gap: 52px; }
+  section { display: grid; gap: 16px; scroll-margin-top: 16px; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 5vw, 40px); line-height: 1.12; margin: 0 0 10px; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.3; margin: 8px 0 0; }
+  p { margin: 0; max-width: 68ch; color: var(--ink-2); }
+  strong { color: var(--ink); font-weight: 600; }
+  a { color: var(--tool-ink); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible, .dot:focus-visible, summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .private { display: inline-block; font-size: 13px; color: var(--ink-2); border: 1px solid var(--ring); border-radius: 999px; padding: 2px 10px; background: var(--surface); }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; }
+  nav a { text-decoration: none; color: var(--ink); border: 1px solid var(--ring); background: var(--surface); border-radius: 6px; padding: 6px 12px; font-size: 14px; font-weight: 500; }
+  nav a:hover { border-color: var(--ink-2); }
+  .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; counter-reset: f; }
+  .flow > div { background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 14px; display: grid; gap: 4px; align-content: start; min-width: 0; counter-increment: f; }
+  .flow > div::before { content: counter(f); font-family: var(--display); font-weight: 600; font-size: 22px; color: var(--ink); }
+  .flow b { color: var(--ink); }
+  .flow span { font-size: 14px; color: var(--ink-2); }
+  @media (max-width: 700px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .stats > div { background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+  .stats b { font-family: var(--display); font-size: 26px; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stats span { font-size: 13px; color: var(--ink-2); }
+  @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .types > div { border-top: 3px solid var(--grid); padding-top: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .types > .k-tool { border-top-color: var(--tool); } .types > .k-team { border-top-color: var(--team); } .types > .k-ind { border-top-color: var(--ind); }
+  .types h4 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 18px; line-height: 1.3; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; color: var(--ink); }
+  .types h4 b { font-family: var(--display); font-size: 28px; }
+  @media (max-width: 760px) { .types { grid-template-columns: 1fr; } }
+  .exlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .exlist li { display: grid; gap: 3px; font-size: 14px; color: var(--ink-2); padding-left: 12px; border-left: 2px solid var(--grid); }
+  .q { color: var(--ink); }
+  figure { margin: 0; background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 18px; display: grid; gap: 10px; }
+  figcaption { font-size: 14px; color: var(--ink-2); }
+  svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .dot { stroke: var(--surface); stroke-width: 1.5; cursor: default; }
+  .d-tool { fill: var(--tool); } .d-team { fill: var(--team); } .d-ind { fill: var(--ind); }
+  .tick { stroke: var(--axis); stroke-width: 1; }
+  .tl { font-family: var(--body); font-size: 8px; fill: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  caption { caption-side: top; text-align: left; font-size: 13px; color: var(--ink-2); padding-bottom: 6px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; color: var(--ink-2); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; position: sticky; top: 0; background: var(--bg); }
+  td.num, th.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  td.tid { font-family: var(--display); font-weight: 600; color: var(--ink); }
+  .cut { display: block; font-size: 12px; color: var(--muted); }
+  .wrap { overflow-x: auto; min-width: 0; }
+  .scroll { max-height: min(80vh, 900px); overflow: auto; border: 1px solid var(--ring); border-radius: 6px; background: var(--bg); }
+  .scroll caption { padding: 10px 10px 6px; }
+  .scroll thead th { position: sticky; top: 0; background: var(--bg); z-index: 1; }
+  @media (max-width: 600px) {
+    .stack, .stack tbody, .stack tr { display: block; }
+    .stack caption { display: block; }
+    .stack thead { display: none; }
+    .stack tr { padding: 10px; border-bottom: 1px solid var(--grid); }
+    .stack tr[hidden] { display: none; }
+    .stack td { display: inline-block; border: 0; padding: 0 10px 4px 0; text-align: left; }
+    .stack td.blk { display: block; padding: 6px 0 0; }
+    .stack td.blk::before { content: attr(data-l); display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .stack td.num:first-child::before { content: "#"; }
+    .stack td.task::before { content: "Task "; }
+  }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 1px 8px; white-space: nowrap; border: 1px solid currentColor; }
+  .t-tool { color: var(--tool-ink); } .t-team { color: var(--team-ink); } .t-ind { color: var(--ind-ink); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filters button { font: inherit; font-size: 14px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 5px 12px; cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .list { display: grid; gap: 8px; padding-left: 20px; margin: 0; color: var(--ink-2); max-width: 72ch; }
+  .files { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .files a { display: grid; gap: 2px; text-decoration: none; background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 12px 14px; color: var(--ink); min-width: 0; }
+  .files a span { font-size: 13px; color: var(--ink-2); }
+  .files a code { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+  @media (max-width: 640px) { .files { grid-template-columns: 1fr; } }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+  #tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 13px; padding: 6px 9px; border-radius: 4px; opacity: 0; transition: opacity .12s; max-width: 300px; z-index: 5; }
+  @media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Digital citizens · companion to the scorecard · October 2026</div>
+    <h1>Digital Citizens Casebook</h1>
+    <p>How the study behind the <a href="{{SCORECARD_URL}}" target="_blank" rel="noopener">How to use AI for digital citizens</a> page was done, every check made on it, how King and Claude worked together, and a package for doing it again.</p>
+    <p style="margin-top:10px"><span class="private">Private: only King and people King grants access can open this page</span></p>
+  </header>
+
+  <nav aria-label="Sections"><a href="#how">How we did this</a><a href="#qa">QA log</a><a href="#king">King and AI</a><a href="#package">Playbook and package</a></nav>
+
+  <section id="how">
+    <div class="eyebrow">Part 1</div>
+    <h2>How we did this</h2>
+    <p>The question King set: can AI stand in for real people when you want to know how different groups, in different countries, would respond to a product, strategy or policy, and how do we know it is accurate? Everything was tested against what real people actually said, on real public surveys, before any claim reached the page.</p>
+    <div class="flow" aria-label="The method in four steps">
+      <div><b>Real survey records</b><span>Public surveys where every person's answers to many questions are published.</span></div>
+      <div><b>Two kinds of digital citizen</b><span>The chatbot kind answers in character. Record citizens predict each real person's answer from their record.</span></div>
+      <div><b>Hide the answers, then predict</b><span>Each method predicts how each group answered questions it never saw.</span></div>
+      <div><b>Score against the truth</b><span>Points off for each group, and how much error each method removes compared with No AI.</span></div>
+    </div>
+
+    <h3>The data</h3>
+    <div class="wrap"><table>
+      <caption>Public data used. Raw files stay out of the repository; download scripts are included.</caption>
+      <thead><tr><th>Source</th><th>What it holds</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>World Values Survey, wave 7</strong></td><td>62 countries, about 92,000 people, about 290 questions each. Singapore: 2,012 people, face-to-face, November 2019 to March 2020.</td><td>Record citizens; the Singapore and China tests; learning patterns across 61 other countries</td></tr>
+        <tr><td><strong>US General Social Survey</strong>, 2022 and 2024</td><td>About 4,000 people per year, 84 questions used</td><td>US baselines, the US chatbot test, US record citizens, the survey-library test</td></tr>
+        <tr><td><strong>96 published Singapore findings</strong></td><td>Results from the Institute of Policy Studies, Pew, Asian Barometer, the National Youth Survey, Gallup, Edelman, Reuters, YouGov, Ipsos and others</td><td>Testing whether news, polls and reports add anything</td></tr>
+        <tr><td>GlobalOpinionQA (Anthropic)</td><td>Pew and World Values Survey results across 100+ countries</td><td>Cross-country baselines</td></tr>
+        <tr><td>Twin-2K-500</td><td>About 2,000 US people, with a later wave repeating some questions</td><td>The ceiling for predicting individuals</td></tr>
+        <tr><td>NVIDIA Nemotron-Personas-Singapore</td><td>Synthetic Singapore profiles</td><td>Checking whether ready-made personas match the population</td></tr>
+        <tr><td>Cooperative Election Study 2024</td><td>60,000 US people</td><td>Downloaded for later; not yet used in results</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>The tests, in the order we ran them</h3>
+    <ol class="list">
+      <li><strong>Baselines.</strong> How close simple rules get: last wave's answers, the average of other countries, demographics alone.</li>
+      <li><strong>Chatbot stress test.</strong> Claude, standing in for the chatbot, predicted group answers blind in the US, Singapore and China. It reproduced 81%, 36% and 25% of the real differences between groups.</li>
+      <li><strong>Five fixes for flattening.</strong> Stretching the chatbot's differences, sharpening its answers and showing it real answers first did not help. Building citizens from real survey records did.</li>
+      <li><strong>Learning from more countries.</strong> Record citizens trained on 61 other countries, about 90,000 people, were more accurate than those trained on 2.</li>
+      <li><strong>Weighing sources by track record.</strong> King's superforecasting idea: record citizens earned about three times the chatbot's weight.</li>
+      <li><strong>Published findings as evidence.</strong> 96 findings were 8 points off on their own and did not improve the estimates.</li>
+      <li><strong>The survey library.</strong> King's idea: borrowing the most similar question from another survey was typically 11 points off, and about 10 for the 2 questions with near-identical wording.</li>
+      <li><strong>Small surveys, scored honestly.</strong> A re-check that corrected an earlier, too-flattering result: 300 real people plus record citizens are about as accurate for each group as 600 without AI.</li>
+      <li><strong>The United States, like for like.</strong> Starting from the real overall answer, record citizens filled in US groups more closely than the chatbot: 1.8 against 2.3 points off.</li>
+      <li><strong>Which groups stand out.</strong> Checked in the data: Indian and Malay Singaporeans and young adults most often in Singapore; Republicans, Democrats and Black Americans in the US.</li>
+      <li><strong>Independent audit.</strong> A helper agent recomputed every number on the scorecard from the raw results. Its biggest catch: the "standout groups" figures were really averages over all groups. Re-done properly, they showed the chatbot kind does not help most groups in Singapore but helps its standout groups about as much as record citizens. The page was rewritten to match (QA log, finding 24).</li>
+    </ol>
+
+    <h3>How accuracy is measured</h3>
+    <ul class="list">
+      <li><strong>Points off:</strong> the gap between an estimate and the real answer, in percentage points per answer option, for each group.</li>
+      <li><strong>Most groups and standout groups:</strong> across all questions in a country, the quarter of group answers furthest from the national average are standout groups; the rest are most groups. Each figure is the middle result within its set.</li>
+      <li><strong>No AI:</strong> every group gets the real overall answer. Every method is compared with it, as "less error".</li>
+      <li><strong>The floor:</strong> about 1.3 points, how far a full national survey is from the true answer by chance alone. No method can be scored closer than that.</li>
+      <li><strong>Hold-out scoring:</strong> a small sample is always scored against people not in it, and scores, not predictions, are averaged over repeat draws.</li>
+    </ul>
+    <p>All code, data loaders, experiments and write-ups are in the repository <code>{{REPO}}</code> on branch <code>{{BRANCH}}</code>: about 4,100 lines of Python with 31 passing tests, and a results folder with every number on the scorecard.</p>
+  </section>
+
+  <section id="qa">
+    <div class="eyebrow">Part 2</div>
+    <h2>QA log</h2>
+    <p>{{N_QA}} findings: {{QA_AREAS}}. It covers corrections made during the work, King's own challenges, an independent audit in which a helper agent recomputed every number on the scorecard from the raw results, and a final check of accuracy, accessibility and layout on desktop and phone, in light and dark mode. The audit's biggest catch, finding 24, changed what the page says about the chatbot in Singapore.</p>
+    <div class="wrap scroll"><table class="stack">
+      <caption>Every finding, what was done about it, and its status.</caption>
+      <thead><tr><th class="num">#</th><th>When</th><th>Area</th><th>Finding</th><th>Fix</th><th>Status</th></tr></thead>
+      <tbody>
+{{QA_ROWS}}
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="king">
+    <div class="eyebrow">Part 3</div>
+    <h2>King and AI</h2>
+    <p>How King and Claude worked together on this project, reconstructed from the session record: every message King sent, what Claude did next, and what kind of interaction it was.</p>
+    <div class="stats">
+      <div><b>{{N_ALL}}</b><span>messages from King, over {{HOURS}}</span></div>
+      <div><b>{{N_TASKS}}</b><span>workflow tasks, all set by King</span></div>
+      <div><b>{{N_ACTIONS}}</b><span>actions by Claude: commands, edits, searches, publishes</span></div>
+      <div><b>{{N_SHOTS}}</b><span>independent reviews by King, sent as screenshots</span></div>
+      <div><b>{{N_IDEAS}}</b><span>ideas or design decisions King brought</span></div>
+      <div><b>{{N_CHALLENGES}}</b><span>times King challenged a claim or asked for its source</span></div>
+      <div><b>{{N_AGENTS}}</b><span>helper agents Claude delegated to</span></div>
+      <div><b>{{N_VERSIONS}}</b><span>published versions of the scorecard page</span></div>
+    </div>
+
+    <h3>Three ways of working</h3>
+    <div class="types">
+      <div class="k-tool"><h4><span>King used Claude as a tool</span><b>{{N_TOOL}}</b></h4><p>King asked for a defined output, such as an explanation, an edit or a rewrite, and Claude produced it. The substance came from the request.</p></div>
+      <div class="k-team"><h4><span>King worked with Claude as a teammate</span><b>{{N_TEAM}}</b></h4><p>Both shaped the result. King brought an idea, challenged a claim or drafted wording, or Claude pushed back, found a problem or proposed something that changed the plan.</p></div>
+      <div class="k-ind"><h4><span>Each worked independently</span><b>{{N_IND}}</b></h4><p>One worked without the other for a long stretch: Claude building, downloading or running experiments for up to an hour; King reviewing the page alone between rounds.</p></div>
+    </div>
+
+    <figure>
+      <h3 style="margin:0">Every interaction, in order</h3>
+      <figcaption>One dot per message from King, coloured by the kind of interaction that followed. Numbers mark where each task first appears; later lines show where King switched back to it. Hover or tab to a dot for the message.</figcaption>
+      <div class="legend"><span><i class="sw" style="background:var(--tool)"></i>Tool</span><span><i class="sw" style="background:var(--team)"></i>Teammate</span><span><i class="sw" style="background:var(--ind)"></i>Independent</span></div>
+      <div class="wrap">{{TIMELINE}}</div>
+      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; and many quick tool-style edits at the end, as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim.</p>
+    </figure>
+
+    <h3>Examples of each kind</h3>
+    <div class="types">
+      <div class="k-tool"><h4><span>Tool</span></h4><ul class="exlist">{{EX_TOOL}}</ul></div>
+      <div class="k-team"><h4><span>Teammate</span></h4><ul class="exlist">{{EX_TEAM}}</ul></div>
+      <div class="k-ind"><h4><span>Independent</span></h4><ul class="exlist">{{EX_IND}}</ul></div>
+    </div>
+
+    <h3>Who did what, task by task</h3>
+    <p>King set every task. Claude did the building, testing and writing. King did the judging: what was clear, what was true enough to say, and what a C-suite reader needs.</p>
+    <div class="wrap"><table>
+      <caption>The {{N_TASKS}} workflow tasks, each side's part, and how many interactions of each kind it involved.</caption>
+      <thead><tr><th class="num">Task</th><th>What</th><th>King's part</th><th>Claude's part</th><th class="num">Tool</th><th class="num">Team&shy;mate</th><th class="num">Indep&shy;endent</th></tr></thead>
+      <tbody>
+{{TASK_ROWS}}
+      </tbody>
+    </table></div>
+
+    <h3>Work done independently</h3>
+    <ul class="list">
+      <li><strong>By Claude:</strong> the first build (research with three helper agents, code, baselines), downloading 62 countries' survey files through a headless browser, training record citizens on 61 countries, the survey-library test (a 26-minute background run), the published-findings search (two helper agents), and this QA (one helper agent). {{N_BG}} background jobs and helper reports arrived while Claude kept working.</li>
+      <li><strong>By King:</strong> {{N_SHOTS}} rounds of reviewing the live page alone and sending back screenshots with the confusing parts highlighted, plus the thinking behind {{N_IDEAS}} ideas, such as the survey library and using local data weighted by track record.</li>
+      <li><strong>By neither:</strong> {{N_HOOKS}} automatic reminders to save and push work, and one automatic restart of the session's worker, which Claude resumed from.</li>
+    </ul>
+
+    <h3>Every interaction</h3>
+    <div class="filters" role="group" aria-label="Filter interactions by kind">
+      <button type="button" data-f="all" aria-pressed="true">All {{N_ALL}}</button>
+      <button type="button" data-f="tool" aria-pressed="false">Tool {{N_TOOL}}</button>
+      <button type="button" data-f="teammate" aria-pressed="false">Teammate {{N_TEAM}}</button>
+      <button type="button" data-f="independent" aria-pressed="false">Independent {{N_IND}}</button>
+    </div>
+    <div class="wrap scroll"><table id="log" class="stack">
+      <caption>Each message from King, quoted as typed, and what Claude did next. Times are UTC on 17 October 2026.</caption>
+      <thead><tr><th class="num">#</th><th class="num">Time</th><th>Task</th><th>Kind</th><th>King said</th><th>Claude did</th></tr></thead>
+      <tbody>
+{{LOG_ROWS}}
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="package">
+    <div class="eyebrow">Part 4</div>
+    <h2>Playbook and package</h2>
+    <p>Everything needed to run a study like this again, for a new country, city or question, or to pick this one up later. The files live in the repository, where Claude Code loads the two skills automatically; copies are published with this page so King can read them here. The index is <code>docs/playbook/README.md</code>.</p>
+
+    <h3>The two pages</h3>
+    <ul class="list">
+      <li><a href="{{SCORECARD_URL}}" target="_blank" rel="noopener">How to use AI for digital citizens</a>: the scorecard for a C-suite reader. Share it with anyone who should see the findings.</li>
+      <li>This casebook: the method, QA log, working record and package. Private.</li>
+    </ul>
+
+    <h3>The playbook in eight steps</h3>
+    <ol class="list">
+      <li><strong>Frame the question:</strong> exact wording, and the groups the decision turns on.</li>
+      <li><strong>Find rich public records:</strong> surveys that publish every person's answers to many questions; note when they were collected.</li>
+      <li><strong>Build record citizens:</strong> learn the pattern from other countries, or from your own small survey with standard questions included.</li>
+      <li><strong>Measure with the scorecard:</strong> points off for most groups and for standout groups, and how much less error than No AI, worked out from unrounded results.</li>
+      <li><strong>Pilot before relying on it:</strong> 600 people; record citizens fill in the groups from 300; compare with all 600.</li>
+      <li><strong>Decide with the five rules.</strong></li>
+      <li><strong>Report for a C-suite reader:</strong> agreed terms, define before use, one running example, numbers with their meaning.</li>
+      <li><strong>QA before sharing:</strong> accuracy, language, accessibility, aesthetics; log every finding.</li>
+    </ol>
+
+    <h3>Files</h3>
+    <div class="files">
+      <a href="package/playbook.html"><strong>Playbook</strong><span>The eight steps in full, with code pointers and lessons learned.</span><code>docs/playbook/playbook.md</code></a>
+      <a href="package/glossary.html"><strong>Agreed language</strong><span>Every reader-facing term, how to define it, and words to avoid.</span><code>docs/playbook/glossary.md</code></a>
+      <a href="package/qa_checklist.html"><strong>QA checklist</strong><span>Accuracy, language, accessibility and aesthetics checks.</span><code>docs/playbook/qa_checklist.md</code></a>
+      <a href="package/working_with_king.html"><strong>Working with King</strong><span>What King wants from a page, how King works, what worked.</span><code>docs/playbook/working_with_king.md</code></a>
+      <a href="package/skill_digital_citizens_study.html"><strong>Skill: digital-citizens study</strong><span>Loads in Claude Code: method, commands, code map.</span><code>.claude/skills/digital-citizens-study/SKILL.md</code></a>
+      <a href="package/skill_c_suite_explainer.html"><strong>Skill: C-suite explainer</strong><span>Loads in Claude Code: how to write for King and a C-suite reader.</span><code>.claude/skills/c-suite-explainer/SKILL.md</code></a>
+      <a href="package/scorecard_template.html"><strong>Scorecard page template</strong><span>The page's source and build script, to make the next one.</span><code>docs/playbook/templates/scorecard_page/</code></a>
+      <a href="package/interactions.json"><strong>Interaction record (data)</strong><span>All {{N_ALL}} interactions with task, kind and examples.</span><code>docs/playbook/records/interactions.json</code></a>
+    </div>
+
+    <h3>Using it next time</h3>
+    <ol class="list">
+      <li>Start a Claude Code session on the repository <code>{{REPO}}</code>, branch <code>{{BRANCH}}</code>. The two skills load automatically.</li>
+      <li>Ask in plain words, for example: "Run a digital-citizens study for Malaysia on this question", or "Add Taiwan and re-run the scorecard".</li>
+      <li>Claude follows the playbook, writes in the agreed language and runs the QA checklist before publishing.</li>
+      <li>To update either page, give Claude its link; Claude reads it first and keeps the same address.</li>
+    </ol>
+  </section>
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+<script>
+  (function () {
+    var tip = document.getElementById('tip');
+    function place(x, y) { var w = tip.offsetWidth, h = tip.offsetHeight; if (x + w > window.innerWidth - 8) x = x - w - 24; if (y + h > window.innerHeight - 8) y = y - h - 28; tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
+    document.querySelectorAll('[data-tip]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { tip.textContent = el.getAttribute('data-tip'); tip.style.opacity = '1'; });
+      el.addEventListener('mousemove', function (e) { place(e.clientX + 12, e.clientY + 14); });
+      el.addEventListener('mouseleave', function () { tip.style.opacity = '0'; });
+      el.addEventListener('focus', function () { var b = el.getBoundingClientRect(); tip.textContent = el.getAttribute('data-tip'); tip.style.opacity = '1'; place(b.left + 8, b.bottom + 8); });
+      el.addEventListener('blur', function () { tip.style.opacity = '0'; });
+    });
+    var btns = document.querySelectorAll('.filters button');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = b.getAttribute('data-f');
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        document.querySelectorAll('#log tbody tr').forEach(function (tr) { tr.hidden = !(f === 'all' || tr.getAttribute('data-type') === f); });
+      });
+    });
+  })();
+</script>

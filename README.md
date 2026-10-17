@@ -16,22 +16,24 @@ twice the size.
 The AI that stretches a small survey is the kind that learns from patterns in real people's past survey
 answers. We call the digital citizens built this way record citizens.
 
-The more common use of AI, a chatbot answering in place of people, works well only in the United States.
-We call this the chatbot kind.
+The more common use of AI, a chatbot answering in place of people, is less reliable. It filled in the groups
+well in the United States. In Singapore it helped only with groups that stand out from the average. We call
+this the chatbot kind.
 
 | The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
 |---|---|---|---|
-| 1. AI alone (a chatbot pretends to be people from each group) | 5 points | No, groups come out nearly alike | Drop |
+| 1. AI alone (a chatbot pretends to be people from each group) | 5 points | Outside the US, groups come out much more alike than they are | Drop |
 | 2. Citizens built from real people's past survey answers (no chatbot) | under 4 points | Yes, mostly | Keep |
 | 3. Borrow the numbers from a similar question in a different survey | 11 points | Partly, but the overall number is far off | Drop |
 | 4. Ask 300 real people, let the record citizens fill in the groups | 3 points | Yes | Keep: this is the plan |
 | The best it can ever be (exact national number, then fill in) | 2 points | Yes | Only chance is left |
 
 "How far off" is the gap between our estimate and the real survey, in percentage points, for a typical group;
-survey noise alone gives about 1.4, guessing blind about 16. The "AI" that works starts from real people: each
+survey noise alone gives about 1.3, guessing blind about 15. The "AI" that works starts from real people: each
 record citizen is a real, anonymous survey respondent whose own past answers predict their answer to a new
-question. The chatbot kind, which guesses from a description of a person, is the part that flattens groups. The plain-language scorecard with charts is
-at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page).
+question. The chatbot kind, which guesses from a description of a person, tends to make groups look alike outside the United States. The plain-language scorecard with charts is
+at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page). How it was made, the QA log
+and a playbook for next time are in the private casebook at https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 and in [docs/playbook/](docs/playbook/README.md).
 
 ## Read first
 

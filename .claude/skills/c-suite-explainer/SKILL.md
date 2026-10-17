@@ -10,8 +10,8 @@ Follow `docs/playbook/working_with_king.md` and use only the terms in `docs/play
 1. **Lead with the answer** in plain words. No term the reader has not met yet.
 2. **Define before use**, through one running example (the 62-year-old woman, her record, her groups).
 3. **Use the agreed terms only**, the same way every time. Capitalise "No AI" when it names the comparison column.
-4. **Numbers come with their meaning:** what it is, what it means (points off scale: 1.4 floor, 3 good enough,
-   5 rough, 16 blind), and so what for the decision.
+4. **Numbers come with their meaning:** what it is, what it means (points off scale: 1.3 floor, 3 good enough,
+   5 rough, 15 blind), and so what for the decision.
 5. **One idea per paragraph.** Never introduce a second concept while explaining the first. No notes left
    floating away from what they explain.
 6. **Claims are checked.** If asked "is this backed up?", recompute from the data and say where it comes from.

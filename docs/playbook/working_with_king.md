@@ -24,6 +24,9 @@ Full record with every interaction: the private companion page ("King and AI" se
 - Running a new test when King asked "why didn't we test X?" rather than explaining the gap away.
 - Turning King's ideas into experiments (survey library, local data with Bayesian weighting, published findings).
 - Recapping each change with the exact new wording.
+- An independent audit by a helper agent that recomputed every number from the raw results. It caught a
+  mislabelled "standout groups" row that changed what the page says about the chatbot in Singapore.
+  Next time, run it before the page first goes to King, not only at the end.
 
 ## What to avoid
 - Jargon in replies, not just on the page ("spread", "headline number", "exchange rate", "signal").

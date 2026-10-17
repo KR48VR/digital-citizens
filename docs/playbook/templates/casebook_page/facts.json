@@ -1,0 +1,107 @@
+{
+ "task_parts": {
+  "T1": [
+   "Set the goal, the countries of interest and the bar: make sure the citizens are accurate, and say how that is checked.",
+   "Researched the evidence and datasets with three helper agents, wrote the measurement plan and country recommendation, built the first code and ran baselines on real data."
+  ],
+  "T2": [
+   "Questioned the need for a paid key, proposed testing on public data first, and offered browser access for downloads.",
+   "Stood in for the model with blind predictions, downloaded the World Values Survey with a headless browser, and stress-tested the US, Singapore and China."
+  ],
+  "T3": [
+   "Set the bar: make it work instead of regressing to the average.",
+   "Tested five remedies; three failed and anchoring citizens to real survey records worked."
+  ],
+  "T4": [
+   "Asked for simpler explanations six times.",
+   "Rewrote explanations with analogies and worked examples."
+  ],
+  "T5": [
+   "Asked to see the gains and for more data; proposed local data weighted Bayesian-style, like superforecasting.",
+   "Built the first scorecard page, downloaded all 62 countries, and built pooling that weighs each source by its track record."
+  ],
+  "T6": [
+   "Proposed using news, social media, reports and research.",
+   "Combed sources with two helper agents, turned 96 published findings into evidence and tested them: little value."
+  ],
+  "T7": [
+   "Proposed the survey library idea.",
+   "Set out the conditions, built and ran the US test, and found and corrected an earlier scoring error of mine."
+  ],
+  "T8": [
+   "Asked for one simple table, proposed building it around the one-line summary, drew the budget implication and banned jargon.",
+   "Built the tables, defined points off, and replaced jargon with agreed plain terms."
+  ],
+  "T9": [
+   "Spotted that filling in groups is itself AI, checked understanding, and asked to show the US against Singapore.",
+   "Wrote the two-kinds explanation, the two-women example and the US-versus-Singapore chart."
+  ],
+  "T10": [
+   "Asked for a streamlined page and flagged text that was hard to grasp.",
+   "Rebuilt the page around what AI can and cannot do, with one example person."
+  ],
+  "T11": [
+   "Challenged the framing of a result and asked why the US had not been tested.",
+   "Reframed against the no-AI baseline and ran the missing US test."
+  ],
+  "T12": [
+   "Reviewed the page with screenshots and set wording and layout changes.",
+   "Rewrote the one-line result, explanations and terms; replaced negative wording."
+  ],
+  "T13": [
+   "Tested own understanding, asked for guidance on when to use AI, and insisted on the agreed language.",
+   "Framed results as error removed and wrote the when-to-use guide in agreed terms."
+  ],
+  "T14": [
+   "Questioned claims and sources: an untested claim, a group example, a figure's source, survey timing.",
+   "Rechecked the data, removed or corrected claims, and found the survey's fieldwork dates."
+  ],
+  "T15": [
+   "Reviewed the page section by section with screenshots and drafted wording.",
+   "Rebuilt the page flow so terms are defined first; rewrote tables, chart and explanations."
+  ],
+  "T16": [
+   "Specified the five rules and chose section titles.",
+   "Checked every number in the rules, designed the split-sample pilot and rewrote the limits."
+  ],
+  "T17": [
+   "Asked for a thorough QA and this record.",
+   "Ran QA with an independent helper agent, fixed findings, wrote this page and the reusable package."
+  ]
+ },
+ "examples": {
+  "tool": [
+   19,
+   30,
+   58
+  ],
+  "teammate": [
+   12,
+   26,
+   27,
+   53
+  ],
+  "independent": [
+   1,
+   3,
+   13
+  ]
+ },
+ "scalars": {
+  "HOURS": "about 10 hours",
+  "N_TASKS": 17,
+  "N_SHOTS": 14,
+  "N_AGENTS": 6,
+  "N_BG": 11,
+  "N_HOOKS": 5,
+  "N_IDEAS": 12,
+  "N_CHALLENGES": 7,
+  "N_DRAFTS": 6,
+  "N_ACTIONS": "over 500",
+  "N_COMMITS": "29",
+  "N_VERSIONS": "39",
+  "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
+  "BRANCH": "claude/eloquent-hawking-1m0amk",
+  "REPO": "KR48VR/digital-citizens"
+ }
+}

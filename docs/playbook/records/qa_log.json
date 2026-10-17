@@ -1,0 +1,362 @@
+[
+ {
+  "when": "03:40 during build",
+  "area": "Accuracy",
+  "finding": "The first scorecard's 'survey noise' bar had been estimated, not computed.",
+  "fix": "Computed it from the survey data before publishing.",
+  "status": "Fixed",
+  "id": 1
+ },
+ {
+  "when": "07:50 library test",
+  "area": "Accuracy",
+  "finding": "Small-survey results averaged five samples before scoring and were scored against people included in the sample, so 300 people looked like 1,500 (claimed 1.3 points off).",
+  "fix": "Re-scored against people not in the sample: 3.2 points off. Corrected docs 06 and 07, the results and the page.",
+  "status": "Fixed",
+  "id": 2
+ },
+ {
+  "when": "07:50 library test",
+  "area": "Accuracy",
+  "finding": "The track-record pooling experiment had the same scoring flaw.",
+  "fix": "Fixed the scoring code and re-ran; small-group gains became clearer (Indian Singaporeans 8.2 to 2.9 points).",
+  "status": "Fixed",
+  "id": 3
+ },
+ {
+  "when": "09:37 King's question",
+  "area": "Accuracy",
+  "finding": "US record citizens had never been compared with the chatbot on the same questions.",
+  "fix": "Ran the test: record citizens 1.8 points off against the chatbot's 2.3.",
+  "status": "Fixed",
+  "id": 4
+ },
+ {
+  "when": "10:18 King's question",
+  "area": "Accuracy",
+  "finding": "The page said the chatbot is good at drafting questions and finding past ones. Neither was tested; question-finding used a separate matching tool.",
+  "fix": "Removed the claim.",
+  "status": "Fixed",
+  "id": 5
+ },
+ {
+  "when": "10:29 King's review",
+  "area": "Language",
+  "finding": "Terms (chatbot kind, record citizens) were used before they were defined, and 'closest question' was jargon.",
+  "fix": "Re-ordered the page so every term is defined first; replaced the jargon with a plain rule.",
+  "status": "Fixed",
+  "id": 6
+ },
+ {
+  "when": "10:08 King's review",
+  "area": "Language",
+  "finding": "'Worst cases' sounded negative.",
+  "fix": "Replaced with 'standout groups' and 'most groups' everywhere.",
+  "status": "Fixed",
+  "id": 7
+ },
+ {
+  "when": "11:10 King's question",
+  "area": "Accuracy",
+  "finding": "'As people over 60 often do' was not supported: people over 60 were the most distinctive group on 0 of 20 Singapore questions.",
+  "fix": "Replaced with Malay Singaporeans and young adults (6 and 5 of 20), and made the point general.",
+  "status": "Fixed",
+  "id": 8
+ },
+ {
+  "when": "11:11 King's review",
+  "area": "Language",
+  "finding": "The bullets describing the chatbot kind and record citizens said the same thing.",
+  "fix": "Rewrote them to say how each works out group differences.",
+  "status": "Fixed",
+  "id": 9
+ },
+ {
+  "when": "11:15 King's review",
+  "area": "Language",
+  "finding": "Lower-case 'no AI' read as 'no AI at all' where it named the comparison column.",
+  "fix": "Capitalised 'No AI' wherever it names the column.",
+  "status": "Fixed",
+  "id": 10
+ },
+ {
+  "when": "11:36 King's review",
+  "area": "Method",
+  "finding": "The pilot said to check against a larger survey, which is circular.",
+  "fix": "Split-sample pilot: survey 600, let record citizens fill in groups from 300, compare with all 600.",
+  "status": "Fixed",
+  "id": 11
+ },
+ {
+  "when": "11:43 King's question",
+  "area": "Accuracy",
+  "finding": "The job-worry figure had no source shown, and the Singapore survey overlapped COVID's arrival (November 2019 to March 2020).",
+  "fix": "Traced to the World Values Survey file, added the fieldwork dates, and removed the example.",
+  "status": "Fixed",
+  "id": 12
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "Grey label text (section labels, table headings, notes, chart ticks) had 3.3:1 contrast in light mode; 4.5:1 is the minimum.",
+  "fix": "Darkened the grey to 5.0:1. Dark mode already passed.",
+  "status": "Fixed",
+  "id": 13
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "Headings skipped levels (main title straight to third level), which confuses screen readers.",
+  "fix": "Section labels became second-level headings; the chart title fourth level; the analysts' section a heading.",
+  "status": "Fixed",
+  "id": 14
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "Tables had no captions.",
+  "fix": "Added captions: visible on the main tables, read-aloud only in the analysts' section.",
+  "status": "Fixed",
+  "id": 15
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "The chart told the chatbot kind and record citizens apart by colour only, apart from the legend.",
+  "fix": "Labelled the first pair of bars directly.",
+  "status": "Fixed",
+  "id": 16
+ },
+ {
+  "when": "QA pass",
+  "area": "Accuracy",
+  "finding": "'As accurately as a survey twice the size' overclaimed: 2.7 to 2.9 points against 2.6 to 2.7.",
+  "fix": "'About as accurately' in the short answer, the box, rule 1 and the README.",
+  "status": "Fixed",
+  "id": 17
+ },
+ {
+  "when": "QA pass",
+  "area": "Accuracy",
+  "finding": "The record-citizens box said the woman 'answered about 80 questions'. The survey has about 290; we used about 80.",
+  "fix": "Now 'answered a long survey about her views and values'.",
+  "status": "Fixed",
+  "id": 18
+ },
+ {
+  "when": "QA pass",
+  "area": "Language",
+  "finding": "Two tables headed the column of group names 'Points off'.",
+  "fix": "Renamed to 'Group' and 'Country and groups'; the unit moved to the caption.",
+  "status": "Fixed",
+  "id": 19
+ },
+ {
+  "when": "QA pass",
+  "area": "Accuracy",
+  "finding": "The analysts' note dated the Singapore survey '2020'.",
+  "fix": "Now gives the fieldwork window, November 2019 to March 2020.",
+  "status": "Fixed",
+  "id": 20
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "The page's language setting cannot be set from inside the page; the publishing wrapper adds the page frame.",
+  "fix": "None possible here; screen readers default to the viewer's language.",
+  "status": "Noted",
+  "id": 21
+ },
+ {
+  "when": "QA pass",
+  "area": "Accessibility",
+  "finding": "On this casebook page, the tag and link colours were below 4.5:1 as text.",
+  "fix": "Added darker text versions of each colour for light mode and lighter ones for dark mode.",
+  "status": "Fixed",
+  "id": 22
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "Some 'less error' percentages were worked out from the rounded table figures. Singapore's most-groups figure for record citizens showed 27%; from the unrounded results it is 25%.",
+  "fix": "Recomputed every percentage from the unrounded results and rebuilt the table, chart, chart labels and rules from them.",
+  "status": "Fixed",
+  "id": 23
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "The rows labelled 'standout groups' were not standout groups. They were the average over all groups, while 'most groups' was the middle result over all groups, so the same groups were shown twice, measured two ways.",
+  "fix": "Defined standout groups as the quarter of group answers furthest from the national average on each question, and most groups as the rest, then recomputed. This changed the story: in Singapore the chatbot kind does not help most groups (4% more error) but helps standout groups about as much as record citizens (43% against 40%). The table, chart, so-what bullets and rules 2 and 3 were rewritten to match.",
+  "status": "Fixed",
+  "id": 24
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "'300 real people + AI = 600 real people' came from record citizens and the chatbot kind combined, but the page credited record citizens alone.",
+  "fix": "The box caption and rule 1 now say record citizens do most of the work, with the chatbot kind weighted in by its track record.",
+  "status": "Fixed",
+  "id": 25
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "The example said record citizens use how often the woman prays. Prayer is not among the questions in the records we used.",
+  "fix": "Changed to how often she goes to religious services, which is in the records, here and in the two-women example.",
+  "status": "Fixed",
+  "id": 26
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "The page implied a small survey needs only a few standard questions to link to the records. Our tests shared about 76; the minimum was never tested.",
+  "fix": "Now says our tests shared about 76 questions and how few will do is not yet known.",
+  "status": "Fixed",
+  "id": 27
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "The survey-noise floor appeared as 1.4 in one place and 1.3 in another, and blind guessing as 14.7 against a rounded scale.",
+  "fix": "Used the middle result everywhere: 1.3 for the floor and 15 for guessing blind, with the average shown beside it for analysts.",
+  "status": "Fixed",
+  "id": 28
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "'Malay Singaporeans and young adults stood out most often' left out Indian Singaporeans, who stood out as often.",
+  "fix": "Added Indian Singaporeans and named the United States' standout groups too: Republicans, Democrats and Black Americans.",
+  "status": "Fixed",
+  "id": 29
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "The page said as fact that the chatbot does well in the United States because American survey results are widely published.",
+  "fix": "Now framed as the likely reason, with a second possibility added: the chatbot may already have seen these exact surveys.",
+  "status": "Fixed",
+  "id": 30
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "Rule 4 said online polls were far off. That rested on only 3 polls.",
+  "fix": "Removed the claim.",
+  "status": "Fixed",
+  "id": 31
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "'Even near-identical wording was 10 points off' rested on 2 of the 31 borrowed questions.",
+  "fix": "Main text says 'about 10'; the analysts' table now notes that only 2 were near-identical.",
+  "status": "Fixed",
+  "id": 32
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "'Records age, but group differences last longer than overall answers' was never tested.",
+  "fix": "Removed. 'Records age' now says whether group differences hold up over time has not been tested.",
+  "status": "Fixed",
+  "id": 33
+ },
+ {
+  "when": "Independent audit",
+  "area": "Method",
+  "finding": "A simpler shortcut, filling in groups from age, sex, ethnicity and religion alone, came about as close as record citizens in Singapore on points off. The page did not say so.",
+  "fix": "Added as a limit, with where record citizens still do better: the pattern of group differences, and the United States.",
+  "status": "Fixed",
+  "id": 34
+ },
+ {
+  "when": "Independent audit",
+  "area": "Method",
+  "finding": "Every small-survey test drew its people from the same survey as the records, so a survey run by a different firm in a different way was never tested.",
+  "fix": "Added as a limit. The recommended pilot will show it.",
+  "status": "Fixed",
+  "id": 35
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "Several analysts' figures were off by rounding or mislabelled: the recipe range, the pooled results at 150 and 300, and column headings in statistics jargon.",
+  "fix": "Corrected to 2.6 to 2.9, 2.9 and 2.6, and relabelled the columns 'Middle result' and 'Average'.",
+  "status": "Fixed",
+  "id": 36
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accuracy",
+  "finding": "The short answer said that outside the United States the chatbot helps only standout groups. Only Singapore was tested that way.",
+  "fix": "Now says 'In Singapore'.",
+  "status": "Fixed",
+  "id": 37
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accuracy",
+  "finding": "A heading said the chatbot does not work in Singapore, but it cut the error for Singapore's standout groups by 43%. Rule 3 said it 'did nothing' for most groups; it made them 4% worse.",
+  "fix": "Heading now reads 'works better in the United States than in Singapore'; rule 3 says 'did not help most groups'.",
+  "status": "Fixed",
+  "id": 38
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accuracy",
+  "finding": "The 1.3 tile said 'as close as a survey of this size can get', right after the 300-against-600 box, inviting the reading that 300 people could get that close.",
+  "fix": "Now says even a full national survey is this far off from chance alone; the analysts' row says the same.",
+  "status": "Fixed",
+  "id": 39
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Language",
+  "finding": "'11 points off on average' and '8 points off' described middle results; the averages were 12.4 and 8.3.",
+  "fix": "Now 'typically 11 points off' and 'typically 8 points off'.",
+  "status": "Fixed",
+  "id": 40
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accuracy",
+  "finding": "The analysts' note gave '3.2 and 2.9 points at 300' without saying what each number was.",
+  "fix": "Now says 3.2 for a survey of 300 read straight off and 2.9 with record citizens alone.",
+  "status": "Fixed",
+  "id": 41
+ },
+ {
+  "when": "Earlier QA pass",
+  "area": "Layout",
+  "finding": "On phones the chart's labels were too small to read and crowded the bars.",
+  "fix": "Moved labels above the bars, put the first row's names inside them and enlarged the phone font.",
+  "status": "Fixed",
+  "id": 42
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Layout",
+  "finding": "On phones the small-groups table pushed its most important column, 'With AI filling in the group', off the right edge.",
+  "fix": "Tightened table spacing on narrow screens. All four tables now fit a 375-pixel-wide phone without sideways scrolling.",
+  "status": "Fixed",
+  "id": 43
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accessibility",
+  "finding": "The contrast checker flagged the chart's in-bar labels as near-invisible in dark mode.",
+  "fix": "Checked by hand: the labels sit on the coloured bars, not the background, at 5.1:1 or better. No change needed.",
+  "status": "Noted",
+  "id": 44
+ },
+ {
+  "when": "Final QA pass",
+  "area": "Accuracy",
+  "finding": "The US most-groups No AI figure showed 3.2. The exact value is 3.146; it had been rounded twice (to 3.15, then to 3.2).",
+  "fix": "Changed to 3.1. Saved the standout check as a script in the project (scripts/standout_split.py) so the figures come straight from unrounded results.",
+  "status": "Fixed",
+  "id": 45
+ }
+]
