@@ -68,9 +68,12 @@ reports. Always show the scorecard, against the survey alone.
 - Secondary check, analysts only: **standout groups** (the quarter of group answers furthest from the national
   average, `scripts/standout_split.py`). Compared with the survey alone they gained no more than other groups;
   compared with giving every group the overall answer ("No AI") they gain most. Say which comparison you use.
-- Noise floor: about 1.3 points (how far a full national survey is from the true answer by chance alone;
-  two separate surveys would differ by about 1.9). Reading guide: 1.3 the best possible, about 3 good enough
-  to act on, 5 rough level only, 15 guessing blind.
+- Best possible (floor) in the one-method test: about 1.5 points in Singapore and 1.7 in the US
+  (`scripts/yardstick_noise.py`): even a perfect estimate lands this far off, because the people it is checked
+  against are a sample too. Reading guide: about 1.5 best possible, 3 good enough to act on, 5 rough level only,
+  15 guessing blind.
+- Score groups, not individuals: people repeat only about 70-80% of their own answers weeks later, but a
+  typical group's answer shares move under 2 points (`docs/results/self_agreement_twin2k.md`).
 - Group differences reproduced (gap slope) shows flattening: chatbot kind 81% US, 36% Singapore, 25% China.
 - Harness: `evaluate/harness.py` (`score`, `segment_fidelity`); scripts in `scripts/*_experiment.py`.
 
@@ -103,9 +106,12 @@ tests (on well-known survey questions it may have read about) could not.
 ## Step 7. Report for a C-suite reader
 
 Use the `c-suite-explainer` skill and `glossary.md`. Page order that worked:
-short answer → two ways to build a digital citizen, shown with one person → what it is worth →
-how we measure accuracy → where AI helps most (which AI, by whether the question was asked before; small
-groups; why the chatbot works better in the US) → five rules → limits and areas for further experimentation → full evidence folded away.
+short answer → two ways to build a digital citizen, shown with one person → how we measure accuracy
+(the one test, points off, the scale, why groups rather than individuals) → what it is worth → where AI helps
+most (which AI, by whether the question was asked before; small groups; why the chatbot works better in the
+US) → five short rules → limits and what to test next → full evidence folded away. Define the yardstick before
+the first result, give every section one "so what", and say each finding once: the rules point back to the
+evidence rather than repeating it.
 Template: `templates/scorecard_page/`.
 
 ## Step 8. QA before sharing

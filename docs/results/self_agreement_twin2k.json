@@ -8,6 +8,13 @@
  "shift_everyone": 1.166180758017496,
  "shift_typical_group": 1.7357834788679807,
  "group_size_vs_shift_spearman": -0.9780219780219781,
+ "ordered_5plus_items": 24,
+ "ordered_exact": 0.5087261094914156,
+ "ordered_within_one_step": 0.8486799481697441,
+ "average_block": "QID287",
+ "average_block_items": 10,
+ "single_item_r": 0.7342272817806829,
+ "average_r": 0.8570487882102267,
  "groups": [
   {
    "group": "age: 18-29",
