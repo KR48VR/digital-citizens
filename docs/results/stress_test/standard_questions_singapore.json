@@ -1,0 +1,31 @@
+{
+ "source": "World Values Survey wave 7: Malaysia, Indonesia, Thailand, Philippines, Vietnam, Japan, South Korea, Taiwan ROC, Hong Kong SAR, Australia",
+ "people": 16122,
+ "order": [
+  "Q64",
+  "Q71",
+  "Q63",
+  "Q49",
+  "Q209",
+  "Q22",
+  "Q109",
+  "Q235",
+  "Q2",
+  "Q4",
+  "Q17",
+  "Q180",
+  "Q30",
+  "Q163",
+  "Q6",
+  "Q111",
+  "Q122",
+  "Q18",
+  "Q250",
+  "Q59",
+  "Q9",
+  "Q144",
+  "Q222",
+  "Q287",
+  "Q185"
+ ]
+}
