@@ -358,5 +358,13 @@
   "fix": "Changed to 3.1. Saved the standout check as a script in the project (scripts/standout_split.py) so the figures come straight from unrounded results.",
   "status": "Fixed",
   "id": 45
+ },
+ {
+  "when": "After QA",
+  "area": "Accuracy",
+  "finding": "Project document 07 rounded the pooled results up (3.0 and 2.7); the exact values are 2.946 and 2.647, as the scorecard shows.",
+  "fix": "Corrected document 07 to 2.9 and 2.6.",
+  "status": "Fixed",
+  "id": 46
  }
 ]

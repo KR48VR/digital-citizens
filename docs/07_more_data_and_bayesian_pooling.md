@@ -106,7 +106,7 @@ What this says, plainly:
    3.4 vs 3.7 and 5.0 on segments). This is the right default when there is no local data.
 2. **A small local survey plus the simulators beats both.** 150 real Singaporeans, spread across groups
    as they fall, give 4.8 points of error on groups when read straight off the survey (a group of 15-20
-   people is noisy); pooled with the simulators, 3.0. At 300 answers the pair is 3.6 vs 2.7; at 600, 2.7
+   people is noisy); pooled with the simulators, 2.9. At 300 answers the pair is 3.6 vs 2.6; at 600, 2.7
    vs 2.4. The simulators are worth most for the smallest groups: with 150 answers the error for Indian
    respondents falls from 8.2 to 2.9 points, Malays 6.2 to 3.6, Muslims 6.5 to 3.9, while the big Chinese
    group barely moves (2.5 to 2.3). The learned weights say why: the record-anchored citizens count for
