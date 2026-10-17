@@ -1,0 +1,272 @@
+{
+ "benchmark": "gss",
+ "groups": [
+  "ALL",
+  "party3=Democrat (incl. leaners)",
+  "party3=Republican (incl. leaners)",
+  "age_band=18-29",
+  "age_band=65+",
+  "race_eth=Black, non-Hispanic",
+  "education=Bachelor's or higher"
+ ],
+ "group_descriptions": {
+  "ALL": "all adults in the United States",
+  "party3=Democrat (incl. leaners)": "US adults with party3: Democrat (incl. leaners)",
+  "party3=Republican (incl. leaners)": "US adults with party3: Republican (incl. leaners)",
+  "age_band=18-29": "US adults with age band: 18-29",
+  "age_band=65+": "US adults with age band: 65+",
+  "race_eth=Black, non-Hispanic": "US adults with race eth: Black, non-Hispanic",
+  "education=Bachelor's or higher": "US adults with education: Bachelor's or higher"
+ },
+ "questions": [
+  {
+   "id": "life",
+   "text": "In general, do you find life exciting, pretty routine, or dull?",
+   "options": [
+    "Exciting",
+    "Pretty routine",
+    "Dull"
+   ]
+  },
+  {
+   "id": "finrela",
+   "text": "Compared with American families in general, would you say your family income is far below average, below average, average, above average, or far above average?",
+   "options": [
+    "Far below average",
+    "Below average",
+    "Average",
+    "Above average",
+    "Far above average"
+   ]
+  },
+  {
+   "id": "owngun",
+   "text": "Do you happen to have in your home (or garage) any guns or revolvers?",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "prayer",
+   "text": "The United States Supreme Court has ruled that no state or local government may require the reading of the Lord's Prayer or Bible verses in public schools. What are your views on this--do you approve or disapprove of the court ruling?",
+   "options": [
+    "Approve",
+    "Disapprove"
+   ]
+  },
+  {
+   "id": "spanking",
+   "text": "Do you strongly agree, agree, disagree, or strongly disagree that it is sometimes necessary to discipline a child with a good, hard spanking?",
+   "options": [
+    "Strongly agree",
+    "Agree",
+    "Disagree",
+    "Strongly disagree"
+   ]
+  },
+  {
+   "id": "homosex",
+   "text": "What about sexual relations between two adults of the same sex--do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+   "options": [
+    "Always wrong",
+    "Almost always wrong",
+    "Wrong only sometimes",
+    "Not wrong at all"
+   ]
+  },
+  {
+   "id": "xmarsex",
+   "text": "What is your opinion about a married person having sexual relations with someone other than the marriage partner--is it always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+   "options": [
+    "Always wrong",
+    "Almost always wrong",
+    "Wrong only sometimes",
+    "Not wrong at all"
+   ]
+  },
+  {
+   "id": "teensex",
+   "text": "What about sexual relations before marriage for people in their early teens, say 14 to 16 years old? In that case, do you think sex relations before marriage are always wrong, almost always wrong, wrong only sometimes, or not wrong at all?",
+   "options": [
+    "Always wrong",
+    "Almost always wrong",
+    "Wrong only sometimes",
+    "Not wrong at all"
+   ]
+  },
+  {
+   "id": "fepresch",
+   "text": "Please indicate whether you strongly agree, agree, disagree, or strongly disagree with the following statement: A preschool child is likely to suffer if his or her mother works.",
+   "options": [
+    "Strongly agree",
+    "Agree",
+    "Disagree",
+    "Strongly disagree"
+   ]
+  },
+  {
+   "id": "helpsick",
+   "text": "In general, some people think that it is the responsibility of the government in Washington to see to it that people have help in paying for doctors and hospital bills. Others think that these matters are not the responsibility of the federal government and that people should take care of these things themselves. Where would you place yourself on this scale?",
+   "options": [
+    "1 - Government should help",
+    "2",
+    "3 - Agree with both",
+    "4",
+    "5 - People should take care of themselves"
+   ]
+  },
+  {
+   "id": "eqwlth",
+   "text": "Some people think that the government in Washington ought to reduce the income differences between the rich and the poor, perhaps by raising the taxes of wealthy families or by giving income assistance to the poor. Others think that the government should not concern itself with reducing this income difference between the rich and the poor. Think of a score of 1 as meaning that the government ought to reduce the income differences between rich and poor, and a score of 7 meaning that the government should not concern itself with reducing income differences. What score between 1 and 7 comes closest to the way you feel?",
+   "options": [
+    "1 - Government should reduce income differences",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7 - Government should not concern itself with reducing income differences"
+   ]
+  },
+  {
+   "id": "natheal",
+   "text": "We are faced with many problems in this country, none of which can be solved easily or inexpensively. I'm going to name some of these problems, and for each one I'd like you to tell me whether you think we're spending too much money on it, too little money, or about the right amount. Are we spending too much, too little, or about the right amount on: Improving and protecting the nation's health",
+   "options": [
+    "Too little",
+    "About right",
+    "Too much"
+   ]
+  },
+  {
+   "id": "natdrug",
+   "text": "We are faced with many problems in this country, none of which can be solved easily or inexpensively. I'm going to name some of these problems, and for each one I'd like you to tell me whether you think we're spending too much money on it, too little money, or about the right amount. Are we spending too much, too little, or about the right amount on: Dealing with drug addiction",
+   "options": [
+    "Too little",
+    "About right",
+    "Too much"
+   ]
+  },
+  {
+   "id": "conlegis",
+   "text": "I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them? Congress",
+   "options": [
+    "A great deal",
+    "Only some",
+    "Hardly any"
+   ]
+  },
+  {
+   "id": "conarmy",
+   "text": "I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them? Military",
+   "options": [
+    "A great deal",
+    "Only some",
+    "Hardly any"
+   ]
+  },
+  {
+   "id": "confed",
+   "text": "I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them? Executive branch of the federal government",
+   "options": [
+    "A great deal",
+    "Only some",
+    "Hardly any"
+   ]
+  },
+  {
+   "id": "conjudge",
+   "text": "I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them? U.S. Supreme Court",
+   "options": [
+    "A great deal",
+    "Only some",
+    "Hardly any"
+   ]
+  },
+  {
+   "id": "consci",
+   "text": "I am going to name some institutions in this country. As far as the people running these institutions are concerned, would you say you have a great deal of confidence, only some confidence, or hardly any confidence at all in them? Scientific community",
+   "options": [
+    "A great deal",
+    "Only some",
+    "Hardly any"
+   ]
+  },
+  {
+   "id": "immcrime",
+   "text": "There are different opinions about immigrants from other countries living in America. How much do you agree or disagree with the following statement? Immigrants increase crime rates.",
+   "options": [
+    "Agree strongly",
+    "Agree",
+    "Neither agree nor disagree",
+    "Disagree",
+    "Disagree strongly"
+   ]
+  },
+  {
+   "id": "spkcom",
+   "text": "Suppose an admitted Communist wanted to make a speech in your community. Should he be allowed to speak, or not?",
+   "options": [
+    "Yes, allowed to speak",
+    "Not allowed"
+   ]
+  },
+  {
+   "id": "god",
+   "text": "Which of the statements comes closest to expressing what you believe about God?",
+   "options": [
+    "I don't believe in God",
+    "I don't know whether there is a God and I don't believe there is any way to find out",
+    "I don't believe in a personal God, but I do believe in a Higher Power of some kind",
+    "I find myself believing in God some of the time, but not at others",
+    "While I have doubts, I feel that I do believe in God",
+    "I know God really exists and I have no doubts about it"
+   ]
+  },
+  {
+   "id": "news",
+   "text": "How often do you read the newspaper--every day, a few times a week, once a week, less than once a week, or never?",
+   "options": [
+    "Every day",
+    "A few times a week",
+    "Once a week",
+    "Less than once a week",
+    "Never"
+   ]
+  },
+  {
+   "id": "socfrend",
+   "text": "How often do you spend a social evening with friends who live outside the neighborhood?",
+   "options": [
+    "Almost daily",
+    "Once or twice a week",
+    "Several times a month",
+    "About once a month",
+    "Several times a year",
+    "About once a year",
+    "Never"
+   ]
+  },
+  {
+   "id": "socbar",
+   "text": "How often do you go to a bar or tavern?",
+   "options": [
+    "Almost daily",
+    "Once or twice a week",
+    "Several times a month",
+    "About once a month",
+    "Several times a year",
+    "About once a year",
+    "Never"
+   ]
+  },
+  {
+   "id": "richwork",
+   "text": "If you were to get enough money to live as comfortably as you would like for the rest of your life, would you continue to work or would you stop working?",
+   "options": [
+    "Continue to work",
+    "Stop working"
+   ]
+  }
+ ]
+}

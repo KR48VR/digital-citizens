@@ -5,7 +5,7 @@ products, strategies and policies, **together with the harness that measures how
 
 Status (October 2026): v0. The measurement machinery runs end to end on real human data for the United
 States, Singapore and China; the model-driven simulation runs with a mock and is ready for an API key.
-No fidelity claim has been made yet; the first real model pass is the next step.
+A first in-session stress test (the model writing answer shares blind, then scored) is in `docs/results/stress_test/`.
 
 ## Read first
 
@@ -17,6 +17,7 @@ No fidelity claim has been made yet; the first real model pass is the next step.
 | [docs/04_how_the_citizens_are_built.md](docs/04_how_the_citizens_are_built.md) | Architecture, what is in the code, how to run it, rough costs |
 | [docs/05_open_questions.md](docs/05_open_questions.md) | Decisions needed from you |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
+| [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |
 
 ## Quick start
 

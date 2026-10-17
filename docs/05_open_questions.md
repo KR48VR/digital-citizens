@@ -24,8 +24,9 @@ depend on them; the next phase does.
    topic is what makes simulations usable. Is roughly S$60-120k for a 2,000-person Singapore survey with a
    retest and two experiments acceptable for phase 2? For the US, open data covers phase 1.
 
-6. **Model access.** This session had no model API key, so the simulator has only been exercised with a
-   mock. To run the first real pass I need an Anthropic API key (and, for the China/Taiwan work, access to
+6. **Model access.** The simulator's own bulk calls are billed separately from this chat session, so a
+   large run needs an Anthropic API key. Without one I ran a bounded stress test by writing predictions
+   in-session (`docs/results/stress_test/`). To run thousands of questions, repeats and prompt variants I need an Anthropic API key (and, for the China/Taiwan work, access to
    Qwen or DeepSeek, which can be self-hosted or via their APIs). Which models are you willing to use and
    where may data be sent?
 

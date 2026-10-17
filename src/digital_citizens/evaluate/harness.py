@@ -83,6 +83,8 @@ def segment_fidelity(pred: dict[Key, list[float]], bench: Benchmark, name: str =
 
 def to_markdown(df: pd.DataFrame, floatfmt: int = 3) -> str:
     d = df.copy()
+    if isinstance(d.columns, pd.MultiIndex):
+        d.columns = ["_".join(str(x) for x in col if str(x)) for col in d.columns]
     for c in d.columns:
         if pd.api.types.is_float_dtype(d[c]):
             d[c] = d[c].map(lambda v: "" if pd.isna(v) else f"{v:.{floatfmt}f}")
