@@ -92,11 +92,11 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 11.5 hours",
+  "HOURS": "about 13 hours",
   "N_TASKS": 18,
   "N_SHOTS": 14,
   "N_AGENTS": 7,
-  "N_BG": 16,
+  "N_BG": 17,
   "N_HOOKS": 10,
   "N_IDEAS": 12,
   "N_CHALLENGES": 8,

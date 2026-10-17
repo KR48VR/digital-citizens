@@ -17,6 +17,7 @@ Truth: the people NOT in the sample (weighted). Error: points off per answer opt
 draws for each group and question, then the middle result is taken across groups and questions.
 
 Usage: one_method_experiment.py [singapore|us] [draws]
+       one_method_experiment.py [singapore|us] compare   (recompute only the comparisons from saved cells)
 Writes docs/results/stress_test/one_method_<country>.md / .csv / _cells.csv.
 """
 from __future__ import annotations
@@ -62,7 +63,13 @@ KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in
     ("+ chatbot kind", 150, "+ record citizens (own survey)", 150),
     ("+ chatbot kind", 300, "+ record citizens (own survey)", 300),
     ("+ chatbot kind", 600, "+ record citizens (own survey)", 600),
+    ("+ record citizens (own survey) + chatbot kind", 150, "+ record citizens (own survey)", 150),
     ("+ record citizens (own survey) + chatbot kind", 300, "+ record citizens (own survey)", 300),
+    ("+ record citizens (own survey) + chatbot kind", 600, "+ record citizens (own survey)", 600),
+    ("+ record citizens (own survey) + chatbot kind", 150, "+ chatbot kind", 150),
+    ("+ record citizens (own survey) + chatbot kind", 300, "+ chatbot kind", 300),
+    ("+ record citizens (own survey) + chatbot kind", 600, "+ chatbot kind", 600),
+    ("+ record citizens (own survey) + chatbot kind", 300, "survey alone", 600),
     ("+ record citizens + chatbot kind", 300, "+ record citizens", 300),
 ]
 
@@ -262,9 +269,28 @@ def bootstrap(cells, B=1000, seed=1):
     return ci, pd.DataFrame(diffs)
 
 
+def compare_only(tag: str) -> None:
+    """Recompute the key comparisons from the saved cells (same bootstrap draws) and update the .md section."""
+    cells = pd.read_csv(OUT / f"one_method_{tag}_cells.csv")
+    _, diffs = bootstrap(cells)
+    diffs.to_csv(OUT / f"one_method_{tag}_comparisons.csv", index=False)
+    md = (OUT / f"one_method_{tag}.md").read_text()
+    head, rest = md.split("Key comparisons", 1)
+    tail = rest[rest.index("Worth of each AI source"):]
+    block = ["Key comparisons (difference in points off, A minus B; negative means A is closer; 95% interval):", "",
+             "| A | B | difference | 95% interval |", "|---|---|---|---|"]
+    for r in diffs.itertuples():
+        block.append(f"| {r.a}, survey of {r.n_a} | {r.b}, survey of {r.n_b} | {r.difference:+.2f} | {r.low:+.2f} to {r.high:+.2f} |")
+    (OUT / f"one_method_{tag}.md").write_text(head + "\n".join(block) + "\n\n" + tail)
+    print("\n".join(block))
+
+
 def main() -> None:
     t0 = time.time()
     country = sys.argv[1] if len(sys.argv) > 1 else "singapore"
+    if len(sys.argv) > 2 and sys.argv[2] == "compare":
+        compare_only("us" if country == "us" else "singapore")
+        return
     draws = int(sys.argv[2]) if len(sys.argv) > 2 else 10
     title, bench, tg, groups, demo, ext = setup(country)
     rows = draw_cells(bench, tg, groups, demo, ext, draws)

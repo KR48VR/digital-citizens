@@ -387,8 +387,8 @@
   "when": "One-method rebuild",
   "area": "Accuracy",
   "finding": "The chatbot kind added nothing on top of record citizens in either country, so blending it into the headline was unnecessary.",
-  "fix": "The headline now uses record citizens alone. Rule 3 says the chatbot adds nothing once record citizens are used.",
-  "status": "Fixed",
+  "fix": "The headline now uses record citizens alone. Rule 3 says the chatbot adds nothing once record citizens are used. Revised by finding 58: for a brand-new question the chatbot does add.",
+  "status": "Revised",
   "id": 49
  },
  {
@@ -446,5 +446,85 @@
   "fix": "Kept: the palette checker passes it when every line is labelled directly and a table gives the same numbers, and both are on the page.",
   "status": "Noted",
   "id": 56
+ },
+ {
+  "when": "Independent audit",
+  "area": "Method",
+  "finding": "The US 'record citizens from past surveys' learned from the same questions asked two years earlier. Reusing those answers directly did as well (2.4 points off) with no new survey, so the US '150 people beat 600' result showed reuse, not stretching a survey.",
+  "fix": "Added last round's answers as its own route ('asked recently in the same survey: reuse those answers'). The US past-survey result no longer supports any headline claim.",
+  "status": "Fixed",
+  "id": 57
+ },
+ {
+  "when": "Independent audit",
+  "area": "Method",
+  "finding": "For a brand-new question the fair test is record citizens learned from your own survey, and the chatbot kind did about as well as them on their own. Combining the two had not been tested.",
+  "fix": "Tested it in the same run: together they beat either alone with 150 people in both countries and with 300 in the US. The page is now organised around 'has your question been asked before?', and rules 2 and 3 were rewritten.",
+  "status": "Fixed",
+  "id": 58
+ },
+ {
+  "when": "Independent audit",
+  "area": "Accuracy",
+  "finding": "Results were reported without uncertainty; some 'wins' were within chance (Singapore, 300 + AI against 600 alone: +0.02, range -0.36 to +0.25).",
+  "fix": "95% ranges from resampling questions and survey draws, a key-comparisons table on the page, 'about the same' for gaps within chance, and a new limit: gaps under about half a point are often chance.",
+  "status": "Fixed",
+  "id": 59
+ },
+ {
+  "when": "Independent audit",
+  "area": "Method",
+  "finding": "The questions are well known and their results published, so the chatbot may have read them.",
+  "fix": "New limit: 'The chatbot may have had a head start'. The pilot tests its value on a truly new question.",
+  "status": "Fixed",
+  "id": 60
+ },
+ {
+  "when": "Second audit",
+  "area": "Accuracy",
+  "finding": "'About as accurate for each group' held only for the typical group: 600 people alone did better for over-60s, 300 with AI better for Indian Singaporeans.",
+  "fix": "Now 'for a typical group', with a sentence on how it varies group by group.",
+  "status": "Fixed",
+  "id": 61
+ },
+ {
+  "when": "Second audit",
+  "area": "Accuracy",
+  "finding": "'31% against 16%' for the chatbot in the US and Singapore was not a fair comparison: the US survey's weighting makes its survey-alone baseline weaker, and the difference crossed zero.",
+  "fix": "Now argued from how much the chatbot counted (about 93 people per group in the US, 32 in Singapore) and its no-survey error (4.4 against 5.2), and softened to 'seems to'.",
+  "status": "Fixed",
+  "id": 62
+ },
+ {
+  "when": "Second audit",
+  "area": "Accuracy",
+  "finding": "The '1.3 best possible' figure came from a different setup. In this test the people checked against are a sample too, so even a perfect estimate scores about 1.5 points (Singapore) and 1.7 (US).",
+  "fix": "Computed (scripts/yardstick_noise.py) and used 1.5 on the scale.",
+  "status": "Fixed",
+  "id": 63
+ },
+ {
+  "when": "Second audit",
+  "area": "Method",
+  "finding": "Older figures (2 vs 61 countries, borrowed questions, published findings, 81/36/25%) sat beside the new test's numbers though they were measured differently.",
+  "fix": "Labelled as earlier, separate tests in the text and in their own table, with a note not to compare them directly.",
+  "status": "Fixed",
+  "id": 64
+ },
+ {
+  "when": "Second audit",
+  "area": "Accuracy",
+  "finding": "'The same budget buys twice the detail' ignored the standard questions each person must also answer.",
+  "fix": "Now 'about half the people for the same detail, as long as the standard questions cost less than the people saved'.",
+  "status": "Fixed",
+  "id": 65
+ },
+ {
+  "when": "Second audit",
+  "area": "Layout",
+  "finding": "Analysts' tables: no-survey rows showed one size's value across all columns; differences shown to one decimal ('+0.0'); a label read 'Both of the above' with nothing above it.",
+  "fix": "All three sizes shown, two decimals, and explicit labels. Added the comparisons that support each wording claim.",
+  "status": "Fixed",
+  "id": 66
  }
 ]
