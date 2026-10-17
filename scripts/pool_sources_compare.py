@@ -50,6 +50,9 @@ def main() -> None:
         all_sources = {"record citizens": _load(OUT / "record_all_singapore_pred.json"),
                        "chatbot kind": _load(OUT / "predictions_wvs_singapore_claude_in_session.json")}
         title, suffix = "Singapore", ""
+    # like for like: every run uses only the questions that every source covers
+    common = set.intersection(*({q for q, _ in src} for src in all_sources.values()))
+    all_sources = {n: {k: v for k, v in src.items() if k[0] in common} for n, src in all_sources.items()}
     rows, weights, cells = [], [], []
     for label, names in CONFIGS.items():
         res = loo_bayes_evaluate(bench, {n: all_sources[n] for n in names}, groups, local_n=SIZES, seed=0, draws=draws)

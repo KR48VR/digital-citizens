@@ -1,6 +1,6 @@
 # Small survey + AI in Singapore: which AI does the work?
 
-Generated 2026-10-17 12:59 UTC; runtime 174s; 5 draws, seed 0.
+Generated 2026-10-17 13:01 UTC; runtime 111s; 5 draws, seed 0.
 
 Same survey draws for every row. Each group's survey answers are blended with the AI estimate(s),
 each counting by its track record. Points off per answer option for each group; middle result
@@ -8,9 +8,9 @@ each counting by its track record. Points off per answer option for each group; 
 
 | AI used | survey size | survey alone | survey + AI |
 |---|---|---|---|
-| record citizens only | 150 | 4.66 (5.08) | 2.97 (3.59) |
-| record citizens only | 300 | 3.54 (3.87) | 2.80 (3.25) |
-| record citizens only | 600 | 2.76 (2.98) | 2.52 (2.78) |
+| record citizens only | 150 | 4.80 (5.05) | 3.11 (3.64) |
+| record citizens only | 300 | 3.65 (3.85) | 2.79 (3.19) |
+| record citizens only | 600 | 2.88 (3.05) | 2.52 (2.76) |
 | chatbot kind only | 150 | 4.80 (5.05) | 3.66 (4.27) |
 | chatbot kind only | 300 | 3.65 (3.85) | 3.09 (3.52) |
 | chatbot kind only | 600 | 2.88 (3.05) | 2.67 (2.90) |
@@ -22,9 +22,9 @@ Learned worth of each AI source, in real respondents per group (median over fold
 
 | AI used | survey size | worth_record citizens | worth_chatbot kind |
 |---|---|---|---|
-| record citizens only | 150 | 36.3 |  |
-| record citizens only | 300 | 32.9 |  |
-| record citizens only | 600 | 26.1 |  |
+| record citizens only | 150 | 44.5 |  |
+| record citizens only | 300 | 38.9 |  |
+| record citizens only | 600 | 32.2 |  |
 | chatbot kind only | 150 |  | 25.7 |
 | chatbot kind only | 300 |  | 24.4 |
 | chatbot kind only | 600 |  | 21.3 |
