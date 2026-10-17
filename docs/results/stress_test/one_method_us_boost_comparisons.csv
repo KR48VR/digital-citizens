@@ -1,0 +1,21 @@
+a,n_a,b,n_b,difference,low,high
++ record citizens,300,survey alone,600,-1.383915965975445,,
++ record citizens (own survey),150,survey alone,300,-0.5297847973167595,-1.1001992156423952,-0.07490138805946185
++ record citizens (own survey),300,survey alone,600,-0.3521862370210447,,
++ chatbot kind,150,survey alone,300,-1.2429452790051174,-1.8650738861453917,-0.5311205361012132
++ chatbot kind,300,survey alone,600,-0.40604346015129034,,
++ chatbot kind,150,+ record citizens (own survey),150,-0.7131604816883579,-1.2551500377521498,0.0773827785614377
++ chatbot kind,300,+ record citizens (own survey),300,-0.05385722313024566,-0.4592424199766024,0.517119453060801
++ chatbot kind,600,+ record citizens (own survey),600,0.030649734261420036,,
++ record citizens (own survey) + chatbot kind,150,+ record citizens (own survey),150,-1.3066021243268442,-1.6897348664770089,-0.7368878589018585
++ record citizens (own survey) + chatbot kind,300,+ record citizens (own survey),300,-0.654238273889908,-0.9383285269347147,-0.22237306880447683
++ record citizens (own survey) + chatbot kind,600,+ record citizens (own survey),600,-0.2753038974251645,,
++ record citizens (own survey) + chatbot kind,150,+ chatbot kind,150,-0.5934416426384863,-1.0994847204676137,-0.12473710591237548
++ record citizens (own survey) + chatbot kind,300,+ chatbot kind,300,-0.6003810507596623,-0.9641679970840621,-0.19844366134636243
++ record citizens (own survey) + chatbot kind,600,+ chatbot kind,600,-0.3059536316865845,,
++ record citizens (own survey) + chatbot kind,300,survey alone,600,-1.0064245109109526,,
++ record citizens + chatbot kind,300,+ record citizens,300,0.01560186961048915,-0.2932079220736345,0.2611635738323907
+"+ chatbot panel, averaged",300,+ chatbot kind,300,0.8026407855303348,0.30697500080896517,1.378772721688124
+"+ chatbot panel, each weighted",300,+ chatbot kind,300,-0.23002138147716833,-0.5232835444968439,0.25752904226904716
+"+ record citizens (own survey) + chatbot panel, averaged",300,+ record citizens (own survey) + chatbot kind,300,0.41546465854983516,0.012321093248534844,0.7040310946371757
+"+ record citizens (own survey) + chatbot panel, each weighted",300,+ record citizens (own survey) + chatbot kind,300,0.03729593324261948,-0.29650140769447825,0.33646028041924114
