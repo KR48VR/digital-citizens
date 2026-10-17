@@ -7,9 +7,9 @@ description: Run or extend a digital-citizens study in this repository - estimat
 
 Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts:
 
-- **Recipe:** real people give the overall answer; record citizens fill in the groups; the chatbot kind fills
-  in groups well in the United States, but in Singapore helped only standout groups; never borrow numbers from
-  other surveys or published reports.
+- **Recipe:** a few hundred real people answer; record citizens fill in each group's answer (group's own answers
+  combined with record citizens' estimate, worth fitted leave-one-question-out); the chatbot kind helps less
+  and adds nothing on top of record citizens; never borrow numbers from other surveys or published reports.
 - **Environment:** Python in `.venv` (create with `uv venv .venv && uv pip install --python .venv/bin/python -e .`).
   Run scripts with `.venv/bin/python -I`. Raw data in `data/raw/` is git-ignored; fetch with
   `scripts/download_data.py` (GSS, GlobalOpinionQA, Twin-2K, Nemotron) and `scripts/download_wvs.py`
@@ -17,11 +17,12 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
 - **Code map:** loaders `src/digital_citizens/data/{gss,wvs,ledger}.py`; record citizens
   `evaluate/transfer.py` (`cross_country_transfer`, `small_survey_holdout`); pooling `evaluate/bayes.py`;
   scoring `evaluate/harness.py`; experiments `scripts/*_experiment.py`; tests `tests/` (run `pytest -q`).
-- **Scorecard:** points off per group, reported separately for most groups and standout groups (the quarter of
-  group answers furthest from the national average; `scripts/standout_split.py`), less error versus No AI from
-  unrounded values, noise floor about 1.3. Score small samples against hold-out people and average scores
-  across draws.
-- **Before claiming anything:** check it in the data (standout groups, fieldwork dates, untested capabilities).
+- **Scorecard:** one method for every headline number, `scripts/one_method_experiment.py` (small surveys of
+  150/300/600 drawn ten times, every method combined the same way, scored against the people not drawn).
+  Report points off for a typical group and less error than the survey alone, from unrounded values.
+  Standout groups (`scripts/standout_split.py`) are a secondary, analysts-only check. Noise floor about 1.3.
+- **Before claiming anything:** check it in the data (example groups, fieldwork dates, untested capabilities), and check that every
+  number on a page comes from the same setup.
 - **Reporting:** use the `c-suite-explainer` skill, `docs/playbook/glossary.md` and the page template in
   `docs/playbook/templates/scorecard_page/`. QA with `docs/playbook/qa_checklist.md`.
 - **Pages:** public-facing scorecard https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 ;

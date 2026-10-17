@@ -10,30 +10,39 @@ A first in-session stress test (the model writing answer shares blind, then scor
 ## The result in one line
 
 AI cannot replace asking real people, but it can stretch a small survey a long way. A few hundred real
-people give the overall answer. AI then works out how each group differs, about as accurately as a survey
-twice the size.
+people answer your question. AI then fills in each group's answer, about as accurately as a survey twice
+the size.
 
 The AI that stretches a small survey is the kind that learns from patterns in real people's past survey
 answers. We call the digital citizens built this way record citizens.
 
-The gain is biggest for small groups, and for groups whose views stand out from the average.
+The gain is biggest for small groups.
 
-The more common use of AI, a chatbot answering in place of people, is less reliable. It filled in the groups
-well in the United States. In Singapore it helped only with groups that stand out from the average. We call
-this the chatbot kind.
+The more common use of AI, a chatbot answering in place of people, helps less. It did better in the United
+States than in Singapore, and added nothing once record citizens were used. We call this the chatbot kind.
 
-| The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
+All of this comes from one test (`scripts/one_method_experiment.py`): small surveys of 150, 300 and 600
+people drawn ten times from a large real survey, each group's answer worked out the same way with and
+without each kind of AI, and checked against the people not drawn.
+
+| Points off for a typical group | Survey of 150 | 300 | 600 |
 |---|---|---|---|
-| 1. AI alone (a chatbot pretends to be people from each group) | 5 points | Outside the US, groups come out much more alike than they are | Drop |
-| 2. Citizens built from real people's past survey answers (no chatbot) | under 4 points | Yes, mostly | Keep |
-| 3. Borrow the numbers from a similar question in a different survey | 11 points | Partly, but the overall number is far off | Drop |
-| 4. Ask 300 real people, let the record citizens fill in the groups | 3 points | Yes | Keep: this is the plan |
-| The best it can ever be (exact national number, then fill in) | 2 points | Yes | Only chance is left |
+| Singapore, survey alone | 5.1 | 3.7 | 2.7 |
+| + chatbot kind | 3.5 | 3.2 | 2.6 |
+| + record citizens (learned from 61 other countries) | 2.9 | 2.7 | 2.3 |
+| + record citizens (learned from your own survey) | 3.6 | 2.9 | 2.5 |
+| United States, survey alone | 6.4 | 4.9 | 3.7 |
+| + chatbot kind | 3.8 | 3.4 | 3.2 |
+| + record citizens (learned from the same survey two years earlier) | 2.4 | 2.4 | 2.4 |
+| + record citizens (learned from your own survey) | 4.2 | 3.5 | 2.9 |
 
-"How far off" is the gap between our estimate and the real survey, in percentage points, for a typical group;
-survey noise alone gives about 1.3, guessing blind about 15. The "AI" that works starts from real people: each
-record citizen is a real, anonymous survey respondent whose own past answers predict their answer to a new
-question. The chatbot kind, which guesses from a description of a person, tends to make groups look alike outside the United States. The plain-language scorecard with charts is
+Separate checks: borrowing the most similar question from a different survey was typically 11 points off,
+and published findings 8 points off; neither helped.
+
+"Points off" is the gap between our estimate and what real people said, in percentage points, for a typical
+group (half of all group answers land closer); survey noise alone gives about 1.3, guessing blind about 15.
+Each record citizen is a real, anonymous survey respondent whose own past answers predict their answer to a
+new question. The chatbot kind guesses from a description of a person. The plain-language scorecard with charts is
 at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page). How it was made, the QA log
 and a playbook for next time are in the private casebook at https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 and in [docs/playbook/](docs/playbook/README.md).
 
@@ -49,6 +58,7 @@ and a playbook for next time are in the private casebook at https://claude.ai/ar
 | [docs/06_how_to_make_it_work.md](docs/06_how_to_make_it_work.md) | Remedies for regression-to-the-mean, tested on real data, and the build plan that follows |
 | [docs/07_more_data_and_bayesian_pooling.md](docs/07_more_data_and_bayesian_pooling.md) | Combing more public surveys (61 WVS countries, CES, 96 published Singapore findings) and pooling sources the Bayesian way: what it bought |
 | [docs/08_library_test.md](docs/08_library_test.md) | The 'library' idea tested end to end on the US: search for the closest previously asked question, use that survey as the base, spread with record citizens |
+| [docs/09_one_method.md](docs/09_one_method.md) | The one test behind every headline number: a small survey with and without each kind of AI |
 | [docs/sources/singapore_published_findings.md](docs/sources/singapore_published_findings.md) | Singapore sources combed for the evidence ledger, with trust levels and what was unusable |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |

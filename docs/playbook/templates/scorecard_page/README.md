@@ -11,13 +11,14 @@ The source of the "How to use AI for digital citizens" page, split so it can be 
 
 ## Rebuilding
 
-1. Edit `body.html` for the words and `rows = [...]` in `build_page.py` for the chart
-   (country, group, chatbot kind % less error, record citizens % less error; 0 or below reads "more error").
-   Take the percentages from unrounded results (`scripts/standout_split.py` prints them).
+1. Run `scripts/one_method_experiment.py singapore 10` and `... us 10` to produce the results the page reads.
+   Edit `body.html` for the words. Numbers go in as `{{PLACEHOLDERS}}`, filled by `build_page.py` from the
+   results; the chart and tables are drawn from the same files. Wording such as "about a sixth" is checked
+   in `CHECK` and printed when you build.
 2. Run `python build_page.py out.html` (default output: `scorecard.html` next to the script).
 3. Check the page at 375 px and 1,100 px wide, in light and dark, with `docs/playbook/qa_checklist.md`.
 4. Publish with the Artifact tool. To keep the same link, publish to the existing page's URL.
 
 Design rules kept by this template: one reading column; agreed terms only; definitions before use; every
-number followed by its meaning; chatbot kind in orange, record citizens in green; text contrast at least
-4.5:1; headings in order; captions on every table; the chart labelled directly; tables fit a phone screen.
+number followed by its meaning; survey alone in grey, chatbot kind in orange, record citizens in green; text contrast at least
+4.5:1; headings in order; captions on every table; the chart labelled directly; tables fit a phone screen; every number from one test.

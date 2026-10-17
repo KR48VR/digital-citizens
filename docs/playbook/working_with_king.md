@@ -27,6 +27,9 @@ Full record with every interaction: the private companion page ("King and AI" se
 - An independent audit by a helper agent that recomputed every number from the raw results. It caught a
   mislabelled "standout groups" row that changed what the page says about the chatbot in Singapore.
   Next time, run it before the page first goes to King, not only at the end.
+- Keeping one method throughout. King spotted that the page mixed setups (a blend of both kinds of AI for
+  the headline, a different comparison for the chatbot section). Rebuilding on one test changed one claim
+  (standout groups) and confirmed the rest. Decide the single test before writing the page.
 
 ## What to avoid
 - Jargon in replies, not just on the page ("spread", "headline number", "exchange rate", "signal").

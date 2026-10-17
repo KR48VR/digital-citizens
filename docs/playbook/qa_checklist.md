@@ -10,6 +10,8 @@
 - [ ] The same number is the same everywhere on the page.
 - [ ] Percentages and differences are computed from unrounded values, and each figure is rounded once.
 - [ ] Every label matches what was computed (a "standout groups" row really is the standout groups).
+- [ ] Every headline number comes from one setup (same draws, same questions, same comparison). If two
+      sections need different setups, say so on the page and keep the second to the analysts' section.
 - [ ] Each result is credited to the method that produced it (record citizens alone, or pooled with the chatbot).
 - [ ] Every example uses a question that is actually in the data.
 - [ ] Nothing is generalised from a handful of cases; small counts are stated or the claim is dropped.
