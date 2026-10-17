@@ -9,16 +9,16 @@ A first in-session stress test (the model writing answer shares blind, then scor
 
 ## The result in one line
 
-The role of AI is to fill in the groups, not to replace the people. A few hundred real people give the
-overall answer. AI built on real survey records then works out how each group differs, as accurately as a
-survey twice the size. A chatbot pretending to be people does this poorly outside the United States, and
-copying another survey's closest question does not work.
+AI cannot replace asking real people, but it can stretch a small survey a long way. A few hundred real
+people give the overall answer. AI then works out how each group differs, as accurately as a survey twice
+the size. The AI that does this well learns from real people's past survey answers. A chatbot asked to play
+people does it well only in the United States.
 
 | The story, in order | How far off (typical group) | Do groups still look different? | Verdict |
 |---|---|---|---|
 | 1. AI alone (a chatbot pretends to be people from each group) | 5 points | No, groups come out nearly alike | Drop |
 | 2. Citizens built from real people's past survey answers (no chatbot) | under 4 points | Yes, mostly | Keep |
-| 3. Copy the closest question from a different survey | 11 points | Partly, but the overall number is far off | Drop |
+| 3. Borrow the numbers from a similar question in a different survey | 11 points | Partly, but the overall number is far off | Drop |
 | 4. Ask 300 real people, let the record citizens fill in the groups | 3 points | Yes | Keep: this is the plan |
 | The best it can ever be (exact national number, then fill in) | 2 points | Yes | Only chance is left |
 
