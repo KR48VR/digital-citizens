@@ -1,0 +1,1745 @@
+[
+ {
+  "question_id": "life",
+  "group": "ALL",
+  "probs": [
+   0.4,
+   0.52,
+   0.08
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.38,
+   0.53,
+   0.09
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.44,
+   0.51,
+   0.05
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "age_band=18-29",
+  "probs": [
+   0.38,
+   0.5,
+   0.12
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "age_band=65+",
+  "probs": [
+   0.38,
+   0.54,
+   0.08
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.38,
+   0.54,
+   0.08
+  ]
+ },
+ {
+  "question_id": "life",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.47,
+   0.48,
+   0.05
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "ALL",
+  "probs": [
+   0.07,
+   0.24,
+   0.43,
+   0.22,
+   0.04
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.08,
+   0.26,
+   0.42,
+   0.2,
+   0.04
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.05,
+   0.2,
+   0.43,
+   0.27,
+   0.05
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "age_band=18-29",
+  "probs": [
+   0.09,
+   0.27,
+   0.4,
+   0.2,
+   0.04
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "age_band=65+",
+  "probs": [
+   0.05,
+   0.24,
+   0.46,
+   0.21,
+   0.04
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.13,
+   0.35,
+   0.37,
+   0.13,
+   0.02
+  ]
+ },
+ {
+  "question_id": "finrela",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.03,
+   0.1,
+   0.4,
+   0.38,
+   0.09
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "ALL",
+  "probs": [
+   0.37,
+   0.63
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.27,
+   0.73
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.52,
+   0.48
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "age_band=18-29",
+  "probs": [
+   0.28,
+   0.72
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "age_band=65+",
+  "probs": [
+   0.42,
+   0.58
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.25,
+   0.75
+  ]
+ },
+ {
+  "question_id": "owngun",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.3,
+   0.7
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "ALL",
+  "probs": [
+   0.45,
+   0.55
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.58,
+   0.42
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.28,
+   0.72
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "age_band=18-29",
+  "probs": [
+   0.52,
+   0.48
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "age_band=65+",
+  "probs": [
+   0.35,
+   0.65
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.35,
+   0.65
+  ]
+ },
+ {
+  "question_id": "prayer",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.62,
+   0.38
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "ALL",
+  "probs": [
+   0.09,
+   0.37,
+   0.31,
+   0.23
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.06,
+   0.3,
+   0.35,
+   0.29
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.13,
+   0.47,
+   0.25,
+   0.15
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "age_band=18-29",
+  "probs": [
+   0.06,
+   0.3,
+   0.35,
+   0.29
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "age_band=65+",
+  "probs": [
+   0.1,
+   0.42,
+   0.3,
+   0.18
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.12,
+   0.42,
+   0.28,
+   0.18
+  ]
+ },
+ {
+  "question_id": "spanking",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.04,
+   0.3,
+   0.38,
+   0.28
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "ALL",
+  "probs": [
+   0.24,
+   0.04,
+   0.05,
+   0.67
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.11,
+   0.03,
+   0.05,
+   0.81
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.4,
+   0.06,
+   0.06,
+   0.48
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "age_band=18-29",
+  "probs": [
+   0.13,
+   0.04,
+   0.06,
+   0.77
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "age_band=65+",
+  "probs": [
+   0.38,
+   0.05,
+   0.05,
+   0.52
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.3,
+   0.05,
+   0.05,
+   0.6
+  ]
+ },
+ {
+  "question_id": "homosex",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.11,
+   0.03,
+   0.04,
+   0.82
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "ALL",
+  "probs": [
+   0.68,
+   0.16,
+   0.12,
+   0.04
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.65,
+   0.17,
+   0.13,
+   0.05
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.74,
+   0.14,
+   0.09,
+   0.03
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "age_band=18-29",
+  "probs": [
+   0.6,
+   0.18,
+   0.16,
+   0.06
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "age_band=65+",
+  "probs": [
+   0.75,
+   0.13,
+   0.09,
+   0.03
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.7,
+   0.14,
+   0.12,
+   0.04
+  ]
+ },
+ {
+  "question_id": "xmarsex",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.63,
+   0.19,
+   0.15,
+   0.03
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "ALL",
+  "probs": [
+   0.7,
+   0.12,
+   0.12,
+   0.06
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.66,
+   0.13,
+   0.14,
+   0.07
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.76,
+   0.11,
+   0.09,
+   0.04
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "age_band=18-29",
+  "probs": [
+   0.62,
+   0.14,
+   0.16,
+   0.08
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "age_band=65+",
+  "probs": [
+   0.78,
+   0.1,
+   0.08,
+   0.04
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.72,
+   0.11,
+   0.12,
+   0.05
+  ]
+ },
+ {
+  "question_id": "teensex",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.64,
+   0.14,
+   0.16,
+   0.06
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "ALL",
+  "probs": [
+   0.06,
+   0.25,
+   0.46,
+   0.23
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.04,
+   0.19,
+   0.48,
+   0.29
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.09,
+   0.33,
+   0.43,
+   0.15
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "age_band=18-29",
+  "probs": [
+   0.05,
+   0.2,
+   0.48,
+   0.27
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "age_band=65+",
+  "probs": [
+   0.08,
+   0.31,
+   0.43,
+   0.18
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.07,
+   0.29,
+   0.43,
+   0.21
+  ]
+ },
+ {
+  "question_id": "fepresch",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.03,
+   0.17,
+   0.5,
+   0.3
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "ALL",
+  "probs": [
+   0.38,
+   0.2,
+   0.25,
+   0.08,
+   0.09
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.52,
+   0.23,
+   0.17,
+   0.04,
+   0.04
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.18,
+   0.18,
+   0.34,
+   0.14,
+   0.16
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "age_band=18-29",
+  "probs": [
+   0.42,
+   0.22,
+   0.24,
+   0.06,
+   0.06
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "age_band=65+",
+  "probs": [
+   0.32,
+   0.2,
+   0.29,
+   0.09,
+   0.1
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.52,
+   0.19,
+   0.2,
+   0.04,
+   0.05
+  ]
+ },
+ {
+  "question_id": "helpsick",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.38,
+   0.23,
+   0.24,
+   0.08,
+   0.07
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "ALL",
+  "probs": [
+   0.2,
+   0.12,
+   0.14,
+   0.25,
+   0.11,
+   0.08,
+   0.1
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.31,
+   0.17,
+   0.17,
+   0.21,
+   0.06,
+   0.04,
+   0.04
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.08,
+   0.07,
+   0.11,
+   0.3,
+   0.18,
+   0.11,
+   0.15
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "age_band=18-29",
+  "probs": [
+   0.23,
+   0.14,
+   0.15,
+   0.26,
+   0.1,
+   0.06,
+   0.06
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "age_band=65+",
+  "probs": [
+   0.17,
+   0.11,
+   0.14,
+   0.27,
+   0.12,
+   0.08,
+   0.11
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.33,
+   0.14,
+   0.13,
+   0.22,
+   0.07,
+   0.05,
+   0.06
+  ]
+ },
+ {
+  "question_id": "eqwlth",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.22,
+   0.14,
+   0.16,
+   0.23,
+   0.1,
+   0.07,
+   0.08
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "ALL",
+  "probs": [
+   0.58,
+   0.32,
+   0.1
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.72,
+   0.22,
+   0.06
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.44,
+   0.4,
+   0.16
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "age_band=18-29",
+  "probs": [
+   0.62,
+   0.3,
+   0.08
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "age_band=65+",
+  "probs": [
+   0.52,
+   0.38,
+   0.1
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.72,
+   0.22,
+   0.06
+  ]
+ },
+ {
+  "question_id": "natheal",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.58,
+   0.33,
+   0.09
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "ALL",
+  "probs": [
+   0.61,
+   0.29,
+   0.1
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.62,
+   0.28,
+   0.1
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.62,
+   0.3,
+   0.08
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "age_band=18-29",
+  "probs": [
+   0.6,
+   0.28,
+   0.12
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "age_band=65+",
+  "probs": [
+   0.62,
+   0.3,
+   0.08
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.64,
+   0.24,
+   0.12
+  ]
+ },
+ {
+  "question_id": "natdrug",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.58,
+   0.32,
+   0.1
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "ALL",
+  "probs": [
+   0.05,
+   0.37,
+   0.58
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.05,
+   0.4,
+   0.55
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.04,
+   0.34,
+   0.62
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "age_band=18-29",
+  "probs": [
+   0.06,
+   0.45,
+   0.49
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "age_band=65+",
+  "probs": [
+   0.04,
+   0.34,
+   0.62
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.07,
+   0.4,
+   0.53
+  ]
+ },
+ {
+  "question_id": "conlegis",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.03,
+   0.4,
+   0.57
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "ALL",
+  "probs": [
+   0.35,
+   0.48,
+   0.17
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.28,
+   0.52,
+   0.2
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.47,
+   0.43,
+   0.1
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "age_band=18-29",
+  "probs": [
+   0.28,
+   0.52,
+   0.2
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "age_band=65+",
+  "probs": [
+   0.46,
+   0.43,
+   0.11
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.3,
+   0.48,
+   0.22
+  ]
+ },
+ {
+  "question_id": "conarmy",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.3,
+   0.54,
+   0.16
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "ALL",
+  "probs": [
+   0.07,
+   0.38,
+   0.55
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.12,
+   0.52,
+   0.36
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.03,
+   0.17,
+   0.8
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "age_band=18-29",
+  "probs": [
+   0.09,
+   0.43,
+   0.48
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "age_band=65+",
+  "probs": [
+   0.07,
+   0.35,
+   0.58
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.13,
+   0.45,
+   0.42
+  ]
+ },
+ {
+  "question_id": "confed",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.06,
+   0.42,
+   0.52
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "ALL",
+  "probs": [
+   0.1,
+   0.44,
+   0.46
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.05,
+   0.4,
+   0.55
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.18,
+   0.52,
+   0.3
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "age_band=18-29",
+  "probs": [
+   0.07,
+   0.5,
+   0.43
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "age_band=65+",
+  "probs": [
+   0.13,
+   0.43,
+   0.44
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.08,
+   0.42,
+   0.5
+  ]
+ },
+ {
+  "question_id": "conjudge",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.07,
+   0.45,
+   0.48
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "ALL",
+  "probs": [
+   0.38,
+   0.5,
+   0.12
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.52,
+   0.42,
+   0.06
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.25,
+   0.55,
+   0.2
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "age_band=18-29",
+  "probs": [
+   0.38,
+   0.52,
+   0.1
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "age_band=65+",
+  "probs": [
+   0.4,
+   0.48,
+   0.12
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.3,
+   0.52,
+   0.18
+  ]
+ },
+ {
+  "question_id": "consci",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.55,
+   0.39,
+   0.06
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "ALL",
+  "probs": [
+   0.09,
+   0.23,
+   0.24,
+   0.31,
+   0.13
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.04,
+   0.14,
+   0.22,
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.15,
+   0.33,
+   0.25,
+   0.2,
+   0.07
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "age_band=18-29",
+  "probs": [
+   0.07,
+   0.18,
+   0.3,
+   0.32,
+   0.13
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "age_band=65+",
+  "probs": [
+   0.1,
+   0.28,
+   0.23,
+   0.27,
+   0.12
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.08,
+   0.22,
+   0.28,
+   0.3,
+   0.12
+  ]
+ },
+ {
+  "question_id": "immcrime",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.04,
+   0.14,
+   0.22,
+   0.38,
+   0.22
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "ALL",
+  "probs": [
+   0.7,
+   0.3
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.77,
+   0.23
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.62,
+   0.38
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "age_band=18-29",
+  "probs": [
+   0.7,
+   0.3
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "age_band=65+",
+  "probs": [
+   0.62,
+   0.38
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.56,
+   0.44
+  ]
+ },
+ {
+  "question_id": "spkcom",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.84,
+   0.16
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "ALL",
+  "probs": [
+   0.1,
+   0.07,
+   0.14,
+   0.04,
+   0.17,
+   0.48
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.14,
+   0.09,
+   0.17,
+   0.04,
+   0.17,
+   0.39
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.04,
+   0.04,
+   0.09,
+   0.03,
+   0.17,
+   0.63
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "age_band=18-29",
+  "probs": [
+   0.17,
+   0.12,
+   0.17,
+   0.07,
+   0.18,
+   0.29
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "age_band=65+",
+  "probs": [
+   0.05,
+   0.05,
+   0.1,
+   0.03,
+   0.17,
+   0.6
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.04,
+   0.03,
+   0.08,
+   0.03,
+   0.16,
+   0.66
+  ]
+ },
+ {
+  "question_id": "god",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.14,
+   0.1,
+   0.2,
+   0.04,
+   0.19,
+   0.33
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "ALL",
+  "probs": [
+   0.12,
+   0.1,
+   0.1,
+   0.14,
+   0.54
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.13,
+   0.1,
+   0.1,
+   0.14,
+   0.53
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.11,
+   0.09,
+   0.1,
+   0.14,
+   0.56
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "age_band=18-29",
+  "probs": [
+   0.04,
+   0.05,
+   0.07,
+   0.15,
+   0.69
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "age_band=65+",
+  "probs": [
+   0.27,
+   0.14,
+   0.11,
+   0.1,
+   0.38
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.09,
+   0.08,
+   0.09,
+   0.12,
+   0.62
+  ]
+ },
+ {
+  "question_id": "news",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.17,
+   0.13,
+   0.12,
+   0.15,
+   0.43
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "ALL",
+  "probs": [
+   0.06,
+   0.19,
+   0.23,
+   0.17,
+   0.19,
+   0.07,
+   0.09
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.06,
+   0.19,
+   0.23,
+   0.17,
+   0.2,
+   0.07,
+   0.08
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.05,
+   0.18,
+   0.23,
+   0.18,
+   0.19,
+   0.07,
+   0.1
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "age_band=18-29",
+  "probs": [
+   0.11,
+   0.27,
+   0.24,
+   0.14,
+   0.14,
+   0.04,
+   0.06
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "age_band=65+",
+  "probs": [
+   0.04,
+   0.14,
+   0.2,
+   0.17,
+   0.22,
+   0.09,
+   0.14
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.06,
+   0.2,
+   0.2,
+   0.14,
+   0.2,
+   0.08,
+   0.12
+  ]
+ },
+ {
+  "question_id": "socfrend",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.05,
+   0.2,
+   0.27,
+   0.19,
+   0.19,
+   0.05,
+   0.05
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "ALL",
+  "probs": [
+   0.01,
+   0.06,
+   0.09,
+   0.1,
+   0.15,
+   0.09,
+   0.5
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.01,
+   0.07,
+   0.11,
+   0.12,
+   0.17,
+   0.09,
+   0.43
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.01,
+   0.06,
+   0.09,
+   0.1,
+   0.15,
+   0.09,
+   0.5
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "age_band=18-29",
+  "probs": [
+   0.01,
+   0.07,
+   0.13,
+   0.14,
+   0.2,
+   0.1,
+   0.35
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "age_band=65+",
+  "probs": [
+   0.01,
+   0.04,
+   0.05,
+   0.06,
+   0.11,
+   0.09,
+   0.64
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.01,
+   0.05,
+   0.07,
+   0.08,
+   0.13,
+   0.08,
+   0.58
+  ]
+ },
+ {
+  "question_id": "socbar",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.01,
+   0.07,
+   0.12,
+   0.14,
+   0.19,
+   0.09,
+   0.38
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "ALL",
+  "probs": [
+   0.66,
+   0.34
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "party3=Democrat (incl. leaners)",
+  "probs": [
+   0.66,
+   0.34
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "party3=Republican (incl. leaners)",
+  "probs": [
+   0.68,
+   0.32
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "age_band=18-29",
+  "probs": [
+   0.63,
+   0.37
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "age_band=65+",
+  "probs": [
+   0.6,
+   0.4
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "race_eth=Black, non-Hispanic",
+  "probs": [
+   0.6,
+   0.4
+  ]
+ },
+ {
+  "question_id": "richwork",
+  "group": "education=Bachelor's or higher",
+  "probs": [
+   0.75,
+   0.25
+  ]
+ }
+]

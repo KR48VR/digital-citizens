@@ -1,0 +1,31 @@
+{
+ "source": "General Social Survey 2022",
+ "people": 4149,
+ "order": [
+  "pres20",
+  "abany",
+  "finrela",
+  "confed",
+  "spkcom",
+  "god",
+  "natrace",
+  "confinan",
+  "happy",
+  "racdif1",
+  "fepresch",
+  "immcrime",
+  "natspac",
+  "richwork",
+  "trust",
+  "union",
+  "consci",
+  "socfrend",
+  "natsoc",
+  "natcrime",
+  "news",
+  "discaffm",
+  "getahead",
+  "polhitok",
+  "fear"
+ ]
+}

@@ -1,0 +1,2302 @@
+[
+ {
+  "question_id": "Q3",
+  "group": "ALL",
+  "probs": [
+   0.33,
+   0.47,
+   0.16,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.32,
+   0.48,
+   0.16,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.4,
+   0.42,
+   0.14,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.38,
+   0.44,
+   0.14,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "age_band=18-29",
+  "probs": [
+   0.38,
+   0.46,
+   0.13,
+   0.03
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "age_band=60+",
+  "probs": [
+   0.3,
+   0.46,
+   0.18,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "education3=Lower",
+  "probs": [
+   0.33,
+   0.44,
+   0.17,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "education3=Higher",
+  "probs": [
+   0.33,
+   0.48,
+   0.15,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "religion=Muslim",
+  "probs": [
+   0.4,
+   0.42,
+   0.14,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q3",
+  "group": "religion=No religion",
+  "probs": [
+   0.3,
+   0.48,
+   0.17,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "ALL",
+  "probs": [
+   0.35,
+   0.28,
+   0.23,
+   0.14
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.24,
+   0.31,
+   0.28,
+   0.17
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.8,
+   0.16,
+   0.03,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.6,
+   0.25,
+   0.1,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "age_band=18-29",
+  "probs": [
+   0.3,
+   0.3,
+   0.25,
+   0.15
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "age_band=60+",
+  "probs": [
+   0.42,
+   0.28,
+   0.2,
+   0.1
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "education3=Lower",
+  "probs": [
+   0.45,
+   0.28,
+   0.17,
+   0.1
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "education3=Higher",
+  "probs": [
+   0.3,
+   0.3,
+   0.25,
+   0.15
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "religion=Muslim",
+  "probs": [
+   0.85,
+   0.12,
+   0.02,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q6",
+  "group": "religion=No religion",
+  "probs": [
+   0.02,
+   0.1,
+   0.38,
+   0.5
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "ALL",
+  "probs": [
+   0.45,
+   0.55
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.46,
+   0.54
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.4,
+   0.6
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.5,
+   0.5
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "age_band=18-29",
+  "probs": [
+   0.42,
+   0.58
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "age_band=60+",
+  "probs": [
+   0.45,
+   0.55
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "education3=Lower",
+  "probs": [
+   0.42,
+   0.58
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "education3=Higher",
+  "probs": [
+   0.48,
+   0.52
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "religion=Muslim",
+  "probs": [
+   0.38,
+   0.62
+  ]
+ },
+ {
+  "question_id": "Q14",
+  "group": "religion=No religion",
+  "probs": [
+   0.48,
+   0.52
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "ALL",
+  "probs": [
+   0.72,
+   0.28
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.72,
+   0.28
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.78,
+   0.22
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.7,
+   0.3
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "age_band=18-29",
+  "probs": [
+   0.62,
+   0.38
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "age_band=60+",
+  "probs": [
+   0.82,
+   0.18
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "education3=Lower",
+  "probs": [
+   0.78,
+   0.22
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "education3=Higher",
+  "probs": [
+   0.65,
+   0.35
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "religion=Muslim",
+  "probs": [
+   0.8,
+   0.2
+  ]
+ },
+ {
+  "question_id": "Q18",
+  "group": "religion=No religion",
+  "probs": [
+   0.65,
+   0.35
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "ALL",
+  "probs": [
+   0.14,
+   0.42,
+   0.3,
+   0.14
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.1,
+   0.4,
+   0.34,
+   0.16
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.33,
+   0.48,
+   0.14,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.25,
+   0.45,
+   0.22,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "age_band=18-29",
+  "probs": [
+   0.1,
+   0.4,
+   0.35,
+   0.15
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "age_band=60+",
+  "probs": [
+   0.15,
+   0.45,
+   0.28,
+   0.12
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "education3=Lower",
+  "probs": [
+   0.18,
+   0.42,
+   0.28,
+   0.12
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "education3=Higher",
+  "probs": [
+   0.1,
+   0.42,
+   0.34,
+   0.14
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "religion=Muslim",
+  "probs": [
+   0.35,
+   0.48,
+   0.13,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q64",
+  "group": "religion=No religion",
+  "probs": [
+   0.02,
+   0.22,
+   0.48,
+   0.28
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "ALL",
+  "probs": [
+   0.08,
+   0.46,
+   0.35,
+   0.11
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.07,
+   0.45,
+   0.36,
+   0.12
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.12,
+   0.5,
+   0.3,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.12,
+   0.48,
+   0.31,
+   0.09
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "age_band=18-29",
+  "probs": [
+   0.06,
+   0.42,
+   0.39,
+   0.13
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "age_band=60+",
+  "probs": [
+   0.11,
+   0.52,
+   0.28,
+   0.09
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "education3=Lower",
+  "probs": [
+   0.11,
+   0.48,
+   0.32,
+   0.09
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "education3=Higher",
+  "probs": [
+   0.06,
+   0.44,
+   0.38,
+   0.12
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "religion=Muslim",
+  "probs": [
+   0.12,
+   0.5,
+   0.3,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q66",
+  "group": "religion=No religion",
+  "probs": [
+   0.06,
+   0.42,
+   0.38,
+   0.14
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "ALL",
+  "probs": [
+   0.27,
+   0.52,
+   0.16,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.26,
+   0.53,
+   0.16,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.3,
+   0.5,
+   0.16,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.32,
+   0.48,
+   0.16,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "age_band=18-29",
+  "probs": [
+   0.2,
+   0.52,
+   0.22,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "age_band=60+",
+  "probs": [
+   0.32,
+   0.52,
+   0.12,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "education3=Lower",
+  "probs": [
+   0.3,
+   0.5,
+   0.14,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "education3=Higher",
+  "probs": [
+   0.22,
+   0.54,
+   0.19,
+   0.05
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "religion=Muslim",
+  "probs": [
+   0.3,
+   0.5,
+   0.16,
+   0.04
+  ]
+ },
+ {
+  "question_id": "Q70",
+  "group": "religion=No religion",
+  "probs": [
+   0.22,
+   0.52,
+   0.2,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "ALL",
+  "probs": [
+   0.2,
+   0.5,
+   0.22,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.19,
+   0.5,
+   0.23,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.25,
+   0.5,
+   0.18,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.25,
+   0.48,
+   0.19,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "age_band=18-29",
+  "probs": [
+   0.15,
+   0.48,
+   0.28,
+   0.09
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "age_band=60+",
+  "probs": [
+   0.28,
+   0.48,
+   0.17,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "education3=Lower",
+  "probs": [
+   0.25,
+   0.47,
+   0.2,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "education3=Higher",
+  "probs": [
+   0.17,
+   0.51,
+   0.25,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "religion=Muslim",
+  "probs": [
+   0.25,
+   0.5,
+   0.18,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q76",
+  "group": "religion=No religion",
+  "probs": [
+   0.15,
+   0.48,
+   0.27,
+   0.1
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "ALL",
+  "probs": [
+   0.05,
+   0.04,
+   0.07,
+   0.09,
+   0.25,
+   0.13,
+   0.13,
+   0.1,
+   0.06,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.05,
+   0.04,
+   0.07,
+   0.09,
+   0.25,
+   0.13,
+   0.13,
+   0.1,
+   0.06,
+   0.08
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.03017,
+   0.02668,
+   0.0516,
+   0.07332,
+   0.22507,
+   0.12935,
+   0.14295,
+   0.12153,
+   0.08059,
+   0.11875
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.03353,
+   0.02905,
+   0.05508,
+   0.07671,
+   0.23084,
+   0.13004,
+   0.14087,
+   0.11738,
+   0.0763,
+   0.1102
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "age_band=18-29",
+  "probs": [
+   0.06307,
+   0.04799,
+   0.07989,
+   0.09771,
+   0.25818,
+   0.12771,
+   0.12148,
+   0.08889,
+   0.05073,
+   0.06434
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "age_band=60+",
+  "probs": [
+   0.03819,
+   0.03212,
+   0.05909,
+   0.07987,
+   0.25657,
+   0.12751,
+   0.13404,
+   0.1084,
+   0.06837,
+   0.09584
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "education3=Lower",
+  "probs": [
+   0.04073,
+   0.03358,
+   0.06055,
+   0.08023,
+   0.28705,
+   0.12305,
+   0.12679,
+   0.1005,
+   0.06214,
+   0.08538
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "education3=Higher",
+  "probs": [
+   0.05908,
+   0.04586,
+   0.07789,
+   0.09719,
+   0.23578,
+   0.1322,
+   0.1283,
+   0.09577,
+   0.05577,
+   0.07216
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "religion=Muslim",
+  "probs": [
+   0.03017,
+   0.02668,
+   0.0516,
+   0.07332,
+   0.22507,
+   0.12935,
+   0.14295,
+   0.12153,
+   0.08059,
+   0.11875
+  ]
+ },
+ {
+  "question_id": "Q107",
+  "group": "religion=No religion",
+  "probs": [
+   0.06027,
+   0.04633,
+   0.07789,
+   0.09622,
+   0.2568,
+   0.1283,
+   0.12327,
+   0.09111,
+   0.05252,
+   0.06728
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "ALL",
+  "probs": [
+   0.05,
+   0.03,
+   0.05,
+   0.08,
+   0.22,
+   0.12,
+   0.13,
+   0.12,
+   0.07,
+   0.13
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.04266,
+   0.02638,
+   0.0453,
+   0.07469,
+   0.21165,
+   0.11896,
+   0.1328,
+   0.12632,
+   0.07593,
+   0.14531
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.08159,
+   0.04429,
+   0.0668,
+   0.09671,
+   0.24063,
+   0.11876,
+   0.11642,
+   0.09724,
+   0.05132,
+   0.08624
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.06436,
+   0.03673,
+   0.05823,
+   0.08863,
+   0.23185,
+   0.12029,
+   0.12396,
+   0.10885,
+   0.0604,
+   0.1067
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "age_band=18-29",
+  "probs": [
+   0.05828,
+   0.03394,
+   0.05489,
+   0.08523,
+   0.22745,
+   0.1204,
+   0.12657,
+   0.11338,
+   0.06419,
+   0.11568
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "age_band=60+",
+  "probs": [
+   0.07261,
+   0.04022,
+   0.06188,
+   0.09139,
+   0.25521,
+   0.11682,
+   0.11682,
+   0.09955,
+   0.0536,
+   0.0919
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "education3=Lower",
+  "probs": [
+   0.06455,
+   0.03647,
+   0.05725,
+   0.08627,
+   0.2681,
+   0.11477,
+   0.11709,
+   0.10179,
+   0.05592,
+   0.0978
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "education3=Higher",
+  "probs": [
+   0.03907,
+   0.02464,
+   0.04318,
+   0.07263,
+   0.18897,
+   0.1204,
+   0.13712,
+   0.13306,
+   0.0816,
+   0.15931
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "religion=Muslim",
+  "probs": [
+   0.08159,
+   0.04429,
+   0.0668,
+   0.09671,
+   0.24063,
+   0.11876,
+   0.11642,
+   0.09724,
+   0.05132,
+   0.08624
+  ]
+ },
+ {
+  "question_id": "Q108",
+  "group": "religion=No religion",
+  "probs": [
+   0.04042,
+   0.02524,
+   0.04378,
+   0.07291,
+   0.20869,
+   0.11848,
+   0.13359,
+   0.12835,
+   0.07792,
+   0.15062
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "ALL",
+  "probs": [
+   0.33,
+   0.27,
+   0.4
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.31,
+   0.27,
+   0.42
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.4,
+   0.27,
+   0.33
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.38,
+   0.27,
+   0.35
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "age_band=18-29",
+  "probs": [
+   0.38,
+   0.3,
+   0.32
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "age_band=60+",
+  "probs": [
+   0.25,
+   0.27,
+   0.48
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "education3=Lower",
+  "probs": [
+   0.28,
+   0.28,
+   0.44
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "education3=Higher",
+  "probs": [
+   0.37,
+   0.26,
+   0.37
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "religion=Muslim",
+  "probs": [
+   0.42,
+   0.26,
+   0.32
+  ]
+ },
+ {
+  "question_id": "Q126",
+  "group": "religion=No religion",
+  "probs": [
+   0.33,
+   0.28,
+   0.39
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "ALL",
+  "probs": [
+   0.42,
+   0.5,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.41,
+   0.51,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.45,
+   0.47,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.42,
+   0.5,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "age_band=18-29",
+  "probs": [
+   0.38,
+   0.53,
+   0.08,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "age_band=60+",
+  "probs": [
+   0.46,
+   0.47,
+   0.06,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "education3=Lower",
+  "probs": [
+   0.44,
+   0.48,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "education3=Higher",
+  "probs": [
+   0.4,
+   0.52,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "religion=Muslim",
+  "probs": [
+   0.45,
+   0.47,
+   0.07,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q131",
+  "group": "religion=No religion",
+  "probs": [
+   0.38,
+   0.53,
+   0.08,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "ALL",
+  "probs": [
+   0.13,
+   0.27,
+   0.38,
+   0.22
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.12,
+   0.26,
+   0.39,
+   0.23
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.17,
+   0.3,
+   0.35,
+   0.18
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.17,
+   0.3,
+   0.34,
+   0.19
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "age_band=18-29",
+  "probs": [
+   0.14,
+   0.3,
+   0.4,
+   0.16
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "age_band=60+",
+  "probs": [
+   0.09,
+   0.19,
+   0.33,
+   0.39
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "education3=Lower",
+  "probs": [
+   0.16,
+   0.28,
+   0.33,
+   0.23
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "education3=Higher",
+  "probs": [
+   0.11,
+   0.27,
+   0.42,
+   0.2
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "religion=Muslim",
+  "probs": [
+   0.17,
+   0.3,
+   0.35,
+   0.18
+  ]
+ },
+ {
+  "question_id": "Q142",
+  "group": "religion=No religion",
+  "probs": [
+   0.12,
+   0.28,
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "ALL",
+  "probs": [
+   0.66,
+   0.085,
+   0.06375,
+   0.0425,
+   0.07438,
+   0.02656,
+   0.01594,
+   0.01594,
+   0.00531,
+   0.01063
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.67,
+   0.0825,
+   0.06187,
+   0.04125,
+   0.07219,
+   0.02578,
+   0.01547,
+   0.01547,
+   0.00516,
+   0.01031
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.68,
+   0.08,
+   0.06,
+   0.04,
+   0.07,
+   0.025,
+   0.015,
+   0.015,
+   0.005,
+   0.01
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.6,
+   0.1,
+   0.075,
+   0.05,
+   0.0875,
+   0.03125,
+   0.01875,
+   0.01875,
+   0.00625,
+   0.0125
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "age_band=18-29",
+  "probs": [
+   0.52,
+   0.12,
+   0.09,
+   0.06,
+   0.105,
+   0.0375,
+   0.0225,
+   0.0225,
+   0.0075,
+   0.015
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "age_band=60+",
+  "probs": [
+   0.76,
+   0.06,
+   0.045,
+   0.03,
+   0.0525,
+   0.01875,
+   0.01125,
+   0.01125,
+   0.00375,
+   0.0075
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "education3=Lower",
+  "probs": [
+   0.72,
+   0.07,
+   0.0525,
+   0.035,
+   0.06125,
+   0.02188,
+   0.01313,
+   0.01313,
+   0.00438,
+   0.00875
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "education3=Higher",
+  "probs": [
+   0.6,
+   0.1,
+   0.075,
+   0.05,
+   0.0875,
+   0.03125,
+   0.01875,
+   0.01875,
+   0.00625,
+   0.0125
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "religion=Muslim",
+  "probs": [
+   0.7,
+   0.075,
+   0.05625,
+   0.0375,
+   0.06563,
+   0.02344,
+   0.01406,
+   0.01406,
+   0.00469,
+   0.00938
+  ]
+ },
+ {
+  "question_id": "Q177",
+  "group": "religion=No religion",
+  "probs": [
+   0.6,
+   0.1,
+   0.075,
+   0.05,
+   0.0875,
+   0.03125,
+   0.01875,
+   0.01875,
+   0.00625,
+   0.0125
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "ALL",
+  "probs": [
+   0.24,
+   0.06,
+   0.07,
+   0.06,
+   0.17,
+   0.07,
+   0.07,
+   0.07,
+   0.04,
+   0.15
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.2,
+   0.05543,
+   0.06664,
+   0.05886,
+   0.17184,
+   0.07291,
+   0.07513,
+   0.07742,
+   0.04559,
+   0.17617
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.45,
+   0.07635,
+   0.07667,
+   0.05656,
+   0.13794,
+   0.04889,
+   0.04208,
+   0.03622,
+   0.01781,
+   0.05749
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.33,
+   0.06745,
+   0.07411,
+   0.05982,
+   0.15963,
+   0.0619,
+   0.0583,
+   0.0549,
+   0.02955,
+   0.10434
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "age_band=18-29",
+  "probs": [
+   0.15,
+   0.04903,
+   0.06135,
+   0.0564,
+   0.17138,
+   0.07568,
+   0.08117,
+   0.08706,
+   0.05335,
+   0.21458
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "age_band=60+",
+  "probs": [
+   0.33,
+   0.06488,
+   0.072,
+   0.0587,
+   0.15822,
+   0.06197,
+   0.05895,
+   0.05607,
+   0.03048,
+   0.10872
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "education3=Lower",
+  "probs": [
+   0.32,
+   0.06846,
+   0.07522,
+   0.06072,
+   0.16201,
+   0.06283,
+   0.05917,
+   0.05572,
+   0.02999,
+   0.1059
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "education3=Higher",
+  "probs": [
+   0.17,
+   0.05254,
+   0.06444,
+   0.05807,
+   0.17296,
+   0.07487,
+   0.07871,
+   0.08274,
+   0.04971,
+   0.19596
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "religion=Muslim",
+  "probs": [
+   0.48,
+   0.07701,
+   0.0758,
+   0.05481,
+   0.13103,
+   0.04552,
+   0.0384,
+   0.0324,
+   0.01562,
+   0.04941
+  ]
+ },
+ {
+  "question_id": "Q184",
+  "group": "religion=No religion",
+  "probs": [
+   0.09,
+   0.04112,
+   0.05409,
+   0.05228,
+   0.167,
+   0.07753,
+   0.08742,
+   0.09856,
+   0.0635,
+   0.26849
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "ALL",
+  "probs": [
+   0.2,
+   0.42,
+   0.38
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.21,
+   0.42,
+   0.37
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.14,
+   0.42,
+   0.44
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.24,
+   0.45,
+   0.31
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "age_band=18-29",
+  "probs": [
+   0.25,
+   0.5,
+   0.25
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "age_band=60+",
+  "probs": [
+   0.12,
+   0.33,
+   0.55
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "education3=Lower",
+  "probs": [
+   0.12,
+   0.36,
+   0.52
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "education3=Higher",
+  "probs": [
+   0.28,
+   0.47,
+   0.25
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "religion=Muslim",
+  "probs": [
+   0.14,
+   0.42,
+   0.44
+  ]
+ },
+ {
+  "question_id": "Q209",
+  "group": "religion=No religion",
+  "probs": [
+   0.24,
+   0.44,
+   0.32
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "ALL",
+  "probs": [
+   0.03,
+   0.09,
+   0.3,
+   0.58
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.03,
+   0.08,
+   0.3,
+   0.59
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.04,
+   0.1,
+   0.3,
+   0.56
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.05,
+   0.12,
+   0.3,
+   0.53
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "age_band=18-29",
+  "probs": [
+   0.03,
+   0.11,
+   0.34,
+   0.52
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "age_band=60+",
+  "probs": [
+   0.04,
+   0.09,
+   0.27,
+   0.6
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "education3=Lower",
+  "probs": [
+   0.04,
+   0.1,
+   0.28,
+   0.58
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "education3=Higher",
+  "probs": [
+   0.03,
+   0.08,
+   0.33,
+   0.56
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "religion=Muslim",
+  "probs": [
+   0.04,
+   0.1,
+   0.3,
+   0.56
+  ]
+ },
+ {
+  "question_id": "Q237",
+  "group": "religion=No religion",
+  "probs": [
+   0.03,
+   0.08,
+   0.31,
+   0.58
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "ALL",
+  "probs": [
+   0.04,
+   0.02,
+   0.04,
+   0.07,
+   0.33,
+   0.12,
+   0.12,
+   0.1,
+   0.05,
+   0.11
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.04,
+   0.02,
+   0.04,
+   0.07,
+   0.33,
+   0.12,
+   0.12,
+   0.1,
+   0.05,
+   0.11
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.03157,
+   0.01643,
+   0.0342,
+   0.06229,
+   0.33621,
+   0.11568,
+   0.1204,
+   0.10443,
+   0.05435,
+   0.12444
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.03431,
+   0.01768,
+   0.03643,
+   0.0657,
+   0.31914,
+   0.11959,
+   0.12323,
+   0.10582,
+   0.05452,
+   0.1236
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "age_band=18-29",
+  "probs": [
+   0.04806,
+   0.02332,
+   0.04526,
+   0.07686,
+   0.31647,
+   0.12409,
+   0.12042,
+   0.09739,
+   0.04725,
+   0.10089
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "age_band=60+",
+  "probs": [
+   0.035,
+   0.01785,
+   0.03643,
+   0.06503,
+   0.34406,
+   0.11604,
+   0.11838,
+   0.10064,
+   0.05134,
+   0.11523
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "education3=Lower",
+  "probs": [
+   0.03695,
+   0.01848,
+   0.03695,
+   0.06467,
+   0.38106,
+   0.11085,
+   0.11085,
+   0.09238,
+   0.04619,
+   0.10162
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "education3=Higher",
+  "probs": [
+   0.04208,
+   0.02104,
+   0.04208,
+   0.07365,
+   0.29511,
+   0.12625,
+   0.12625,
+   0.10521,
+   0.0526,
+   0.11573
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "religion=Muslim",
+  "probs": [
+   0.03157,
+   0.01643,
+   0.0342,
+   0.06229,
+   0.33621,
+   0.11568,
+   0.1204,
+   0.10443,
+   0.05435,
+   0.12444
+  ]
+ },
+ {
+  "question_id": "Q240",
+  "group": "religion=No religion",
+  "probs": [
+   0.04565,
+   0.02215,
+   0.04299,
+   0.07301,
+   0.35072,
+   0.11787,
+   0.11439,
+   0.09251,
+   0.04489,
+   0.09583
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "ALL",
+  "probs": [
+   0.03,
+   0.01,
+   0.02,
+   0.02,
+   0.1,
+   0.06,
+   0.12,
+   0.17,
+   0.12,
+   0.35
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.03092,
+   0.01031,
+   0.02062,
+   0.02062,
+   0.10308,
+   0.06185,
+   0.12369,
+   0.17523,
+   0.12369,
+   0.33
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.02471,
+   0.0084,
+   0.01714,
+   0.01749,
+   0.08921,
+   0.05461,
+   0.11142,
+   0.16104,
+   0.11597,
+   0.4
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.02862,
+   0.00954,
+   0.01908,
+   0.01908,
+   0.09538,
+   0.05723,
+   0.11446,
+   0.16215,
+   0.11446,
+   0.38
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "age_band=18-29",
+  "probs": [
+   0.04153,
+   0.0133,
+   0.02556,
+   0.02455,
+   0.11795,
+   0.068,
+   0.13066,
+   0.17784,
+   0.12061,
+   0.28
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "age_band=60+",
+  "probs": [
+   0.02866,
+   0.00955,
+   0.0191,
+   0.0191,
+   0.11463,
+   0.05731,
+   0.11463,
+   0.16239,
+   0.11463,
+   0.36
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "education3=Lower",
+  "probs": [
+   0.03853,
+   0.01234,
+   0.02371,
+   0.02278,
+   0.13134,
+   0.0631,
+   0.12124,
+   0.16503,
+   0.11192,
+   0.31
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "education3=Higher",
+  "probs": [
+   0.02307,
+   0.008,
+   0.01666,
+   0.01734,
+   0.08122,
+   0.05635,
+   0.11731,
+   0.17297,
+   0.12708,
+   0.38
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "religion=Muslim",
+  "probs": [
+   0.02471,
+   0.0084,
+   0.01714,
+   0.01749,
+   0.08921,
+   0.05461,
+   0.11142,
+   0.16104,
+   0.11597,
+   0.4
+  ]
+ },
+ {
+  "question_id": "Q250",
+  "group": "religion=No religion",
+  "probs": [
+   0.03512,
+   0.01147,
+   0.02249,
+   0.02205,
+   0.10805,
+   0.06355,
+   0.12458,
+   0.17299,
+   0.1197,
+   0.32
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "ALL",
+  "probs": [
+   0.14,
+   0.52,
+   0.27,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "ethnic=Chinese",
+  "probs": [
+   0.12,
+   0.52,
+   0.29,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "ethnic=Malay",
+  "probs": [
+   0.22,
+   0.52,
+   0.2,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "ethnic=Indian",
+  "probs": [
+   0.2,
+   0.52,
+   0.22,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "age_band=18-29",
+  "probs": [
+   0.1,
+   0.5,
+   0.31,
+   0.09
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "age_band=60+",
+  "probs": [
+   0.2,
+   0.52,
+   0.22,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "education3=Lower",
+  "probs": [
+   0.18,
+   0.5,
+   0.25,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "education3=Higher",
+  "probs": [
+   0.11,
+   0.53,
+   0.29,
+   0.07
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "religion=Muslim",
+  "probs": [
+   0.22,
+   0.52,
+   0.2,
+   0.06
+  ]
+ },
+ {
+  "question_id": "Q253",
+  "group": "religion=No religion",
+  "probs": [
+   0.1,
+   0.5,
+   0.31,
+   0.09
+  ]
+ }
+]

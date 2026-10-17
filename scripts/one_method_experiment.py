@@ -16,7 +16,9 @@ source's "worth in respondents" is fitted on the other questions only (leave one
 Truth: the people NOT in the sample (weighted). Error: points off per answer option. Scores are averaged over
 draws for each group and question, then the middle result is taken across groups and questions.
 
-Usage: one_method_experiment.py [singapore|us] [draws]
+Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost]
+       "boost" draws surveys with extra people from small groups (Singapore: Malay and Indian, 20% each; US: Black
+       adults, 30%), weighted back to the population, and writes one_method_<country>_boost.*
        one_method_experiment.py [singapore|us] compare   (recompute only the comparisons from saved cells)
 Writes docs/results/stress_test/one_method_<country>.md / .csv / _cells.csv.
 """
@@ -40,6 +42,7 @@ from digital_citizens.evaluate.transfer import cross_country_transfer  # noqa: E
 OUT = Path("docs/results/stress_test")
 SIZES = (150, 300, 600)
 MIN_HOLD = 30
+BOTH_KEY = "+ record citizens (own survey) + chatbot kind"
 # name -> (sources, mode): "blend" combines the sources with the group's survey answers; "alone" uses the source only
 CONFIGS = {
     "survey alone": ([], "blend"),
@@ -50,6 +53,20 @@ CONFIGS = {
     "+ record citizens + chatbot kind": (["rec_past", "chat"], "blend"),
     "+ record citizens (own survey) + chatbot kind": (["rec_own", "chat"], "blend"),
     "+ last round's answers": (["last"], "blend"),
+    "+ chatbot (Opus)": (["chat_opus"], "blend"),
+    "+ chatbot (Sonnet)": (["chat_sonnet"], "blend"),
+    "+ chatbot (Haiku)": (["chat_haiku"], "blend"),
+    "+ chatbot (Qwen, open, Asian-built)": (["chat_qwen"], "blend"),
+    "+ chatbot panel, averaged": (["chat_avg"], "blend"),
+    "+ chatbot panel, each weighted": (["chat", "chat_opus", "chat_sonnet", "chat_haiku", "chat_qwen"], "blend"),
+    "+ record citizens (own survey) + chatbot panel, averaged": (["rec_own", "chat_avg"], "blend"),
+    "+ record citizens (own survey) + chatbot panel, each weighted": (["rec_own", "chat", "chat_opus", "chat_sonnet", "chat_haiku", "chat_qwen"], "blend"),
+    "+ record citizens + chatbot panel, each weighted": (["rec_past", "chat", "chat_opus", "chat_sonnet", "chat_haiku", "chat_qwen"], "blend"),
+    "+ record citizens (own survey, 5 standard questions)": (["rec_own_k5"], "blend"),
+    "+ record citizens (own survey, 10 standard questions)": (["rec_own_k10"], "blend"),
+    "+ record citizens (own survey, 20 standard questions)": (["rec_own_k20"], "blend"),
+    "+ record citizens (own survey, 10 standard questions) + chatbot kind": (["rec_own_k10", "chat"], "blend"),
+    "+ record citizens (own survey, 20 standard questions) + chatbot kind": (["rec_own_k20", "chat"], "blend"),
     "chatbot kind alone, no survey": (["chat"], "alone"),
     "record citizens alone, no survey": (["rec_past"], "alone"),
     "last round's answers alone, no survey": (["last"], "alone"),
@@ -71,11 +88,40 @@ KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in
     ("+ record citizens (own survey) + chatbot kind", 600, "+ chatbot kind", 600),
     ("+ record citizens (own survey) + chatbot kind", 300, "survey alone", 600),
     ("+ record citizens + chatbot kind", 300, "+ record citizens", 300),
+    ("+ chatbot panel, averaged", 300, "+ chatbot kind", 300),
+    ("+ chatbot panel, each weighted", 300, "+ chatbot kind", 300),
+    ("+ record citizens (own survey) + chatbot panel, averaged", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey) + chatbot panel, each weighted", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey, 5 standard questions)", 300, "+ record citizens (own survey)", 300),
+    ("+ record citizens (own survey, 10 standard questions)", 300, "+ record citizens (own survey)", 300),
+    ("+ record citizens (own survey, 20 standard questions)", 300, "+ record citizens (own survey)", 300),
+    ("+ record citizens (own survey, 10 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey, 20 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
 ]
+PANEL = {"chat_opus": "opus", "chat_sonnet": "sonnet", "chat_haiku": "haiku", "chat_qwen": "qwen"}
+KS = (5, 10, 20)
 
 
 def _load(path: Path) -> dict:
     return {(r["question_id"], r["group"]): r["probs"] for r in json.load(open(path))}
+
+
+def _with_panel(ext: dict, tag: str) -> dict:
+    """Add the other chatbots' blind predictions (docs/results/stress_test/panel_<model>_<country>.json) and their average."""
+    chats = {"chat": ext["chat"]}
+    for key, name in PANEL.items():
+        f = OUT / f"panel_{name}_{tag}.json"
+        if f.exists():
+            ext[key] = chats[key] = _load(f)
+    if len(chats) > 1:
+        keys = set.intersection(*(set(c) for c in chats.values()))
+        ext["chat_avg"] = {k: list(np.mean([np.asarray(c[k], float) / np.sum(c[k]) for c in chats.values()], axis=0)) for k in keys}
+    return ext
+
+
+def _ranking(tag: str) -> list[str] | None:
+    f = OUT / f"standard_questions_{tag}.json"
+    return json.load(open(f))["order"] if f.exists() else None
 
 
 def setup(country: str):
@@ -87,14 +133,14 @@ def setup(country: str):
         rec = cross_country_transfer([b22], bench, tg, demo, groups + ["ALL"], C=0.3, min_n=30)
         chat = _load(OUT / "predictions_gss_claude_in_session.json")
         last = {k: d.normalised() for k, d in gss.benchmark(2022).real.items()}  # same questions, asked two years earlier
-        return "the United States", bench, tg, groups, demo, {"rec_past": rec, "chat": chat, "last": last}
+        return "the United States", bench, tg, groups, demo, _with_panel({"rec_past": rec, "chat": chat, "last": last}, "us")
     packet = json.load(open(OUT / "packet_wvs_singapore.json"))
     tg, groups = [q["id"] for q in packet["questions"]], [g for g in packet["groups"] if g != "ALL"]
     bench = wvs.benchmark("Singapore")
     demo = ["sex", "age_band", "ethnic", "religion", "education3", "income3", "born_in_country"]
     rec = _load(OUT / "record_all_singapore_pred.json")
     chat = _load(OUT / "predictions_wvs_singapore_claude_in_session.json")
-    return "Singapore", bench, tg, groups, demo, {"rec_past": rec, "chat": chat}
+    return "Singapore", bench, tg, groups, demo, _with_panel({"rec_past": rec, "chat": chat}, "singapore")
 
 
 def _gmask(df: pd.DataFrame, g: str) -> np.ndarray:
@@ -107,7 +153,14 @@ def _shares(y: pd.Series, w: np.ndarray, m: np.ndarray, options: list[str]) -> n
     return v / v.sum() if v.sum() > 0 else np.full(len(options), np.nan)
 
 
-def draw_cells(bench, tg, groups, demo, ext, draws, seed=0) -> list[dict]:
+def _boost_strata(df: pd.DataFrame, tag: str):
+    """Small groups to over-sample and their share of the sample."""
+    if tag == "us":
+        return {"race_eth=Black, non-Hispanic": 0.30}
+    return {"ethnic=Malay": 0.20, "ethnic=Indian": 0.20}
+
+
+def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", ranking=None, tag="singapore") -> list[dict]:
     """One record per (draw, size, question, group): truth, the sample's group answers, and every AI estimate."""
     df = bench.respondents
     items = [q.id for q in bench.questions if q.id in df.columns]
@@ -121,19 +174,39 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0) -> list[dict]:
                 options = bench.qmap[t].options
                 y = df[t]
                 valid = y.notna().to_numpy()
-                take = rng.choice(np.where(valid)[0], size=min(n, int(valid.sum())), replace=False)
+                ws = w.copy()
+                if design == "boost":
+                    quotas = _boost_strata(df, tag)
+                    rest = valid.copy()
+                    take = []
+                    for g_, share in quotas.items():
+                        members = valid & _gmask(df, g_)
+                        rest &= ~members
+                        k = int(round(n * share))
+                        take.append(rng.choice(np.where(members)[0], size=min(k, int(members.sum())), replace=False))
+                        ws[members] = w[members] * (w[members].sum() / w[valid].sum()) / (k / n)  # weight back to the population
+                    k_rest = n - sum(len(t_) for t_ in take)
+                    take.append(rng.choice(np.where(rest)[0], size=k_rest, replace=False))
+                    ws[rest] = w[rest] * (w[rest].sum() / w[valid].sum()) / (k_rest / n)
+                    take = np.concatenate(take)
+                else:
+                    take = rng.choice(np.where(valid)[0], size=min(n, int(valid.sum())), replace=False)
                 cal = np.zeros(len(df), bool); cal[take] = True
                 hold = valid & ~cal
-                overall = _shares(y, w, cal, options)
+                overall = _shares(y, ws, cal, options)
                 own = {}
                 if y[cal].nunique() >= 2:
                     others = [i for i in items if i != t]
                     feats = {"demo_own": df[demo].astype(str),
                              "rec_own": pd.concat([df[demo].astype(str), df[others].astype(str)], axis=1)}
+                    if ranking and design == "standard":
+                        for k_ in KS:
+                            short = [i for i in ranking if i != t and i in others][:k_]
+                            feats[f"rec_own_k{k_}"] = pd.concat([df[demo].astype(str), df[short].astype(str)], axis=1)
                     for name, X in feats.items():
                         enc = OneHotEncoder(handle_unknown="ignore")
                         clf = LogisticRegression(C=0.3, max_iter=3000)
-                        clf.fit(enc.fit_transform(X[cal]), y[cal].astype(str), sample_weight=w[cal])
+                        clf.fit(enc.fit_transform(X[cal]), y[cal].astype(str), sample_weight=ws[cal])
                         pr = clf.predict_proba(enc.transform(X))
                         M = np.zeros((len(df), len(options)))
                         for j, o in enumerate(options):
@@ -149,7 +222,7 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0) -> list[dict]:
                         continue
                     cm = cal & gm[g]
                     n_g = int(cm.sum())
-                    sample = _shares(y, w, cm, options) if n_g > 0 else overall
+                    sample = _shares(y, ws, cm, options) if n_g > 0 else overall
                     if any((t, g) not in e for e in ext.values()):
                         continue
                     src = {name: np.asarray(e[(t, g)], float) for name, e in ext.items()}
@@ -193,7 +266,7 @@ def fit_worth(P, C, nvec, T, mask):
     """Worth in respondents for each source, minimising mean JSD (as evaluate/bayes.py does), vectorised."""
     def loss(x):
         return float(_jsd(_blend(np.exp(x), P, C, nvec), T, mask).mean())
-    res = minimize(loss, np.full(len(P), np.log(50.0)), method="Nelder-Mead", options={"maxiter": 400, "xatol": 1e-3, "fatol": 1e-7})
+    res = minimize(loss, np.full(len(P), np.log(50.0)), method="Nelder-Mead", options={"maxiter": 400 * len(P), "xatol": 1e-3, "fatol": 1e-7})
     return np.minimum(np.exp(res.x), 5000.0)
 
 
@@ -203,7 +276,8 @@ def evaluate(rows, tg):
     mask = np.zeros_like(T, bool)
     for i, r in enumerate(rows):
         mask[i, :r["k"]] = True
-    P = {s: _stack(rows, s, K) for s in ["rec_past", "chat", "rec_own", "demo_own", "last"] if s in rows[0]}
+    skip = {"draw", "n", "question_id", "group", "n_group", "k", "truth", "sample", "has_sample"}
+    P = {s: _stack(rows, s, K) for s in rows[0] if s not in skip}
     nvec = np.array([r["n_group"] for r in rows], float)
     has = np.array([r["has_sample"] for r in rows])
     qs = np.array([r["question_id"] for r in rows]); ns = np.array([r["n"] for r in rows])
@@ -292,11 +366,13 @@ def main() -> None:
         compare_only("us" if country == "us" else "singapore")
         return
     draws = int(sys.argv[2]) if len(sys.argv) > 2 else 10
+    design = sys.argv[3] if len(sys.argv) > 3 else "standard"
     title, bench, tg, groups, demo, ext = setup(country)
-    rows = draw_cells(bench, tg, groups, demo, ext, draws)
+    tag0 = "us" if country == "us" else "singapore"
+    rows = draw_cells(bench, tg, groups, demo, ext, draws, design=design, ranking=_ranking(tag0), tag=tag0)
     print(f"{len(rows)} cells drawn in {time.time() - t0:.0f}s", flush=True)
     cells, worth = evaluate(rows, tg)
-    tag = "us" if country == "us" else "singapore"
+    tag = tag0 + ("_boost" if design == "boost" else "")
     cells.to_csv(OUT / f"one_method_{tag}_cells.csv", index=False)
     per_cell = cells.groupby(["config", "n", "question_id", "group"], as_index=False).mae_pts.mean()
     summary = per_cell.groupby(["config", "n"]).mae_pts.agg(["median", "mean"]).reset_index()
@@ -307,7 +383,7 @@ def main() -> None:
     diffs.to_csv(OUT / f"one_method_{tag}_comparisons.csv", index=False)
     w = worth.groupby(["config", "n"]).median(numeric_only=True).round(1).reset_index()
     sizes = cells[cells.config == "survey alone"].groupby(["n", "group"]).n_group.mean().unstack("n").round(0)
-    lines = [f"# One method, {title}: a small real survey with and without AI", "",
+    lines = [f"# One method, {title}: a small real survey with and without AI" + (" (small groups boosted)" if design == "boost" else ""), "",
              f"Generated {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}; runtime {time.time() - t0:.0f}s; "
              f"{draws} draws per survey size; {len(tg)} questions x {len(groups)} groups.", "",
              "Points off per answer option for each group: middle result over groups and questions of the",
