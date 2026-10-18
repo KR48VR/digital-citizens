@@ -734,5 +734,13 @@
   "fix": "Split into two short paragraphs, the first with a worked case (60-40 reads 57-43 to 63-37; 52-48 could read 49-51; same for a real 600-person survey).",
   "status": "Fixed",
   "id": 92
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "The worked case for \"3 points off\" (60-40 reading 57-43 to 63-37; 52-48 reading 49-51) made the reader do arithmetic and hid the point (King's catch).",
+  "fix": "Replaced with the point itself: about 3 points off shows which way a group clearly leans, such as 60-40, but cannot call a near-tie such as 52-48; a real 600-person survey has the same limit.",
+  "status": "Fixed",
+  "id": 93
  }
 ]

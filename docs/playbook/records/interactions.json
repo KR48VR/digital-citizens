@@ -975,6 +975,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Spelled out \"blended\" in the headline box, and split the paragraph on what 3 points off means into two, each with a worked case."
+  },
+  {
+   "n": 92,
+   "time": "02:18 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "this part is still confusing. what is the point you are tryung to make?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Stated the point in one line (about 3 points off shows which way a group clearly leans but cannot call a near-tie, and a 600-person survey has the same limit) and replaced the paragraph with that."
   }
  ],
  "tasks": {
