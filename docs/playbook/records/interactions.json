@@ -995,6 +995,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Confirmed with our test (600 people with no AI were also 2.7 points off for a typical group) and standard polling practice (margins of error; near-ties called too close to call), and made the page say \"with no AI\" explicitly."
+  },
+  {
+   "n": 94,
+   "time": "02:21 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "we should say 3 points is good enough to act on because it is consistent with conventional survey practice without the use of either type of AI. then we explain the splits to illuminate this point",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rewrote the paragraph to lead with the reason (a conventional 600-person survey with no AI was also 2.7 points off, and such surveys are used for decisions) and then use the 60-40 and 52-48 splits to illustrate it."
   }
  ],
  "tasks": {
