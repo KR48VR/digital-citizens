@@ -1,0 +1,53 @@
+{
+ "individual": {
+  "demographics": {
+   "people": 100,
+   "answers": 1951,
+   "top_choice": 0.47001537672988214,
+   "prob_on_answer": 0.3576584269139369
+  },
+  "record": {
+   "people": 100,
+   "answers": 1951,
+   "top_choice": 0.5197334700153767,
+   "prob_on_answer": 0.3805770541175081
+  }
+ },
+ "groups": {
+  "ALL": {
+   "survey of 100": 3.5301349391775774,
+   "demographics": 4.7081855972783035,
+   "record": 3.8737403856421126
+  },
+  "ethnic=Chinese": {
+   "survey of 100": 4.349781439395752,
+   "demographics": 5.692633788343381,
+   "record": 5.059068865669243
+  },
+  "ethnic=Malay": {
+   "survey of 100": 5.071283619930334,
+   "demographics": 3.5261965983834798,
+   "record": 4.118925858402042
+  },
+  "ethnic=Indian": {
+   "survey of 100": 5.181010900345292,
+   "demographics": 4.331344084628848,
+   "record": 3.753694508013977
+  },
+  "age_band=18-29": {
+   "survey of 100": 8.378603939527723,
+   "demographics": 6.687502111288763,
+   "record": 4.680198435391967
+  },
+  "age_band=60+": {
+   "survey of 100": 5.0055299381056955,
+   "demographics": 4.905510861522032,
+   "record": 5.03246673460487
+  },
+  "all": {
+   "survey of 100": 4.704125238858773,
+   "demographics": 4.900081781441086,
+   "record": 4.517124621226982
+  }
+ }
+}
