@@ -205,7 +205,7 @@ for key in ("IND", "CHI"):
     key_ = "".join(f'<span><i class="sw {c}"></i>{lab} {v}%</span>' for (c, lab), v in zip(SEG, sh))
     bars.append(f'<div class="brow"><p class="blab"><strong>{GROUPS[key][1]}</strong> · about {round(n_)} people in the survey</p>'
                 f'<div class="bar" aria-hidden="true">{segs}</div><p class="bkey">{key_}</p></div>')
-BLEND_BARS = ('<figure class="blendfig"><h3>How much each voice counts</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
+BLEND_BARS = ('<figure class="blendfig"><h3>How much each counts</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
               + "".join(bars) + "</figure>")
 _n, _r, _c = round(BLEND["IND"][0]), round(BL["rec"]), round(BL["chat"])  # the example's working uses the rounded numbers it shows
 assert round((_n * 40 + _r * 50 + _c * 45) / (_n + _r + _c)) == round(EXAMPLE)

@@ -1205,6 +1205,16 @@
    "screenshot": false,
    "mid_task": true,
    "claude": "Cut it from seven sentences to five: the point first, then the two women, then why the chatbot alone was rough and why it still helps once blended."
+  },
+  {
+   "n": 115,
+   "time": "03:13 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "the blending section has been moved - great! the explanation is still overwrought - based on what we have discussed, can you improve it?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Rewrote it as point, rule, example, bars, so what: one line on what blending is, each source's say counted in people, the worked example in two short sentences, and no repeat of how the AI's say is set."
   }
  ],
  "tasks": {

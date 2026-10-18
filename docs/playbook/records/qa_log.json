@@ -862,5 +862,13 @@
   "fix": "Five sentences, point first, one hedge.",
   "status": "Fixed",
   "id": 108
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "The blending explainer was overwrought: two terms for the same thing (\"voices\" and \"say\"), the advisers comparison, and the AI's track record explained twice (King's catch).",
+  "fix": "Point, rule, example, bars, so what: each source's say is counted in people, and the example comes before the bars that show the same shares.",
+  "status": "Fixed",
+  "id": 109
  }
 ]

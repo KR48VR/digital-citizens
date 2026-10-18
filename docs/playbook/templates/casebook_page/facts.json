@@ -118,7 +118,7 @@
  "scalars": {
   "HOURS": "about 24 hours",
   "N_TASKS": 24,
-  "N_SHOTS": 25,
+  "N_SHOTS": 26,
   "N_AGENTS": 13,
   "N_BG": 36,
   "N_HOOKS": 10,
@@ -127,7 +127,7 @@
   "N_DRAFTS": 8,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "62",
+  "N_VERSIONS": "63",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"
