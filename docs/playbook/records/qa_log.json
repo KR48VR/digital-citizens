@@ -958,5 +958,13 @@
   "fix": "Two lists, \"What we have not shown yet\" (most important first) and \"What to test next\"; \"neither kind of AI\"; products, prices and reactions to change merged.",
   "status": "Fixed",
   "id": 120
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Layout",
+  "finding": "The decision tree quoted numbers with no way to reach the evidence for them, and How we know did not point to the full evidence for analysts (King's catch).",
+  "fix": "Every number in What to do links to where it is shown, How we know links to the analysts' tables and notes, and the casebook is linked as private, access on request. All 28 in-page links were clicked in a browser and land on their target, opening folds on the way.",
+  "status": "Fixed",
+  "id": 121
  }
 ]

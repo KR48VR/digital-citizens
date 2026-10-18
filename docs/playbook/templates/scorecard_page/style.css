@@ -163,7 +163,7 @@
   .toc { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 16px; }
   .toc a { font-size: 14px; padding: 4px 12px; border: 1px solid var(--ring); border-radius: 999px; color: var(--ink); text-decoration: none; background: var(--surface); }
   .toc a:hover, .toc a:focus-visible { border-color: var(--ink); }
-  section[id] { scroll-margin-top: 16px; }
+  [id] { scroll-margin-top: 16px; }
   .readnum { display: grid; gap: 10px; }
   .readnum h3 { font-size: 18px; margin: 6px 0 0; }
   .small { font-size: 14px; color: var(--ink-2); }

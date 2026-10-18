@@ -1295,6 +1295,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Found and fixed a contradiction (Limits said always pilot first; the tree says skip it for a one-off), put the findings in the summary's order, cut repeats, used the agreed words for blending and the chatbot, and split Limits into what we have not shown yet and what to test next."
+  },
+  {
+   "n": 124,
+   "time": "03:47 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "looking better. for the parts in What to Do that link to insights from How We Know, do we wanna provide hyperlinks? and for how We know insights that link to the Casebook, do we wanna provide hyperlnks too?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Recommended a link from every number in What to do to where it is shown, and from How we know to the analysts' evidence; advised against casebook links because readers cannot open it."
+  },
+  {
+   "n": 125,
+   "time": "03:49 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "go ahead with the What to Do links and the How We Know → analysts links. and we can link link to the casebook - it is ok that is private, we can say this is private - access by request?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added 19 links (every number in What to do, How we know to the analysts' evidence), a casebook link in the map of what we tested and at the foot, both marked \"private; access on request\", and checked that all 28 in-page links land, opening folds on the way."
   }
  ],
  "tasks": {
