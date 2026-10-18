@@ -12,13 +12,17 @@ answers (a survey of 100 alone). 100 people is a pilot: it shows whether reading
 
 Usage (run from the repository root; needs data/raw/wvs, see scripts/download_wvs.py):
   .venv/bin/python -I scripts/record_reading_trial.py plan    # no API calls: sample, prompt sizes, worst-case cost
-  .venv/bin/python -I scripts/record_reading_trial.py run     # needs ANTHROPIC_API_KEY; one batch, refuses if over budget
+  .venv/bin/python -I scripts/record_reading_trial.py run     # needs DIGITAL_CITIZENS_API_KEY; one batch, refuses if over budget
   .venv/bin/python -I scripts/record_reading_trial.py score   # scores the saved predictions
 Writes docs/results/record_reading_trial.{md,json} and docs/results/record_reading_trial_predictions.json.
+
+The key is read from DIGITAL_CITIZENS_API_KEY, set in the environment's settings, not from ANTHROPIC_API_KEY:
+Claude Code itself reads that name, and would then run the whole session on the trial's credit.
 """
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -140,7 +144,10 @@ def plan():
 
 def run():
     import anthropic
-    client = anthropic.Anthropic()
+    key = os.environ.get("DIGITAL_CITIZENS_API_KEY")
+    if not key:
+        sys.exit("DIGITAL_CITIZENS_API_KEY is not set: add it in the environment's settings and start a new session.")
+    client = anthropic.Anthropic(api_key=key)
     df, qs, targets, record_items, pids = setup()
     reqs = requests(df, qs, targets, record_items, pids)
     cost, n_in = worst_case(reqs, client)

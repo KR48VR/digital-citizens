@@ -34,8 +34,9 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
   casebook (private; access on request: method, QA log, King and AI, package) https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 ; index in `docs/playbook/README.md`.
 
 - **Record-reading trial (next; King approved up to $10):** when King says "Run the record-reading trial", use
-  `scripts/record_reading_trial.py`. It needs `ANTHROPIC_API_KEY` (King adds it in the environment settings; never
-  ask for it in chat) and `data/raw/wvs` (run `scripts/download_wvs.py` first if it is missing). Run `plan` (no
+  `scripts/record_reading_trial.py`. It needs `DIGITAL_CITIZENS_API_KEY` (King adds it as an environment variable in the
+  environment settings; never ask for it in chat, and never use the name `ANTHROPIC_API_KEY`, which Claude Code
+  itself would pick up) and `data/raw/wvs` (run `scripts/download_wvs.py` first if it is missing). Run `plan` (no
   API calls), then `run` (one batch to claude-opus-5-5 at low effort; it refuses to send anything if the worst case
   is over $10; most batches finish within an hour), then `score`. Report to King in plain words: did reading each
   person's survey record make the chatbot more accurate than knowing only their demographics, for individuals and
