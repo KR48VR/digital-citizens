@@ -196,7 +196,7 @@ for key in ("IND", "CHI"):
     key_ = "".join(f'<span><i class="sw {c}"></i>{lab} {v}%</span>' for (c, lab), v in zip(SEG, sh))
     bars.append(f'<div class="brow"><p class="blab"><strong>{GROUPS[key][1]}</strong> · about {round(n_)} people in the survey</p>'
                 f'<div class="bar" aria-hidden="true">{segs}</div><p class="bkey">{key_}</p></div>')
-BLEND_BARS = ('<figure class="blendfig"><h4>How much each voice counts</h4><p class="howto">Singapore, survey of 300, brand-new question.</p>'
+BLEND_BARS = ('<figure class="blendfig"><h3>How much each voice counts</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
               + "".join(bars) + "</figure>")
 BLEND_TXT = {"rec": str(round(BL["rec"])), "chat": str(round(BL["chat"])), "IND_n": str(round(BLEND["IND"][0])), "example": str(round(EXAMPLE))}
 
