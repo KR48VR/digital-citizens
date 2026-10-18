@@ -236,29 +236,31 @@ for g in ("Malay", "Indian"):
 
 
 # ---- the two cases from the short answer, side by side (Singapore, survey of 300, typical group)
-def case_rows(rows):
-    top = max(v for _, _, v in rows)
-    out = []
-    for label, cls, v in rows:
-        out.append(f'<li class="{cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}</b></li>')
-    return "".join(out)
+# Same five rows in both cases, in the same order, so they line up across the two columns.
+def case_rows(rows, top):
+    return "".join(f'<div class="crow {cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}</b></div>'
+                   for label, cls, v in rows)
 
 
 sg_alone, sg_600 = med("singapore", "survey alone", 300), med("singapore", "survey alone", 600)
 sg_chat, sg_past = med("singapore", "+ chatbot kind", 300), med("singapore", "+ record citizens", 300)
+sg_past_both = med("singapore", "+ record citizens + chatbot kind", 300)
 sg_own, sg_both = med("singapore", "+ record citizens (own survey)", 300), med("singapore", BOTH, 300)
 assert sg_past < sg_chat and f1(sg_past) == f1(sg_600), "case 1: record citizens beat the chatbot and match 600"
+assert abs(sg_past_both - sg_past) < 0.1, "case 1: adding the chatbot to record citizens did not help"
 assert sg_both < min(sg_chat, sg_own) and f1(sg_both) == f1(sg_600), "case 2: both kinds best and match 600"
+TOP = max(sg_alone, sg_600)
 CASES = ('<div class="cases">'
-         '<div class="case"><h3>1. Your question was already asked in large surveys</h3><ul class="bars" role="list">'
+         '<div class="case"><h3>1. Your question was already asked in large surveys</h3>'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
-                      ("Blended with record citizens learned from other countries", "c-rc", sg_past), ("Survey of 600 alone, for comparison", "c-ref", sg_600)])
-         + '</ul><p><strong>Record citizens beat the chatbot,</strong> and matched a survey twice the size.</p></div>'
-         '<div class="case"><h3>2. Your question is brand new</h3><ul class="bars" role="list">'
+                      ("Blended with record citizens learned from other countries", "c-rc", sg_past),
+                      ("Blended with both kinds of AI", "c-both", sg_past_both), ("Survey of 600 alone, for comparison", "c-ref", sg_600)], TOP)
+         + '<p><strong>Record citizens beat the chatbot,</strong> and adding the chatbot to them did not help. They matched a survey twice the size.</p></div>'
+         '<div class="case"><h3>2. Your question is brand new</h3>'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
-                      ("Blended with record citizens learned from your survey", "c-rc", sg_own), ("Blended with both kinds of AI", "c-both", sg_both),
-                      ("Survey of 600 alone, for comparison", "c-ref", sg_600)])
-         + '</ul><p><strong>The two kinds did about as well as each other;</strong> blended in together, they matched a survey twice the size.</p></div>'
+                      ("Blended with record citizens learned from your survey", "c-rc", sg_own),
+                      ("Blended with both kinds of AI", "c-both", sg_both), ("Survey of 600 alone, for comparison", "c-ref", sg_600)], TOP)
+         + '<p><strong>The two kinds did about as well as each other;</strong> blended in together, they matched a survey twice the size.</p></div>'
          '</div>')
 
 

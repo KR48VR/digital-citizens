@@ -1015,6 +1015,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Replaced the single example with both cases side by side, each with the same rows (survey of 300 alone, each kind of AI blended in, survey of 600 alone), read from the results and checked at build time."
+  },
+  {
+   "n": 96,
+   "time": "02:27 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "can you align so that the same items in both examples are at the same level?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Lined the two cases up row by row, and filled case 1's missing \"both kinds of AI\" row from the results (2.7, the same as record citizens alone), which shows adding the chatbot did not help there."
   }
  ],
  "tasks": {

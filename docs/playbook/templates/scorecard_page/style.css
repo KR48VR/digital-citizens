@@ -194,19 +194,21 @@
   .verdict li::marker { font-weight: 600; }
   .casefig { gap: 12px; }
   .casefig h3.fig { font-size: 18px; margin: 0; }
-  .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .case { display: grid; gap: 10px; align-content: start; min-width: 0; }
-  .case h3 { font-size: 16px; margin: 0; }
-  .case p { font-size: 14px; color: var(--ink-2); }
-  .bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  .bars li { display: grid; grid-template-columns: minmax(0, 1fr) 2.4em; grid-template-areas: "label label" "track value"; gap: 2px 8px; align-items: center; font-size: 13px; color: var(--ink-2); }
-  .bars .cl { grid-area: label; }
-  .bars .ct { grid-area: track; height: 12px; display: block; }
-  .bars .ct i { display: block; height: 100%; border-radius: 0 4px 4px 0; }
-  .bars b { grid-area: value; font-variant-numeric: tabular-nums; color: var(--ink); font-size: 15px; text-align: right; }
+  .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(7, auto); column-gap: 22px; }
+  .case { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 8px; align-content: start; min-width: 0; }
+  .case h3 { font-size: 16px; margin: 0 0 2px; align-self: end; }
+  .case p { font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+  .crow { display: grid; grid-template-columns: minmax(0, 1fr) 2.4em; grid-template-areas: "label label" "track value"; gap: 2px 8px; align-items: center; align-self: end; font-size: 13px; color: var(--ink-2); }
+  .crow .cl { grid-area: label; }
+  .crow .ct { grid-area: track; height: 12px; display: block; }
+  .crow .ct i { display: block; height: 100%; border-radius: 0 4px 4px 0; }
+  .crow b { grid-area: value; font-variant-numeric: tabular-nums; color: var(--ink); font-size: 15px; text-align: right; }
   .c-sv i { background: var(--ink-2); }
   .c-cb i { background: var(--s2); }
   .c-rc i { background: var(--s3); }
   .c-both i { background: var(--s1); }
   .c-ref i { background: none; border: 1.5px dashed var(--muted); box-sizing: border-box; }
-  @media (max-width: 600px) { .cases { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 600px) {
+    .cases { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 22px; }
+    .case { grid-row: auto; grid-template-rows: none; }
+  }
