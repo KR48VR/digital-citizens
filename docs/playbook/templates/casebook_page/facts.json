@@ -117,8 +117,8 @@
    "Mapped its four stages against our work and built an editable comparison doc for King's colleagues."
   ],
   "T30": [
-   "Asked whether readers could confuse the two record-based approaches, chose the rename, sentence and table, and framed the difference as where each gets its starting knowledge.",
-   "Renamed the approach, added the sentence and table to the scorecard, and brought the glossary, write-up, guide and casebook in line."
+   "Asked whether readers could confuse the two record-based approaches, framed the difference as a statistical pattern against general understanding, asked how the chatbot knows whom to read, and chose an equation layout.",
+   "Renamed the approach, then mocked up and published two equations that differ only in their coloured middle box, and brought the glossary, write-up, guide and casebook in line."
   ]
  },
  "examples": {
@@ -146,12 +146,12 @@
   "N_AGENTS": 25,
   "N_BG": 56,
   "N_HOOKS": 17,
-  "N_IDEAS": 27,
+  "N_IDEAS": 28,
   "N_CHALLENGES": 19,
   "N_DRAFTS": 10,
   "N_ACTIONS": "over 1,300",
   "N_COMMITS": "29",
-  "N_VERSIONS": "73",
+  "N_VERSIONS": "74",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

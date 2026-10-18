@@ -1665,6 +1665,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Confirmed King's reading (record citizens learn a pattern from people who answered; the chatbot fills the gap from general knowledge) and put it in plain words: renamed it \"the chatbot reading each person's answers\", added the sentence and a four-row table, made the table stack on phones, and updated the glossary, write-up, guide and casebook."
+  },
+  {
+   "n": 161,
+   "time": "07:51 (18 Oct)",
+   "task": "T30",
+   "type": "teammate",
+   "king": "Maybe make it look like an equation or something?\nHow does the chatbot know which citizen to read?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Mocked up King's equation idea on the real page in two versions (equations replacing the table, or above it), at desktop and phone sizes, with a recommendation; explained that the chatbot is handed every person in the survey, one request each, and the guesses are added up by group."
+  },
+  {
+   "n": 162,
+   "time": "07:53 (18 Oct)",
+   "task": "T30",
+   "type": "teammate",
+   "king": "Option 1\n\nSo the difference is whether it is predicting the answer from a stats model or what it understands in general",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed King's reading (a statistical pattern against general understanding) and published option 1: two equations whose coloured middle box is the only difference, a line that both are done for every person and added up by group, and one line on what each needs and costs."
   }
  ],
  "tasks": {

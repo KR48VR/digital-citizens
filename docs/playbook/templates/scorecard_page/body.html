@@ -57,18 +57,18 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
     <h3>Two more findings that do not change the advice</h3>
     <details class="more" id="reading"><summary>Letting the chatbot read each person's answers first: about as good as record citizens, not adopted yet</summary><div class="inner">
     <p>The chatbot is usually told only what kind of person, or which group, it is answering for. We also tried a mix of the two kinds of AI: the chatbot reads each real person's own answers in the large survey first, the answers record citizens learn from. For one woman in the Singapore survey, it read her answers to 57 other questions, such as how often she goes to religious services, and then guessed her answers to our 20 questions. We did this for {{chk:people}} people and added up the guesses by group. We call this the chatbot reading each person's answers. Unlike record citizens, it does not learn a pattern from people who answered your question; it fills the gap with what it has read about people in general. We tested it in Singapore only.</p>
-    <div class="wrap">
-    <table class="cmp">
-      <caption>Record citizens and the chatbot reading each person's answers: both start from her real answers, but get to her answer on your question differently.</caption>
-      <thead><tr><th></th><th>Record citizens</th><th>The chatbot reading each person's answers</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Starts from</th><td data-l="Record citizens">Her real answers to other questions in the survey</td><td data-l="The chatbot">The same answers</td></tr>
-        <tr><th scope="row">How it gets her answer to your question</th><td data-l="Record citizens">A statistical model learns, from real people who answered your question, how their other answers link to it, then applies that pattern to her</td><td data-l="The chatbot">A chatbot reads her answers and fills the gap with what it has read about people in general; it learns no pattern from your data</td></tr>
-        <tr><th scope="row">Needs real answers to your question</th><td data-l="Record citizens">Yes: from your survey, or from other countries</td><td data-l="The chatbot">No</td></tr>
-        <tr><th scope="row">Chatbot fees</th><td data-l="Record citizens">None</td><td data-l="The chatbot">About US${{chk:cost}} for about 2,000 people and 20 questions</td></tr>
-      </tbody>
-    </table>
+    <div class="eq" role="group" aria-label="How record citizens and the chatbot reading each person's answers get her answer">
+      <div class="eqrow rc-row"><div class="eqlab"><i class="dot-rc" aria-hidden="true"></i>Record citizens</div>
+        <div class="term">Her real answers to other questions</div><div class="op"><span aria-hidden="true">+</span><span class="sr">plus</span></div>
+        <div class="term key">A pattern learned from real people who answered your question</div><div class="op"><span aria-hidden="true">=</span><span class="sr">equals</span></div>
+        <div class="term">Her likely answer to your question</div></div>
+      <div class="eqrow cb-row"><div class="eqlab"><i class="dot-cb" aria-hidden="true"></i>The chatbot reading each person's answers</div>
+        <div class="term">Her real answers to other questions</div><div class="op"><span aria-hidden="true">+</span><span class="sr">plus</span></div>
+        <div class="term key">What the chatbot has read about people in general</div><div class="op"><span aria-hidden="true">=</span><span class="sr">equals</span></div>
+        <div class="term">Its guess at her answer to your question</div></div>
+      <p class="eqnote">Both are done for every person in the survey, one at a time, and the answers are added up by group.</p>
     </div>
+    <p>Record citizens need real answers to your question to learn from. The chatbot needs none, but costs about US${{chk:cost}} in chatbot fees for about 2,000 people and 20 questions.</p>
     <p><strong>For groups, about the same as record citizens.</strong> Blended with a survey of 300, it was {{v:singapore_reading|+ chatbot reading records|300}} points off, against {{v:singapore_reading|+ record citizens (own survey)|300}} for record citizens learned from your survey and {{v:singapore_reading|+ chatbot kind|300}} for the chatbot asked the usual way: gaps small enough to be luck. Adding it to the blend with both kinds of AI gave {{v:singapore_reading|+ record citizens (own survey) + chatbot reading records|300}} instead of {{v:singapore_reading|+ record citizens (own survey) + chatbot kind|300}}, also small enough to be luck. The gain was larger with a survey of 150, but still small enough to be luck.</p>
     <p><strong>For individual people, a gain bigger than luck.</strong> In a separate trial with 100 people, its top guess matched what the person said {{chk:ind_rec}}% of the time, against {{chk:ind_demo}}% when it knew only their age, sex, ethnicity and similar facts. People themselves repeat only {{self:match}} to 81% of their answers, so no AI can be reliable for one person (see <a href="#steps">What to do</a>, step 1).</p>
     <p><strong>So what.</strong> Its best result, {{v:singapore_reading|+ record citizens (own survey) + chatbot reading records|300}}, is a tenth of a point better than both kinds of AI, which could be luck, and it costs about US${{chk:cost}} in chatbot fees each time it reads about 2,000 people's answers for 20 questions, while record citizens need no chatbot. So we have not adopted it. A larger test would show whether the small gain is real, especially for very small surveys.</p>
