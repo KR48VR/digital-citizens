@@ -1615,6 +1615,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Ran the checks (80 requests, about $0.76, one answer unreadable) and scored them."
+  },
+  {
+   "n": 156,
+   "time": "07:24 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "Happy. Please go ahead and",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Read both live pages in full, confirmed nobody had changed them since the last publish, fixed the package builder's folder path, and published the scorecard (version 72) and the casebook to their existing links."
   }
  ],
  "tasks": {

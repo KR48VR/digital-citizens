@@ -1222,5 +1222,13 @@
   "fix": "Nothing was sent or charged; King was told at once with the fix, and the run went ahead after King added credit.",
   "status": "Fixed",
   "id": 153
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "The casebook's package builder looked for the playbook files one folder too high, so the package pages could not be rebuilt.",
+  "fix": "Path corrected; the package was rebuilt from the current playbook, glossary, skills and interaction record, and published with the casebook.",
+  "status": "Fixed",
+  "id": 154
  }
 ]

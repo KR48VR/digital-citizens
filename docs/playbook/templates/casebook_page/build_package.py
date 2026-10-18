@@ -6,7 +6,7 @@ from pathlib import Path
 
 import markdown
 
-REPO = Path(__file__).resolve().parents[3]
+REPO = Path(__file__).resolve().parents[4]  # the repository root (casebook_page, templates, playbook, docs, root)
 OUT = Path(__file__).resolve().parent / "package"  # published next to the casebook as package/*.html
 BACK = sys.argv[1] if len(sys.argv) > 1 else "../"
 FILES = [  # (published name, repo path, title)

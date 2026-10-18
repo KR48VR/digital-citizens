@@ -10,3 +10,4 @@ data/cache/
 # pages built from the templates
 docs/playbook/templates/scorecard_page/scorecard.html
 docs/playbook/templates/casebook_page/casebook.html
+docs/playbook/templates/casebook_page/package/
