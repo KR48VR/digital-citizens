@@ -238,7 +238,7 @@ for g in ("Malay", "Indian"):
 # ---- the two cases from the short answer, side by side (Singapore, survey of 300, typical group)
 # Same five rows in both cases, in the same order, so they line up across the two columns.
 def case_rows(rows, top):
-    return "".join(f'<div class="crow {cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}</b></div>'
+    return "".join(f'<div class="crow {cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}<span class="sr"> points off</span></b></div>'
                    for label, cls, v in rows)
 
 
@@ -251,12 +251,12 @@ assert abs(sg_past_both - sg_past) < 0.1, "case 1: adding the chatbot to record 
 assert sg_both < min(sg_chat, sg_own) and f1(sg_both) == f1(sg_600), "case 2: both kinds best and match 600"
 TOP = max(sg_alone, sg_600)
 CASES = ('<div class="cases">'
-         '<div class="case"><h3>1. Your question was already asked in large surveys</h3>'
+         '<div class="case"><h3>1. Your question was already asked in large surveys</h3><div class="chead" aria-hidden="true">points off</div>'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
                       ("Blended with record citizens learned from other countries", "c-rc", sg_past),
                       ("Blended with both kinds of AI", "c-both", sg_past_both), ("Survey of 600 alone, for comparison", "c-ref", sg_600)], TOP)
          + '<p><strong>Record citizens beat the chatbot,</strong> and adding the chatbot to them did not help. They matched a survey twice the size.</p></div>'
-         '<div class="case"><h3>2. Your question is brand new</h3>'
+         '<div class="case"><h3>2. Your question is brand new</h3><div class="chead" aria-hidden="true">points off</div>'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
                       ("Blended with record citizens learned from your survey", "c-rc", sg_own),
                       ("Blended with both kinds of AI", "c-both", sg_both), ("Survey of 600 alone, for comparison", "c-ref", sg_600)], TOP)

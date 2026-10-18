@@ -1025,6 +1025,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Lined the two cases up row by row, and filled case 1's missing \"both kinds of AI\" row from the results (2.7, the same as record citizens alone), which shows adding the chatbot did not help there."
+  },
+  {
+   "n": 97,
+   "time": "02:28 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "and in the diagrams themselves, there is no mention of points off so the highlighted part and the section that follows is confusing",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Moved \"How to read the numbers\" above the diagram, labelled the number columns \"points off\", and rewrote the caption without the forward reference."
   }
  ],
  "tasks": {

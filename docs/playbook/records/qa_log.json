@@ -750,5 +750,13 @@
   "fix": "Replaced with both cases side by side, same rows in each, all read from the results; the build stops if either case stops holding.",
   "status": "Fixed",
   "id": 94
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "The two-case diagram showed numbers without saying they were points off, and its caption sent readers to an explanation further down (King's catch).",
+  "fix": "The explanation now comes first; each column of numbers is headed \"points off\"; the caption says shorter bars are better.",
+  "status": "Fixed",
+  "id": 95
  }
 ]
