@@ -93,8 +93,8 @@
    "Rebuilt the page in layers with a worked example, and tested it on five fresh readers playing a non-technical executive, fixing what each one tripped on."
   ],
   "T24": [
-   "Asked to stop patching, gave final comments (merge the two reading notes, say \"median\", keep the scale), and asked for one pass to make the page tighter and more integrated.",
-   "Applied King's comments, re-read the whole page, and fixed six things: broken references, which chatbot, leftover wording, a caveat said four times, a repeat of the summary, and mixed takeaway labels."
+   "Asked to stop patching and gave final comments: say \"median\", merge the reading notes, keep the scale; then asked for the blending fold, the decision tree in place of the worked example, links from every number to its evidence (the casebook linked as private), numbered colour bands for the sections, and a final QA of both pages.",
+   "Applied each in one integrated pass: rewrote the blending explanation without the method's inner numbers, put How we know in the summary's order, split Limits, removed a contradiction about the pilot, added 19 links that open folds, checked every claim against the data with three helper agents, and brought the casebook and playbook in line."
   ]
  },
  "examples": {
@@ -116,18 +116,18 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 24 hours",
+  "HOURS": "about 26 hours",
   "N_TASKS": 24,
   "N_SHOTS": 27,
-  "N_AGENTS": 13,
-  "N_BG": 36,
-  "N_HOOKS": 10,
-  "N_IDEAS": 15,
-  "N_CHALLENGES": 12,
-  "N_DRAFTS": 8,
-  "N_ACTIONS": "over 500",
+  "N_AGENTS": 23,
+  "N_BG": 47,
+  "N_HOOKS": 16,
+  "N_IDEAS": 24,
+  "N_CHALLENGES": 17,
+  "N_DRAFTS": 10,
+  "N_ACTIONS": "over 1,200",
   "N_COMMITS": "29",
-  "N_VERSIONS": "69",
+  "N_VERSIONS": "70",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"
@@ -147,13 +147,13 @@
    "king": false,
    "asked": "Can a chatbot give each group's answers blind?",
    "found": "It reproduced 81% of the real differences between groups in the US, but only 36% in Singapore and 25% in China: groups came out too alike.",
-   "changed": "Named the main problem: flattening"
+   "changed": "Named the main problem: groups come out too alike"
   },
   {
-   "title": "Five fixes for flattening",
+   "title": "Five fixes for groups that look too alike",
    "tag": "kept",
    "king": false,
-   "asked": "Can the chatbot's flat answers be fixed?",
+   "asked": "Can the chatbot's too-similar group answers be fixed?",
    "found": "Stretching its differences, sharpening its answers and showing it real answers first did not help (still about 5 points off in Singapore). Building citizens from real survey records did.",
    "changed": "Record citizens; the other fixes dropped"
   },
@@ -179,15 +179,15 @@
    "king": true,
    "asked": "King's idea: do news, reports and research add anything?",
    "found": "96 published findings on Singapore were 8 points off on their own and did not improve the estimates.",
-   "changed": "Rule 4"
+   "changed": "Two more rules: don't borrow numbers"
   },
   {
    "title": "The survey library",
    "tag": "dropped",
    "king": true,
    "asked": "King's idea: can we borrow the most similar question from another survey?",
-   "found": "Typically 11 points off, and about 9 even where the wording was near-identical.",
-   "changed": "Rule 4"
+   "found": "A median of 11 points off, and about 9 even where the wording was near-identical.",
+   "changed": "Two more rules: don't borrow numbers"
   },
   {
    "title": "Small surveys, scored honestly",
@@ -195,7 +195,7 @@
    "king": false,
    "asked": "Was our first small-survey result right?",
    "found": "No: people were checked against themselves, so 300 looked like 1,500. Redone honestly, 300 real people plus record citizens were about as accurate for each group as 600 without AI.",
-   "changed": "How accuracy is measured; Rule 1"
+   "changed": "How accuracy is measured; the short answer (about as accurate as a survey twice the size)"
   },
   {
    "title": "The United States, like for like",
@@ -227,7 +227,7 @@
    "king": true,
    "asked": "King noticed the page mixed setups.",
    "found": "One test now produces every headline number. AI still makes a survey about twice as valuable, the gain is biggest for small groups, and which AI to add depends on whether the question has been asked before.",
-   "changed": "Every headline number; Rule 2 (QA findings 47 to 66)"
+   "changed": "Every headline number; the two cases in the short answer (QA findings 47 to 66)"
   },
   {
    "title": "Three more ideas",
@@ -235,7 +235,7 @@
    "king": true,
    "asked": "King chose three ways to make AI more accurate.",
    "found": "Five chatbots helped only when each was counted by its track record, then about as much as the best one. About 20 standard questions kept most of the benefit of 76. Extra people from small groups helped them about a point when read alone, less with AI.",
-   "changed": "Rules 1 to 3"
+   "changed": "How to blend, steps 1 and 3; no need to survey extra people from small groups"
   },
   {
    "title": "How consistent people are",

@@ -14,7 +14,9 @@ The source of the private "Digital Citizens Casebook" page: how the study was do
 
 1. Add new interactions to `records/interactions.json` (see `records/annotate_interactions.py` for the
    three kinds: tool, teammate, independent) and new findings to `records/qa_log.json`.
-2. Update the counts and task parts in `facts.json`.
+2. Update the counts and task parts in `facts.json` after every round, recounting from the session record
+   (helper agents, actions, background jobs, reminders, hours) rather than carrying old figures forward; check
+   that the tests' "changed" entries name sections that still exist on the scorecard.
 3. Run `python build_casebook.py` and `python build_package.py`.
 4. Check at 375 px and 1,100 px, light and dark, with `../../qa_checklist.md`.
 5. Publish `casebook.html` with the Artifact tool to the existing casebook link, passing the `package/`

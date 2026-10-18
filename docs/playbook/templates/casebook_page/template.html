@@ -70,7 +70,7 @@
   .dot { stroke: var(--surface); stroke-width: 1.5; cursor: default; }
   .d-tool { fill: var(--tool); } .d-team { fill: var(--team); } .d-ind { fill: var(--ind); }
   .tick { stroke: var(--axis); stroke-width: 1; }
-  text.tl { font-family: var(--body); font-size: 11px; fill: var(--muted); }
+  text.tl { font-family: var(--body); font-size: 12px; fill: var(--muted); }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
@@ -131,7 +131,7 @@
     <div class="flow" role="group" aria-label="The method in four steps">
       <div><b>Real survey records</b><span>Public surveys where every person's answers to many questions are published.</span></div>
       <div><b>Two kinds of digital citizen</b><span>The chatbot kind answers in character. Record citizens predict each real person's answer from their record.</span></div>
-      <div><b>Draw small surveys</b><span>Small surveys of 150, 300 and 600 people are drawn many times from a large real one.</span></div>
+      <div><b>Draw small surveys</b><span>Small surveys of 150, 300 and 600 people are drawn ten times each from a large real one.</span></div>
       <div><b>Score against the truth</b><span>Each group's answer, with and without AI, is checked against the people not drawn: points off, and less error than the survey alone.</span></div>
     </div>
 
@@ -152,6 +152,7 @@
     </table></div>
 
     <h3>The tests, in the order we ran them</h3>
+    <p class="small">The scorecard's map counts the ideas behind these tests (12: 8 kept, 3 dropped, 1 corrected) and files the chatbot fixes as dropped; here each test run is counted once, and the run that tried those fixes is marked kept because it produced record citizens.</p>
     {{TESTS_TIMELINE}}
 
     <h3>How accuracy is measured</h3>
@@ -159,8 +160,8 @@
       <li><strong>Points off:</strong> the gap between an estimate and the real answer, in percentage points per answer option, for each group.</li>
       <li><strong>Median:</strong> the middle score of every group on every question. Half did better than this, half worse.</li>
       <li><strong>Survey alone:</strong> each group's answer read straight off the people in the survey. Every method is compared with it, as "less error".</li>
-      <li><strong>Combining:</strong> each group's own answers are combined with an AI estimate; the fewer people a group has, the more the estimate counts. How much each kind of AI counts is fitted on other questions only.</li>
-      <li><strong>The floor:</strong> about 1.5 points in Singapore and 1.7 in the United States. Even a perfect estimate lands this far off, because the people it is checked against are a sample too. No method can be scored closer than that.</li>
+      <li><strong>Blending:</strong> each group's own answers are blended with the estimate from one or both kinds of AI; the fewer people a group has, the more the estimate counts. Each kind of AI's share is set by its track record on the other questions only.</li>
+      <li><strong>The best possible:</strong> about 1.5 points in Singapore and 1.7 in the United States. Even a perfect estimate lands this far off, because the people it is checked against are a sample too. No method can be scored closer than that.</li>
       <li><strong>Groups, not individuals:</strong> people repeat only about 70 to 80% of their own answers a few weeks later, so no AI can predict one person much better. Across a group the changes mostly cancel out, so digital citizens are judged by group answers.</li>
       <li><strong>Hold-out scoring:</strong> a small sample is always scored against people not in it, and scores, not predictions, are averaged over repeat draws.</li>
     </ul>
@@ -207,7 +208,7 @@
       <figcaption>One dot per message from King, coloured by the kind of interaction that followed. Numbers mark where each task first appears; later lines show where King switched back to it. Hover or tab to a dot for the message.</figcaption>
       <div class="legend"><span><i class="sw" style="background:var(--tool)"></i>Tool</span><span><i class="sw" style="background:var(--team)"></i>Teammate</span><span><i class="sw" style="background:var(--ind)"></i>Independent</span></div>
       <div class="wrap">{{TIMELINE}}</div>
-      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; and many quick tool-style edits at the end, as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim. The last of those, King asking why the methods were mixed, set off one more independent rebuild.</p>
+      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; then quick tool-style edits as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim (King asking why the methods were mixed set off one more independent rebuild); and, at the end, almost all teammate exchanges again, as King reviewed the whole page for flow, asked for one integrated pass instead of patches, and shaped the decision tree, the evidence links and the coloured sections.</p>
     </figure>
 
     <h3>Examples of each kind</h3>
@@ -229,7 +230,7 @@
 
     <h3>Work done independently</h3>
     <ul class="list">
-      <li><strong>By Claude:</strong> the first build (research with three helper agents, code, baselines), downloading 62 countries' survey files through a headless browser, training record citizens on 61 countries, the survey-library test (a 26-minute background run), the published-findings search (two helper agents), and this QA (one helper agent). {{N_BG}} background jobs, helper agents and waits reported back while Claude kept working.</li>
+      <li><strong>By Claude:</strong> the first build (research with three helper agents, code, baselines), downloading 62 countries' survey files through a headless browser, training record citizens on 61 countries, the survey-library test (a 26-minute background run), the published-findings search (two helper agents), and the QA rounds (helper agents that recomputed every number, read the page cold as an executive, and checked the companion documents against the page). {{N_BG}} background jobs, helper agents and waits reported back while Claude kept working.</li>
       <li><strong>By King:</strong> {{N_SHOTS}} rounds of reviewing the live page alone and sending back screenshots with the confusing parts highlighted, plus the thinking behind {{N_IDEAS}} ideas, such as the survey library and using local data weighted by track record.</li>
       <li><strong>By neither:</strong> {{N_HOOKS}} automatic reminders to save and push work, and one automatic restart of the session's worker, which Claude resumed from.</li>
     </ul>
@@ -242,7 +243,7 @@
       <button type="button" data-f="independent" aria-pressed="false">Independent {{N_IND}}</button>
     </div>
     <div class="wrap scroll"><table id="log" class="stack">
-      <caption>Each message from King, quoted as typed, and what Claude did next. Times are UTC on 17 October 2026.</caption>
+      <caption>Each message from King, quoted as typed, and what Claude did next. Times are UTC, 17 to 18 October 2026.</caption>
       <thead><tr><th class="num">#</th><th class="num">Time</th><th>Task</th><th>Kind</th><th>King said</th><th>Claude did</th></tr></thead>
       <tbody>
 {{LOG_ROWS}}
@@ -267,17 +268,33 @@
       <li><strong>Find rich public records:</strong> surveys that publish every person's answers to many questions; note when they were collected.</li>
       <li><strong>Build record citizens:</strong> learn the pattern from other countries, or from your own small survey with standard questions included.</li>
       <li><strong>Measure with the scorecard:</strong> one test for every number; median points off, and how much less error than the survey alone, worked out from unrounded results.</li>
-      <li><strong>Pilot before relying on it:</strong> 600 people; record citizens fill in the groups from 300; compare with all 600.</li>
-      <li><strong>Decide with the five rules.</strong></li>
-      <li><strong>Report for a C-suite reader:</strong> agreed terms, define before use, one running example, numbers with their meaning.</li>
+      <li><strong>Pilot when you will survey a topic more than once:</strong> survey 600 people; blend 300 of them with both kinds of AI and check each group against what the other 300 said.</li>
+      <li><strong>Decide with the decision tree:</strong> five questions in order, from groups or individuals to whether to pilot.</li>
+      <li><strong>Report for a C-suite reader:</strong> agreed terms, each explained where first met, one running example, numbers with their meaning, five numbered sections in the order of the short answer.</li>
       <li><strong>QA before sharing:</strong> accuracy, language, accessibility, aesthetics; log every finding.</li>
+    </ol>
+
+    <h3>Lessons for the next page</h3>
+    <p>What the last round of work on the scorecard taught us about making a page easy to follow. Each is now in the playbook, the QA checklist or the C-suite explainer skill.</p>
+    <ol class="list">
+      <li><strong>Collect the comments, then make one integrated pass.</strong> Fixing one complaint at a time moved problems around. Agree the principles, change everything against them at once, and list every change before publishing.</li>
+      <li><strong>The short answer is the spine.</strong> Every later section follows its order, and nothing in it goes unsupported later.</li>
+      <li><strong>Explain each idea where the reader first meets it.</strong> Points off, the median, where "what people really said" comes from, blending and the test itself are each explained once, at first use; later mentions link back.</li>
+      <li><strong>Use the plain standard word.</strong> "Median", explained in one line, was clearer than an invented "typical group".</li>
+      <li><strong>Keep the method's inner workings off the main path.</strong> Fitted weights and worked sums did not help a first-time reader; words and one picture did. The numbers stay in the analysts' section.</li>
+      <li><strong>A decision tree, not a worked example.</strong> Every answer says where to go next or ends, every number is compared with the 3-point mark, and every number links to its evidence.</li>
+      <li><strong>One phrase per idea, and say which kind of AI.</strong> "Blend your survey with both kinds of AI" everywhere; one takeaway label, "So what".</li>
+      <li><strong>Limits apart from next steps, and no advice that contradicts the tree.</strong> A closing "always pilot first" had quietly contradicted the tree's "skip the pilot for a one-off".</li>
+      <li><strong>Number the sections and give each a colour band,</strong> matched in the contents bar, so a team can say "section 4, the purple band". Check grey text on the tints for contrast.</li>
+      <li><strong>Show design choices as side-by-side mock-ups,</strong> in light and dark mode, rather than describing them.</li>
+      <li><strong>Re-read the companion documents against the final page.</strong> The casebook and playbook had kept old rule numbers and old wording after the page changed.</li>
     </ol>
 
     <h3>Files</h3>
     <div class="files">
       <a href="package/playbook.html"><strong>Playbook</strong><span>The eight steps in full, with code pointers and lessons learned.</span><code>docs/playbook/playbook.md</code></a>
       <a href="package/glossary.html"><strong>Agreed language</strong><span>Every reader-facing term, how to define it, and words to avoid.</span><code>docs/playbook/glossary.md</code></a>
-      <a href="package/qa_checklist.html"><strong>QA checklist</strong><span>Accuracy, language, accessibility and aesthetics checks.</span><code>docs/playbook/qa_checklist.md</code></a>
+      <a href="package/qa_checklist.html"><strong>QA checklist</strong><span>Accuracy, flow, language, accessibility and aesthetics checks.</span><code>docs/playbook/qa_checklist.md</code></a>
       <a href="package/working_with_king.html"><strong>Working with King</strong><span>What King wants from a page, how King works, what worked.</span><code>docs/playbook/working_with_king.md</code></a>
       <a href="package/skill_digital_citizens_study.html"><strong>Skill: digital-citizens study</strong><span>Loads in Claude Code: method, commands, code map.</span><code>.claude/skills/digital-citizens-study/SKILL.md</code></a>
       <a href="package/skill_c_suite_explainer.html"><strong>Skill: C-suite explainer</strong><span>Loads in Claude Code: how to write for King and a C-suite reader.</span><code>.claude/skills/c-suite-explainer/SKILL.md</code></a>

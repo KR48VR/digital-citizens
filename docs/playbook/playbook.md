@@ -8,11 +8,12 @@ and docs/results/.
 ## The recipe in one line
 
 A few hundred real people answer the question. AI fills in each group's answer: the group's own answers are
-combined with an AI estimate, and the fewer people a group has, the more the estimate counts. Which AI depends on
-whether the question has been asked before. Brand new: record citizens learned from your own survey plus the
-chatbot kind. Asked in large surveys in other countries: record citizens learned from them, no chatbot. Asked
-recently in the same large survey: reuse those answers. Never borrow numbers from other surveys or published
-reports. Always show the scorecard, against the survey alone.
+blended with an AI estimate, and the fewer people a group has, the more the estimate counts. Which AI depends on
+whether the question has been asked before. Brand new: blend your survey with both kinds of AI (record citizens
+learned from your own survey, and the chatbot); it pays off most for groups with fewer than about 100 people in
+the survey. Asked in large surveys in other countries: blend with record citizens learned from them, no chatbot.
+Asked, worded the same, in the latest round of a large survey in your country: reuse those answers. Never borrow
+numbers from other surveys or published reports. Always show the scorecard, against the survey alone.
 
 ## Step 1. Frame the question
 
@@ -43,14 +44,15 @@ reports. Always show the scorecard, against the survey alone.
      (see `scripts/one_method_experiment.py::draw_cells`). Your survey must include a set of the big survey's
      **standard questions** so your respondents link to the records. About 20 are enough: they kept 80-90% of
      the benefit of 80 (`scripts/rank_standard_questions.py` picks them on other data; docs/10).
-- Combine each group's own survey answers with record citizens' estimate:
+- Blend each group's own survey answers with record citizens' estimate:
   estimate = (worth x record citizens' shares + the group's answers) / (worth + people in the group).
   Fit the worth on other questions only (leave one question out). In Singapore it came out at about 58 people
   for record citizens learned from other countries.
-- For a brand-new question, also combine the chatbot kind's estimate (same formula, its own fitted worth):
-  record citizens from your own survey plus the chatbot kind did best at every survey size in both countries.
+- For a brand-new question, also blend in the chatbot's estimate (same formula, its own fitted worth). Both
+  kinds together came out ahead at every survey size; the lead was clear with 150 people in both countries and
+  with 300 in the US, and within chance elsewhere (gaps under about half a point count as about the same).
   When record citizens learned from other countries that asked the question, the chatbot added nothing.
-- If you use a chatbot, use the best one available. Five chatbots combined by track record did about as well as
+- If you use a chatbot, use the best one available. Five chatbots blended by track record did about as well as
   the best alone; a simple average did worse; a small open model added nothing (docs/10).
 - If the same question was asked recently in the same large survey, its answers by group are the best prior
   (US: answers from two years earlier were 2.4 points off without any new survey).
@@ -69,13 +71,14 @@ reports. Always show the scorecard, against the survey alone.
 - Secondary check, analysts only: **standout groups** (the quarter of group answers furthest from the national
   average, `scripts/standout_split.py`). Compared with the survey alone they gained no more than other groups;
   compared with giving every group the overall answer ("No AI") they gain most. Say which comparison you use.
-- Best possible (floor) in the one-method test: about 1.5 points in Singapore and 1.7 in the US
+- Best possible in the one-method test: about 1.5 points in Singapore and 1.7 in the US
   (`scripts/yardstick_noise.py`): even a perfect estimate lands this far off, because the people it is checked
-  against are a sample too. Reading guide: about 1.5 best possible, 3 good enough to act on, 5 rough level only,
-  15 guessing blind.
+  against are a sample too. Reading guide, with the page's labels: 1.5-1.7 best possible, 3 good enough to act
+  on, 5 the rough level only, 15 guessing blind (splitting answers evenly across the choices).
 - Score groups, not individuals: people repeat only about 70-80% of their own answers weeks later, but groups'
   answer shares move a median of under 2 points (`docs/results/self_agreement_twin2k.md`).
-- Group differences reproduced (gap slope) shows flattening: chatbot kind 81% US, 36% Singapore, 25% China.
+- Group differences reproduced (gap slope) shows how far the chatbot makes groups look too alike: 81% US, 36%
+  Singapore, 25% China.
 - Harness: `evaluate/harness.py` (`score`, `segment_fidelity`); scripts in `scripts/*_experiment.py`.
 
 **Scoring rules learned the hard way**
@@ -87,22 +90,32 @@ reports. Always show the scorecard, against the survey alone.
 - Check that every example uses a question that is actually in the records (prayer was not; religious services was).
 - Do not generalise from too few cases (an online-polls claim rested on 3 polls and was removed).
 
-## Step 5. Pilot before relying on it
+## Step 5. Pilot when you will survey a topic more than once
 
-Run one pilot with 600 people on your real question plus the standard questions. Let record citizens fill
-in the groups from 300 of them and compare with what all 600 said. If they agree, later surveys can use 300.
-In Singapore, 300 real people + AI were about as accurate for each group as 600 people alone (both a median
-of 2.7 points off). The pilot also shows how much the chatbot kind adds on a truly new question, which our
-tests (on well-known survey questions it may have read about) could not.
+Survey 600 people once, with your question plus the standard questions. Blend 300 of them with both kinds of AI
+and check each group's answer against what the other 300 said; check the 300 alone the same way, and judge
+across all groups together (one small group is too few people to check on its own). Never check against people
+who were in the blended 300: that flatters the blend. If the blend comes out closer, later surveys on the topic
+can use 300 people blended with both kinds of AI. In our test, 300 people blended with both kinds of AI were
+about as accurate as 600 alone in Singapore (both a median of 2.7 points off). The pilot also shows how much the
+chatbot adds on a truly new question, which our tests (on well-known survey questions it may have read about)
+could not. For a one-off survey, skip the pilot and treat small-group answers with some caution.
 
-## Step 6. Decide with the five rules
+## Step 6. Decide with the decision tree
 
-1. Use AI to stretch a smaller real survey, not to replace it (smaller or more frequent surveys).
-2. Pick the AI by asking whether your question has been asked before (three routes above).
-3. AI helps most with small groups.
-4. Don't borrow numbers from other surveys or published reports (typically 11 and 8 points off); the exception
-   is the same question in a recent round of the same large survey.
-5. Insist on the scorecard, group by group, against the survey alone.
+The scorecard's five questions, in order; each answer either ends or says where to go next:
+1. Groups or individual people? Individuals: ask them (people repeat only 70-80% of their own answers).
+2. Your exact question, worded the same, in the latest round of a large public survey in your country? Reuse
+   those answers.
+3. Asked in large surveys in other countries? Blend your survey with record citizens learned from them; adding
+   the chatbot does not help. Brand new? You need a survey: go on.
+4. Will any group you care about have fewer than about 100 people in your survey? Blend your survey with both
+   kinds of AI and go on. Otherwise a survey alone may be enough.
+5. Will you survey the topic more than once? Pilot first (step 5). A one-off: skip the pilot, treat small-group
+   answers with some caution.
+
+Two rules that always apply: don't borrow numbers from other surveys or published reports (a median of 8 to 11
+points off; the exception is step 2); insist on the scorecard, group by group, against the survey alone.
 
 ## Step 7. Report for a C-suite reader
 
@@ -133,5 +146,9 @@ Template: `templates/scorecard_page/`.
 
 ## Step 8. QA before sharing
 
-Run `qa_checklist.md`: trace every number, check contrast and headings, phone width, dark mode, language.
-Log findings and fixes.
+Run `qa_checklist.md`: trace every number, check flow and integration, contrast and headings, phone width,
+dark mode, language. Use three independent helper agents before sharing: one recomputes every number and claim
+from the raw results, one reads the page cold as an executive with no stats background, one checks the casebook
+and playbook package against the final page. Revise in one integrated pass against the agreed principles, not
+one comment at a time, and list every change with its new wording. Log findings and fixes; leave decisions that
+would reverse an earlier choice of King's as open items for King.

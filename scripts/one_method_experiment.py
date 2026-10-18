@@ -97,6 +97,7 @@ KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in
     ("+ record citizens (own survey, 20 standard questions)", 300, "+ record citizens (own survey)", 300),
     ("+ record citizens (own survey, 10 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
     ("+ record citizens (own survey, 20 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
+    ("+ record citizens", 300, "+ chatbot kind", 300),  # asked before: record citizens beat the chatbot
 ]
 PANEL = {"chat_opus": "opus", "chat_sonnet": "sonnet", "chat_haiku": "haiku", "chat_qwen": "qwen"}
 KS = (5, 10, 20)

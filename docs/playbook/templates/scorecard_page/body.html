@@ -8,7 +8,7 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
     <div class="eyebrow">Digital citizens · tested in Singapore and the United States · October 2026</div>
     <h1>How to use AI for digital citizens</h1>
     <p>Digital citizens are AI stand-ins for real people. The hope is to ask them how different groups would respond to a product, strategy or policy, instead of running a full survey each time. We tested whether that works by checking them against what real people actually said.</p>
-    <nav class="toc" aria-label="On this page"><a href="#answer">The answer</a><a href="#kinds">Two kinds of digital citizen</a><a href="#decide">What to do</a><a href="#know">How we know</a><a href="#limits">Limits</a></nav>
+    <nav class="toc" aria-label="On this page"><a href="#answer">The short answer</a><a href="#kinds">Two kinds of digital citizen</a><a href="#decide">What to do</a><a href="#know">How we know</a><a href="#limits">Limits</a></nav>
   </header>
 
   <section id="answer">
@@ -26,12 +26,13 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
       <p>The two kinds perform differently for different questions:</p>
       <ol>
         <li><strong>If your question has already been asked in large surveys,</strong> record citizens beat the chatbot.</li>
-        <li><strong>For a brand-new question,</strong> you need a survey. Without one, the chatbot alone was much less accurate, and record citizens have no answers to your question to learn from. With a survey, combining either kind of AI's estimates with the survey's answers (we call this blending) made each group's answer more accurate, by about the same amount. Blending in both kinds was the most accurate of all.</li>
+        <li><strong>For a brand-new question,</strong> you need a survey. Without one, the chatbot alone was much less accurate, and record citizens have no answers to your question to learn from. With a survey, combining either kind of AI's estimates with the survey's answers (we call this blending) made the groups' answers more accurate, by about the same amount. Blending in both kinds was the most accurate of all.</li>
       </ol>
     </div>
     <figure class="casefig">
       <h3 class="fig">What the two cases looked like in our test</h3>
-      <p class="howto"><strong>How to read the numbers.</strong> Each number is points off: how far the estimate was from what people really said, in percentage points. What people really said comes from a large real survey in each country: we picked a small survey from it at random, and checked every estimate against the answers of the people not picked (details under <a href="#know">How we know</a>). For example, if 40% of older Singaporeans support a policy and we estimate 45%, that is 5 points off; lower is better. We worked this out for every group on every question: 9 groups in Singapore and 6 in the United States, such as people over 60, Malay Singaporeans or young adults. The two cases below show the median of all these scores: the middle one, with half better and half worse. The bars show Singapore with a survey of 300 people unless stated; the United States showed the same pattern.</p>
+      <p class="howto"><strong>How to read the numbers.</strong> Each number is points off: how far the estimate was from what people really said, in percentage points. What people really said comes from a large real survey in each country: we picked a small survey from it at random, and checked every estimate against the answers of the people not picked (details under <a href="#know">How we know</a>). For example, if 40% of older Singaporeans support a policy and we estimate 45%, that is 5 points off; lower is better.</p>
+      <p class="howto">We worked this out for every group on every question: 9 groups in Singapore and 6 in the United States, such as people over 60, Malay Singaporeans or young adults. The two cases below show the median of all these scores: the middle one, with half better and half worse. The bars show Singapore with a survey of 300 people unless stated; the United States showed the same pattern.</p>
       {{CASES}}
     </figure>
     <details class="more" id="blending"><summary>What blending means, and how it works</summary><div class="inner">
@@ -51,7 +52,7 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
         <div><b>15</b><span>Guessing blind: splitting answers evenly across the choices, knowing nothing about the group.</span></div>
       </div>
       <p class="small"><strong>Why about 3 points is good enough to act on.</strong> It is what a conventional survey delivers without either kind of AI: in our test, a real survey of 600 people had a median of {{v:singapore|survey alone|600}} points off in Singapore and {{v:us|survey alone|600}} in the United States, and surveys of that size are routinely used for decisions. In practice, that is close enough to see which way a group clearly leans, such as 60% for and 40% against, but not close enough to call a near-tie, such as 52% against 48%. A conventional survey has the same limit.</p>
-      <p class="small"><strong>Comparing two methods.</strong> When two methods differ by less than about half a point, the difference could easily be luck, so we call them about the same.</p>
+      <p class="small"><strong>Comparing two methods.</strong> When two methods differ by less than about half a point, the difference is often just luck, so we call them about the same unless our check of the chance range shows the gap is bigger than luck.</p>
     </div>
   </section>
 
@@ -74,7 +75,7 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
         <p><strong>Past surveys.</strong> The World Values Survey, a public survey, asks the same questions in dozens of countries. That gave about 90,000 people in 61 other countries to learn from, and a computer can learn from all of them in under half an hour. In an earlier test, learning from 61 countries made it noticeably more accurate than learning from 2.</p>
       </div>
       <div>
-        <p><strong>Your own small survey.</strong> A question about a new product or policy won't have been asked anywhere. Then record citizens learn the same pattern from the few hundred real people you ask. For that, your survey also needs some of the big survey's standard questions, so your respondents can be linked to the records. Our tests used about 80. About 20 did almost as well in Singapore ({{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} points off with 300 people) and a little less well in the United States.</p>
+        <p><strong>Your own small survey.</strong> A question about a new product or policy won't have been asked anywhere. Then record citizens learn the same pattern from the few hundred real people you ask. For that, your survey also needs some of the big survey's standard questions, so your respondents can be linked to the records. Our tests used all that were available: 76 in Singapore. About 20 did almost as well in Singapore ({{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} points off with 300 people) and a little less well in the United States.</p>
       </div>
     </div>
     </div></details>
@@ -87,29 +88,29 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
       <li>
         <p class="qq"><span class="qn">1</span>Do you need answers for groups of people, or for individual people?</p>
         <ul class="br" role="list">
-          <li class="end"><b>Individual people</b><span>Even people themselves give the same answer only 70 to 80% of the time when asked again weeks later (see <a href="#groups">why we score groups</a>), so no AI can predict one person reliably. Ask the people themselves.</span></li>
+          <li class="end"><b>Individual people</b><span>Even people themselves give the same answer only {{self:match}} to 81% of the time when asked again weeks later (see <a href="#groups">why we score groups</a>), so no AI can predict one person reliably. Ask the people themselves.</span></li>
           <li class="go"><b>Groups</b><span>Go to step 2.</span></li>
         </ul>
       </li>
       <li>
         <p class="qq"><span class="qn">2</span>Was your exact question, worded the same, in the latest round of a large public survey in your country?</p>
         <ul class="br" role="list">
-          <li class="end"><b>Yes</b><span>Reuse those answers. In our US test they were {{v:us|last round's answers alone, no survey|300}} points off with no new survey, better than the 3 points we treat as good enough to act on. Adding a survey of 300 barely changed that (see <a href="#routes">what each kind of AI adds</a>).</span></li>
+          <li class="end"><b>Yes</b><span>Reuse those answers, with no new survey. In our US test, the same survey's answers from two years earlier were {{v:us|last round's answers alone, no survey|300}} points off its latest answers, better than the 3 points we treat as good enough to act on. Adding a survey of 300 barely changed that (see <a href="#routes">what each kind of AI adds</a>).</span></li>
           <li class="go"><b>No</b><span>Go to step 3.</span></li>
         </ul>
       </li>
       <li>
         <p class="qq"><span class="qn">3</span>Was it asked in large surveys in other countries?</p>
         <ul class="br" role="list">
-          <li class="end"><b>Yes</b><span>Use record citizens learned from those countries, blended with a survey. In Singapore, with no survey they were {{v:singapore|record citizens alone, no survey|300}} points off, a little short of good enough to act on. Blended with a survey of 300 they were {{v:singapore|+ record citizens|300}}, as good as a survey of 600 (see <a href="#routes">what each kind of AI adds</a>). Blending in the chatbot as well did not help.</span></li>
+          <li class="end"><b>Yes</b><span>Use record citizens learned from those countries, blended with a survey. In Singapore, with no survey they were {{v:singapore|record citizens alone, no survey|300}} points off, about as good as a survey of 300 on its own. Blended with a survey of 300 they were {{v:singapore|+ record citizens|300}}, as good as a survey of 600 (see <a href="#routes">what each kind of AI adds</a>). Blending in the chatbot as well did not help.</span></li>
           <li class="go"><b>No, it is brand new</b><span>You will need a survey: with none, the chatbot alone was only at the rough level ({{v:us|chatbot kind alone, no survey|300}} to {{v:singapore|chatbot kind alone, no survey|300}} points off; see <a href="#chatbot">the chatbot on its own</a>). Go to step 4.</span></li>
         </ul>
       </li>
       <li>
-        <p class="qq"><span class="qn">4</span>Will the groups you care about have fewer than about 100 people each in your survey?</p>
+        <p class="qq"><span class="qn">4</span>Will any group you care about have fewer than about 100 people in your survey?</p>
         <ul class="br" role="list">
-          <li class="go"><b>Yes</b><span>Blend your survey with both kinds of AI (<a href="#howto">how to, below</a>): about {{tree:gain_small}} points closer than the survey alone, more for the smallest groups (see <a href="#small">small groups gain the most</a>). Go to step 5.</span></li>
-          <li class="end"><b>No</b><span>Both kinds of AI add little, about {{tree:gain_large}} points closer, so a survey alone may be enough.</span></li>
+          <li class="go"><b>Yes</b><span>Blend your survey with both kinds of AI (<a href="#howto">how to, below</a>). The fewer people a group has, the more it gains: about {{tree:band_1}} points closer than the survey alone for groups of 30 or fewer, about {{tree:band_3}} for groups of 60 to 100 (see <a href="#small">small groups gain the most</a>). Go to step 5.</span></li>
+          <li class="end"><b>No</b><span>Both kinds of AI add less, about {{tree:gain_large}} points closer (less in Singapore, more in the United States), so a survey alone may be enough.</span></li>
         </ul>
       </li>
       <li>
@@ -122,15 +123,15 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
     </ol>
     <details class="more" id="howto"><summary>How to blend your survey with both kinds of AI, step by step</summary><div class="inner">
       <ol class="recipe">
-        <li><strong>Survey a few hundred people.</strong> Ask your question, plus about 20 questions from the large public survey for your country (in Singapore, the World Values Survey), so that record citizens can link your people to its records (see <a href="#sources">where record citizens learn from</a>).</li>
-        <li><strong>Build record citizens.</strong> An analyst uses your survey to learn how answers to those 20 questions relate to your question, then applies that to everyone in the public survey.</li>
-        <li><strong>Ask the best chatbot</strong> for each group's answer. In our tests that was Claude Opus, by a small margin (see <a href="#chatbot">five chatbots compared</a>). The chatbot results on this page come from Claude Fable 5.1, which did about as well.</li>
+        <li><strong>Survey a few hundred people.</strong> Ask your question, plus questions from the large public survey for your country (in Singapore, the World Values Survey), so that record citizens can link your people to its records. Our main results used all of them; about 20 did almost as well in Singapore (see <a href="#sources">where record citizens learn from</a>).</li>
+        <li><strong>Build record citizens.</strong> An analyst uses your survey to learn how answers to those questions relate to your question, then applies that to everyone in the public survey.</li>
+        <li><strong>Ask the best chatbot</strong> for each group's answer. In our tests that was Claude Opus, by a small margin (see <a href="#chatbot">five chatbots compared</a>). The chatbot results on this page come from Claude Fable 5.1, the chatbot we started with, which did about as well.</li>
         <li><strong>Blend</strong> record citizens and the chatbot's answers with your survey (see <a href="#blending">what blending means</a>).</li>
       </ol>
     </div></details>
-    <h3 id="rules">Two more rules</h3>
+    <h3 id="rules">Two rules that always apply</h3>
     <ul class="list">
-      <li><strong>Don't borrow numbers from different surveys or published reports.</strong> In separate tests they had a median of 8 to 11 points off (see <a href="#separate">earlier, separate tests</a>). The one exception is your exact question, worded the same, in the latest round of the same public survey (step 2): different surveys reach different people in different ways, which is why borrowed numbers miss.</li>
+      <li><strong>Don't borrow numbers from different surveys or published reports.</strong> Different surveys reach different people in different ways, so borrowed numbers miss: in separate tests they had a median of 8 to 11 points off (see <a href="#separate">earlier, separate tests</a>). The one exception is your exact question, worded the same, in the latest round of a large public survey in your country (step 2).</li>
       <li><strong>Insist on proof.</strong> Any digital citizens, ours or a vendor's, should show how many points off they are for each group, checked against real answers and compared with the survey alone.</li>
     </ul>
   </section>
@@ -150,27 +151,27 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
     <h3>The smaller the survey, the more both kinds of AI add</h3>
     <figure>
       <h4>Points off as the survey grows, for a brand-new question</h4>
-      <p class="howto">Medians across groups and questions. Lower is better. The blue line is the survey blended with both kinds of AI: record citizens learned from the survey, and the chatbot.</p>
+      <p class="howto">Medians across groups and questions. Lower is better. Gaps in the text are worked out from unrounded figures. The blue line is the survey blended with both kinds of AI: record citizens learned from the survey, and the chatbot.</p>
       {{CHART}}
     </figure>
-    <p><strong>So what.</strong> In Singapore, blending the survey with both kinds of AI brought the median {{gain:singapore|+ record citizens (own survey) + chatbot kind|150}} points closer with 150 people, {{gain:singapore|+ record citizens (own survey) + chatbot kind|300}} with 300 and only {{gain:singapore|+ record citizens (own survey) + chatbot kind|600}} with 600 (chance ranges in <a href="#compare">key comparisons</a>). In the United States, 300 people blended with both kinds of AI did even better than 600 alone. That comparison flatters the blend a little: the US survey counts some people's answers more than others, so its 600 answers are worth only about 330. Singapore's comparison is the fairer guide.</p>
+    <p><strong>So what.</strong> In Singapore, blending the survey with both kinds of AI brought the median {{gain:singapore|+ record citizens (own survey) + chatbot kind|150}} points closer with 150 people, {{gain:singapore|+ record citizens (own survey) + chatbot kind|300}} with 300 and only {{gain:singapore|+ record citizens (own survey) + chatbot kind|600}} with 600 (how sure we can be: <a href="#compare">key comparisons</a>). In the United States, 300 people blended with both kinds of AI did even better than 600 alone. That comparison flatters the blend: the US survey counts some people's answers more than others, to make its sample match the population, so its 600 answers are worth only about 330. Singapore's comparison is the fairer guide.</p>
 
     <h3 id="small">Small groups gain the most</h3>
     <p>A survey of 300 Singaporeans holds about {{ppl:CHI|300}} Chinese Singaporeans, but only about {{ppl:MAL|300}} Malay and {{ppl:IND|300}} Indian Singaporeans. An answer read straight off {{ppl:IND|300}} people is shaky; both kinds of AI bring in what many similar people said.</p>
     {{TABLE_SMALL}}
-    <p><strong>So what.</strong> The fewer people a group has in your survey, the more both kinds of AI add; for the largest group they change little. Asking extra people from a small group helps it by about a point if you read the survey alone, but little once both kinds of AI are blended in, so with them it is usually not needed.</p>
+    <p><strong>So what.</strong> The fewer people a group has in your survey, the more both kinds of AI add; for the largest group they change little. Malay and Indian Singaporeans went from the rough level ({{grp:MAL|survey alone|300}} and {{grp:IND|survey alone|300}} points off) to about {{grp:IND|+ record citizens (own survey) + chatbot kind|300}}, close to good enough to act on. Asking extra people from a small group helps it by about a point if you read the survey alone, but little once both kinds of AI are blended in, so with them it is usually not needed.</p>
 
     <h3>The two kinds of AI, side by side</h3>
     <details class="more" id="routes"><summary>What each kind of AI adds, with a survey of 300</summary><div class="inner">
-    <p>Each cell shows the median points off with a survey of 300, and underneath, how much less error that is than the survey alone. Both kinds together did better than either alone with 150 people in both countries, and with 300 people in the United States. Every method at every survey size is in <a href="#onetest">the one test behind the main results</a>.</p>
+    <p>Each cell shows the median points off with a survey of 300, and underneath, how much less error that is than the survey alone. Both kinds together were clearly better than either alone with 150 people in both countries and with 300 in the United States; with 300 in Singapore they came out ahead, but not clearly ahead of record citizens alone. The full table, with every method at 150, 300 and 600 people, is in <a href="#onetest">the evidence for analysts</a>.</p>
     {{TABLE_ROUTES}}
     <p>Group by group, 300 people blended with both kinds of AI against 600 alone varied within chance: closer for Indian Singaporeans ({{grp:IND|+ record citizens (own survey) + chatbot kind|300}} against {{grp:IND|survey alone|600}} points off), further for people over 60 ({{grp:OLD|+ record citizens (own survey) + chatbot kind|300}} against {{grp:OLD|survey alone|600}}).</p>
     </div></details>
 
     <details class="more" id="chatbot"><summary>The chatbot did better in the United States than in Singapore: why</summary><div class="inner">
     <p>Asked with no survey at all, the chatbot was {{v:us|chatbot kind alone, no survey|300}} points off in the United States and {{v:singapore|chatbot kind alone, no survey|300}} in Singapore. The likely reason is that a chatbot learns from what has been written, and Americans' views by group have been surveyed and argued over in English for decades; Singapore's much less. In a separate test it also reproduced far more of the real differences between groups in the United States than in Singapore (see <a href="#groupdiff">group differences</a>). Record citizens start from what real people in each country said, so they do not have this problem.</p>
-    <p>Blended with a survey, the chatbot's estimate counted for about three times as much in the United States as in Singapore. That is partly because it had been less accurate in Singapore on other questions, and partly because each US answer counts for a little less, as explained under the chart above. Part of its American advantage may also be that it had already seen these exact surveys.</p>
-    <p>We tried five chatbots. Blending them by track record did about as well as the best one alone, while a simple average of them did worse, clearly so in the United States. So use the best chatbot available.</p>
+    <p>Blended on its own with a survey, the chatbot's estimate counted for about three times as much in the United States as in Singapore. That is partly because it had been less accurate in Singapore on other questions, and partly because each US answer counts for less, as explained under the chart above. Part of its American advantage may also be that it had already seen these exact surveys.</p>
+    <p>We tried five chatbots. Blended with a survey of 300, the best single one was Claude Opus ({{v:singapore|+ chatbot (Opus)|300}} points off in Singapore, {{v:us|+ chatbot (Opus)|300}} in the United States), just ahead of Claude Fable 5.1, the chatbot used for the results on this page ({{v:singapore|+ chatbot kind|300}} and {{v:us|+ chatbot kind|300}}). Blending all five by track record did about as well as the best one alone, while a simple average of them did worse, clearly so in the United States. So use the best chatbot available.</p>
     </div></details>
 
     <h3>What we tested along the way</h3>
@@ -184,16 +185,16 @@ addEventListener("click", function (e) { var a = e.target.closest && e.target.cl
         <tr class="grp"><th colspan="3" scope="colgroup"><span aria-hidden="true">✓</span> Kept</th></tr>
         <tr><th scope="row">Building digital citizens from real people's survey records</th><td data-l="Found">With no survey at all, {{v:singapore|record citizens alone, no survey|300}} points off in Singapore, against {{v:singapore|chatbot kind alone, no survey|300}} for the chatbot alone</td><td data-l="Led to">Record citizens</td></tr>
         <tr><th scope="row">Learning from 61 countries instead of 2</th><td data-l="Found">3.7 against 4.2 points off (<a href="#separate">separate test</a>)</td><td data-l="Led to">Record citizens learn from many countries</td></tr>
-        <tr><th scope="row">Blending each source by its track record</th><td data-l="Found">300 people blended with both kinds of AI as accurate as 600 alone: both {{v:singapore|survey alone|600}} in Singapore</td><td data-l="Led to"><a href="#howto">How to blend</a>, step 4, and <a href="#blending">what blending means</a></td></tr>
+        <tr><th scope="row">Blending each source by its track record</th><td data-l="Found">300 people blended with both kinds of AI as accurate as 600 alone: both {{v:singapore|survey alone|600}} in Singapore</td><td data-l="Led to"><a href="#howto">How to blend</a>, and <a href="#blending">what blending means</a></td></tr>
         <tr><th scope="row">Sorting questions by whether they were asked before</th><td data-l="Found">A different best choice in each case; reusing last round's answers was {{v:us|last round's answers alone, no survey|300}} in the United States, even with no new survey</td><td data-l="Led to">The two cases in the short answer, and <a href="#steps">What to do</a>, steps 2 and 3</td></tr>
-        <tr><th scope="row">About 20 standard questions instead of all 76</th><td data-l="Found">{{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} in Singapore</td><td data-l="Led to"><a href="#howto">How to blend</a>, step 1: about 20 standard questions</td></tr>
-        <tr><th scope="row">Five chatbots, each counted by its track record</th><td data-l="Found">As good as the best one alone: {{v:singapore|+ chatbot panel, each weighted|300}} against {{v:singapore|+ chatbot (Opus)|300}} in Singapore</td><td data-l="Led to"><a href="#howto">How to blend</a>, step 3: use the best chatbot</td></tr>
+        <tr><th scope="row">About 20 standard questions instead of all 76</th><td data-l="Found">{{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} in Singapore</td><td data-l="Led to"><a href="#howto">How to blend</a>: about 20 standard questions</td></tr>
+        <tr><th scope="row">Five chatbots, each counted by its track record</th><td data-l="Found">About as good as the best one alone, Claude Opus, in both countries</td><td data-l="Led to"><a href="#howto">How to blend</a>: use the best chatbot</td></tr>
         <tr><th scope="row">Small groups, and adding extra people from them</th><td data-l="Found">Indian Singaporeans: {{grp:IND|survey alone|300}} to {{grp:IND|+ record citizens (own survey) + chatbot kind|300}} points off with both kinds of AI in a 300-person survey; extra people helped about a point without AI, little with both kinds</td><td data-l="Led to"><a href="#steps">What to do</a>, step 4, and <a href="#small">small groups</a>: no need to survey extra people</td></tr>
         <tr><th scope="row">Checking how consistent people are</th><td data-l="Found">People repeated {{self:match}} to 81% of their answers; groups' answers moved a median of {{self:shift_group}} points</td><td data-l="Led to"><a href="#steps">What to do</a>, step 1: score groups, not individuals</td></tr>
         <tr class="grp"><th colspan="3" scope="colgroup"><span aria-hidden="true">✗</span> Tried and dropped</th></tr>
         <tr><th scope="row">Making the chatbot's group answers less alike: stretching them, sharpening them, showing it real answers first</th><td data-l="Found">Still about 5 points off in Singapore (separate test)</td><td data-l="Led to">Dropped; built record citizens instead</td></tr>
-        <tr><th scope="row">Borrowing numbers from other surveys or published reports</th><td data-l="Found">About 11 and 8 points off (<a href="#separate">separate tests</a>)</td><td data-l="Led to"><a href="#rules">Two more rules</a>: don't borrow numbers</td></tr>
-        <tr><th scope="row">A small open chatbot, and a simple average of chatbots</th><td data-l="Found">No gain from the small one; the average was worse than the best one ({{v:us|+ chatbot panel, averaged|300}} against {{v:us|+ chatbot (Opus)|300}} in the United States)</td><td data-l="Led to"><a href="#howto">How to blend</a>, step 3: use the best chatbot</td></tr>
+        <tr><th scope="row">Borrowing numbers from other surveys or published reports</th><td data-l="Found">About 11 and 8 points off (<a href="#separate">separate tests</a>)</td><td data-l="Led to"><a href="#rules">Two rules that always apply</a>: don't borrow numbers</td></tr>
+        <tr><th scope="row">A small open chatbot, and a simple average of chatbots</th><td data-l="Found">No gain from the small one; the average was worse than the best one ({{v:us|+ chatbot panel, averaged|300}} against {{v:us|+ chatbot (Opus)|300}} in the United States)</td><td data-l="Led to"><a href="#howto">How to blend</a>: use the best chatbot</td></tr>
         <tr class="grp"><th colspan="3" scope="colgroup"><span aria-hidden="true">↺</span> Corrected along the way</th></tr>
         <tr><th scope="row">Our first small-survey score</th><td data-l="Found">Too flattering: people were checked against themselves, so 300 looked like 1,500. Redone honestly, 300 people with record citizens blended in matched 600 alone</td><td data-l="Led to"><a href="#know">How we know</a>: check against the people not picked</td></tr>
       </tbody>

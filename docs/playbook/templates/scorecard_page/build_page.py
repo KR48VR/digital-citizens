@@ -216,11 +216,14 @@ for t in TAGS:
     pc_ = c_.groupby(["config", "n", "question_id", "group"], as_index=False).agg(mae=("mae_pts", "mean"), ng=("n_group", "mean"))
     for (n, g), d in pc_[pc_.config.isin(["survey alone", BOTH])].groupby(["n", "group"]):
         a_, b_ = d[d.config == "survey alone"].mae.median(), d[d.config == BOTH].mae.median()
-        GS.append((d.ng.mean(), a_ - b_, 1 - b_ / a_))
-GS = pd.DataFrame(GS, columns=["people", "gain", "cut"])
+        GS.append((t, d.ng.mean(), a_ - b_, 1 - b_ / a_))
+GS = pd.DataFrame(GS, columns=["tag", "people", "gain", "cut"])
 NQ = {t: pd.read_csv(RES / f"one_method_{t}_cells.csv").question_id.nunique() for t in TAGS}  # questions in the one test
 SMALL, LARGE = GS[GS.people < 100], GS[GS.people >= 100]
-TREE = {"gain_small": f1(SMALL.gain.median()), "pct_small": str(round(100 * SMALL.cut.median())),
+BANDS = SMALL.groupby(pd.cut(SMALL.people, [0, 30, 60, 100])).gain.median().tolist()  # groups of 30 or fewer, 30-60, 60-100
+assert BANDS[0] > BANDS[1] > BANDS[2] > LARGE.gain.median(), "the fewer people, the bigger the gain"
+assert LARGE[LARGE.tag == "singapore"].gain.median() < LARGE.gain.median() < LARGE[LARGE.tag == "us"].gain.median()  # step 4 "No": less in Singapore, more in the US
+TREE = {"band_1": f1(BANDS[0]), "band_3": f1(BANDS[2]), "gain_small": f1(SMALL.gain.median()), "pct_small": str(round(100 * SMALL.cut.median())),
         "gain_large": f1(LARGE.gain.median()), "pct_large": str(round(100 * LARGE.cut.median()))}
 assert SMALL.gain.median() > 3 * LARGE.gain.median(), "AI adds most below about 100 people"
 
@@ -255,7 +258,7 @@ CASES = ('<div class="cases">'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
                       ("Blended with record citizens learned from other countries", "c-rc", sg_past),
                       ("Blended with both kinds of AI", "c-both", sg_past_both), ("Survey of 600 alone, for comparison", "c-ref", sg_600)], TOP)
-         + '<p><strong>Record citizens beat the chatbot,</strong> and adding the chatbot to them did not help. They matched a survey twice the size.</p></div>'
+         + '<p><strong>Record citizens beat the chatbot,</strong> by a small margin but more than chance, and adding the chatbot to them did not help. They matched a survey twice the size.</p></div>'
          '<div class="case"><h3>2. Your question is brand new</h3><div class="chead" aria-hidden="true">points off</div>'
          + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
                       ("Blended with record citizens learned from your survey", "c-rc", sg_own),
@@ -393,6 +396,24 @@ for t in TAGS:
     assert min(singles, key=singles.get) == "+ chatbot (Opus)" and singles["+ chatbot kind"] - singles["+ chatbot (Opus)"] < 0.5, t
 # chatbot fold: "counted for about three times as much in the United States as in Singapore"
 assert 2.5 < WORTH["us"] / WORTH["singapore"] < 3.5
+# case 1: record citizens beat the chatbot by more than chance (small margin in Singapore)
+for t in TAGS:
+    lo, hi = CMP[(t, "+ record citizens", "+ chatbot kind", 300, 300)]
+    assert hi < 0, ("record citizens vs chatbot within chance", t)
+assert med(sg, "+ chatbot kind", 300) - med(sg, "+ record citizens", 300) < 0.6
+# step 3: record citizens alone about as good as a survey of 300 alone (Singapore)
+assert abs(med(sg, "record citizens alone, no survey", 300) - med(sg, "survey alone", 300)) < 0.25
+# small groups: from the rough level to about 3.5
+for g in ("MAL", "IND"):
+    assert grp(g, "survey alone", 300)[0] >= 4.5 and 3.3 < grp(g, BOTH, 300)[0] < 3.8, g
+# what each kind adds: both together clearly better at 150 (both countries) and 300 (US); at 300 in Singapore not clearly ahead of record citizens alone
+for t, n in (("singapore", 150), ("us", 150), ("us", 300)):
+    for other in ("+ record citizens (own survey)", "+ chatbot kind"):
+        assert CMP[(t, BOTH, other, n, n)][1] < 0, (t, n, other)
+lo, hi = CMP[(sg, BOTH, "+ record citizens (own survey)", 300, 300)]
+assert lo < 0 < hi and med(sg, BOTH, 300) < med(sg, "+ record citizens (own survey)", 300)
+# standard questions: all the others in the Singapore survey (77 questions)
+assert "Questions: 77;" in (RES.parent / "baselines_wvs7_singapore.md").read_text()
 # decision tree: step 2 beats good enough; step 3 alone is a little short of it, blended matches 600 alone
 assert med(us, "last round's answers alone, no survey", 300) < 3 and abs(med(us, "+ last round's answers", 300) - med(us, "last round's answers alone, no survey", 300)) < 0.25
 assert 3 < med(sg, "record citizens alone, no survey", 300) < 4
@@ -429,7 +450,7 @@ def fill(text):
 
 page = (f'<title>{TITLE}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">\n'
-        '<style>\n  /* Layout: one reading column for a busy executive. Answer first, then the one idea that explains it, then the evidence, then rules and limits. Detail folded away. */\n'
+        '<style>\n  /* Layout: one reading column for a busy executive; five numbered sections on colour bands, in the order of the short answer (answer, two kinds, what to do, how we know, limits). Detail folded away. */\n'
         + tokens + css + "</style>\n" + fill(body.replace("{{CHART}}", chart)))
 OUT.write_text(page)
 print("written", OUT, len(page))

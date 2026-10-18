@@ -974,5 +974,93 @@
   "fix": "Grey text inside the bands is a little darker; the accessibility check passes in light and dark mode, at desktop and phone widths.",
   "status": "Fixed",
   "id": 122
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "The short answer said blending in either kind of AI \"made each group's answer more accurate\"; with the chatbot, 4 of 9 Singapore groups were no better.",
+  "fix": "\"made the groups' answers more accurate\" (King's wording otherwise kept).",
+  "status": "Fixed",
+  "id": 123
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "The half-point rule (\"less than about half a point could easily be luck\") clashed with \"record citizens beat the chatbot\" in Singapore, a 0.44-point gap.",
+  "fix": "Added that comparison to the test: its 95% range is 0.02 to 0.82 points, so the gap is real. The case says \"by a small margin but more than chance\", the rule allows for the range check, and a build check keeps both true.",
+  "status": "Fixed",
+  "id": 124
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "Step 3 called 3.7 \"a little short of good enough\", while the page counts a US survey of 600 (also 3.7) as good enough.",
+  "fix": "Step 3 now compares it with a survey of 300 on its own, which it matches.",
+  "status": "Fixed",
+  "id": 125
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "Step 4 quoted gains pooled across both countries and all survey sizes (2.1 and 0.5), which no single case shows.",
+  "fix": "The gain by group size instead (2.6 for groups of 30 or fewer, 1.0 for 60 to 100), and \"less in Singapore, more in the United States\" for larger groups; build checks for both.",
+  "status": "Fixed",
+  "id": 126
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "Several claims were looser than the data: both kinds \"did better\" (only clearly so in some cases), US weighting flatters the blend \"a little\" (600 answers are worth about 330), \"three times as much\" (true for the chatbot blended on its own), 70 to 80% (69 to 81% elsewhere).",
+  "fix": "Each now says exactly what the data shows.",
+  "status": "Fixed",
+  "id": 127
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "The how-to recommended about 20 standard questions, but the main results used all 76; Opus was called the best chatbot without the comparison being shown.",
+  "fix": "Both said plainly, with the chatbot numbers in the chatbot section.",
+  "status": "Fixed",
+  "id": 128
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Language",
+  "finding": "A cold reader stumbled on: five ideas in one paragraph under \"How to read the numbers\"; \"Two more rules\" implying the tree's questions were rules; \"the groups ... each\"; jargon (\"chance ranges\"); chart gaps that did not match the rounded labels; references to \"How to blend, step 3\" colliding with the tree's step numbers; why the page's chatbot numbers use Fable 5.1; small-group numbers with no meaning; the contents bar saying \"The answer\".",
+  "fix": "Each fixed: two paragraphs; \"Two rules that always apply\" with the reason first; \"any group\"; plain words; a note on unrounded figures; no step numbers in those references; \"the chatbot we started with\"; \"from the rough level to about 3.5, close to good enough\"; \"The short answer\".",
+  "status": "Fixed",
+  "id": 129
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Language",
+  "finding": "The playbook, glossary, skills and READMEs still described the old page (five rules, a worked example, \"combined\", \"pooled\", \"floor\", \"typical group\") and an old pilot that checked the blend against all 600 people, including those it was built from.",
+  "fix": "All brought in line with the page; the pilot checks against the other 300; the glossary gains blending, share, the scale and where the real answers come from.",
+  "status": "Fixed",
+  "id": 130
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Accuracy",
+  "finding": "The casebook's counts had not been updated since an earlier round (helper agents 13, actions \"over 500\", about 24 hours), its timeline pointed at old rule numbers, and its test count differed from the scorecard's idea count without explanation.",
+  "fix": "Recounted from the session record (23 helper agents, over 1,200 actions, about 26 hours); current section names; a line explaining the two counts; timeline labels enlarged to 12 px.",
+  "status": "Fixed",
+  "id": 131
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Method",
+  "finding": "The cold reader would want the main caveats (no separately run survey, untested on products and prices) in the short answer, not only in Limits; King earlier chose to keep caveats in Limits.",
+  "fix": "For King to decide.",
+  "status": "Open",
+  "id": 132
+ },
+ {
+  "when": "Final QA of both pages",
+  "area": "Method",
+  "finding": "For a new topic, how each kind of AI's share would be set in practice is not shown: our test set the shares on other questions with known answers.",
+  "fix": "For King to decide whether to add this to \"What we have not shown yet\".",
+  "status": "Open",
+  "id": 133
  }
 ]

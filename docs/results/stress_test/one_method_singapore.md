@@ -61,6 +61,7 @@ Key comparisons (difference in points off, A minus B; negative means A is closer
 | + record citizens (own survey, 20 standard questions), survey of 300 | + record citizens (own survey), survey of 300 | +0.08 | -0.21 to +0.43 |
 | + record citizens (own survey, 10 standard questions) + chatbot kind, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | +0.21 | -0.09 to +0.54 |
 | + record citizens (own survey, 20 standard questions) + chatbot kind, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | +0.12 | -0.14 to +0.46 |
+| + record citizens, survey of 300 | + chatbot kind, survey of 300 | -0.44 | -0.82 to -0.02 |
 
 Worth of each AI source, in real respondents per group (middle of the leave-one-question-out fits):
 

@@ -24,7 +24,8 @@ smaller surveys. If your question has already been asked in large surveys, recor
 those answers beat the chatbot, and adding the chatbot did not help.
 
 Which AI to add depends on whether your question has been asked before: brand new (most product and policy
-questions) - record citizens learned from your own survey plus the chatbot kind; asked in large surveys in
+questions) - blend your survey with both kinds of AI (record citizens learned from your own survey, and the
+chatbot), which pays off most for groups under about 100 people in the survey; asked in large surveys in
 other countries - record citizens learned from those countries, no chatbot needed; asked recently in the
 same large survey - reuse those answers.
 
@@ -37,7 +38,7 @@ with and without each kind of AI, and checked against the people not drawn.
 | Survey alone | 3.7 | 4.9 |
 | Brand-new question: + chatbot kind | 3.2 | 3.4 |
 | Brand-new question: + record citizens learned from your survey | 2.9 | 3.5 |
-| Brand-new question: + both | 2.7 | 2.9 |
+| Brand-new question: + both kinds of AI | 2.7 | 2.9 |
 | Asked in other countries: + record citizens learned from them | 2.7 | not tested |
 | Asked two years earlier in the same survey: + those answers | not tested | 2.4 |
 | For comparison: survey of 600 alone | 2.7 | 3.7 |
@@ -76,7 +77,7 @@ and a playbook for next time are in the private casebook at https://claude.ai/ar
 ```
 uv venv .venv && uv pip install --python .venv/bin/python -e .
 .venv/bin/python -I scripts/download_data.py     # ~190 MB: GSS 2022/2024, GlobalOpinionQA, Twin-2K-500, Nemotron-Personas-Singapore
-.venv/bin/python -I -m pytest -q                  # 31 tests
+.venv/bin/python -I -m pytest -q                  # 32 tests
 .venv/bin/python -I -m digital_citizens.cli baselines gss
 .venv/bin/python -I -m digital_citizens.cli baselines goqa
 .venv/bin/python -I -m digital_citizens.cli baselines twin2k
