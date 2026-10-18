@@ -1055,6 +1055,126 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Put the two cases straight after the summary again, with a caption that defines points off and a typical group in one line, and moved the fuller explanation after the diagram."
+  },
+  {
+   "n": 100,
+   "time": "02:33 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "why dont you seem to be getting what i am trying to achieve?",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Admitted I had been fixing one complaint at a time instead of working out how the whole page should fit together, and proposed stopping to do one pass over the whole page."
+  },
+  {
+   "n": 101,
+   "time": "02:35 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "yes stop patching. let me give you some final comments, and then pleasse go through and make everything tigheer and more integrated",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Agreed to change nothing until King's final comments were in, then do one pass over the whole page against six principles and list every change before publishing."
+  },
+  {
+   "n": 102,
+   "time": "02:39 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "under what the two cases looked like, there is this sentence: [caption] and in how to read the numbers, we have this: [paragraph] I think they can be combined/streamlined as follwoing ... thoughts?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Agreed to merge them in King's wording, and flagged what the merged note still had to say: what the summary number is, and which country and survey size the bars show."
+  },
+  {
+   "n": 103,
+   "time": "02:40 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "it's confusing what we mean by a typical group, middle one - what do you mean?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained that it is the middle score across every group on every question, not one group."
+  },
+  {
+   "n": 104,
+   "time": "02:41 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "middle result - are you saying that we took the group that was in the middle across the groups?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Clarified: no single group was picked; all 180 group-and-question scores in Singapore (150 in the US) were lined up and the middle one taken."
+  },
+  {
+   "n": 105,
+   "time": "02:45 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "is this good stats practice?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Yes: the median is standard and is not pulled about by a few extreme scores. Showed the spread too: 9 in 10 scores within 4.7 points with 300 people and both kinds of AI, against 4.6 for 600 alone."
+  },
+  {
+   "n": 106,
+   "time": "02:46 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "why don't you say the median?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Agreed: the word itself, with one plain line saying what it means, is clearer than \"typical group\". Proposed using it everywhere."
+  },
+  {
+   "n": 107,
+   "time": "02:49 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "how about: How to read the numbers. Each number is points off ... and for the examples below, we used the median. The bars show Singapore with a survey of 300 people unless stated; the United States showed the same pattern.",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Kept King's draft with three changes: split a long sentence, said the two cases show the median of all the scores, and added what median means."
+  },
+  {
+   "n": 108,
+   "time": "02:52 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "and will we retain this",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Yes, with a heading, each level on the scale explained from our own tests, and the US figure beside Singapore's in \"Why about 3 points\"."
+  },
+  {
+   "n": 109,
+   "time": "02:53 (18 Oct)",
+   "task": "T24",
+   "type": "tool",
+   "king": "/?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Asked what was meant and summarised where things stood."
+  },
+  {
+   "n": 110,
+   "time": "02:54 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "dont worry about /?. ok now make the changes we just discussed first and show me.  then we decide on what else we need to do to be more integrated and streamlined",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Made and published the agreed changes, then re-read the whole page and proposed six fixes: broken references, which chatbot, leftover wording, a caveat said four times, a repeat of the summary, and mixed takeaway labels."
+  },
+  {
+   "n": 111,
+   "time": "02:59 (18 Oct)",
+   "task": "T24",
+   "type": "tool",
+   "king": "ok do all six in one go and let's take a look",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Made all six, checked links, accessibility and dark mode, published, and brought the glossary, playbook, guide files and README in line."
   }
  ],
  "tasks": {
@@ -1148,6 +1268,10 @@
   ],
   "T23": [
    "Make the scorecard easy to follow",
+   "King"
+  ],
+  "T24": [
+   "Tighten and integrate the scorecard",
    "King"
   ]
  }

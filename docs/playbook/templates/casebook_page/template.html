@@ -144,7 +144,7 @@
         <tr><td><strong>US General Social Survey</strong>, 2022 and 2024</td><td>About 4,000 people per year, 84 questions used</td><td>US baselines, the US chatbot test, US record citizens, the survey-library test</td></tr>
         <tr><td><strong>96 published Singapore findings</strong></td><td>Results from the Institute of Policy Studies, Pew, Asian Barometer, the National Youth Survey, Gallup, Edelman, Reuters, YouGov, Ipsos and others</td><td>Testing whether news, polls and reports add anything</td></tr>
         <tr><td>GlobalOpinionQA (Anthropic)</td><td>Pew and World Values Survey results across 100+ countries</td><td>Cross-country baselines</td></tr>
-        <tr><td>Twin-2K-500</td><td>2,058 US people; 105 opinion questions and short decision puzzles answered again two to four weeks later</td><td>How consistent people are with themselves: 69% of answers repeated, while a typical group's answer shares moved 1.7 points</td></tr>
+        <tr><td>Twin-2K-500</td><td>2,058 US people; 105 opinion questions and short decision puzzles answered again two to four weeks later</td><td>How consistent people are with themselves: 69% of answers repeated, while groups' answer shares moved a median of 1.7 points</td></tr>
         <tr><td>Stanford study (Park and colleagues, 2024)</td><td>Published results: 1,052 US adults answered 177 General Social Survey questions twice, two weeks apart</td><td>People's own consistency (81% of answers repeated) and how much reading records helps a chatbot</td></tr>
         <tr><td>NVIDIA Nemotron-Personas-Singapore</td><td>Synthetic Singapore profiles</td><td>Checking whether ready-made personas match the population</td></tr>
         <tr><td>Cooperative Election Study 2024</td><td>60,000 US people</td><td>Downloaded for later; not yet used in results</td></tr>
@@ -157,7 +157,7 @@
     <h3>How accuracy is measured</h3>
     <ul class="list">
       <li><strong>Points off:</strong> the gap between an estimate and the real answer, in percentage points per answer option, for each group.</li>
-      <li><strong>Typical group:</strong> the middle result across all groups and questions. Half of all group answers land closer than this, half further off.</li>
+      <li><strong>Median:</strong> the middle score of every group on every question. Half did better than this, half worse.</li>
       <li><strong>Survey alone:</strong> each group's answer read straight off the people in the survey. Every method is compared with it, as "less error".</li>
       <li><strong>Combining:</strong> each group's own answers are combined with an AI estimate; the fewer people a group has, the more the estimate counts. How much each kind of AI counts is fitted on other questions only.</li>
       <li><strong>The floor:</strong> about 1.5 points in Singapore and 1.7 in the United States. Even a perfect estimate lands this far off, because the people it is checked against are a sample too. No method can be scored closer than that.</li>
@@ -266,7 +266,7 @@
       <li><strong>Frame the question:</strong> exact wording, and the groups the decision turns on.</li>
       <li><strong>Find rich public records:</strong> surveys that publish every person's answers to many questions; note when they were collected.</li>
       <li><strong>Build record citizens:</strong> learn the pattern from other countries, or from your own small survey with standard questions included.</li>
-      <li><strong>Measure with the scorecard:</strong> one test for every number; points off for a typical group, and how much less error than the survey alone, worked out from unrounded results.</li>
+      <li><strong>Measure with the scorecard:</strong> one test for every number; median points off, and how much less error than the survey alone, worked out from unrounded results.</li>
       <li><strong>Pilot before relying on it:</strong> 600 people; record citizens fill in the groups from 300; compare with all 600.</li>
       <li><strong>Decide with the five rules.</strong></li>
       <li><strong>Report for a C-suite reader:</strong> agreed terms, define before use, one running example, numbers with their meaning.</li>

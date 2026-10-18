@@ -62,7 +62,8 @@ reports. Always show the scorecard, against the survey alone.
   the same way; score every estimate against the people not drawn. `scripts/one_method_experiment.py`.
   Never mix setups across the page (the earlier page did, and was rebuilt on 17 Oct 2026).
 - **Points off**: gap between estimate and real answer, percentage points per answer option, per group and
-  question, averaged over draws. Report the **typical group** (the middle result across groups and questions).
+  question, averaged over draws. Report the **median** across groups and questions, and say what it means where it first appears
+  (the middle score: half did better, half worse).
 - **Survey alone** = each group's answer read straight off the people in the survey. Always report against it.
 - **Less error** = (survey alone points off − method points off) / survey alone points off, from unrounded values.
 - Secondary check, analysts only: **standout groups** (the quarter of group answers furthest from the national
@@ -72,8 +73,8 @@ reports. Always show the scorecard, against the survey alone.
   (`scripts/yardstick_noise.py`): even a perfect estimate lands this far off, because the people it is checked
   against are a sample too. Reading guide: about 1.5 best possible, 3 good enough to act on, 5 rough level only,
   15 guessing blind.
-- Score groups, not individuals: people repeat only about 70-80% of their own answers weeks later, but a
-  typical group's answer shares move under 2 points (`docs/results/self_agreement_twin2k.md`).
+- Score groups, not individuals: people repeat only about 70-80% of their own answers weeks later, but groups'
+  answer shares move a median of under 2 points (`docs/results/self_agreement_twin2k.md`).
 - Group differences reproduced (gap slope) shows flattening: chatbot kind 81% US, 36% Singapore, 25% China.
 - Harness: `evaluate/harness.py` (`score`, `segment_fidelity`); scripts in `scripts/*_experiment.py`.
 
@@ -90,8 +91,8 @@ reports. Always show the scorecard, against the survey alone.
 
 Run one pilot with 600 people on your real question plus the standard questions. Let record citizens fill
 in the groups from 300 of them and compare with what all 600 said. If they agree, later surveys can use 300.
-In Singapore, 300 real people + AI were about as accurate for each group as 600 people alone (both 2.7 points
-off for a typical group). The pilot also shows how much the chatbot kind adds on a truly new question, which our
+In Singapore, 300 real people + AI were about as accurate for each group as 600 people alone (both a median
+of 2.7 points off). The pilot also shows how much the chatbot kind adds on a truly new question, which our
 tests (on well-known survey questions it may have read about) could not.
 
 ## Step 6. Decide with the five rules
@@ -107,15 +108,18 @@ tests (on well-known survey questions it may have read about) could not.
 
 Use the `c-suite-explainer` skill and `glossary.md`. Build the page in layers, so a reader without a stats or
 tech background can follow the main path in a few minutes while the detail stays one click away:
-1. **The answer** (three short paragraphs), the deal-breakers right under it ("Before you rely on it"), one
-   headline picture (300 + AI = 600) and how to read the numbers (points off, groups, typical group, scale).
+1. **The answer**: a short summary that names each kind of AI and when each works best; right under it, one
+   picture per case it describes, with how to read the numbers (points off, groups, the median) above the bars;
+   then what counts as good enough (the scale, each level explained from the tests) and why about 3 points will do.
 2. **Two kinds of digital citizen, shown with one person**; where record citizens learn from, folded.
-3. **What to do**: a five-question decision tree with a number at every leaf, then the five rules in one line each.
+3. **What to do**: one worked example, then the other cases as five questions with a number at every answer,
+   then any remaining rules.
 4. **How we know**: the one test in three steps, then one picture and one "so what" per finding; the blend,
    groups versus individuals, the table of each AI, the chatbot detail and the map of what we tested, folded.
-5. **Limits and what to test next**, one or two sentences each.
+5. **Limits and what to test next**, one or two sentences each; caveats live here, not in the summary.
 6. **The evidence in full, for analysts**, folded.
-Say each finding once, put any caveat that could change a decision next to the headline, and test the page
+Say each finding once (explain a caveat where it is first needed, then refer back), use one label for every
+takeaway ("So what"), point cross-references at headings that exist, and test the page
 on a cold reader (a helper agent playing an executive with no stats background) before sharing.
 Template: `templates/scorecard_page/`.
 

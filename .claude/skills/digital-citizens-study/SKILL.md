@@ -22,8 +22,8 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
   scoring `evaluate/harness.py`; experiments `scripts/*_experiment.py`; tests `tests/` (run `pytest -q`).
 - **Scorecard:** one method for every headline number, `scripts/one_method_experiment.py` (small surveys of
   150/300/600 drawn ten times, every method combined the same way, scored against the people not drawn).
-  Report points off for a typical group and less error than the survey alone, from unrounded values.
-  Standout groups (`scripts/standout_split.py`) are a secondary, analysts-only check. Noise floor about 1.3.
+  Report median points off and less error than the survey alone, from unrounded values.
+  Standout groups (`scripts/standout_split.py`) are a secondary, analysts-only check. Best possible about 1.5 (Singapore) and 1.7 (US).
 - **Before claiming anything:** check it in the data (example groups, fieldwork dates, untested capabilities), and check that every
   number on a page comes from the same setup.
 - **Reporting:** use the `c-suite-explainer` skill, `docs/playbook/glossary.md` and the page template in

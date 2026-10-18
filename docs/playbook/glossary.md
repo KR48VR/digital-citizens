@@ -12,7 +12,7 @@ have been defined on the page.
 | survey alone | each group's answer read straight off the people in the survey; the comparison every method is measured against | the three-ways list |
 | both kinds of AI | record citizens and the chatbot kind used together. Never write "AI" alone for a result: say which kind, or "both kinds of AI", and "blended with your survey" when a survey is involved | the short answer |
 | points off | gap between an estimate and the real answer, in percentage points | 40% real vs 45% estimated = 5 points off |
-| typical group | the middle result across all groups and questions: half land closer, half further off | "How we measure accuracy" |
+| median | the middle score: line up every group's score on every question from best to worst and take the middle one; half did better, half worse | "How to read the numbers", above the two cases |
 | small groups | groups with few people in your survey | a 150-person survey holds about 14 Indian Singaporeans |
 | less error | share of the survey-alone error a method removes | 3.7 → 2.7 points = 27% less error |
 | standard questions | questions from the big public survey included in your own survey so respondents link to the records | the record-citizens box |
@@ -32,4 +32,5 @@ have been defined on the page.
 | worst cases, big misses | groups far from the average (analysts only) |
 | No AI (as the main comparison) | survey alone |
 | pattern-finding kind, real-records kind | record citizens |
-| median, mean | typical group (middle result); average |
+| typical group, middle result | median, explained in plain words where it first appears |
+| mean | average |

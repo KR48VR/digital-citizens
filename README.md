@@ -32,7 +32,7 @@ All of this comes from one test (`scripts/one_method_experiment.py`, write-up in
 150, 300 and 600 people drawn ten times from a large real survey, each group's answer worked out the same way
 with and without each kind of AI, and checked against the people not drawn.
 
-| Points off for a typical group, survey of 300 | Singapore | United States |
+| Median points off, survey of 300 | Singapore | United States |
 |---|---|---|
 | Survey alone | 3.7 | 4.9 |
 | Brand-new question: + chatbot kind | 3.2 | 3.4 |
@@ -42,11 +42,11 @@ with and without each kind of AI, and checked against the people not drawn.
 | Asked two years earlier in the same survey: + those answers | not tested | 2.4 |
 | For comparison: survey of 600 alone | 2.7 | 3.7 |
 
-Separate checks: borrowing the most similar question from a different survey was typically 11 points off,
+Separate checks: borrowing the most similar question from a different survey had a median of 11 points off,
 and published findings 8 points off; neither helped.
 
-"Points off" is the gap between our estimate and what real people said, in percentage points, for a typical
-group (half of all group answers land closer); survey noise alone gives about 1.3, guessing blind about 15.
+"Points off" is the gap between our estimate and what real people said, in percentage points; the table shows
+the median across groups and questions (half did better, half worse). Best possible about 1.5 to 1.7, guessing blind about 15.
 Each record citizen is a real, anonymous survey respondent whose own past answers predict their answer to a
 new question. The chatbot kind guesses from a description of a person. The plain-language scorecard with charts is
 at https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 (private; share from the page). How it was made, the QA log

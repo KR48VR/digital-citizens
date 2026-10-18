@@ -385,6 +385,10 @@ for t in TAGS:  # short answer: brand new, the two kinds about as good as each o
     lo, hi = CMP[(t, "+ record citizens + chatbot kind", "+ record citizens", 300, 300)]
     assert lo < 0 < hi, ("chatbot helped record citizens", t)
     assert med(t, "+ record citizens", 300) < med(t, "+ chatbot kind", 300), t
+# worked example, step 3: Claude Opus was the best single chatbot by a small margin; the page's chatbot kind (Claude Fable 5.1) was about as good
+for t in TAGS:
+    singles = {k_: med(t, k_, 300) for k_ in ("+ chatbot kind", "+ chatbot (Opus)", "+ chatbot (Sonnet)", "+ chatbot (Haiku)", "+ chatbot (Qwen, open, Asian-built)")}
+    assert min(singles, key=singles.get) == "+ chatbot (Opus)" and singles["+ chatbot kind"] - singles["+ chatbot (Opus)"] < 0.5, t
 # the "what counts as good enough" boxes: 3 is a survey of 600 alone; 5 is a survey of 150 alone or the chatbot alone (Singapore)
 assert 2.5 < med(sg, "survey alone", 600) < 3.5 and 3.5 < med(us, "survey alone", 600) < 4
 for k_, n_ in (("survey alone", 150), ("chatbot kind alone, no survey", 150)):

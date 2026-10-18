@@ -91,6 +91,10 @@
   "T23": [
    "Said the page had become too long and hard to follow for readers without a stats or tech background, and asked for a simpler flow with the same detail.",
    "Rebuilt the page in layers with a worked example, and tested it on five fresh readers playing a non-technical executive, fixing what each one tripped on."
+  ],
+  "T24": [
+   "Asked to stop patching, gave final comments (merge the two reading notes, say \"median\", keep the scale), and asked for one pass to make the page tighter and more integrated.",
+   "Applied King's comments, re-read the whole page, and fixed six things: broken references, which chatbot, leftover wording, a caveat said four times, a repeat of the summary, and mixed takeaway labels."
   ]
  },
  "examples": {
@@ -113,8 +117,8 @@
  },
  "scalars": {
   "HOURS": "about 24 hours",
-  "N_TASKS": 23,
-  "N_SHOTS": 22,
+  "N_TASKS": 24,
+  "N_SHOTS": 23,
   "N_AGENTS": 13,
   "N_BG": 36,
   "N_HOOKS": 10,
@@ -123,7 +127,7 @@
   "N_DRAFTS": 8,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "59",
+  "N_VERSIONS": "61",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"
@@ -238,7 +242,7 @@
    "tag": "kept",
    "king": true,
    "asked": "King asked whether \"people don't fully agree with themselves\" was backed by evidence.",
-   "found": "People repeat 69% (our check) to 81% (Stanford study) of their answers weeks later, but a typical group's answers move only 1.7 points.",
+   "found": "People repeat 69% (our check) to 81% (Stanford study) of their answers weeks later, but groups' answers move a median of only 1.7 points.",
    "changed": "Score groups, not individuals (QA findings 69 to 72)"
   },
   {

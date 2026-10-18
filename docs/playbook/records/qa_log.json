@@ -774,5 +774,69 @@
   "fix": "The diagram follows the summary directly and explains its own numbers in the caption; the fuller explanation comes after it.",
   "status": "Fixed",
   "id": 97
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "The map of what we tested pointed to \"Rule 1\" to \"Rule 4\", which the page no longer has.",
+  "fix": "Each entry now names and links the place it led to: the worked example, the other cases' steps, small groups or the two more rules.",
+  "status": "Fixed",
+  "id": 98
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "The worked example said Claude Opus did best, but every chatbot number on the page came from Claude Fable 5.1, which only the analysts' section said.",
+  "fix": "The worked example now says both: Opus was best by a small margin (3.05 against 3.15 points off in Singapore, 3.18 against 3.38 in the US). A build check keeps it true.",
+  "status": "Fixed",
+  "id": 99
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "\"A typical group, the middle one\" read as if we had picked one group (King's catch).",
+  "fix": "The page says \"median\" and explains it once, where the numbers are first read: the middle score of every group on every question, half better and half worse. Glossary, playbook, guide files and README follow.",
+  "status": "Fixed",
+  "id": 100
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "The 3, 5 and 15 levels on the scale had no explanation, unlike the best-possible level.",
+  "fix": "Each level now says what it is in our tests: 3 is a survey of 600 alone, 5 a survey of 150 alone or the chatbot alone in Singapore, 15 splitting answers evenly. Build checks keep the numbers true.",
+  "status": "Fixed",
+  "id": 101
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "\"Why about 3 points\" quoted only Singapore's 2.7 for a survey of 600; the US figure is 3.7.",
+  "fix": "Both are quoted.",
+  "status": "Fixed",
+  "id": 102
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "The US weighting caveat (600 answers worth about 330) was explained four times.",
+  "fix": "Explained once under the chart, referred back to in the chatbot section, and kept in the analysts' notes.",
+  "status": "Fixed",
+  "id": 103
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "A sentence under the two kinds of AI repeated the summary, and takeaways used three different labels.",
+  "fix": "The sentence now ties the chatbot's result with no survey to the \"rough level\" on the scale; every takeaway is labelled \"So what\", except the worked example's \"What you get\".",
+  "status": "Fixed",
+  "id": 104
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accessibility",
+  "finding": "New links in the map of what we tested used the browser's default blue, hard to read in dark mode.",
+  "fix": "Links take the text colour with an underline; accessibility checks pass in light and dark mode.",
+  "status": "Fixed",
+  "id": 105
  }
 ]
