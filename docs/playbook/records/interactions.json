@@ -1175,6 +1175,36 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Made all six, checked links, accessibility and dark mode, published, and brought the glossary, playbook, guide files and README in line."
+  },
+  {
+   "n": 112,
+   "time": "03:07 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "this highlighted bit looks out of place being put here? do we need it?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Agreed: it repeated the worked example and the fold below, and made the two boxes uneven. Proposed keeping only \"a statistical model, not a chatbot\", moved into the first paragraph."
+  },
+  {
+   "n": 113,
+   "time": "03:08 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "yes make the change. and for this new screenshot, above what counts for good enough, we should have an expandable/collapsible section on what is blending and how to blend? we can use the one you did for me earlier, and now that it is in an expandable/collapsible section, it won't feel like too much info is given all at once",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Made the change, and moved the blending explainer up from \"How we know\" into a fold right after the two cases, with a one-line meaning of blending and the example's working shown step by step."
+  },
+  {
+   "n": 114,
+   "time": "03:09 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "this part: [So what under the two kinds] looks overwrought and repitive. please streamline",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Cut it from seven sentences to five: the point first, then the two women, then why the chatbot alone was rough and why it still helps once blended."
   }
  ],
  "tasks": {

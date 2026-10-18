@@ -207,7 +207,9 @@ for key in ("IND", "CHI"):
                 f'<div class="bar" aria-hidden="true">{segs}</div><p class="bkey">{key_}</p></div>')
 BLEND_BARS = ('<figure class="blendfig"><h3>How much each voice counts</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
               + "".join(bars) + "</figure>")
-BLEND_TXT = {"rec": str(round(BL["rec"])), "chat": str(round(BL["chat"])), "IND_n": str(round(BLEND["IND"][0])), "example": str(round(EXAMPLE))}
+_n, _r, _c = round(BLEND["IND"][0]), round(BL["rec"]), round(BL["chat"])  # the example's working uses the rounded numbers it shows
+assert round((_n * 40 + _r * 50 + _c * 45) / (_n + _r + _c)) == round(EXAMPLE)
+BLEND_TXT = {"rec": str(_r), "chat": str(_c), "IND_n": str(_n), "total": str(_n + _r + _c), "example": str(round(EXAMPLE))}
 
 
 # ---- decision tree: how much AI adds by group size (both countries, every survey size)

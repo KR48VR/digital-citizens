@@ -30,6 +30,15 @@
       <p class="howto"><strong>How to read the numbers.</strong> Each number is points off: how far the estimate was from what people really said, in percentage points. For example, if 40% of older Singaporeans support a policy and we estimate 45%, that is 5 points off; lower is better. We worked this out for every group on every question: 9 groups in Singapore and 6 in the United States, such as people over 60, Malay Singaporeans or young adults. The two cases below show the median of all these scores: the middle one, with half better and half worse. The bars show Singapore with a survey of 300 people unless stated; the United States showed the same pattern.</p>
       {{CASES}}
     </figure>
+    <details class="more" id="blending"><summary>What blending means, and how it works</summary><div class="inner">
+    <div class="blend">
+      <p>Blending means combining each group's answer from your survey with the estimates from one or both kinds of AI, to get one answer for that group. For each group, up to three voices are blended: the group's own people in your survey, record citizens, and the chatbot.</p>
+      <p>Each kind of AI's say is set by how accurate it had been on other questions, like weighing advisers by their track record. The real people's say grows with how many of them you asked. In Singapore, with a survey of 300, record citizens counted as much as about {{blend:rec}} real people per group, and the chatbot as about {{blend:chat}}.</p>
+      {{BLEND_BARS}}
+      <p><strong>Example.</strong> Say 40% of the {{blend:IND_n}} Indian Singaporeans in your survey support a policy, record citizens estimate 50% and the chatbot 45%; these three numbers are made up to show the working. Count each voice as that many people: {{blend:IND_n}} people at 40%, {{blend:rec}} at 50% and {{blend:chat}} at 45%. Add them up as if {{blend:total}} people had answered: the blended answer is about {{blend:example}}%, closest to record citizens because they have the biggest say.</p>
+      <p><strong>So what.</strong> For small groups, the two kinds of AI do most of the work, which is why they help them most. That much weight on them is earned, not assumed: it comes from their accuracy on other questions, and every blended answer on this page is checked against what real people said.</p>
+    </div>
+    </div></details>
     <div class="readnum">
       <h3>What counts as good enough</h3>
       <div class="scale">
@@ -52,11 +61,10 @@
       </div>
       <div class="rec">
         <h3>Record citizens</h3>
-        <p>We start from a real person instead: an anonymous 62-year-old woman who answered a large public survey (in Singapore, the World Values Survey: 2,012 people, about 290 questions each). Her answers, such as how often she goes to religious services, tell us how she is likely to answer your new question.</p>
-        <p>To learn that pattern, record citizens need some people who answered both your question and the public survey's questions. For a brand-new question, those are the people in your own survey, which is why your survey also asks about 20 of the public survey's questions. A statistical model, not a chatbot, then applies the pattern to her and thousands of others, and adds up the results by group.</p>
+        <p>We start from a real person instead: an anonymous 62-year-old woman who answered a large public survey (in Singapore, the World Values Survey: 2,012 people, about 290 questions each). Her answers, such as how often she goes to religious services, tell us how she is likely to answer your new question. A statistical model, not a chatbot, works this out for her and thousands of others, and adds up the results by group.</p>
       </div>
     </div>
-    <p><strong>So what.</strong> Two 62-year-old women can hold very different views. The chatbot gives them the same answer. Record citizens give them different answers, because what they said before differs. Across thousands of people, that keeps the real differences between groups. Without it, groups look more alike than they really are, which is the main way digital citizens fail when used on their own. This is likely why the chatbot alone, with no survey, was only at the rough level. Blended with a real survey it still helped, probably because the survey supplies the real differences between groups.</p>
+    <p><strong>So what.</strong> Record citizens keep the real differences between people; the chatbot does not. Two 62-year-old women can hold very different views: record citizens give them different answers, while the chatbot gives them the same one. Across thousands of people, that makes the chatbot's groups look more alike than they really are. That is likely why, with no survey, it was only at the rough level. Blended with a survey, which supplies the real differences, it still helped.</p>
     <details class="more"><summary>Where record citizens learn from</summary><div class="inner">
     <div class="sources">
       <div>
@@ -138,14 +146,6 @@
       <div><b>2. Fill in</b><span>Work out each group's answer from those people alone (the survey alone), or blended with one or both kinds of AI, each getting more say the better it did on other questions. To treat a question as brand new, record citizens only see its answers from the people picked.</span></div>
       <div><b>3. Check</b><span>Compare each answer with what the people not picked actually said, and count the points off.</span></div>
     </div>
-    <details class="more"><summary>How blending works</summary><div class="inner">
-    <div class="blend">
-      <p>For each group, three voices are blended: the group's own people in your survey, record citizens, and the chatbot. Each kind of AI's say is set by how accurate it had been on other questions, like weighing advisers by their track record. The real people's say grows with how many of them you asked. In Singapore, with a survey of 300, record citizens counted as much as about {{blend:rec}} real people per group, and the chatbot as about {{blend:chat}}.</p>
-      {{BLEND_BARS}}
-      <p><strong>Example.</strong> Say 40% of the {{blend:IND_n}} Indian Singaporeans in your survey support a policy, record citizens estimate 50% and the chatbot 45%; these three numbers are made up to show the working. The blended answer is about {{blend:example}}%, closest to record citizens because they have the biggest say.</p>
-      <p><strong>So what.</strong> For small groups, the two kinds of AI do most of the work, which is why they help them most. That much weight on them is earned, not assumed: it comes from their accuracy on other questions, and every blended answer on this page is checked against what real people said.</p>
-    </div>
-    </div></details>
     <details class="more"><summary>Why we score groups, not individual people</summary><div class="inner">
     <p>People don't fully agree with themselves. In a Stanford study, 1,052 Americans answered the same survey questions twice, two weeks apart, and on average 81% of their answers matched. In another US study we checked, {{self:people}} people matched {{self:match}}% of their answers a few weeks later, and only {{self:match_6_7}}% on questions with six or seven choices. So no AI can predict one person much better than that. Across a group, though, the changes mostly cancel out. In that study, the share giving each answer moved by a median of only {{self:shift_group}} points across groups and questions, well under the 3 points we treat as good enough to act on, though more for small groups. That is why we judge digital citizens by group answers.</p>
     </div></details>
@@ -183,7 +183,7 @@
         <tr class="grp"><th colspan="3" scope="colgroup"><span aria-hidden="true">✓</span> Kept</th></tr>
         <tr><th scope="row">Building digital citizens from real people's survey records</th><td data-l="Found">With no survey at all, {{v:singapore|record citizens alone, no survey|300}} points off in Singapore, against {{v:singapore|chatbot kind alone, no survey|300}} for the chatbot alone</td><td data-l="Led to">Record citizens</td></tr>
         <tr><th scope="row">Learning from 61 countries instead of 2</th><td data-l="Found">3.7 against 4.2 points off (separate test)</td><td data-l="Led to">Record citizens learn from many countries</td></tr>
-        <tr><th scope="row">Blending each source by its track record</th><td data-l="Found">300 people blended with both kinds of AI as accurate as 600 alone: both {{v:singapore|survey alone|600}} in Singapore</td><td data-l="Led to"><a href="#example">Worked example</a>, step 4: blend</td></tr>
+        <tr><th scope="row">Blending each source by its track record</th><td data-l="Found">300 people blended with both kinds of AI as accurate as 600 alone: both {{v:singapore|survey alone|600}} in Singapore</td><td data-l="Led to"><a href="#example">Worked example</a>, step 4, and <a href="#blending">what blending means</a></td></tr>
         <tr><th scope="row">Sorting questions by whether they were asked before</th><td data-l="Found">A different best choice in each case; reusing last round's answers was {{v:us|last round's answers alone, no survey|300}} in the United States, even with no new survey</td><td data-l="Led to">The two cases in the short answer, and <a href="#steps">other cases</a>, steps 2 and 3</td></tr>
         <tr><th scope="row">About 20 standard questions instead of all 76</th><td data-l="Found">{{v:singapore|+ record citizens (own survey, 20 standard questions)|300}} against {{v:singapore|+ record citizens (own survey)|300}} in Singapore</td><td data-l="Led to"><a href="#example">Worked example</a>, step 1: about 20 standard questions</td></tr>
         <tr><th scope="row">Five chatbots, each counted by its track record</th><td data-l="Found">As good as the best one alone: {{v:singapore|+ chatbot panel, each weighted|300}} against {{v:singapore|+ chatbot (Opus)|300}} in Singapore</td><td data-l="Led to"><a href="#example">Worked example</a>, step 3: use the best chatbot</td></tr>

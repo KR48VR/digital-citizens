@@ -838,5 +838,29 @@
   "fix": "Links take the text colour with an underline; accessibility checks pass in light and dark mode.",
   "status": "Fixed",
   "id": 105
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Layout",
+  "finding": "The record-citizens box had a second paragraph on what they need and how they are built, repeating the worked example and the fold below it, and making the two boxes uneven (King's catch).",
+  "fix": "One paragraph per box; \"a statistical model, not a chatbot\" kept in the first.",
+  "status": "Fixed",
+  "id": 106
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Layout",
+  "finding": "Blending was first named in the summary and the two cases, but explained only far down in \"How we know\" (King's catch).",
+  "fix": "The explainer now sits in a fold right after the two cases, opens with what blending means, and shows the example's working with the rounded numbers it quotes; a build check keeps the working consistent.",
+  "status": "Fixed",
+  "id": 107
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "The takeaway under the two kinds of AI was overwrought and said \"the real differences between groups\" twice (King's catch).",
+  "fix": "Five sentences, point first, one hedge.",
+  "status": "Fixed",
+  "id": 108
  }
 ]
