@@ -147,12 +147,13 @@ def grp(key, config, n=150):
     return v.mae.median(), v.ng.mean()
 
 
+SMALL_N = 300  # same survey size as the rest of the page
 small_rows = []
 for key, (g, label) in GROUPS.items():
-    a_, ng = grp(key, "survey alone")
-    b_, _ = grp(key, BOTH)
+    a_, ng = grp(key, "survey alone", SMALL_N)
+    b_, _ = grp(key, BOTH, SMALL_N)
     small_rows.append(f'<tr><th scope="row">{label}</th><td class="num">about {round(ng)}</td><td class="num"><b>{f1(a_)}</b></td><td class="num"><b>{f1(b_)}</b></td></tr>')
-TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 150-person survey in Singapore, brand-new question. AI here is both kinds together.</caption>\n'
+TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 300-person survey in Singapore, brand-new question. AI here is both kinds together.</caption>\n'
                '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With AI</th></tr></thead>\n      <tbody>\n        '
                + "\n        ".join(small_rows) + "\n      </tbody>\n    </table>\n    </div>")
 
@@ -315,7 +316,7 @@ def inline(m):
     if kind == "pct":
         return str(pct(med(args[0], "survey alone", int(args[2])), med(args[0], args[1], int(args[2]))))
     if kind == "ppl":
-        return str(round(grp(args[0], "survey alone")[1]))
+        return str(round(grp(args[0], "survey alone", *(int(a) for a in args[1:]))[1]))
     if kind == "grp":
         return f1(grp(args[0], args[1], *(int(a) for a in args[2:]))[0])
     raise KeyError(kind)
