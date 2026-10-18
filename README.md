@@ -67,6 +67,7 @@ and a playbook for next time are in the private casebook at https://claude.ai/ar
 | [docs/08_library_test.md](docs/08_library_test.md) | The 'library' idea tested end to end on the US: search for the closest previously asked question, use that survey as the base, spread with record citizens |
 | [docs/09_one_method.md](docs/09_one_method.md) | The one test behind every headline number: a small survey with and without each kind of AI |
 | [docs/10_three_more_ideas.md](docs/10_three_more_ideas.md) | Three more ideas tested: a panel of chatbots, fewer standard questions, boosting small groups |
+| [docs/11_chatbot_reading_records.md](docs/11_chatbot_reading_records.md) | Letting the chatbot read each person's record (about as good as record citizens; not adopted), and three checks that it is not remembering published answers |
 | [docs/sources/singapore_published_findings.md](docs/sources/singapore_published_findings.md) | Singapore sources combed for the evidence ledger, with trust levels and what was unusable |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |

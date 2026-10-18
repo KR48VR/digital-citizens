@@ -33,16 +33,16 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
 - **Pages:** scorecard (private; King shares it) https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 ;
   casebook (private; access on request: method, QA log, King and AI, package) https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 ; index in `docs/playbook/README.md`.
 
-- **Record-reading trial (next; King approved up to $10):** when King says "Run the record-reading trial", use
-  `scripts/record_reading_trial.py`. It needs King's API key as a network secret in the environment settings (header
-  `x-api-key`, website `api.anthropic.com`, path prefix `/v1/messages/batches`); the script routes its batch calls
-  through the proxy so the secret is attached. Never ask for the key in chat, and never set `ANTHROPIC_API_KEY`,
-  which Claude Code itself would pick up and `data/raw/wvs` (run `scripts/download_wvs.py` first if it is missing). Run `plan` (no
-  API calls), then `run` (one batch to claude-opus-5-5 at low effort; it refuses to send anything if the worst case
-  is over $10; most batches finish within an hour), then `score`. Report to King in plain words: did reading each
-  person's survey record make the chatbot more accurate than knowing only their demographics, for individuals and
-  for groups, next to the 100 people's own answers; say what it cost. It is a 100-person pilot, a signal, not a
-  result. Do not change the scorecard until King decides; then log the exchanges in the casebook
-  (`docs/playbook/templates/casebook_page/README.md`).
+- **Chatbot reading records (done 18 Oct; not adopted) and memory checks (done; no sign):** write-up in
+  `docs/11_chatbot_reading_records.md`. Rerun: `scripts/record_reading_trial.py plan|run|score` (100-person
+  pilot, cap $10) and `plan full|run full` (all 1,997 Singapore respondents, cap $85), then
+  `scripts/one_method_experiment.py singapore 10 reading` (writes `one_method_singapore_reading.*`; the scorecard
+  build checks that shared methods are unchanged); `scripts/memory_check.py` and `scripts/disguise_check.py`
+  (plan|run|score). Paid runs need King's approval and budget: give King both the likely cost and the worst-case
+  cap from `plan` before running. The key is `DIGITAL_CITIZENS_API_KEY` or a network secret (header `x-api-key`,
+  website `api.anthropic.com`, path prefix `/v1/messages/batches`); never ask for it in chat, never set
+  `ANTHROPIC_API_KEY`, and remind King to delete it when done. `scripts/download_wvs.py data/raw/wvs` needs
+  `uv pip install --python .venv/bin/python playwright` first. Next (King's order): questions asked after the
+  chatbot's knowledge was frozen, to rule memory out.
 
 Commit and push to the session's branch after each meaningful change; never commit raw data.
