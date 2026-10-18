@@ -1365,6 +1365,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Left the short answer as it was, added the Limits item and the matching words in \"What to test next\", and recorded King's preference in the working guide."
+  },
+  {
+   "n": 131,
+   "time": "04:27 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "what else did we chase in the scorecard after the QA? show me side by side",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rebuilt the pre-QA page from its saved source, compared it with the current page passage by passage, and sent a side-by-side view of all 30 changes, each with a one-line reason."
+  },
+  {
+   "n": 132,
+   "time": "04:32 (18 Oct)",
+   "task": "T24",
+   "type": "tool",
+   "king": "ok thank you. these look like improvements",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Logged the exchange."
   }
  ],
  "tasks": {
