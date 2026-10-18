@@ -6,7 +6,7 @@ have been defined on the page.
 | Term | Meaning | Define it with |
 |---|---|---|
 | digital citizens | AI stand-ins for real people, used to estimate how groups would respond | the page intro |
-| fill in each group's answer | combine each group's own answers in the survey with the AI's estimate for that group, so the estimate does not rest on a handful of people; the fewer people a group has, the more the AI's estimate counts | the three-ways list in "Where AI helps most" |
+| fill in each group's answer | blend each group's own answers in the survey with the AI's estimates for that group, so the estimate does not rest on a handful of people; the fewer people a group has, the more the AI's estimate counts | the three-ways list in "Where AI helps most" |
 | record citizens | AI built on real people's past survey answers; predicts each real person's answer from what they said about other things | the 62-year-old woman |
 | the chatbot kind | a chatbot answering in character ("You are a 62-year-old Singaporean woman") | the 62-year-old woman |
 | survey alone | each group's answer read straight off the people in the survey; the comparison every method is measured against | the three-ways list |
@@ -26,7 +26,7 @@ have been defined on the page.
 | exchange rate | "about as accurate as a survey twice the size" |
 | signal | whether past answers are relevant to the new question |
 | regression to the mean, flattening (undefined) | "every group looks alike" |
-| calibration, Bayesian pool, prior, segment, weighted by track record | "combined"; "how much each AI counts was set by how accurate it had been on other questions"; groups |
+| calibration, Bayesian pool, prior, segment, weighted by track record | "blended" (not "combined"); "how much each AI counts was set by how accurate it had been on other questions"; groups |
 | closest question | a near-identical question from a different survey |
 | worst cases, big misses | groups far from the average (analysts only) |
 | No AI (as the main comparison) | survey alone |

@@ -83,6 +83,10 @@
   "T21": [
    "Asked whether individuals need to be asked repeatedly, then asked for a thorough QA and a smoother, more accessible scorecard.",
    "Answered from the data, reordered and tightened the page, ran independent number and accessibility reviews, and fixed every finding."
+  ],
+  "T22": [
+   "Asked whether \"combination\" means blended and how to make it easy to grasp; proposed two visuals: the experiments behind the conclusions, and a decision tree.",
+   "Explained the blend with real shares, added a blend box with data-driven bars, and proposed designs for both visuals."
   ]
  },
  "examples": {
@@ -104,18 +108,18 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 22 hours",
-  "N_TASKS": 21,
+  "HOURS": "about 23 hours",
+  "N_TASKS": 22,
   "N_SHOTS": 14,
   "N_AGENTS": 13,
   "N_BG": 36,
   "N_HOOKS": 10,
-  "N_IDEAS": 13,
+  "N_IDEAS": 15,
   "N_CHALLENGES": 9,
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "45",
+  "N_VERSIONS": "46",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

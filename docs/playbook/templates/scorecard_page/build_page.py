@@ -156,6 +156,51 @@ TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Poin
                '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With AI</th></tr></thead>\n      <tbody>\n        '
                + "\n        ".join(small_rows) + "\n      </tbody>\n    </table>\n    </div>")
 
+# ---- the blend: how much each voice counts (Singapore, survey of 300, brand-new question)
+def md_table(text, first_header):
+    """Rows of the markdown table whose header starts with first_header, as dicts."""
+    lines_ = text.splitlines()
+    i = next(k for k, l in enumerate(lines_) if l.startswith(first_header))
+    head = [c.strip() for c in lines_[i].strip("|").split("|")]
+    out = []
+    for l in lines_[i + 2:]:
+        if not l.startswith("|"):
+            break
+        out.append(dict(zip(head, [c.strip() for c in l.strip("|").split("|")])))
+    return out
+
+
+SG_MD = (RES / "one_method_singapore.md").read_text()
+W_ = next(r for r in md_table(SG_MD, "| config | n | chat |") if r["config"] == BOTH and r["n"] == "300")
+SIZE_ = {r["group"]: float(r["300"]) for r in md_table(SG_MD, "| group | 150 |")}
+BL = {"rec": float(W_["rec_own"]), "chat": float(W_["chat"])}
+
+
+def shares(n_people):
+    raw = [n_people, BL["rec"], BL["chat"]]
+    pc = [100 * v / sum(raw) for v in raw]
+    out = [int(p) for p in pc]  # largest remainder, so the three add up to 100
+    for k in sorted(range(3), key=lambda k: pc[k] - out[k], reverse=True)[:100 - sum(out)]:
+        out[k] += 1
+    return out
+
+
+BLEND = {key: (SIZE_[GROUPS[key][0]], shares(SIZE_[GROUPS[key][0]])) for key in ("IND", "CHI")}
+EXAMPLE = (BLEND["IND"][0] * 40 + BL["rec"] * 50 + BL["chat"] * 45) / (BLEND["IND"][0] + BL["rec"] + BL["chat"])
+assert BLEND["IND"][1][0] < BLEND["CHI"][1][0] and abs(EXAMPLE - 50) < abs(EXAMPLE - 45) < abs(EXAMPLE - 40)
+SEG = [("sv", "Survey"), ("rc", "Record citizens"), ("cb", "Chatbot")]
+bars = []
+for key in ("IND", "CHI"):
+    n_, sh = BLEND[key]
+    segs = "".join(f'<span class="seg {c}" style="flex:{v} 1 0">{f"{v}%" if v >= 12 else ""}</span>' for (c, _), v in zip(SEG, sh))
+    key_ = "".join(f'<span><i class="sw {c}"></i>{lab} {v}%</span>' for (c, lab), v in zip(SEG, sh))
+    bars.append(f'<div class="brow"><p class="blab"><strong>{GROUPS[key][1]}</strong> · about {round(n_)} people in the survey</p>'
+                f'<div class="bar" aria-hidden="true">{segs}</div><p class="bkey">{key_}</p></div>')
+BLEND_BARS = ('<figure class="blendfig"><h4>How much each voice counts</h4><p class="howto">Singapore, survey of 300, brand-new question.</p>'
+              + "".join(bars) + "</figure>")
+BLEND_TXT = {"rec": str(round(BL["rec"])), "chat": str(round(BL["chat"])), "IND_n": str(round(BLEND["IND"][0])), "example": str(round(EXAMPLE))}
+
+
 # ---- analysts: every method, both countries
 LABELS = [("survey alone", "Survey alone"), ("+ chatbot kind", "With the chatbot kind"),
           ("+ record citizens (own survey)", "With record citizens learned from your own survey"), (BOTH, "With record citizens from your own survey plus the chatbot kind"),
@@ -206,7 +251,7 @@ pc3["set"] = ["standout" if (q, g) in top else "most" for q, g in zip(pc3.questi
 mm = pc3.groupby(["set", "config"]).mae.median()
 SO = {s_: pct(mm[(s_, "survey alone")], mm[(s_, "+ record citizens")]) for s_ in ("most", "standout")}
 
-FILL = {"TABLE_ROUTES": TABLE_ROUTES, "TABLE_SMALL": TABLE_SMALL, "TABLE_ONE_METHOD": TABLE_ONE_METHOD, "TABLE_COMPARE": TABLE_COMPARE,
+FILL = {"BLEND_BARS": BLEND_BARS, "TABLE_ROUTES": TABLE_ROUTES, "TABLE_SMALL": TABLE_SMALL, "TABLE_ONE_METHOD": TABLE_ONE_METHOD, "TABLE_COMPARE": TABLE_COMPARE,
         "SO_TXT": (f'{SO["most"]}% less error for both' if SO["most"] == SO["standout"] else f'{SO["most"]}% less error for most groups and {SO["standout"]}% for standout groups')}
 
 
@@ -230,6 +275,8 @@ SELF_FMT = {"match": lambda d: str(round(100 * d["match"])), "match_yes_no": lam
 
 def inline(m):
     kind, args = m.group(1), m.group(2).split("|")
+    if kind == "blend":
+        return BLEND_TXT[args[0]]
     if kind == "self":
         return SELF_FMT[args[0]](SELF)
     if kind == "floor":
@@ -287,7 +334,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self|blend):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 

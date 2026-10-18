@@ -113,3 +113,18 @@
   .sources > div { min-width: 0; background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 14px 16px; }
   @media (max-width: 600px) { .sources { grid-template-columns: minmax(0, 1fr); } }
   section > h3 { margin-top: 10px; }
+  .blend { display: grid; gap: 12px; background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 18px 20px; }
+  .blend h3 { margin: 0; }
+  .blendfig { padding: 0; border: 0; background: none; gap: 12px; }
+  .brow { display: grid; gap: 5px; }
+  .blab, .bkey { font-size: 14px; max-width: none; }
+  .bkey { display: flex; flex-wrap: wrap; gap: 2px 14px; color: var(--ink-2); }
+  .bkey span { display: inline-flex; align-items: center; gap: 6px; }
+  .bar { display: flex; gap: 2px; height: 30px; }
+  .seg { display: flex; align-items: center; justify-content: center; min-width: 4px; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: #0b0b0b; }
+  .seg:first-child { border-radius: 4px 0 0 4px; }
+  .seg:last-child { border-radius: 0 4px 4px 0; }
+  .sv { background: var(--ink-2); color: var(--bg); }
+  .rc { background: var(--s3); }
+  .cb { background: var(--s2); }
+  @media (max-width: 600px) { .blend { padding: 14px; } }

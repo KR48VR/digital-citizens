@@ -875,6 +875,36 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Answered from the data (most changes are small; averaging related questions steadies a person's score), then restructured the scorecard and had two independent reviewers check it, fixing every finding, including an overstated claim in the short answer."
+  },
+  {
+   "n": 82,
+   "time": "00:12 (18 Oct)",
+   "task": "T22",
+   "type": "teammate",
+   "king": "Combination means blended?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed it is the one blend behind every number, showed each voice's share for a small and a large group, and offered to say \"blended\" on the page."
+  },
+  {
+   "n": 83,
+   "time": "00:14 (18 Oct)",
+   "task": "T22",
+   "type": "teammate",
+   "king": "How do we make it easy for a reader to understand this?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed a \"How the blend works\" box: one plain sentence, two bars showing each voice's say, a worked example and a so-what."
+  },
+  {
+   "n": 84,
+   "time": "00:18 (18 Oct)",
+   "task": "T22",
+   "type": "teammate",
+   "king": "Yes. \n\nAt the same time, is there a way for us to help the readers visualize two things:\n\n1) all the experiments we ran, and how they led to our current conclusions \n\n2) how to decide where and when to use ai eg a decision tree\n\nLet me know what you think",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added the blend box with bars read from the data and switched the page to \"blended\"; proposed designs for an evidence map and a decision tree, for King to choose."
   }
  ],
  "tasks": {
@@ -960,6 +990,10 @@
   ],
   "T21": [
    "Streamline and QA the scorecard",
+   "King"
+  ],
+  "T22": [
+   "Make the blend and the evidence easy to see",
    "King"
   ]
  }
