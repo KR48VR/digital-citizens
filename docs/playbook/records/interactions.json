@@ -1035,6 +1035,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Moved \"How to read the numbers\" above the diagram, labelled the number columns \"points off\", and rewrote the caption without the forward reference."
+  },
+  {
+   "n": 98,
+   "time": "02:30 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "and why is there empty space to the right of some of these paras? is it formatting?",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Explained the line-length limit on paragraphs, then made text and boxes share one column width, narrowing the column slightly so lines stay readable."
   }
  ],
  "tasks": {

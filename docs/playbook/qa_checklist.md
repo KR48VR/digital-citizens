@@ -43,6 +43,7 @@
 - [ ] One accent per job (chatbot orange, record citizens green) used the same way throughout.
 - [ ] Repeated elements share spacing and alignment; no orphaned headings.
 - [ ] Dark mode checked, not just light.
+- [ ] Text and boxes share one column width: no paragraph stops short of the boxes and tables around it.
 
 ## Log
 - [ ] Every finding goes into the QA log with when, area, finding, fix and status.

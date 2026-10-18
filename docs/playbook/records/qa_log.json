@@ -758,5 +758,13 @@
   "fix": "The explanation now comes first; each column of numbers is headed \"points off\"; the caption says shorter bars are better.",
   "status": "Fixed",
   "id": 95
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Layout",
+  "finding": "Paragraphs were capped at about 64 characters a line while boxes, tables and charts used the full column, leaving a ragged empty space to the right of most paragraphs (King's catch).",
+  "fix": "Text now runs the full column width; the column narrowed from 760 to 680 pixels so lines stay readable.",
+  "status": "Fixed",
+  "id": 96
  }
 ]
