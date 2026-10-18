@@ -1215,6 +1215,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Rewrote it as point, rule, example, bars, so what: one line on what blending is, each source's say counted in people, the worked example in two short sentences, and no repeat of how the AI's say is set."
+  },
+  {
+   "n": 116,
+   "time": "03:21 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "all these numbers are not helping? where do they come from? and for the reader, it's the first time they are seeing it [the 277/110 sentence and the worked example]",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained where each number came from (weights fitted on the other questions, an average survey's group size, made-up example answers), agreed they were the method's inner workings, and replaced them with the idea in words plus the bars; the weights moved to the analysts' section."
   }
  ],
  "tasks": {

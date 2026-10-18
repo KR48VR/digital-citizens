@@ -870,5 +870,13 @@
   "fix": "Point, rule, example, bars, so what: each source's say is counted in people, and the example comes before the bars that show the same shares.",
   "status": "Fixed",
   "id": 109
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "The blending explainer showed the method's inner numbers (each kind of AI counted as about 277 and 110 people, and a worked sum) to readers seeing them for the first time; the chatbot section quoted a different figure (32) for a different blend (King's catch).",
+  "fix": "The explainer says it in words (an average in which each counts for a share; the survey's share grows with group size; each AI's share with its accuracy on other questions) and lets the bars show the shares. The fitted weights moved to the analysts' section.",
+  "status": "Fixed",
+  "id": 110
  }
 ]

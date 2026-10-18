@@ -195,8 +195,7 @@ def shares(n_people):
 
 
 BLEND = {key: (SIZE_[GROUPS[key][0]], shares(SIZE_[GROUPS[key][0]])) for key in ("IND", "CHI")}
-EXAMPLE = (BLEND["IND"][0] * 40 + BL["rec"] * 50 + BL["chat"] * 45) / (BLEND["IND"][0] + BL["rec"] + BL["chat"])
-assert BLEND["IND"][1][0] < BLEND["CHI"][1][0] and abs(EXAMPLE - 50) < abs(EXAMPLE - 45) < abs(EXAMPLE - 40)
+assert BLEND["IND"][1][0] < BLEND["CHI"][1][0]  # "the fewer people a group has in your survey, the more its answer leans on the AI"
 SEG = [("sv", "Survey"), ("rc", "Record citizens"), ("cb", "Chatbot")]
 bars = []
 for key in ("IND", "CHI"):
@@ -205,11 +204,9 @@ for key in ("IND", "CHI"):
     key_ = "".join(f'<span><i class="sw {c}"></i>{lab} {v}%</span>' for (c, lab), v in zip(SEG, sh))
     bars.append(f'<div class="brow"><p class="blab"><strong>{GROUPS[key][1]}</strong> · about {round(n_)} people in the survey</p>'
                 f'<div class="bar" aria-hidden="true">{segs}</div><p class="bkey">{key_}</p></div>')
-BLEND_BARS = ('<figure class="blendfig"><h3>How much each counts</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
+BLEND_BARS = ('<figure class="blendfig"><h3>The shares in the blended answer</h3><p class="howto">Singapore, survey of 300, brand-new question.</p>'
               + "".join(bars) + "</figure>")
-_n, _r, _c = round(BLEND["IND"][0]), round(BL["rec"]), round(BL["chat"])  # the example's working uses the rounded numbers it shows
-assert round((_n * 40 + _r * 50 + _c * 45) / (_n + _r + _c)) == round(EXAMPLE)
-BLEND_TXT = {"rec": str(_r), "chat": str(_c), "IND_n": str(_n), "total": str(_n + _r + _c), "example": str(round(EXAMPLE))}
+BLEND_TXT = {"rec": str(round(BL["rec"])), "chat": str(round(BL["chat"]))}
 
 
 # ---- decision tree: how much AI adds by group size (both countries, every survey size)
