@@ -13,11 +13,13 @@ Follow `docs/playbook/working_with_king.md` and use only the terms in `docs/play
 4. **Numbers come with their meaning:** what it is, what it means (points off scale: about 1.5 best possible,
    3 good enough, 5 rough, 15 blind), and so what for the decision. Explain how accuracy is measured before the
    first result, and say each finding once; a closing list of rules points back to it rather than repeating it.
-5. **One idea per paragraph.** Never introduce a second concept while explaining the first. No notes left
+5. **Layer the page.** A short main path (answer, caveats, what to do, how we know, limits) with detail
+   folded one click away; test it on a cold reader before sharing (`qa_checklist.md`).
+6. **One idea per paragraph.** Never introduce a second concept while explaining the first. No notes left
    floating away from what they explain.
-6. **Claims are checked.** If asked "is this backed up?", recompute from the data and say where it comes from.
+7. **Claims are checked.** If asked "is this backed up?", recompute from the data and say where it comes from.
    Say "about" unless numbers are equal. Do not claim untested capabilities.
-7. **When King drafts wording**, keep the intent, fix grammar, and say exactly what changed and why.
-8. **When King says "discuss with me"**, give a view with options and wait for a decision before editing.
-9. **Recap changes** by quoting the new wording.
-10. **QA before sharing** with `docs/playbook/qa_checklist.md` (accuracy, language, accessibility, aesthetics).
+8. **When King drafts wording**, keep the intent, fix grammar, and say exactly what changed and why.
+9. **When King says "discuss with me"**, give a view with options and wait for a decision before editing.
+10. **Recap changes** by quoting the new wording.
+11. **QA before sharing** with `docs/playbook/qa_checklist.md` (accuracy, language, accessibility, aesthetics).

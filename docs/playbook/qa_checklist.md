@@ -24,6 +24,11 @@
 - [ ] Only glossary terms; none of the "do not use" list.
 - [ ] Each number is followed by what it means for the reader (the so-what).
 - [ ] No sentence left "hanging": every note sits next to the thing it explains.
+- [ ] Cold read: a helper agent playing an executive with no stats background reads the page with folds
+      closed, answers what the finding is, what to do with a 300-person budget and what to watch out for,
+      and lists every phrase it had to reread. Fix those, then repeat until it can act on one read.
+- [ ] No two statements on the page seem to contradict each other (for example "reuse" versus "don't borrow").
+- [ ] The main path stays short: detail that only some readers need sits in a folded section, not in the flow.
 
 ## Accessibility
 - [ ] Text contrast at least 4.5:1 in light and dark (labels and table headers included).

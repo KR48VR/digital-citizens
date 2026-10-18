@@ -156,3 +156,28 @@
   .br .sub { margin-top: 6px; }
   .dt .note { margin-top: 6px; }
   @media (max-width: 600px) { .br > li { grid-template-columns: minmax(0, 1fr); } .dt > li { padding-left: 40px; } .qq { font-size: 17px; } }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .toc { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 16px; }
+  .toc a { font-size: 14px; padding: 4px 12px; border: 1px solid var(--ring); border-radius: 999px; color: var(--ink); text-decoration: none; background: var(--surface); }
+  .toc a:hover, .toc a:focus-visible { border-color: var(--ink); }
+  section[id] { scroll-margin-top: 16px; }
+  .readnum { display: grid; gap: 10px; }
+  .small { font-size: 14px; color: var(--ink-2); }
+  details.more { border: 1px solid var(--ring); border-radius: 6px; background: var(--surface); padding: 0; }
+  details.more[open] { display: block; }
+  details.more > summary { list-style: none; cursor: pointer; padding: 11px 14px; font-weight: 600; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary::before { content: "+"; flex: 0 0 14px; font-weight: 600; color: var(--muted); }
+  details.more[open] > summary::before { content: "\2212"; }
+  details.more > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+  details.more > .inner { padding: 2px 14px 16px; display: grid; gap: 12px; }
+  .more .blend { border: 0; padding: 0; background: none; }
+  .more .sources > div { background: var(--bg); }
+  .flow3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .flow3 > div { display: grid; gap: 4px; align-content: start; padding: 12px 14px; border: 1px solid var(--ring); border-radius: 6px; background: var(--surface); font-size: 15px; color: var(--ink-2); min-width: 0; }
+  .flow3 b { color: var(--ink); font-family: var(--display); font-size: 17px; font-weight: 600; }
+  @media (max-width: 600px) { .flow3 { grid-template-columns: minmax(0, 1fr); } }
+  ol.rules { margin: 0; padding-left: 24px; display: grid; gap: 6px; color: var(--ink); max-width: 66ch; }
+  ol.rules li::marker { font-weight: 600; }
+  .caution { font-size: 15px; padding: 10px 14px; border-left: 3px solid var(--ink); background: var(--surface); border-radius: 0 6px 6px 0; max-width: none; }

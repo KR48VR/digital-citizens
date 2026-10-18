@@ -105,14 +105,18 @@ tests (on well-known survey questions it may have read about) could not.
 
 ## Step 7. Report for a C-suite reader
 
-Use the `c-suite-explainer` skill and `glossary.md`. Page order that worked:
-short answer → two ways to build a digital citizen, shown with one person → how we measure accuracy
-(the one test, points off, the scale, why groups rather than individuals) → what it is worth → where AI helps
-most (which AI, by whether the question was asked before; small groups; why the chatbot works better in the
-US) → what we tested and where it led (kept, dropped, corrected) → a decision tree for when and how to use AI
-→ five short rules → limits and what to test next → full evidence folded away. Define the yardstick before
-the first result, give every section one "so what", and say each finding once: the rules point back to the
-evidence rather than repeating it.
+Use the `c-suite-explainer` skill and `glossary.md`. Build the page in layers, so a reader without a stats or
+tech background can follow the main path in a few minutes while the detail stays one click away:
+1. **The answer** (three short paragraphs), the deal-breakers right under it ("Before you rely on it"), one
+   headline picture (300 + AI = 600) and how to read the numbers (points off, groups, typical group, scale).
+2. **Two kinds of digital citizen, shown with one person**; where record citizens learn from, folded.
+3. **What to do**: a five-question decision tree with a number at every leaf, then the five rules in one line each.
+4. **How we know**: the one test in three steps, then one picture and one "so what" per finding; the blend,
+   groups versus individuals, the table of each AI, the chatbot detail and the map of what we tested, folded.
+5. **Limits and what to test next**, one or two sentences each.
+6. **The evidence in full, for analysts**, folded.
+Say each finding once, put any caveat that could change a decision next to the headline, and test the page
+on a cold reader (a helper agent playing an executive with no stats background) before sharing.
 Template: `templates/scorecard_page/`.
 
 ## Step 8. QA before sharing
