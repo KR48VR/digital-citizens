@@ -16,9 +16,14 @@ source's "worth in respondents" is fitted on the other questions only (leave one
 Truth: the people NOT in the sample (weighted). Error: points off per answer option. Scores are averaged over
 draws for each group and question, then the middle result is taken across groups and questions.
 
-Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost]
+  + chatbot reading records  blended with the chatbot's guesses for each person in the group, made from that
+                          person's answers to 57 other questions (scripts/record_reading_trial.py run full)
+
+Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost|reading]
        "boost" draws surveys with extra people from small groups (Singapore: Malay and Indian, 20% each; US: Black
        adults, 30%), weighted back to the population, and writes one_method_<country>_boost.*
+       "reading" (Singapore) adds the chatbot reading records, and record citizens learned from the same 57
+       questions it read, and writes one_method_singapore_reading.*
        one_method_experiment.py [singapore|us] compare   (recompute only the comparisons from saved cells)
 Writes docs/results/stress_test/one_method_<country>.md / .csv / _cells.csv.
 """
@@ -67,7 +72,12 @@ CONFIGS = {
     "+ record citizens (own survey, 20 standard questions)": (["rec_own_k20"], "blend"),
     "+ record citizens (own survey, 10 standard questions) + chatbot kind": (["rec_own_k10", "chat"], "blend"),
     "+ record citizens (own survey, 20 standard questions) + chatbot kind": (["rec_own_k20", "chat"], "blend"),
+    "+ chatbot reading records": (["chat_read"], "blend"),
+    "+ record citizens (own survey, same 57 questions the chatbot read)": (["rec_own_57"], "blend"),
+    "+ record citizens (own survey) + chatbot reading records": (["rec_own", "chat_read"], "blend"),
+    "+ record citizens (own survey) + chatbot kind + chatbot reading records": (["rec_own", "chat", "chat_read"], "blend"),
     "chatbot kind alone, no survey": (["chat"], "alone"),
+    "chatbot reading records alone, no survey": (["chat_read"], "alone"),
     "record citizens alone, no survey": (["rec_past"], "alone"),
     "last round's answers alone, no survey": (["last"], "alone"),
 }
@@ -98,6 +108,14 @@ KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in
     ("+ record citizens (own survey, 10 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
     ("+ record citizens (own survey, 20 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
     ("+ record citizens", 300, "+ chatbot kind", 300),  # asked before: record citizens beat the chatbot
+    ("+ chatbot reading records", 300, "+ chatbot kind", 300),
+    ("+ chatbot reading records", 150, "+ record citizens (own survey)", 150),
+    ("+ chatbot reading records", 300, "+ record citizens (own survey)", 300),
+    ("+ chatbot reading records", 300, "+ record citizens (own survey, same 57 questions the chatbot read)", 300),
+    ("+ chatbot reading records", 300, "survey alone", 600),
+    ("+ record citizens (own survey) + chatbot reading records", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey) + chatbot kind + chatbot reading records", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey) + chatbot kind + chatbot reading records", 300, "survey alone", 600),
 ]
 PANEL = {"chat_opus": "opus", "chat_sonnet": "sonnet", "chat_haiku": "haiku", "chat_qwen": "qwen"}
 KS = (5, 10, 20)
@@ -161,10 +179,24 @@ def _boost_strata(df: pd.DataFrame, tag: str):
     return {"ethnic=Malay": 0.20, "ethnic=Indian": 0.20}
 
 
-def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", ranking=None, tag="singapore") -> list[dict]:
+def _reading(df: pd.DataFrame, tg, bench) -> dict:
+    """Per-person guesses of the chatbot reading records, as {question: array [person, option]}, NaN where not guessed."""
+    P = json.load(open(Path("docs/results/record_reading_full_predictions.json")))["predictions"]["record"]
+    out = {}
+    for t in tg:
+        M = np.full((len(df), len(bench.qmap[t].options)), np.nan)
+        for i, pid in enumerate(df.pid):
+            if pid in P:
+                M[i] = P[pid][t]
+        out[t] = M
+    return out
+
+
+def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", ranking=None, tag="singapore", reading=None) -> list[dict]:
     """One record per (draw, size, question, group): truth, the sample's group answers, and every AI estimate."""
     df = bench.respondents
     items = [q.id for q in bench.questions if q.id in df.columns]
+    record_items = [i for i in items if i not in tg]  # the 57 questions the chatbot reading records was shown
     w = df["weight"].to_numpy() if "weight" in df.columns else np.ones(len(df))
     gm = {g: _gmask(df, g) for g in groups}
     rng = np.random.default_rng(seed)
@@ -204,6 +236,8 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                         for k_ in KS:
                             short = [i for i in ranking if i != t and i in others][:k_]
                             feats[f"rec_own_k{k_}"] = pd.concat([df[demo].astype(str), df[short].astype(str)], axis=1)
+                    if reading is not None:
+                        feats["rec_own_57"] = pd.concat([df[demo].astype(str), df[record_items].astype(str)], axis=1)
                     for name, X in feats.items():
                         enc = OneHotEncoder(handle_unknown="ignore")
                         clf = LogisticRegression(C=0.3, max_iter=3000)
@@ -230,6 +264,10 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                     for name, M in own.items():
                         u = (M[hm] * w[hm, None]).sum(axis=0)
                         src[name] = u / u.sum()
+                    if reading is not None:  # the people being estimated, as the chatbot guessed each of them
+                        rm = hm & ~np.isnan(reading[t][:, 0])
+                        u = (reading[t][rm] * w[rm, None]).sum(axis=0)
+                        src["chat_read"] = u / u.sum()
                     if "rec_own" not in src:
                         continue
                     rows.append({"draw": d, "n": n, "question_id": t, "group": g, "n_group": n_g, "k": len(options),
@@ -375,18 +413,20 @@ def main() -> None:
     draws = int(sys.argv[2]) if len(sys.argv) > 2 else 10
     design = sys.argv[3] if len(sys.argv) > 3 else "standard"
     title, bench, tg, groups, demo, ext = setup(country)
+    reading = _reading(bench.respondents, tg, bench) if design == "reading" else None
     tag0 = "us" if country == "us" else "singapore"
     cache = Path("data/cache") / f"one_method_{tag0}_{design}_{draws}_rows.pkl"
     if cache.exists():
         rows = pd.read_pickle(cache)
         print(f"reused {len(rows)} cached cells from {cache}", flush=True)
     else:
-        rows = draw_cells(bench, tg, groups, demo, ext, draws, design=design, ranking=_ranking(tag0), tag=tag0)
+        rows = draw_cells(bench, tg, groups, demo, ext, draws, design="standard" if reading else design,
+                          ranking=_ranking(tag0), tag=tag0, reading=reading)
         cache.parent.mkdir(parents=True, exist_ok=True)
         pd.to_pickle(rows, cache)
     print(f"{len(rows)} cells drawn in {time.time() - t0:.0f}s", flush=True)
     cells, worth = evaluate(rows, tg)
-    tag = tag0 + ("_boost" if design == "boost" else "")
+    tag = tag0 + ("_" + design if design in ("boost", "reading") else "")
     cells.to_csv(OUT / f"one_method_{tag}_cells.csv", index=False)
     per_cell = cells.groupby(["config", "n", "question_id", "group"], as_index=False).mae_pts.mean()
     summary = per_cell.groupby(["config", "n"]).mae_pts.agg(["median", "mean"]).reset_index()
@@ -397,7 +437,7 @@ def main() -> None:
     diffs.to_csv(OUT / f"one_method_{tag}_comparisons.csv", index=False)
     w = worth.groupby(["config", "n"]).median(numeric_only=True).round(1).reset_index()
     sizes = cells[cells.config == "survey alone"].groupby(["n", "group"]).n_group.mean().unstack("n").round(0)
-    lines = [f"# One method, {title}: a small real survey with and without AI" + (" (small groups boosted)" if design == "boost" else ""), "",
+    lines = [f"# One method, {title}: a small real survey with and without AI" + {"boost": " (small groups boosted)", "reading": " (with the chatbot reading records)"}.get(design, ""), "",
              f"Generated {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}; runtime {time.time() - t0:.0f}s; "
              f"{draws} draws per survey size; {len(tg)} questions x {len(groups)} groups.", "",
              "Points off per answer option for each group: middle result over groups and questions of the",

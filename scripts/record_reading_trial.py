@@ -16,6 +16,10 @@ Usage (run from the repository root; needs data/raw/wvs, see scripts/download_wv
   .venv/bin/python -I scripts/record_reading_trial.py score   # scores the saved predictions
 Writes docs/results/record_reading_trial.{md,json} and docs/results/record_reading_trial_predictions.json.
 
+The full test (King approved up to $85): `plan full` and `run full` send the record arm only, for every
+respondent with at least 15 of the 20 answers, and save docs/results/record_reading_full_predictions.json. Score
+it with `one_method_experiment.py singapore 10 reading`, the scorecard's own test.
+
 The key: King adds it in the environment's settings as a network secret (header x-api-key, website
 api.anthropic.com, path prefix /v1/messages/batches). The proxy attaches it, so the script never sees it; the
 script sends its requests through the proxy on purpose, because the environment otherwise reaches the Claude API
@@ -43,6 +47,10 @@ MODEL = "claude-opus-5-5"
 EFFORT = "low"
 MAX_TOKENS = 3000  # 20 short JSON answers plus brief thinking at low effort
 BUDGET = 10.0  # dollars, worst case
+FULL = len(sys.argv) > 2 and sys.argv[2] == "full"
+if FULL:
+    BUDGET, PRED = 85.0, OUT / "record_reading_full_predictions.json"
+ARMS = ("record",) if FULL else ("demographics", "record")
 PRICE_IN, PRICE_OUT = 4.0 / 1e6, 20.0 / 1e6  # per token, standard; the batch is charged half
 BATCH_DISCOUNT = 0.5
 PER_GROUP = {"Chinese": 34, "Malay": 33, "Indian": 33}
@@ -60,6 +68,8 @@ def setup():
     record_items = [i for i in qs if i not in targets]
     rng = np.random.default_rng(SEED)
     ok = df[df[targets].notna().sum(axis=1) >= 15]
+    if FULL:
+        return df, qs, targets, record_items, sorted(ok.pid.tolist())
     pids = []
     for g, n in PER_GROUP.items():
         pool = ok[ok.ethnic == g].pid.tolist()
@@ -96,7 +106,7 @@ def requests(df, qs, targets, record_items, pids):
     rows = df.set_index("pid")
     out = []
     for pid in pids:
-        for arm in ("demographics", "record"):
+        for arm in ARMS:
             out.append({"custom_id": f"{arm}__{pid}", "params": {
                 "model": MODEL, "max_tokens": MAX_TOKENS, "output_config": {"effort": EFFORT}, "system": system,
                 "messages": [{"role": "user", "content": person_prompt(rows.loc[pid], qs, record_items, arm)}]}})
@@ -131,10 +141,10 @@ def plan():
     df, qs, targets, record_items, pids = setup()
     reqs = requests(df, qs, targets, record_items, pids)
     cost, n_in = worst_case(reqs)
-    print(f"{len(pids)} people ({PER_GROUP}), {len(targets)} questions, {len(record_items)} record questions available; "
+    print(f"{len(pids)} people ({'everyone with 15+ answers' if FULL else PER_GROUP}), {len(targets)} questions, {len(record_items)} record questions available; "
           f"{len(reqs)} requests to {MODEL} (effort {EFFORT}, max {MAX_TOKENS} output tokens each).")
     print(f"Estimated input about {n_in:,} tokens; worst case ${cost:.2f} with the batch discount (budget ${BUDGET:.2f}).")
-    print("\nExample record prompt (first 1,200 characters):\n" + reqs[1]["params"]["messages"][0]["content"][:1200])
+    print("\nExample record prompt (first 1,200 characters):\n" + reqs[len(ARMS) - 1]["params"]["messages"][0]["content"][:1200])
 
 
 def run():
