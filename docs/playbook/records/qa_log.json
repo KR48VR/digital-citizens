@@ -662,5 +662,45 @@
   "fix": "Language set, scrolling tables made focusable regions, labels raised to 11px, role added. axe-core: no violations on either page.",
   "status": "Fixed",
   "id": 83
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Layout",
+  "finding": "Version 47 showed about 3,600 words and 21 headings before the analysts' section; method and evidence came before what to do, and the same points appeared in several places.",
+  "fix": "Rebuilt in layers: the answer, the caveats, what to do, how we know and limits on the main path, with detail in six folded sections one click away. About 2,000 words and 12 headings on the main path.",
+  "status": "Fixed",
+  "id": 84
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "Five fresh readers playing a non-technical executive tripped on: what AI \"fills in\" when 300 people already answered; \"both\" in the headline; how a perfect estimate can be off; \"standard questions\", \"records\" and \"scorecard\" used before being explained; \"similar people from where?\"",
+  "fix": "Each phrase rewritten in plain words at first use; record citizens' source named (World Values Survey, 2,012 people) and the model described as a statistical model, not a chatbot.",
+  "status": "Fixed",
+  "id": 85
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Accuracy",
+  "finding": "Readers found statements that seemed to contradict each other: \"reuse last round's answers\" against \"don't borrow numbers\"; \"ask extra people from small groups\" against \"helps little with AI\"; a brand-new product question quoted at 2.7 although products were not tested; \"can't survey? run a survey\".",
+  "fix": "Each resolved: the exception is the same question in the latest round of the same survey; extra people help mainly without AI; numbers labelled as attitude questions; the no-survey case moved to step 3.",
+  "status": "Fixed",
+  "id": 86
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Layout",
+  "finding": "Readers could not act on the page: no worked example, the steps tangled (the same 2.4 appeared with and without a survey), the pilot had no pass test and no answer for a one-off 300-person budget, and the biggest caveats sat at the bottom.",
+  "fix": "Added a worked Singapore example; reordered the steps; the pilot now has a pass test and applies to repeated topics only; caveats moved under the short answer and stated bluntly.",
+  "status": "Fixed",
+  "id": 87
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Method",
+  "finding": "Readers still rated completeness low because the page cannot say what set-up costs, or how results change with a separately run survey or on products and prices: none of these has been tested.",
+  "fix": "Stated plainly on the page as not yet known; needs a real pilot to answer.",
+  "status": "Open",
+  "id": 88
  }
 ]

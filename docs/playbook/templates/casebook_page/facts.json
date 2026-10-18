@@ -87,6 +87,10 @@
   "T22": [
    "Asked whether \"combination\" means blended and how to make it easy to grasp; proposed two visuals: the experiments behind the conclusions, and a decision tree.",
    "Explained the blend with real shares and a data-driven box, then built the decision tree and evidence map on the scorecard and a timeline of every test in the casebook."
+  ],
+  "T23": [
+   "Said the page had become too long and hard to follow for readers without a stats or tech background, and asked for a simpler flow with the same detail.",
+   "Rebuilt the page in layers with a worked example, and tested it on five fresh readers playing a non-technical executive, fixing what each one tripped on."
   ]
  },
  "examples": {
@@ -108,8 +112,8 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 23 hours",
-  "N_TASKS": 22,
+  "HOURS": "about 24 hours",
+  "N_TASKS": 23,
   "N_SHOTS": 14,
   "N_AGENTS": 13,
   "N_BG": 36,
@@ -119,7 +123,7 @@
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "47",
+  "N_VERSIONS": "48",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"

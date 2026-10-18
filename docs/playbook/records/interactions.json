@@ -915,6 +915,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Added a decision tree (with the line between small and large groups worked out from the data) and an evidence map to the scorecard, and a timeline of all 15 tests to the casebook; fixed the casebook's accessibility gaps."
+  },
+  {
+   "n": 86,
+   "time": "01:03 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "The scorecard is getting longer and longer. And also harder and harder for someone to follow. Especially one without a stats or tech background. Uh, how can we streamline it? How can we simplify the explanations and the flow so that it is easy for someone to follow? Even as the amount of details remains more or less the same. We have to try to make it easier for people. We've been doing this since yesterday and we're struggling. Can you do please do better?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rebuilt the page in layers (a short main path with detail folded), added a worked example, and tested it on five fresh readers playing a non-technical executive, fixing what each one tripped on."
   }
  ],
  "tasks": {
@@ -1004,6 +1014,10 @@
   ],
   "T22": [
    "Make the blend and the evidence easy to see",
+   "King"
+  ],
+  "T23": [
+   "Make the scorecard easy to follow",
    "King"
   ]
  }

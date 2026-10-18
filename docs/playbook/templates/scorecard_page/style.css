@@ -184,3 +184,8 @@
   .caution { font-size: 15px; padding: 12px 16px; border-left: 3px solid var(--ink); background: var(--surface); border-radius: 0 6px 6px 0; display: grid; gap: 6px; }
   .caution p { max-width: none; }
   .caution ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; color: var(--ink-2); }
+  .example { display: grid; gap: 10px; padding: 16px 18px; border: 1px solid var(--ring); border-top: 3px solid var(--s3); border-radius: 6px; background: var(--surface); }
+  .example h3 { margin: 0; }
+  .example ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--ink-2); max-width: 66ch; }
+  .example p { max-width: 66ch; }
+  .br > li.end + li.end { border-left-width: 3px; }

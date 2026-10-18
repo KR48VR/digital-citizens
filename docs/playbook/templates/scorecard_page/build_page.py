@@ -313,6 +313,8 @@ def inline(m):
         return str(round(WORTH[args[0]]))
     if kind == "v":
         return f1(med(args[0], args[1], int(args[2])))
+    if kind == "gain":  # points closer than the survey alone, from unrounded values
+        return f1(med(args[0], "survey alone", int(args[2])) - med(args[0], args[1], int(args[2])))
     if kind == "pct":
         return str(pct(med(args[0], "survey alone", int(args[2])), med(args[0], args[1], int(args[2]))))
     if kind == "ppl":
@@ -362,7 +364,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self|blend|tree):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 
