@@ -1,0 +1,23 @@
+{
+ "original, full test": {
+  "top_choice": 0.5381471389645777,
+  "prob_on_answer": 0.38564273814983674,
+  "national_points_off": 3.6745357191651973,
+  "answers": 2936
+ },
+ "original": {
+  "top_choice": 0.5326975476839237,
+  "prob_on_answer": 0.3855183304433986,
+  "national_points_off": 3.622514201673483,
+  "answers": 2936
+ },
+ "disguised": {
+  "top_choice": 0.5289509536784741,
+  "prob_on_answer": 0.3808542301777862,
+  "national_points_off": 3.3919019612319286,
+  "answers": 2936
+ },
+ "the people's own answers": {
+  "national_points_off": 1.8171995364613958
+ }
+}

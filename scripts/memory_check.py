@@ -218,20 +218,31 @@ def score():
     per = cells.groupby(["config", "question_id", "group"]).mae_pts.mean().groupby(["config", "question_id"]).median().unstack("config")
     per = per.rename(columns={v: k for k, v in ALONE.items()})
     recall_err = pd.Series({q: err["named"][(q, "ALL")] for q in targets if (q, "ALL") in err["named"]})
+    guess_err = pd.Series({q: err["unnamed"][(q, "ALL")] for q in targets if (q, "ALL") in err["unnamed"]})
+    naming_gain = pd.Series({q: np.median([err["named"][(q, g)] - err["unnamed"][(q, g)] for g in groups]) for q in targets})
     tab = pd.DataFrame({"famous": [q in FAMOUS for q in per.index], "named recall, national": recall_err.reindex(per.index)}, index=per.index)
     lines += ["## Test 2: famous against little-known questions", "",
               "Edge = chatbot's points off minus record citizens' points off on the same question (each alone, no survey;",
               "median over groups). Negative means the chatbot did better than record citizens.", "",
-              "| chatbot | edge, famous questions | edge, other questions | link between edge and how well test 1 recalled it |", "|---|---|---|---|"]
+              "| chatbot | edge, famous questions | edge, other questions | link between edge and how well test 1 recalled it |"
+              " link with how well it guessed unnamed (added after) | link with how much naming the survey helped (added after) |",
+              "|---|---|---|---|---|---|"]
     for c in ("chatbot kind", "chatbot reading records"):
         edge = per[c] - per["record citizens"]
         tab[f"edge: {c}"] = edge
         f, o = edge[tab.famous].median(), edge[~tab.famous].median()
         rho = float(pd.Series(edge).corr(tab["named recall, national"], method="spearman"))
-        res["test2"][c] = {"famous": float(f), "other": float(o), "spearman_with_recall_error": rho}
-        lines.append(f"| {c} | {f:+.1f} ({tab.famous.sum()} questions) | {o:+.1f} ({(~tab.famous).sum()} questions) | {rho:+.2f} |")
-    lines += ["", "The last column is a rank correlation across the 20 questions (from -1 to +1). If memory helps, it is",
-              "positive: the better a question is recalled (smaller recall error), the bigger the chatbot's edge.", "",
+        rho_g = float(pd.Series(edge).corr(guess_err.reindex(per.index), method="spearman"))
+        rho_n = float(pd.Series(edge).corr(naming_gain.reindex(per.index), method="spearman"))
+        res["test2"][c] = {"famous": float(f), "other": float(o), "spearman_with_recall_error": rho,
+                           "spearman_with_unnamed_error": rho_g, "spearman_with_naming_gain": rho_n}
+        lines.append(f"| {c} | {f:+.1f} ({tab.famous.sum()} questions) | {o:+.1f} ({(~tab.famous).sum()} questions) | {rho:+.2f} | {rho_g:+.2f} | {rho_n:+.2f} |")
+    lines += ["", "The links are rank correlations across the 20 questions (from -1 to +1). The planned one (fourth column) is",
+              "positive if the better a question is recalled, the bigger the chatbot's edge. Added after seeing it: the",
+              "unnamed guesses show the same link or stronger, so it measures how easy a question is for a chatbot to",
+              "guess, not memory. The memory-specific link is the last column, how much closer naming the survey made the",
+              "guesses (median over groups; negative = closer when named): if memory helps, it is positive (the chatbot's",
+              "edge is biggest where naming the survey helped most).", "",
               "Question by question:", "", "| question | famous | named recall, national | edge: chatbot kind | edge: chatbot reading records |",
               "|---|---|---|---|---|"]
     for q, r in tab.iterrows():
