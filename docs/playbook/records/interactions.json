@@ -1385,6 +1385,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Logged the exchange."
+  },
+  {
+   "n": 133,
+   "time": "04:34 (18 Oct)",
+   "task": "T25",
+   "type": "teammate",
+   "king": "let's do the api thing next - what do you need me to do?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Checked the environment (no key yet; the API is reachable; the software is installed) and gave three steps: create a key in the Claude Console, add it to the environment settings as ANTHROPIC_API_KEY, start a new session. Then built the trial so the new session only has to run it."
+  },
+  {
+   "n": 134,
+   "time": "04:35 (18 Oct)",
+   "task": "T25",
+   "type": "teammate",
+   "king": "what do i do? [screenshot of the Claude Console home page]",
+   "screenshot": true,
+   "mid_task": true,
+   "claude": "Walked through it from that screen: Get API key, copy it once, add it under Network secrets in the environment settings, leave auto-reload off so spending cannot exceed the credit, start a new session."
   }
  ],
  "tasks": {
@@ -1482,6 +1502,10 @@
   ],
   "T24": [
    "Tighten and integrate the scorecard",
+   "King"
+  ],
+  "T25": [
+   "Run the record-reading trial",
    "King"
   ]
  }

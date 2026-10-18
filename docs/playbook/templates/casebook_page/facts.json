@@ -95,6 +95,10 @@
   "T24": [
    "Asked to stop patching and gave final comments: say \"median\", merge the reading notes, keep the scale; then asked for the blending fold, the decision tree in place of the worked example, links from every number to its evidence (the casebook linked as private), numbered colour bands for the sections, and a final QA of both pages.",
    "Applied each in one integrated pass: rewrote the blending explanation without the method's inner numbers, put How we know in the summary's order, split Limits, removed a contradiction about the pilot, added 19 links that open folds, checked every claim against the data with three helper agents, and brought the casebook and playbook in line."
+  ],
+  "T25": [
+   "Approved the trial (up to $10) and set up an API key for it.",
+   "Built the trial: 100 Singaporeans, the chatbot told only demographics or also each person's survey record, one capped batch, scored against the rest of the survey; tested end to end without spending."
   ]
  },
  "examples": {
@@ -117,8 +121,8 @@
  },
  "scalars": {
   "HOURS": "about 26 hours",
-  "N_TASKS": 24,
-  "N_SHOTS": 27,
+  "N_TASKS": 25,
+  "N_SHOTS": 28,
   "N_AGENTS": 23,
   "N_BG": 47,
   "N_HOOKS": 16,
