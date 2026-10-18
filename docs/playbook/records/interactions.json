@@ -985,6 +985,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Stated the point in one line (about 3 points off shows which way a group clearly leans but cannot call a near-tie, and a 600-person survey has the same limit) and replaced the paragraph with that."
+  },
+  {
+   "n": 93,
+   "time": "02:19 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "are you saying this is consistent with ciurrent practice without AI?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed with our test (600 people with no AI were also 2.7 points off for a typical group) and standard polling practice (margins of error; near-ties called too close to call), and made the page say \"with no AI\" explicitly."
   }
  ],
  "tasks": {
