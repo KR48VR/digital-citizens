@@ -718,5 +718,21 @@
   "fix": "Rewritten one idea per sentence, with blending defined where it is first used and no undefined terms.",
   "status": "Fixed",
   "id": 90
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "The headline box said \"300 real people + both kinds of AI\" without saying the AI is blended with the survey (King's catch).",
+  "fix": "Now reads \"300 real people, blended with both kinds of AI\".",
+  "status": "Fixed",
+  "id": 91
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "One sentence mixed two ideas: what 3 points off means for a decision (\"60-40 from 50-50, but not 52-48\") and when two methods count as the same (King's catch).",
+  "fix": "Split into two short paragraphs, the first with a worked case (60-40 reads 57-43 to 63-37; 52-48 could read 49-51; same for a real 600-person survey).",
+  "status": "Fixed",
+  "id": 92
  }
 ]
