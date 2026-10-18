@@ -489,6 +489,13 @@ CHK = {"named": f1(t1["named"]["national"]), "unnamed": f1(t1["unnamed"]["nation
        "orig_top_1": f"{100 * DIS['original']['top_choice']:.1f}", "dis_top_1": f"{100 * DIS['disguised']['top_choice']:.1f}",
        "full_top_1": f"{100 * DIS['original, full test']['top_choice']:.1f}",
        "orig_pts": f1(DIS["original"]["national_points_off"]), "dis_pts": f1(DIS["disguised"]["national_points_off"])}
+# "far from that": the page's own chatbot estimates, against the whole survey, nationally (median over questions)
+FABLE_NAT = t1["chatbot kind (Fable 5.1, scorecard)"]["national"]
+assert FABLE_NAT > 2
+CHK["fable_nat"] = f1(FABLE_NAT)
+# "once we allowed for that, the sign went away"
+for c_ in ("chatbot kind", "chatbot reading records"):
+    assert MEM["test2"][c_]["partial_with_recall_error_given_unnamed"] < 0.1, c_
 # "about the same as when we did not name the survey"; "a tenth of a point better"; "about 2,000 people"
 assert abs(t1["named_minus_unnamed"]) < 0.25
 assert 0.05 < med(RD, BOTH, 300) - med(RD, READ_BOTH, 300) < 0.15
