@@ -1062,5 +1062,69 @@
   "fix": "Added to \"What we have not shown yet\": a pilot gives a team the known answers to set and check the shares on; for a one-off survey the shares would be borrowed from a test like ours, which we have not tried. \"What to test next\" says the pilot would show how well the shares carry over.",
   "status": "Fixed",
   "id": 133
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "The 100-person trial could not be compared with record citizens: their numbers came from a different setup.",
+  "fix": "Ran the whole Singapore survey through the scorecard's own test, alongside record citizens and record citizens learned from the same 57 questions the chatbot read.",
+  "status": "Fixed",
+  "id": 134
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "I gave King \"$30 to $40\" for the full test. That was the likely cost; the safety cap had to cover a worst case of about $82.",
+  "fix": "Said so plainly and gave both the likely cost and the cap for every later run.",
+  "status": "Fixed",
+  "id": 135
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Adding a new method to the one test could have shifted the scorecard's existing numbers.",
+  "fix": "Scored on the same draws; every existing method's median came out identical, and the page build now checks this.",
+  "status": "Fixed",
+  "id": 136
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "A planned memory measure (the link with how well the chatbot recalled each question) measured how easy a question is to guess, not memory: the guesses made without naming the survey showed the same link.",
+  "fix": "Replaced, after seeing it and labelled so, by how much naming the survey helped; that link points away from memory.",
+  "status": "Fixed",
+  "id": 137
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "In the disguise check, the 150 people's own answers are part of the survey they are checked against, which flatters that comparison.",
+  "fix": "Noted in the results file; the comparison is not used on the page.",
+  "status": "Noted",
+  "id": 138
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Language",
+  "finding": "I told King the chatbot reading records was \"a little better\" than the chatbot for groups. By the page's own rule (under half a point, range crossing zero) that is \"about the same\".",
+  "fix": "The fold says slightly ahead but within luck for groups, and keeps \"a clearer gain\" for individual people, where the 95% range (3.1 to 6.8 points) is above zero.",
+  "status": "Fixed",
+  "id": 139
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "The group comparison mixed two changes: the chatbot reading records was Claude Opus, while the page's chatbot is Claude Fable 5.1.",
+  "fix": "Added Claude Opus asked the usual way to the fold and the comparisons (also within luck); the 100-person trial used the same chatbot both ways.",
+  "status": "Fixed",
+  "id": 140
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "The memory checks used only the Singapore survey, and checks 1 and 3 only the chatbot reading records.",
+  "fix": "The fold says which chatbot each check covered; questions the chatbot cannot have seen are now first in What to test next after the pilot.",
+  "status": "Noted",
+  "id": 141
  }
 ]

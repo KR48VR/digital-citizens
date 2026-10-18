@@ -30,6 +30,12 @@ def load(tag):
 
 
 M = {t: load(t) for t in TAGS}
+# The chatbot reading records was scored in the same test, on the same draws (scripts/one_method_experiment.py
+# singapore 10 reading); every method shared with the main Singapore results must come out the same.
+RD = "singapore_reading"
+M[RD] = load(RD)
+for k_, v_ in M["singapore"].items():
+    assert abs(M[RD][k_]["median"] - v_["median"]) < 1e-9, k_
 
 
 def med(tag, config, n):
@@ -353,6 +359,8 @@ def inline(m):
         return f1(FLOOR[args[0]])
     if kind == "worth":
         return str(round(WORTH[args[0]]))
+    if kind == "chk":
+        return CHK[args[0]]
     if kind == "v":
         return f1(med(args[0], args[1], int(args[2])))
     if kind == "gain":  # points closer than the survey alone, from unrounded values
@@ -380,7 +388,7 @@ for t in TAGS:  # rule 2: a panel does about as well as the best single chatbot;
 assert med(sg, "+ record citizens (own survey, 20 standard questions)", 300) - med(sg, "+ record citizens (own survey)", 300) < 0.15
 assert pct(med(us, "survey alone", 300), med(us, "+ chatbot kind", 300)) > pct(med(sg, "survey alone", 300), med(sg, "+ chatbot kind", 300))
 CMP = {}
-for t in TAGS:
+for t in TAGS + (RD,):
     for r in csv.DictReader(open(RES / f"one_method_{t}_comparisons.csv")):
         CMP[(t, r["a"], r["b"], int(r["n_a"]), int(r["n_b"]))] = (float(r["low"]), float(r["high"]))
 for t in TAGS:  # short answer: brand new, the two kinds about as good as each other; asked before, record citizens beat the chatbot and adding it did not help
@@ -429,6 +437,47 @@ for t, lo_, hi_ in (("singapore", 14.5, 15.5), ("united_states", 12.5, 14)):
     assert lo_ < float(rows_[0].split("|")[6]) < hi_, t
 # "the changes mostly cancel out ... more for small groups"; "no AI can predict one person much better"
 assert SELF["shift_typical_group"] < 2 and SELF["group_size_vs_shift_spearman"] < -0.5 and SELF["match_6_7_options"] < 0.5
+# ---- the two extra findings in the short answer: the chatbot reading records, and the memory checks
+TRIAL = json.load(open(RES.parent / "record_reading_trial.json"))  # 100-person trial, individual people
+MEM = json.load(open(RES.parent / "memory_check.json"))
+DIS = json.load(open(RES.parent / "disguise_check.json"))
+FULL_ = json.load(open(RES.parent / "record_reading_full_predictions.json"))
+READ = "+ chatbot reading records"
+READ_BOTH = "+ record citizens (own survey) + chatbot reading records"
+# "slightly ahead of the chatbot as usually asked, about the same as record citizens, all within luck"
+assert med(RD, READ, 300) < med(RD, "+ chatbot kind", 300)
+assert med(RD, READ, 300) < med(RD, "+ chatbot (Opus)", 300)
+for b_ in ("+ chatbot kind", "+ chatbot (Opus)", "+ record citizens (own survey)"):
+    lo, hi = CMP[(RD, READ, b_, 300, 300)]
+    assert lo < 0 < hi, b_
+# "blended in alongside record citizens: about the same as both kinds of AI; with 150 further ahead, still within luck"
+for n in SIZES:
+    lo, hi = CMP[(RD, READ_BOTH, BOTH, n, n)]
+    assert lo < 0 < hi, n
+assert med(RD, READ_BOTH, 150) < med(RD, BOTH, 150) and med(RD, BOTH, 150) - med(RD, READ_BOTH, 150) > med(RD, BOTH, 300) - med(RD, READ_BOTH, 300)
+# "for individual people the gain was clearer ... more than luck"
+assert TRIAL["individual"]["gain"]["low"] > 0
+# memory checks, against the warning signs set before running them
+t1 = MEM["test1"]
+assert t1["named"]["national"] > 2 and t1["named"]["national"] >= t1["unnamed"]["national"] and t1["named_minus_unnamed"] > -1  # "no closer when named"
+assert t1["said"] == {"estimate": 20}
+for c_ in ("chatbot kind", "chatbot reading records"):  # "neither chatbot did better on the famous questions"
+    assert MEM["test2"][c_]["famous"] >= MEM["test2"][c_]["other"] and MEM["test2"][c_]["spearman_with_naming_gain"] < 0, c_
+for r_ in ("original", "original, full test"):  # "as good as before"
+    assert DIS["disguised"]["top_choice"] > DIS[r_]["top_choice"] - 0.03 and DIS["disguised"]["national_points_off"] < DIS[r_]["national_points_off"] + 1
+assert round(100 * DIS["disguised"]["top_choice"]) == round(100 * DIS["original"]["top_choice"])  # "the same as with the original questions"
+CHK = {"named": f1(t1["named"]["national"]), "unnamed": f1(t1["unnamed"]["national"]), "said": str(t1["said"]["estimate"]),
+       "dis_top": str(round(100 * DIS["disguised"]["top_choice"])), "orig_top": str(round(100 * DIS["original"]["top_choice"])),
+       "ind_demo": str(round(100 * TRIAL["individual"]["demographics"]["top_choice"])), "ind_rec": str(round(100 * TRIAL["individual"]["record"]["top_choice"])),
+       "ind_lo": f1(100 * TRIAL["individual"]["gain"]["low"]), "ind_hi": f1(100 * TRIAL["individual"]["gain"]["high"]),
+       "people": f"{len(FULL_['predictions']['record']):,}", "cost": str(round(FULL_["cost_estimate_usd"])),
+       "famous_chat": f"{MEM['test2']['chatbot kind']['famous']:+.1f}".replace("-", "\u2212"),
+       "other_chat": f"{MEM['test2']['chatbot kind']['other']:+.1f}".replace("-", "\u2212"),
+       "famous_read": f"{MEM['test2']['chatbot reading records']['famous']:+.1f}".replace("-", "\u2212"),
+       "other_read": f"{MEM['test2']['chatbot reading records']['other']:+.1f}".replace("-", "\u2212"),
+       "rho_chat": minus(MEM["test2"]["chatbot kind"]["spearman_with_naming_gain"]),
+       "rho_read": minus(MEM["test2"]["chatbot reading records"]["spearman_with_naming_gain"])}
+
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),
          "US chatbot vs own RC, 300 (about the same)": (f1(med(us, "+ chatbot kind", 300)), f1(med(us, "+ record citizens (own survey)", 300))),
          "SG RC past vs + chatbot (adds nothing)": (f1(med(sg, "+ record citizens", 300)), f1(med(sg, "+ record citizens + chatbot kind", 300))),
@@ -443,7 +492,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree|nq):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree|nq|chk):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 

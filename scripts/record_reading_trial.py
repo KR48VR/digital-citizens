@@ -209,17 +209,32 @@ def score():
              "## Individual people: how often the most likely answer was the one they gave", "",
              "| arm | people | answers scored | top choice right | average probability on their real answer |", "|---|---|---|---|---|"]
     res = {"individual": {}, "groups": {}}
+    per_person = {}
     for arm in arms:
-        hit, prob, n = [], [], 0
+        hit, prob, n, per = [], [], 0, {}
         for pid, p in preds[arm].items():
+            h = []
             for t in targets:
                 a = rows.at[pid, t]
                 if a is None or pd.isna(a):
                     continue
                 k = qs[t].options.index(a); n += 1
-                hit.append(int(np.argmax(p[t]) == k)); prob.append(p[t][k])
+                hit.append(int(np.argmax(p[t]) == k)); prob.append(p[t][k]); h.append(hit[-1])
+            per[pid] = (sum(h), len(h))
         res["individual"][arm] = {"people": len(preds[arm]), "answers": n, "top_choice": float(np.mean(hit)), "prob_on_answer": float(np.mean(prob))}
+        per_person[arm] = per
         lines.append(f"| {arm} | {len(preds[arm])} | {n} | {np.mean(hit):.1%} | {np.mean(prob):.2f} |")
+    if len(arms) == 2:  # the gain in top choice right, with a 95% range from resampling people
+        both = [p for p in per_person["record"] if p in per_person["demographics"]]
+        d = np.array([[per_person["demographics"][p][0], per_person["record"][p][0], per_person["record"][p][1]] for p in both], float)
+        rng = np.random.default_rng(0)
+        boot = [(s[:, 1].sum() - s[:, 0].sum()) / s[:, 2].sum() for s in (d[rng.integers(0, len(d), len(d))] for _ in range(5000))]
+        gain = (d[:, 1].sum() - d[:, 0].sum()) / d[:, 2].sum()
+        lo, hi = np.percentile(boot, [2.5, 97.5])
+        res["individual"]["gain"] = {"top_choice": float(gain), "low": float(lo), "high": float(hi),
+                                     "people_better": int((d[:, 1] > d[:, 0]).sum()), "people_worse": int((d[:, 1] < d[:, 0]).sum())}
+        lines += ["", f"Reading the record: top choice right {100 * gain:+.1f} points (95% range {100 * lo:+.1f} to {100 * hi:+.1f}, resampling people); "
+                      f"better for {res['individual']['gain']['people_better']} people, worse for {res['individual']['gain']['people_worse']}."]
     lines += ["", "## Groups: points off against the rest of the survey (median over group-question cells)", "",
               "| group | people in the sample | the 100 people's own answers | " + " | ".join(arms) + " |", "|---|---|---|" + "---|" * len(arms)]
     cells = {k: [] for k in ["survey of 100", *arms]}

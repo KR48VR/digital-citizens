@@ -1405,6 +1405,156 @@
    "screenshot": true,
    "mid_task": true,
    "claude": "Walked through it from that screen: Get API key, copy it once, add it under Network secrets in the environment settings, leave auto-reload off so spending cannot exceed the credit, start a new session."
+  },
+  {
+   "n": 135,
+   "time": "04:54 (18 Oct)",
+   "task": "T25",
+   "type": "independent",
+   "king": "Run the record-reading trial. King has approved spending up to $10 on it. [sent as a scheduled message]",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Set up the environment, downloaded the World Values Survey, ran the free plan (worst case $7.46, under the $10 cap), sent one batch of 200 requests and scored it: about $2.58, none failed. Reported in plain words."
+  },
+  {
+   "n": 136,
+   "time": "05:06 (18 Oct)",
+   "task": "T25",
+   "type": "tool",
+   "king": "Explain simply to me? You are giving me a lot of details",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Cut the report to four short lines: yes, a little; about one more right guess in 20; groups a bit closer; 100 people is an early hint, not proof."
+  },
+  {
+   "n": 137,
+   "time": "05:07 (18 Oct)",
+   "task": "T26",
+   "type": "tool",
+   "king": "So what does that mean for what we have done?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Placed the result against the scorecard: nothing overturned, not strong enough to add; offered leaving the scorecard as it is or a bigger test."
+  },
+  {
+   "n": 138,
+   "time": "05:08 (18 Oct)",
+   "task": "T26",
+   "type": "teammate",
+   "king": "What about impact on record citizens?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Said plainly that the trial had not compared with record citizens and that the earlier numbers came from a different setup, so they could not be set side by side; proposed testing all three in the scorecard's own test."
+  },
+  {
+   "n": 139,
+   "time": "05:09 (18 Oct)",
+   "task": "T26",
+   "type": "tool",
+   "king": "What would that larger test involve and what insights might it give us?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Set out the test (everyone in the Singapore survey, scored in the scorecard's own test against record citizens and the chatbot) and the four questions it would answer."
+  },
+  {
+   "n": 140,
+   "time": "05:12 (18 Oct)",
+   "task": "T26",
+   "type": "teammate",
+   "king": "Yes run the free planning step",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Ran the plan for 1,997 people: likely about $30, but a worst case of $82. Corrected my earlier \"$30 to $40\", which was the likely cost, not the cap, and gave three options with a recommendation."
+  },
+  {
+   "n": 141,
+   "time": "05:17 (18 Oct)",
+   "task": "T26",
+   "type": "independent",
+   "king": "Let’s do option 1",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added a full-survey mode with an $85 cap, sent 1,997 requests (about $30.26, none failed), added the new method and a fair comparison (record citizens learned from the same 57 questions) to the scorecard's own test, and checked that every existing result came out the same."
+  },
+  {
+   "n": 142,
+   "time": "05:24 (18 Oct)",
+   "task": "T26",
+   "type": "tool",
+   "king": "If you run out of api credits, will you tell me?",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Explained what would happen (failed answers are counted and reported; only returned answers are charged) and checked that nothing had failed so far."
+  },
+  {
+   "n": 143,
+   "time": "05:38 (18 Oct)",
+   "task": "T27",
+   "type": "teammate",
+   "king": "How would you reflect  the scorecard and casework to reflect the work done and insights? Would it be a second scorecard but still the same casework? And how do we test the ai for whether it has seen answers before ?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Advised against a second scorecard (one test, one story) and proposed four checks for memory, from asking the chatbot directly to questions it cannot have seen, cheapest first, with costs."
+  },
+  {
+   "n": 144,
+   "time": "05:41 (18 Oct)",
+   "task": "T27",
+   "type": "tool",
+   "king": "Meaning do tests 1 and 3 first before we draft the update scoraexaed and casebook?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed: the cheap checks come first because their result changes what the scorecard should say, so the pages are drafted once."
+  },
+  {
+   "n": 145,
+   "time": "05:41 (18 Oct)",
+   "task": "T27",
+   "type": "tool",
+   "king": "Where do test 2 and 4 come in?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Ordered the four checks: a quick warning check, a firmer check, and the final proof, which also covers the chatbot already on the scorecard."
+  },
+  {
+   "n": 146,
+   "time": "05:43 (18 Oct)",
+   "task": "T27",
+   "type": "independent",
+   "king": "Ok so tests 1 and 3, then 2. Then we update scorecard and casework. Then see how to do test 4 since we need new questions",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Wrote down the famous questions and the warning signs before running, ran all three checks (about $0.18 and $4.85), found no warning sign, and replaced one planned measure that turned out to track how easy a question is, labelled as added after seeing it."
+  },
+  {
+   "n": 147,
+   "time": "06:09 (18 Oct)",
+   "task": "T27",
+   "type": "tool",
+   "king": "Summarise simply for me first what we learned?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Four plain points: reading records helps a little; about as good as record citizens; the advice does not change; no sign the chatbot remembers the answers."
+  },
+  {
+   "n": 148,
+   "time": "06:10 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "Ok how would you update the scorecard? And casework ?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Proposed two rows in \"What we tested along the way\", updated Limits and What to test next, and one new casebook chapter, all drafted for review first."
+  },
+  {
+   "n": 149,
+   "time": "06:13 (18 Oct)",
+   "task": "T28",
+   "type": "teammate",
+   "king": "The insights on reading individual records and how the ai is not rememberint from memory feels important to go somewhere upfront ? Maybe we don’t change what we have upfront in the summary and the tables but add short  expandable/collapsible sections giving this additional info?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Adopted King's layout: two short folds under the short answer, with the summary and tables unchanged. Put every claim behind a build check, which turned \"a little better\" for groups into \"about the same, within luck\" and added the same-make chatbot to the comparison; drafted both pages for review."
   }
  ],
  "tasks": {
@@ -1506,6 +1656,18 @@
   ],
   "T25": [
    "Run the record-reading trial",
+   "King"
+  ],
+  "T26": [
+   "Test the chatbot reading records on the whole survey",
+   "King"
+  ],
+  "T27": [
+   "Check whether the chatbot remembers published answers",
+   "King"
+  ],
+  "T28": [
+   "Add the two findings to the scorecard and casebook",
    "King"
   ]
  }

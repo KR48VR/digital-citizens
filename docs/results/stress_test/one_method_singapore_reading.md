@@ -67,12 +67,16 @@ Key comparisons (difference in points off, A minus B; negative means A is closer
 | + record citizens (own survey, 10 standard questions) + chatbot kind, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | +0.21 | -0.09 to +0.54 |
 | + record citizens (own survey, 20 standard questions) + chatbot kind, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | +0.12 | -0.14 to +0.46 |
 | + record citizens, survey of 300 | + chatbot kind, survey of 300 | -0.44 | -0.82 to -0.02 |
+| + chatbot reading records, survey of 150 | + chatbot kind, survey of 150 | -0.41 | -0.95 to +0.10 |
 | + chatbot reading records, survey of 300 | + chatbot kind, survey of 300 | -0.20 | -0.50 to +0.23 |
+| + chatbot reading records, survey of 300 | + chatbot (Opus), survey of 300 | -0.10 | -0.26 to +0.42 |
 | + chatbot reading records, survey of 150 | + record citizens (own survey), survey of 150 | -0.56 | -0.94 to +0.10 |
 | + chatbot reading records, survey of 300 | + record citizens (own survey), survey of 300 | +0.06 | -0.36 to +0.54 |
 | + chatbot reading records, survey of 300 | + record citizens (own survey, same 57 questions the chatbot read), survey of 300 | +0.07 | -0.31 to +0.55 |
 | + chatbot reading records, survey of 300 | survey alone, survey of 600 | +0.27 | -0.15 to +0.73 |
+| + record citizens (own survey) + chatbot reading records, survey of 150 | + record citizens (own survey) + chatbot kind, survey of 150 | -0.45 | -0.70 to +0.05 |
 | + record citizens (own survey) + chatbot reading records, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | -0.12 | -0.41 to +0.16 |
+| + record citizens (own survey) + chatbot reading records, survey of 600 | + record citizens (own survey) + chatbot kind, survey of 600 | +0.03 | -0.27 to +0.31 |
 | + record citizens (own survey) + chatbot kind + chatbot reading records, survey of 300 | + record citizens (own survey) + chatbot kind, survey of 300 | -0.12 | -0.40 to +0.16 |
 | + record citizens (own survey) + chatbot kind + chatbot reading records, survey of 300 | survey alone, survey of 600 | -0.09 | -0.46 to +0.14 |
 

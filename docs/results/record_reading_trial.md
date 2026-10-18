@@ -9,6 +9,8 @@ Model claude-opus-5-5 (effort low), one batch (msgbatch_01J6nXitoqtDXTAryox7WhAd
 | demographics | 100 | 1951 | 47.0% | 0.36 |
 | record | 100 | 1951 | 52.0% | 0.38 |
 
+Reading the record: top choice right +5.0 points (95% range +3.1 to +6.8, resampling people); better for 61 people, worse for 21.
+
 ## Groups: points off against the rest of the survey (median over group-question cells)
 
 | group | people in the sample | the 100 people's own answers | demographics | record |

@@ -24,7 +24,7 @@ Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost|reading]
        adults, 30%), weighted back to the population, and writes one_method_<country>_boost.*
        "reading" (Singapore) adds the chatbot reading records, and record citizens learned from the same 57
        questions it read, and writes one_method_singapore_reading.*
-       one_method_experiment.py [singapore|us] compare   (recompute only the comparisons from saved cells)
+       one_method_experiment.py [singapore|us] compare [reading]   (recompute only the comparisons from saved cells)
 Writes docs/results/stress_test/one_method_<country>.md / .csv / _cells.csv.
 """
 from __future__ import annotations
@@ -108,12 +108,16 @@ KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in
     ("+ record citizens (own survey, 10 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
     ("+ record citizens (own survey, 20 standard questions) + chatbot kind", 300, BOTH_KEY, 300),
     ("+ record citizens", 300, "+ chatbot kind", 300),  # asked before: record citizens beat the chatbot
+    ("+ chatbot reading records", 150, "+ chatbot kind", 150),
     ("+ chatbot reading records", 300, "+ chatbot kind", 300),
+    ("+ chatbot reading records", 300, "+ chatbot (Opus)", 300),  # the same make of chatbot, asked the usual way
     ("+ chatbot reading records", 150, "+ record citizens (own survey)", 150),
     ("+ chatbot reading records", 300, "+ record citizens (own survey)", 300),
     ("+ chatbot reading records", 300, "+ record citizens (own survey, same 57 questions the chatbot read)", 300),
     ("+ chatbot reading records", 300, "survey alone", 600),
+    ("+ record citizens (own survey) + chatbot reading records", 150, BOTH_KEY, 150),
     ("+ record citizens (own survey) + chatbot reading records", 300, BOTH_KEY, 300),
+    ("+ record citizens (own survey) + chatbot reading records", 600, BOTH_KEY, 600),
     ("+ record citizens (own survey) + chatbot kind + chatbot reading records", 300, BOTH_KEY, 300),
     ("+ record citizens (own survey) + chatbot kind + chatbot reading records", 300, "survey alone", 600),
 ]
@@ -408,7 +412,7 @@ def main() -> None:
     t0 = time.time()
     country = sys.argv[1] if len(sys.argv) > 1 else "singapore"
     if len(sys.argv) > 2 and sys.argv[2] == "compare":
-        compare_only("us" if country == "us" else "singapore")
+        compare_only(("us" if country == "us" else "singapore") + ("_reading" if sys.argv[3:4] == ["reading"] else ""))
         return
     draws = int(sys.argv[2]) if len(sys.argv) > 2 else 10
     design = sys.argv[3] if len(sys.argv) > 3 else "standard"

@@ -11,6 +11,13 @@
    "answers": 1951,
    "top_choice": 0.5197334700153767,
    "prob_on_answer": 0.3805770541175081
+  },
+  "gain": {
+   "top_choice": 0.04971809328549462,
+   "low": 0.03147372324881411,
+   "high": 0.0677622352167834,
+   "people_better": 61,
+   "people_worse": 21
   }
  },
  "groups": {
