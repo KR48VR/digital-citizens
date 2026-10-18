@@ -742,5 +742,13 @@
   "fix": "Replaced with the point itself: about 3 points off shows which way a group clearly leans, such as 60-40, but cannot call a near-tie such as 52-48; a real 600-person survey has the same limit.",
   "status": "Fixed",
   "id": 93
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Accuracy",
+  "finding": "The headline box showed only the brand-new case (300 people blended with both kinds of AI = 600), although the summary above it describes two cases; showing one looked like cherry-picking (King's catch).",
+  "fix": "Replaced with both cases side by side, same rows in each, all read from the results; the build stops if either case stops holding.",
+  "status": "Fixed",
+  "id": 94
  }
 ]

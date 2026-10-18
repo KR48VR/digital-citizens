@@ -235,6 +235,33 @@ for g in ("Malay", "Indian"):
     assert BOOST[(g, BOTH)][0] > -0.6 and BOOST[(g, BOTH)][2] > 0, g
 
 
+# ---- the two cases from the short answer, side by side (Singapore, survey of 300, typical group)
+def case_rows(rows):
+    top = max(v for _, _, v in rows)
+    out = []
+    for label, cls, v in rows:
+        out.append(f'<li class="{cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}</b></li>')
+    return "".join(out)
+
+
+sg_alone, sg_600 = med("singapore", "survey alone", 300), med("singapore", "survey alone", 600)
+sg_chat, sg_past = med("singapore", "+ chatbot kind", 300), med("singapore", "+ record citizens", 300)
+sg_own, sg_both = med("singapore", "+ record citizens (own survey)", 300), med("singapore", BOTH, 300)
+assert sg_past < sg_chat and f1(sg_past) == f1(sg_600), "case 1: record citizens beat the chatbot and match 600"
+assert sg_both < min(sg_chat, sg_own) and f1(sg_both) == f1(sg_600), "case 2: both kinds best and match 600"
+CASES = ('<div class="cases">'
+         '<div class="case"><h3>1. Your question was already asked in large surveys</h3><ul class="bars" role="list">'
+         + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
+                      ("Blended with record citizens learned from other countries", "c-rc", sg_past), ("Survey of 600 alone, for comparison", "c-ref", sg_600)])
+         + '</ul><p><strong>Record citizens beat the chatbot,</strong> and matched a survey twice the size.</p></div>'
+         '<div class="case"><h3>2. Your question is brand new</h3><ul class="bars" role="list">'
+         + case_rows([("Survey of 300 alone", "c-sv", sg_alone), ("Blended with the chatbot", "c-cb", sg_chat),
+                      ("Blended with record citizens learned from your survey", "c-rc", sg_own), ("Blended with both kinds of AI", "c-both", sg_both),
+                      ("Survey of 600 alone, for comparison", "c-ref", sg_600)])
+         + '</ul><p><strong>The two kinds did about as well as each other;</strong> blended in together, they matched a survey twice the size.</p></div>'
+         '</div>')
+
+
 # ---- analysts: every method, both countries
 LABELS = [("survey alone", "Survey alone"), ("+ chatbot kind", "With the chatbot kind"),
           ("+ record citizens (own survey)", "With record citizens learned from your own survey"), (BOTH, "With record citizens from your own survey plus the chatbot kind"),
@@ -285,7 +312,7 @@ pc3["set"] = ["standout" if (q, g) in top else "most" for q, g in zip(pc3.questi
 mm = pc3.groupby(["set", "config"]).mae.median()
 SO = {s_: pct(mm[(s_, "survey alone")], mm[(s_, "+ record citizens")]) for s_ in ("most", "standout")}
 
-FILL = {"BLEND_BARS": BLEND_BARS, "TABLE_ROUTES": TABLE_ROUTES, "TABLE_SMALL": TABLE_SMALL, "TABLE_ONE_METHOD": TABLE_ONE_METHOD, "TABLE_COMPARE": TABLE_COMPARE,
+FILL = {"CASES": CASES, "BLEND_BARS": BLEND_BARS, "TABLE_ROUTES": TABLE_ROUTES, "TABLE_SMALL": TABLE_SMALL, "TABLE_ONE_METHOD": TABLE_ONE_METHOD, "TABLE_COMPARE": TABLE_COMPARE,
         "SO_TXT": (f'{SO["most"]}% less error for both' if SO["most"] == SO["standout"] else f'{SO["most"]}% less error for most groups and {SO["standout"]}% for standout groups')}
 
 

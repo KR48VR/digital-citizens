@@ -1005,6 +1005,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Rewrote the paragraph to lead with the reason (a conventional 600-person survey with no AI was also 2.7 points off, and such surveys are used for decisions) and then use the 60-40 and 52-48 splits to illustrate it."
+  },
+  {
+   "n": 95,
+   "time": "02:23 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "and for this, why do you give an example for brand new queation/blended, but not for \"question has already been asked in large surveys, record citizens beat the chatbot.\"? since this part follows on from the two kinds of AI and how the two kind perform differently, we should have examples that show these instead of cherry picking one",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Replaced the single example with both cases side by side, each with the same rows (survey of 300 alone, each kind of AI blended in, survey of 600 alone), read from the results and checked at build time."
   }
  ],
  "tasks": {
