@@ -92,7 +92,7 @@ def panel(country, tag, ymax=7.0):
         g.append(f'<line class="key" x1="{PR+8}" y1="{y0:.1f}" x2="{PR+14}" y2="{yy:.1f}" stroke="{colour}"/>'
                  f'<line class="key" x1="{PR+14}" y1="{yy:.1f}" x2="{PR+24}" y2="{yy:.1f}" stroke="{colour}"/>'
                  f'<text class="end" x="{PR+28}" y="{yy+4:.1f}">' + end_label(label, PR + 28) + '</text>')
-    aria = f"{country}, brand-new question: points off for a typical group by survey size. " + " ".join(
+    aria = f"{country}, brand-new question: median points off by survey size. " + " ".join(
         f"{label}: " + ", ".join(f"{f1(med(tag, key, n))} at {n}" for n in SIZES) + "." for key, label, _ in SERIES)
     return (f'<div class="panel"><p class="ptitle">{country}</p><svg class="lines" viewBox="0 0 {W} {PB+42}" role="img" aria-label="{aria}">'
             + "".join(g) + "</svg></div>")
@@ -139,7 +139,7 @@ for q_, add, cfg in route_rows:
     rows_html.append(f'<tr><th scope="row">{label}</th>{sg}{us}</tr>')
 ref = [f'<td class="num"><b>{f1(med(t, "survey alone", 600))}</b><span class="cut">for comparison</span></td>' for t in TAGS]
 rows_html.append(f'<tr><th scope="row">Survey alone, 600 people</th>{"".join(ref)}</tr>')
-TABLE_ROUTES = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for a typical group with a survey of 300, and how much less error than the survey alone. Percentages use unrounded figures.</caption>\n'
+TABLE_ROUTES = ('<div class="wrap">\n    <table class="pts">\n      <caption>Median points off with a survey of 300, and how much less error than the survey alone. Percentages use unrounded figures.</caption>\n'
                 '      <thead><tr><th>What you add to the survey</th><th class="num">Singapore</th><th class="num">United States</th></tr></thead>\n      <tbody>\n        '
                 + "\n        ".join(rows_html) + "\n      </tbody>\n    </table>\n    </div>")
 
@@ -161,7 +161,7 @@ for key, (g, label) in GROUPS.items():
     a_, ng = grp(key, "survey alone", SMALL_N)
     b_, _ = grp(key, BOTH, SMALL_N)
     small_rows.append(f'<tr><th scope="row">{label}</th><td class="num">about {round(ng)}</td><td class="num"><b>{f1(a_)}</b></td><td class="num"><b>{f1(b_)}</b></td></tr>')
-TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 300-person survey in Singapore, brand-new question. "With both kinds of AI" means the survey blended with record citizens and the chatbot.</caption>\n'
+TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group (the median across its 20 questions), from a 300-person survey in Singapore, brand-new question. "With both kinds of AI" means the survey blended with record citizens and the chatbot.</caption>\n'
                '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With both kinds of AI</th></tr></thead>\n      <tbody>\n        '
                + "\n        ".join(small_rows) + "\n      </tbody>\n    </table>\n    </div>")
 
@@ -235,7 +235,7 @@ for g in ("Malay", "Indian"):
     assert BOOST[(g, BOTH)][0] > -0.6 and BOOST[(g, BOTH)][2] > 0, g
 
 
-# ---- the two cases from the short answer, side by side (Singapore, survey of 300, typical group)
+# ---- the two cases from the short answer, side by side (Singapore, survey of 300, median over groups and questions)
 # Same five rows in both cases, in the same order, so they line up across the two columns.
 def case_rows(rows, top):
     return "".join(f'<div class="crow {cls}"><span class="cl">{label}</span><span class="ct" aria-hidden="true"><i style="width:{100 * v / top:.0f}%"></i></span><b>{f1(v)}<span class="sr"> points off</span></b></div>'
@@ -284,7 +284,7 @@ for tag, name in [("singapore", "Singapore"), ("us", "United States")]:
         if (k, 150) not in M[tag]:
             continue
         rows_.append(f'<tr><th scope="row">{lab}</th>' + "".join(f'<td class="num">{M[tag][(k, n)]["median"]:.1f} <span class="cut">({M[tag][(k, n)]["mean"]:.1f})</span></td>' for n in SIZES) + "</tr>")
-    one_tables.append(f'<div class="wrap">\n    <table>\n      <caption>{name}: points off for a typical group (average in brackets)</caption>\n'
+    one_tables.append(f'<div class="wrap">\n    <table>\n      <caption>{name}: median points off (average in brackets)</caption>\n'
                       '      <thead><tr><th>Method</th>' + "".join(f'<th class="num">Survey of {n}</th>' for n in SIZES) + '</tr></thead>\n      <tbody>\n        '
                       + "\n        ".join(rows_) + "\n      </tbody>\n    </table>\n    </div>")
 TABLE_ONE_METHOD = "\n    ".join(one_tables)
@@ -385,6 +385,14 @@ for t in TAGS:  # short answer: brand new, the two kinds about as good as each o
     lo, hi = CMP[(t, "+ record citizens + chatbot kind", "+ record citizens", 300, 300)]
     assert lo < 0 < hi, ("chatbot helped record citizens", t)
     assert med(t, "+ record citizens", 300) < med(t, "+ chatbot kind", 300), t
+# the "what counts as good enough" boxes: 3 is a survey of 600 alone; 5 is a survey of 150 alone or the chatbot alone (Singapore)
+assert 2.5 < med(sg, "survey alone", 600) < 3.5 and 3.5 < med(us, "survey alone", 600) < 4
+for k_, n_ in (("survey alone", 150), ("chatbot kind alone, no survey", 150)):
+    assert 4.5 < med(sg, k_, n_) < 5.5, k_
+# 15 is splitting answers evenly across the choices, at group level (baseline tests)
+for t, lo_, hi_ in (("singapore", 14.5, 15.5), ("united_states", 12.5, 14)):
+    rows_ = [r_ for r_ in (RES.parent / f"baselines_wvs7_{t}.md").read_text().split("## Segment level")[1].splitlines() if r_.startswith("| uniform")]
+    assert lo_ < float(rows_[0].split("|")[6]) < hi_, t
 # "the changes mostly cancel out ... more for small groups"; "no AI can predict one person much better"
 assert SELF["shift_typical_group"] < 2 and SELF["group_size_vs_shift_spearman"] < -0.5 and SELF["match_6_7_options"] < 0.5
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),

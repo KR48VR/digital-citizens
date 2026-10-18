@@ -164,6 +164,7 @@
   .toc a:hover, .toc a:focus-visible { border-color: var(--ink); }
   section[id] { scroll-margin-top: 16px; }
   .readnum { display: grid; gap: 10px; }
+  .readnum h3 { font-size: 18px; margin: 6px 0 0; }
   .small { font-size: 14px; color: var(--ink-2); }
   details.more { border: 1px solid var(--ring); border-radius: 6px; background: var(--surface); padding: 0; }
   details.more[open] { display: block; }
