@@ -1,10 +1,12 @@
-# 11. Letting the chatbot read each person's record, and checking it is not remembering
+# 11. Letting the chatbot read each person's answers, and checking it is not remembering
 
 **The question.** The chatbot kind is told only what kind of person, or which group, it is answering for. Does
 it get more accurate if it first reads each real person's own survey answers? And is the chatbot simply
 remembering the published survey results?
 
-**The short answer.** Reading records made the chatbot about as good as record citizens for groups, and
+**The difference from record citizens.** Both start from a person's real answers to other survey questions. Record citizens use a statistical model that learns, from real people who answered the new question, how those answers link to it, then apply that pattern. The chatbot reads the person's answers and fills the gap with what it has read about people in general; it learns no pattern from the data and needs no real answers to the new question.
+
+**The short answer.** Reading each person's answers made the chatbot about as good as record citizens for groups, and
 clearly better for individual people, but it adds little once a survey is blended with both kinds of AI, and
 it costs chatbot fees. Not adopted yet. Three checks, run on both chatbots, found no sign that they remember the published
 answers; only questions asked after its knowledge was frozen can rule that out.
@@ -25,7 +27,7 @@ Results: `docs/results/record_reading_trial.md`.
 
 `record_reading_trial.py plan full` / `run full` (record arm only, all 1,997 respondents with 15+ of the 20
 answers; cap $85, about $30.26), then `scripts/one_method_experiment.py singapore 10 reading`, which adds the
-chatbot reading records (each group's estimate is the weighted average of the guesses for its people not drawn
+chatbot reading each person's answers (each group's estimate is the weighted average of the guesses for its people not drawn
 into the survey) and record citizens learned from the same 57 questions, on the same draws. Every method shared
 with the main results came out identical.
 
@@ -34,14 +36,14 @@ with the main results came out identical.
 | Survey alone | 5.1 | 3.7 | 2.7 |
 | + chatbot kind (Claude Fable 5.1) | 3.5 | 3.2 | 2.6 |
 | + chatbot (Claude Opus), asked the usual way | 3.2 | 3.1 | 2.4 |
-| + chatbot reading records | 3.1 | 3.0 | 2.5 |
+| + chatbot reading each person's answers | 3.1 | 3.0 | 2.5 |
 | + record citizens (own survey) | 3.6 | 2.9 | 2.5 |
 | + record citizens (own survey, same 57 questions) | 3.5 | 2.9 | 2.5 |
 | + both kinds of AI (record citizens + chatbot kind) | 3.1 | 2.7 | 2.3 |
-| + record citizens + chatbot reading records | 2.7 | 2.6 | 2.4 |
+| + record citizens + chatbot reading each person's answers | 2.7 | 2.6 | 2.4 |
 
 The Claude Opus row is the five-chatbot panel's (version not recorded), so it may not be the same Opus.
-Every difference between the chatbot reading records and the chatbot kind, Claude Opus asked the usual way,
+Every difference between the chatbot reading each person's answers and the chatbot kind, Claude Opus asked the usual way,
 record citizens, or both kinds of AI had a 95% range crossing zero (for example, with record citizens blended
 in: -0.45 at 150, range -0.70 to +0.05; -0.12 at 300, range -0.41 to +0.16). Results:
 `docs/results/stress_test/one_method_singapore_reading.md`.
@@ -56,7 +58,7 @@ Warning signs were written into the scripts before running.
    point. It said "estimate" for all 20 questions.
 2. **Famous against little-known questions** (same script, free): seven famous questions written into the
    script before the check was run. The chatbots' edge over record citizens (each with no survey) was no better
-   on famous questions (chatbot kind +2.2 against +0.8; chatbot reading records +1.7 against +1.2). The planned
+   on famous questions (chatbot kind +2.2 against +0.8; chatbot reading each person's answers +1.7 against +1.2). The planned
    rank correlation between the edge and check 1's recall pointed towards memory (+0.68 and +0.41), but the
    unnamed guesses showed the same link or stronger (+0.76 and +0.58), so it tracks how easy a question is to
    guess; holding that constant leaves +0.03 and -0.27. Added after seeing this: the link with how much naming
@@ -78,7 +80,7 @@ Results: `docs/results/memory_check.md`, `docs/results/disguise_check.md`, `docs
 ## 4. What it means
 
 - Our advice does not change: blend a small survey with record citizens and the chatbot.
-- The chatbot reading records is a candidate for very small surveys, to try in a pilot; it costs about $30 in
+- The chatbot reading each person's answers is a candidate for very small surveys, to try in a pilot; it costs about $30 in
   chatbot fees per 2,000 people and 20 questions, where record citizens need no chatbot.
 - Next: questions asked after the chatbot's knowledge was frozen (a newer survey round, or a pilot's own
   questions), the only full check for memory.

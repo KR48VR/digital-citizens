@@ -1625,6 +1625,46 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Read both live pages in full, confirmed nobody had changed them since the last publish, fixed the package builder's folder path, and published the scorecard (version 72) and the casebook to their existing links."
+  },
+  {
+   "n": 157,
+   "time": "07:27 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "And publish",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed both pages were already published, with their links, and that they stay private until shared."
+  },
+  {
+   "n": 158,
+   "time": "07:28 (18 Oct)",
+   "task": "T29",
+   "type": "teammate",
+   "king": "Take a look at what my colleagues are doing here on another project https://claude.ai/artifact/9yqpBPPRYw8TwaTFNMQYgL. \n\nHow much of what they are doing have we done? And compare and contrast both projects",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Read the Research Factory roadmap as data from another team, mapped its four stages against our work (most of stage 1 done, including its planned next step; stages 3 and 4 untouched), compared the two projects and named what each team could give the other."
+  },
+  {
+   "n": 159,
+   "time": "07:36 (18 Oct)",
+   "task": "T29",
+   "type": "teammate",
+   "king": "Yes give me a comparison. \n\nAlso do you think we need to make clearer the different between ai reading each person’s past answers versus recorded citizens. I feel readers can get confused by the nuance",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Built the comparison as an editable doc (side-by-side table, stage by stage, the shared finding, what each team could share); agreed readers could confuse the two record-based approaches and proposed a rename, one sentence and a table."
+  },
+  {
+   "n": 160,
+   "time": "07:48 (18 Oct)",
+   "task": "T30",
+   "type": "teammate",
+   "king": "Make changes 1 and 2, with table. \n\n And it feels like the difference are the priors. Recorded citizens used real people and drew a stats pattern to predict the answer. Chatbot reads what real people replied  and uses what it knows about people in general to answer (ie no specific stats model/pattern)",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Confirmed King's reading (record citizens learn a pattern from people who answered; the chatbot fills the gap from general knowledge) and put it in plain words: renamed it \"the chatbot reading each person's answers\", added the sentence and a four-row table, made the table stack on phones, and updated the glossary, write-up, guide and casebook."
   }
  ],
  "tasks": {
@@ -1738,6 +1778,14 @@
   ],
   "T28": [
    "Add the two findings to the scorecard and casebook",
+   "King"
+  ],
+  "T29": [
+   "Compare with a colleague team's Research Factory",
+   "King"
+  ],
+  "T30": [
+   "Make the two record-based approaches easy to tell apart",
    "King"
   ]
  }

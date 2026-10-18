@@ -1230,5 +1230,13 @@
   "fix": "Path corrected; the package was rebuilt from the current playbook, glossary, skills and interaction record, and published with the casebook.",
   "status": "Fixed",
   "id": 154
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Language",
+  "finding": "\"The chatbot reading records\" sounded like record citizens, and both start from the same answers, so readers could confuse them (King's catch).",
+  "fix": "Renamed \"the chatbot reading each person's answers\"; one sentence and a four-row table say how it differs (record citizens learn a pattern from people who answered your question; the chatbot fills the gap from what it has read about people in general); glossary, write-up and guide follow.",
+  "status": "Fixed",
+  "id": 155
  }
 ]

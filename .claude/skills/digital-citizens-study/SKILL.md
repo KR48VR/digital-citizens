@@ -33,7 +33,7 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
 - **Pages:** scorecard (private; King shares it) https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 ;
   casebook (private; access on request: method, QA log, King and AI, package) https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 ; index in `docs/playbook/README.md`.
 
-- **Chatbot reading records (done 18 Oct; not adopted) and memory checks (done; no sign):** write-up in
+- **The chatbot reading each person's answers (done 18 Oct; not adopted; never call it "reading records", too close to record citizens) and memory checks (done; no sign):** write-up in
   `docs/11_chatbot_reading_records.md`. Rerun: `scripts/record_reading_trial.py plan|run|score` (100-person
   pilot, cap $10) and `plan full|run full` (all 1,997 Singapore respondents, cap $85), then
   `scripts/one_method_experiment.py singapore 10 reading` (writes `one_method_singapore_reading.*`; the scorecard

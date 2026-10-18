@@ -231,3 +231,12 @@
   .toc a::before { counter-increment: toc; content: counter(toc) "  "; color: var(--muted); }
   .toc a:nth-child(1) { background: var(--band-1); } .toc a:nth-child(2) { background: var(--band-2); } .toc a:nth-child(3) { background: var(--band-3); }
   .toc a:nth-child(4) { background: var(--band-4); } .toc a:nth-child(5) { background: var(--band-5); }
+
+  /* record citizens against the chatbot reading each person's answers: rows of attributes; stacked on phones */
+  .cmp th[scope="row"] { font-weight: 600; width: 26%; }
+  @media (max-width: 600px) {
+    .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .cmp tbody tr { display: grid; gap: 4px; padding: 10px 0; border-bottom: 1px solid var(--grid); }
+    .cmp tbody tr > th, .cmp tbody tr > th[scope="row"], .cmp tbody tr > td { display: block; border: 0; padding: 0; width: auto; }
+    .cmp td[data-l]::before { content: attr(data-l) ": "; color: var(--muted); font-size: 13px; font-weight: 600; }
+  }
