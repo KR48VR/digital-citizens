@@ -12,12 +12,15 @@ answers (a survey of 100 alone). 100 people is a pilot: it shows whether reading
 
 Usage (run from the repository root; needs data/raw/wvs, see scripts/download_wvs.py):
   .venv/bin/python -I scripts/record_reading_trial.py plan    # no API calls: sample, prompt sizes, worst-case cost
-  .venv/bin/python -I scripts/record_reading_trial.py run     # needs DIGITAL_CITIZENS_API_KEY; one batch, refuses if over budget
+  .venv/bin/python -I scripts/record_reading_trial.py run     # needs the key (below); one batch, refuses if over budget
   .venv/bin/python -I scripts/record_reading_trial.py score   # scores the saved predictions
 Writes docs/results/record_reading_trial.{md,json} and docs/results/record_reading_trial_predictions.json.
 
-The key is read from DIGITAL_CITIZENS_API_KEY, set in the environment's settings, not from ANTHROPIC_API_KEY:
-Claude Code itself reads that name, and would then run the whole session on the trial's credit.
+The key: King adds it in the environment's settings as a network secret (header x-api-key, website
+api.anthropic.com, path prefix /v1/messages/batches). The proxy attaches it, so the script never sees it; the
+script sends its requests through the proxy on purpose, because the environment otherwise reaches the Claude API
+directly. Running elsewhere, set DIGITAL_CITIZENS_API_KEY instead. Never ANTHROPIC_API_KEY: Claude Code itself
+reads that name. Only batch endpoints are used, so the secret can be limited to them.
 """
 from __future__ import annotations
 
@@ -100,17 +103,9 @@ def requests(df, qs, targets, record_items, pids):
     return out
 
 
-def worst_case(reqs, client=None) -> tuple[float, int]:
-    """Dollars if every request used all its output tokens and nothing was cached."""
-    if client is None:  # no key: about 3.5 characters per token, rounded up
-        n_in = sum(int(len(r["params"]["system"][0]["text"] + r["params"]["messages"][0]["content"]) / 3.5) + 50 for r in reqs)
-    else:
-        sample = [r for r in reqs if r["custom_id"].startswith("record")][:3] + [r for r in reqs if r["custom_id"].startswith("demo")][:3]
-        counted = {r["custom_id"].split("__")[0]: [] for r in sample}
-        for r in sample:
-            p = r["params"]
-            counted[r["custom_id"].split("__")[0]].append(client.messages.count_tokens(model=p["model"], system=p["system"], messages=p["messages"]).input_tokens)
-        n_in = sum(int(1.1 * max(counted[r["custom_id"].split("__")[0]])) for r in reqs)
+def worst_case(reqs) -> tuple[float, int]:
+    """Dollars if every request used all its output tokens and nothing was cached; about 3.5 characters per token, rounded up."""
+    n_in = sum(int(len(r["params"]["system"][0]["text"] + r["params"]["messages"][0]["content"]) / 3.5) + 50 for r in reqs)
     cost = BATCH_DISCOUNT * (n_in * PRICE_IN + len(reqs) * MAX_TOKENS * PRICE_OUT)
     return cost, n_in
 
@@ -145,13 +140,20 @@ def plan():
 def run():
     import anthropic
     key = os.environ.get("DIGITAL_CITIZENS_API_KEY")
-    if not key:
-        sys.exit("DIGITAL_CITIZENS_API_KEY is not set: add it in the environment's settings and start a new session.")
-    client = anthropic.Anthropic(api_key=key)
+    if key:
+        client = anthropic.Anthropic(api_key=key)
+    else:  # the network secret: through the proxy, with no key header of our own for it to replace
+        http = anthropic.DefaultHttpxClient(proxy=os.environ["HTTPS_PROXY"], verify=os.environ.get("SSL_CERT_FILE", "/root/.ccr/ca-bundle.crt"))
+        client = anthropic.Anthropic(api_key=None, default_headers={"X-Api-Key": anthropic.omit}, http_client=http)
+    try:
+        client.messages.batches.list(limit=1)
+    except anthropic.AuthenticationError:
+        sys.exit("The Claude API did not accept the key: check the network secret (header x-api-key, website "
+                 "api.anthropic.com, path prefix /v1/messages/batches) and start a new session. Nothing was sent.")
     df, qs, targets, record_items, pids = setup()
     reqs = requests(df, qs, targets, record_items, pids)
-    cost, n_in = worst_case(reqs, client)
-    print(f"{len(reqs)} requests; counted input about {n_in:,} tokens; worst case ${cost:.2f} (budget ${BUDGET:.2f}).")
+    cost, n_in = worst_case(reqs)  # a conservative estimate from the prompts' length
+    print(f"{len(reqs)} requests; input about {n_in:,} tokens; worst case ${cost:.2f} (budget ${BUDGET:.2f}).")
     if cost > BUDGET:
         sys.exit("Worst case is over budget: nothing was sent. Lower MAX_TOKENS or the number of people.")
     batch = client.messages.batches.create(requests=reqs)
