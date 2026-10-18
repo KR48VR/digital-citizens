@@ -115,9 +115,13 @@ tech background can follow the main path in a few minutes while the detail stays
 3. **What to do**: the questions in order (a decision tree), each answer saying where to go next or what to do,
    with a number and its meaning; the step-by-step how-to folded under it; then any remaining rules. No separate
    worked example: a scenario before the decision logic confused readers.
-4. **How we know**: the one test in three steps, then one picture and one "so what" per finding; the blend,
-   groups versus individuals, the table of each AI, the chatbot detail and the map of what we tested, folded.
-5. **Limits and what to test next**, one or two sentences each; caveats live here, not in the summary.
+4. **How we know**: the one test in three steps (groups versus individuals folded), then one picture and one
+   "so what" per finding, in the summary's order (survey size, small groups, the two kinds side by side, with the
+   table of each AI and the chatbot detail folded), then the map of what we tested, folded. The blend is
+   explained where the reader first meets it, under the picture in the answer.
+5. **Limits and what to test next**: two short lists, "What we have not shown yet" and "What to test next",
+   one or two sentences each; caveats live here, not in the summary. No closing advice that contradicts the
+   decision tree.
 6. **The evidence in full, for analysts**, folded.
 Say each finding once (explain a caveat where it is first needed, then refer back), use one label for every
 takeaway ("So what"), point cross-references at headings that exist, and test the page

@@ -391,6 +391,8 @@ for t in TAGS:  # short answer: brand new, the two kinds about as good as each o
 for t in TAGS:
     singles = {k_: med(t, k_, 300) for k_ in ("+ chatbot kind", "+ chatbot (Opus)", "+ chatbot (Sonnet)", "+ chatbot (Haiku)", "+ chatbot (Qwen, open, Asian-built)")}
     assert min(singles, key=singles.get) == "+ chatbot (Opus)" and singles["+ chatbot kind"] - singles["+ chatbot (Opus)"] < 0.5, t
+# chatbot fold: "counted for about three times as much in the United States as in Singapore"
+assert 2.5 < WORTH["us"] / WORTH["singapore"] < 3.5
 # decision tree: step 2 beats good enough; step 3 alone is a little short of it, blended matches 600 alone
 assert med(us, "last round's answers alone, no survey", 300) < 3 and abs(med(us, "+ last round's answers", 300) - med(us, "last round's answers alone, no survey", 300)) < 0.25
 assert 3 < med(sg, "record citizens alone, no survey", 300) < 4

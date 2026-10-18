@@ -926,5 +926,37 @@
   "fix": "Each says so; build checks keep it true. Step 2 also says the same survey in your country, worded the same, as the rule below it does.",
   "status": "Fixed",
   "id": 116
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "Limits ended \"run one pilot on your own topic first\", but the decision tree says to skip the pilot for a one-off survey.",
+  "fix": "Limits now lists the pilot as the first thing to test next, pointing to step 5, and says to treat small-group answers with some caution until then, as step 5 does.",
+  "status": "Fixed",
+  "id": 117
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Layout",
+  "finding": "\"How we know\" took the findings in a different order from the summary, and the map of every test sat under the small-groups heading.",
+  "fix": "Survey size, then small groups, then the two kinds side by side, as in the summary; the map of what we tested has its own heading.",
+  "status": "Fixed",
+  "id": 118
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "Repeats and old wording in \"How we know\": the table note restated the summary and step 2; the method said \"say\" where the blending section says \"share\" and \"track record\"; the chatbot section quoted inner numbers (93 and 32 people) and \"flat answers\".",
+  "fix": "Repeats cut; the same words as the blending section; \"about three times as much\", with a build check; \"group answers less alike\".",
+  "status": "Fixed",
+  "id": 119
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "Limits mixed limits with a next step, said \"AI\" without saying which kind, and listed products and reactions to change as two items.",
+  "fix": "Two lists, \"What we have not shown yet\" (most important first) and \"What to test next\"; \"neither kind of AI\"; products, prices and reactions to change merged.",
+  "status": "Fixed",
+  "id": 120
  }
 ]
