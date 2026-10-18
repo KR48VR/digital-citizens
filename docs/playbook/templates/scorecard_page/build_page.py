@@ -496,6 +496,19 @@ CHK["fable_nat"] = f1(FABLE_NAT)
 # "once we allowed for that, the sign went away"
 for c_ in ("chatbot kind", "chatbot reading records"):
     assert MEM["test2"][c_]["partial_with_recall_error_given_unnamed"] < 0.1, c_
+# checks 1 and 3 for the chatbot kind, against the warning signs set before running them
+FC = json.load(open(RES.parent / "memory_check_chatbot.json"))
+FN = FC["national: named minus unnamed"]
+assert FC["arms"]["named"]["national"] > 2 and abs(FN["median"]) < 0.25 and FN["closer"] < FN["questions"] / 2  # "about the same when named"
+assert FC["named_minus_unnamed"] > -1 and FC["disguised_minus_unnamed"] < 1 + abs(FC["again_minus_unnamed"])  # no warning sign
+assert FC["disguised_minus_unnamed"] <= 0.25  # "as accurate as with the original questions"
+assert 4 <= FC["arms"]["named"]["national"] < 5.5 and 4.5 <= t1["named"]["national"] < 5.5  # "about 5 points off" (both chatbots)
+FP = json.load(open(RES.parent / "memory_check_chatbot_predictions.json"))
+CHK.update({"f_named": f1(FC["arms"]["named"]["national"]), "f_unnamed": f1(FC["arms"]["unnamed"]["national"]),
+            "f_again": f1(FC["arms"]["unnamed, again"]["national"]), "f_nat_change": minus(FN["median"]),
+            "f_nat_closer": str(FN["closer"]), "f_nq": str(FN["questions"]), "f_cells": minus(FC["named_minus_unnamed"]),
+            "f_dis": minus(FC["disguised_minus_unnamed"]), "f_est": str(FC["said"].get("estimate", 0)),
+            "f_partly": str(FC["said"].get("partly", 0)), "f_cost": f"{FP['cost_estimate_usd']:.2f}"})
 # "about the same as when we did not name the survey"; "a tenth of a point better"; "about 2,000 people"
 assert abs(t1["named_minus_unnamed"]) < 0.25
 assert 0.05 < med(RD, BOTH, 300) - med(RD, READ_BOTH, 300) < 0.15

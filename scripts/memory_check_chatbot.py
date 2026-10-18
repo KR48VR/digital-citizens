@@ -148,11 +148,19 @@ def score():
     res["disguised_minus_unnamed"] = d("disguised", "unnamed")
     res["again_minus_unnamed"] = d("unnamed, again", "unnamed")
     res["disguised_minus_again"] = d("disguised", "unnamed, again")
+    nat_q = sorted({q for q, g in common if g == "ALL"})
+    for a, b in (("named", "unnamed"), ("named", "unnamed, again"), ("unnamed, again", "unnamed"), ("disguised", "unnamed")):
+        dq = np.array([err[a][(q, "ALL")] - err[b][(q, "ALL")] for q in nat_q])
+        res[f"national: {a} minus {b}"] = {"median": float(np.median(dq)), "closer": int((dq < 0).sum()), "questions": len(dq)}
     res["said"] = pd.Series([v.get("recall") for v in P["predictions"]["named"].values()]).value_counts().to_dict()
     lines += ["", "Differences, median over the same group-question cells (negative: the first is closer):", "",
               f"- named minus unnamed: {res['named_minus_unnamed']:+.2f}",
               f"- disguised minus unnamed: {res['disguised_minus_unnamed']:+.2f}; disguised minus unnamed, again: {res['disguised_minus_again']:+.2f}",
               f"- unnamed, again minus unnamed (run-to-run): {res['again_minus_unnamed']:+.2f}", "",
+              "National answer, question by question (the medians in the table above are taken over different questions'",
+              "errors, so compare versions here):", ""] + [
+              f"- {k[10:]}: median change {v['median']:+.2f}; first closer on {v['closer']} of {v['questions']} questions"
+              for k, v in res.items() if k.startswith("national: ")] + ["",
               f"Asked whether it remembered the published figures, it said: {res['said']}.", "",
               "Warning signs, set before running: check 1, named within 2 points nationally, or at least 1 point closer than",
               "unnamed; check 3, disguised at least 1 point further off than unnamed, beyond the run-to-run gap.", "",

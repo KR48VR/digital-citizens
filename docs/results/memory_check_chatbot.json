@@ -1,0 +1,52 @@
+{
+ "arms": {
+  "named": {
+   "national": 4.454980061589267,
+   "national_average": 5.411197884019128,
+   "cells": 4.689777256184277
+  },
+  "unnamed": {
+   "national": 5.512904590041607,
+   "national_average": 5.08054396907811,
+   "cells": 5.5081954770726425
+  },
+  "unnamed, again": {
+   "national": 6.003309310455139,
+   "national_average": 5.357020417195882,
+   "cells": 5.560097658826798
+  },
+  "disguised": {
+   "national": 5.112084632365454,
+   "national_average": 5.572137728932439,
+   "cells": 5.341165396425813
+  }
+ },
+ "named_minus_unnamed": 0.3331781962135516,
+ "disguised_minus_unnamed": -0.06471659589914025,
+ "again_minus_unnamed": 0.0,
+ "disguised_minus_again": -0.12726244669042175,
+ "national: named minus unnamed": {
+  "median": 0.08347161517424984,
+  "closer": 7,
+  "questions": 19
+ },
+ "national: named minus unnamed, again": {
+  "median": 0.0,
+  "closer": 9,
+  "questions": 19
+ },
+ "national: unnamed, again minus unnamed": {
+  "median": 0.0,
+  "closer": 6,
+  "questions": 19
+ },
+ "national: disguised minus unnamed": {
+  "median": 0.0,
+  "closer": 8,
+  "questions": 19
+ },
+ "said": {
+  "estimate": 19,
+  "partly": 1
+ }
+}

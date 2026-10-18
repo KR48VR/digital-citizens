@@ -109,8 +109,8 @@
    "Proposed four checks, fixed the warning signs before running, ran three (about $5), found no sign of memory, and replaced one measure that missed its aim, labelled as such."
   ],
   "T28": [
-   "Chose to keep the summary and tables as they are and add two short folds under the short answer.",
-   "Drafted the folds with every claim checked in the build, had one helper agent recompute every number and another read the folds cold as an executive, fixed what they found in one pass, updated Limits, What to test next, the analysts' notes, the glossary and the casebook, and sent both pages for review before publishing."
+   "Chose to keep the summary and tables as they are and add two short folds under the short answer; asked for the two missing memory checks on the page's chatbot and added credit for them.",
+   "Drafted the folds with every claim checked in the build, had one helper agent recompute every number and another read the folds cold as an executive, fixed what they found in one pass, updated Limits, What to test next, the analysts' notes, the glossary and the casebook, and sent both pages for review before publishing. Then ran the two missing memory checks on the page's chatbot (about $0.76): no sign of memory."
   ]
  },
  "examples": {
@@ -132,14 +132,14 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 29 hours",
+  "HOURS": "about 30 hours",
   "N_TASKS": 28,
   "N_SHOTS": 28,
   "N_AGENTS": 25,
-  "N_BG": 54,
+  "N_BG": 56,
   "N_HOOKS": 17,
   "N_IDEAS": 26,
-  "N_CHALLENGES": 18,
+  "N_CHALLENGES": 19,
   "N_DRAFTS": 10,
   "N_ACTIONS": "over 1,300",
   "N_COMMITS": "29",
@@ -282,7 +282,7 @@
    "tag": "kept",
    "king": true,
    "asked": "King asked how to test whether the chatbot had already seen the answers.",
-   "found": "No sign in three checks: asking it directly, famous against little-known questions, and disguised questions.",
+   "found": "No sign in three checks, run on both chatbots: asking them directly, famous against little-known questions, and disguised questions.",
    "changed": "Two more findings that do not change the advice, under the short answer; Limits and What to test next"
   }
  ]

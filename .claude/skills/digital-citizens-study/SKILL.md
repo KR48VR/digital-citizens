@@ -37,8 +37,8 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
   `docs/11_chatbot_reading_records.md`. Rerun: `scripts/record_reading_trial.py plan|run|score` (100-person
   pilot, cap $10) and `plan full|run full` (all 1,997 Singapore respondents, cap $85), then
   `scripts/one_method_experiment.py singapore 10 reading` (writes `one_method_singapore_reading.*`; the scorecard
-  build checks that shared methods are unchanged); `scripts/memory_check.py` and `scripts/disguise_check.py`
-  (plan|run|score). Paid runs need King's approval and budget: give King both the likely cost and the worst-case
+  build checks that shared methods are unchanged); `scripts/memory_check.py`, `scripts/disguise_check.py` and
+  `scripts/memory_check_chatbot.py` (the scorecard's chatbot) (plan|run|score). Paid runs need King's approval and budget: give King both the likely cost and the worst-case
   cap from `plan` before running. The key is `DIGITAL_CITIZENS_API_KEY` or a network secret (header `x-api-key`,
   website `api.anthropic.com`, path prefix `/v1/messages/batches`); never ask for it in chat, never set
   `ANTHROPIC_API_KEY`, and remind King to delete it when done. `scripts/download_wvs.py data/raw/wvs` needs

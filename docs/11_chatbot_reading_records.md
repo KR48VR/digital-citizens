@@ -6,7 +6,7 @@ remembering the published survey results?
 
 **The short answer.** Reading records made the chatbot about as good as record citizens for groups, and
 clearly better for individual people, but it adds little once a survey is blended with both kinds of AI, and
-it costs chatbot fees. Not adopted yet. Three checks found no sign that the chatbot remembers the published
+it costs chatbot fees. Not adopted yet. Three checks, run on both chatbots, found no sign that they remember the published
 answers; only questions asked after its knowledge was frozen can rule that out.
 
 ## 1. The 100-person trial
@@ -65,7 +65,15 @@ Warning signs were written into the scripts before running.
    and a disguised one (questions reworded, answer options reversed, survey not named), in one batch: top choice
    right 53.3% and 52.9% (53.8% in the full test); combined answers 3.6 and 3.4 points off.
 
-Results: `docs/results/memory_check.md`, `docs/results/disguise_check.md`.
+4. **Checks 1 and 3 for the scorecard's chatbot** (`scripts/memory_check_chatbot.py`, Claude Fable 5.1, about
+   $0.76; the first attempt was refused for low credit before anything was sent): group answer shares for each
+   question, named, unnamed (twice) and disguised; one of 80 answers unreadable, so 19 questions. Nationally 4.5
+   named against 5.5 and 6.0 unnamed (medians over questions), but question by question naming moved the national
+   answer by a median of +0.08 and brought it closer on only 7 of 19; across all cells +0.33 (further off when
+   named). Disguised minus unnamed across all cells: -0.06. It said "estimate" for 19 and "partly" for 1. The
+   scorecard's own estimates were 4.9 points off nationally.
+
+Results: `docs/results/memory_check.md`, `docs/results/disguise_check.md`, `docs/results/memory_check_chatbot.md`.
 
 ## 4. What it means
 

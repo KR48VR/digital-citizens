@@ -1555,6 +1555,66 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Adopted King's layout: two short folds under the short answer, with the summary and tables unchanged. Put every claim behind a build check, which turned \"a little better\" for groups into \"about the same, within luck\" and added the same-make chatbot to the comparison; drafted both pages for review."
+  },
+  {
+   "n": 150,
+   "time": "06:49 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "I don’t understand this part [screenshot of Claude's summary of the two independent checks]",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Re-explained the three corrections in plain words, with an everyday picture for the third (doing better on textbook questions does not prove memorising if those are also the easier ones)."
+  },
+  {
+   "n": 151,
+   "time": "06:51 (18 Oct)",
+   "task": "T28",
+   "type": "teammate",
+   "king": "Is 2 an issue?  And 3 , you mean by controlling for the easy questions, the memory possibility was reduced",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Said it was a small issue and why (the one check found no sign; the page's own estimates were about 5 points off, not the 1 point memory would give; the advice does not rest on the chatbot), offered a free extra line and the two missing checks for a few dollars, and confirmed King's reading of point 3."
+  },
+  {
+   "n": 152,
+   "time": "06:52 (18 Oct)",
+   "task": "T28",
+   "type": "independent",
+   "king": "Run the other two checks for 2.   And add the one line for 3 to the page",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Wrote checks 1 and 3 for the page's chatbot with the warning signs fixed before running and checked the price (worst case $4.16, cap $5). The first run was refused for low credit before anything was sent; added both lines to the page meanwhile. After King added credit, ran them (about $0.76): no warning sign; added a question-by-question comparison when the national medians looked misleading; updated the page, the analysts' notes and the casebook."
+  },
+  {
+   "n": 153,
+   "time": "07:05 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "Are you still working and do you have enough api credits (or these are not needed)?",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Said plainly that nothing had been sent yet, that the checks need credit (likely $1 to $2, cap about $4.50), that the balance cannot be seen from here, and asked to go ahead."
+  },
+  {
+   "n": 154,
+   "time": "07:07 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "Yes go ahead",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Ran the free plan (worst case $4.16), saved the script, sent the batch; it was refused for low credit, so reported that with the fix (add about $5 in the Console) and made the two page changes meanwhile."
+  },
+  {
+   "n": 155,
+   "time": "07:09 (18 Oct)",
+   "task": "T28",
+   "type": "tool",
+   "king": "I’ve added credits",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Ran the checks (80 requests, about $0.76, one answer unreadable) and scored them."
   }
  ],
  "tasks": {

@@ -1198,5 +1198,29 @@
   "fix": "Heading now \"Two more findings that do not change the advice\"; the so-what says the best result is a tenth of a point better, which could be luck, for about US$30 a run.",
   "status": "Fixed",
   "id": 150
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "Two of the three memory checks had not covered the chatbot used on the rest of the scorecard.",
+  "fix": "At King's request, ran checks 1 and 3 on it (Claude Fable 5.1, about $0.76): no warning sign; the fold now says both chatbots were checked.",
+  "status": "Fixed",
+  "id": 151
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "For the page's chatbot, the national medians (4.5 named against 5.5 unnamed) suggested naming the survey helped, but they are taken over different questions' errors.",
+  "fix": "Compared question by question: naming brought the national answer closer on only 7 of 19 questions, a median change of +0.08; the results file and the analysts' note give this comparison.",
+  "status": "Fixed",
+  "id": 152
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "The first run of these checks was refused by the API for low credit.",
+  "fix": "Nothing was sent or charged; King was told at once with the fix, and the run went ahead after King added credit.",
+  "status": "Fixed",
+  "id": 153
  }
 ]
