@@ -654,5 +654,13 @@
   "fix": "Package rebuilt with the page; notes corrected to about 1.5 to 1.7.",
   "status": "Fixed",
   "id": 82
+ },
+ {
+  "when": "Decision tree and evidence map",
+  "area": "Accessibility",
+  "finding": "The casebook had no page language set, tables that scroll sideways could not be reached by keyboard, the interaction timeline's labels were 8px, and a labelled group had no role.",
+  "fix": "Language set, scrolling tables made focusable regions, labels raised to 11px, role added. axe-core: no violations on either page.",
+  "status": "Fixed",
+  "id": 83
  }
 ]

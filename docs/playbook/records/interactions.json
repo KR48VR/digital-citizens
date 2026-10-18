@@ -905,6 +905,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Added the blend box with bars read from the data and switched the page to \"blended\"; proposed designs for an evidence map and a decision tree, for King to choose."
+  },
+  {
+   "n": 85,
+   "time": "00:43 (18 Oct)",
+   "task": "T22",
+   "type": "tool",
+   "king": "Will go with your recommendations",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added a decision tree (with the line between small and large groups worked out from the data) and an evidence map to the scorecard, and a timeline of all 15 tests to the casebook; fixed the casebook's accessibility gaps."
   }
  ],
  "tasks": {

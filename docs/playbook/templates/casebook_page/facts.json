@@ -86,7 +86,7 @@
   ],
   "T22": [
    "Asked whether \"combination\" means blended and how to make it easy to grasp; proposed two visuals: the experiments behind the conclusions, and a decision tree.",
-   "Explained the blend with real shares, added a blend box with data-driven bars, and proposed designs for both visuals."
+   "Explained the blend with real shares and a data-driven box, then built the decision tree and evidence map on the scorecard and a timeline of every test in the casebook."
   ]
  },
  "examples": {
@@ -119,9 +119,131 @@
   "N_DRAFTS": 6,
   "N_ACTIONS": "over 500",
   "N_COMMITS": "29",
-  "N_VERSIONS": "46",
+  "N_VERSIONS": "47",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"
- }
+ },
+ "tests": [
+  {
+   "title": "Baselines",
+   "tag": "learned",
+   "king": false,
+   "asked": "How close do simple rules get, with no AI?",
+   "found": "Last wave's answers, the average of other countries and demographics alone set the bar any AI has to beat.",
+   "changed": "The yardstick"
+  },
+  {
+   "title": "Chatbot stress test",
+   "tag": "learned",
+   "king": false,
+   "asked": "Can a chatbot give each group's answers blind?",
+   "found": "It reproduced 81% of the real differences between groups in the US, but only 36% in Singapore and 25% in China: groups came out too alike.",
+   "changed": "Named the main problem: flattening"
+  },
+  {
+   "title": "Five fixes for flattening",
+   "tag": "kept",
+   "king": false,
+   "asked": "Can the chatbot's flat answers be fixed?",
+   "found": "Stretching its differences, sharpening its answers and showing it real answers first did not help (still about 5 points off in Singapore). Building citizens from real survey records did.",
+   "changed": "Record citizens; the other fixes dropped"
+  },
+  {
+   "title": "Learning from more countries",
+   "tag": "kept",
+   "king": false,
+   "asked": "Does learning from more countries help?",
+   "found": "Record citizens learned from 61 other countries, about 90,000 people, were more accurate than from 2: 3.7 against 4.2 points off.",
+   "changed": "Record citizens learn from many countries"
+  },
+  {
+   "title": "Weighing sources by track record",
+   "tag": "kept",
+   "king": true,
+   "asked": "King's superforecasting idea: should each source count by how accurate it has been?",
+   "found": "Yes. Record citizens earned about three times the chatbot's weight.",
+   "changed": "The blend"
+  },
+  {
+   "title": "Published findings as evidence",
+   "tag": "dropped",
+   "king": true,
+   "asked": "King's idea: do news, reports and research add anything?",
+   "found": "96 published findings on Singapore were 8 points off on their own and did not improve the estimates.",
+   "changed": "Rule 4"
+  },
+  {
+   "title": "The survey library",
+   "tag": "dropped",
+   "king": true,
+   "asked": "King's idea: can we borrow the most similar question from another survey?",
+   "found": "Typically 11 points off, and about 9 even where the wording was near-identical.",
+   "changed": "Rule 4"
+  },
+  {
+   "title": "Small surveys, scored honestly",
+   "tag": "corrected",
+   "king": false,
+   "asked": "Was our first small-survey result right?",
+   "found": "No: people were checked against themselves, so 300 looked like 1,500. Redone honestly, 300 real people plus record citizens were about as accurate for each group as 600 without AI.",
+   "changed": "How accuracy is measured; Rule 1"
+  },
+  {
+   "title": "The United States, like for like",
+   "tag": "kept",
+   "king": true,
+   "asked": "King asked why the US had not been tested.",
+   "found": "Starting from the real overall answer, record citizens filled in US groups more closely than the chatbot: 1.8 against 2.3 points off.",
+   "changed": "Both countries tested"
+  },
+  {
+   "title": "Which groups stand out",
+   "tag": "learned",
+   "king": false,
+   "asked": "Which groups' answers sit furthest from the average?",
+   "found": "Indian and Malay Singaporeans and young adults in Singapore; Republicans, Democrats and Black Americans in the US.",
+   "changed": "Which groups to watch"
+  },
+  {
+   "title": "Independent audit",
+   "tag": "corrected",
+   "king": false,
+   "asked": "Does every number on the page hold up?",
+   "found": "The \"standout groups\" figures were really averages over all groups. Redone, the chatbot kind did not help most groups in Singapore.",
+   "changed": "Page rewritten (QA finding 24)"
+  },
+  {
+   "title": "One method for everything",
+   "tag": "corrected",
+   "king": true,
+   "asked": "King noticed the page mixed setups.",
+   "found": "One test now produces every headline number. AI still makes a survey about twice as valuable, the gain is biggest for small groups, and which AI to add depends on whether the question has been asked before.",
+   "changed": "Every headline number; Rule 2 (QA findings 47 to 66)"
+  },
+  {
+   "title": "Three more ideas",
+   "tag": "kept",
+   "king": true,
+   "asked": "King chose three ways to make AI more accurate.",
+   "found": "Five chatbots helped only when each was counted by its track record, then about as much as the best one. About 20 standard questions kept most of the benefit of 76. Extra people from small groups helped them about a point when read alone, less with AI.",
+   "changed": "Rules 1 to 3"
+  },
+  {
+   "title": "How consistent people are",
+   "tag": "kept",
+   "king": true,
+   "asked": "King asked whether \"people don't fully agree with themselves\" was backed by evidence.",
+   "found": "People repeat 69% (our check) to 81% (Stanford study) of their answers weeks later, but a typical group's answers move only 1.7 points.",
+   "changed": "Score groups, not individuals (QA findings 69 to 72)"
+  },
+  {
+   "title": "Streamlining and a third audit",
+   "tag": "corrected",
+   "king": true,
+   "asked": "King asked for a thorough QA and a smoother page.",
+   "found": "No number was wrong, but the short answer overstated record citizens: for a brand-new question the two kinds of AI did about as well as each other.",
+   "changed": "Short answer corrected (QA findings 73 to 82)"
+  }
+ ]
 }

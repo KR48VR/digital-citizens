@@ -201,6 +201,31 @@ BLEND_BARS = ('<figure class="blendfig"><h4>How much each voice counts</h4><p cl
 BLEND_TXT = {"rec": str(round(BL["rec"])), "chat": str(round(BL["chat"])), "IND_n": str(round(BLEND["IND"][0])), "example": str(round(EXAMPLE))}
 
 
+# ---- decision tree: how much AI adds by group size (both countries, every survey size)
+GS = []
+for t in TAGS:
+    c_ = pd.read_csv(RES / f"one_method_{t}_cells.csv")
+    pc_ = c_.groupby(["config", "n", "question_id", "group"], as_index=False).agg(mae=("mae_pts", "mean"), ng=("n_group", "mean"))
+    for (n, g), d in pc_[pc_.config.isin(["survey alone", BOTH])].groupby(["n", "group"]):
+        a_, b_ = d[d.config == "survey alone"].mae.median(), d[d.config == BOTH].mae.median()
+        GS.append((d.ng.mean(), a_ - b_, 1 - b_ / a_))
+GS = pd.DataFrame(GS, columns=["people", "gain", "cut"])
+SMALL, LARGE = GS[GS.people < 100], GS[GS.people >= 100]
+TREE = {"gain_small": f1(SMALL.gain.median()), "pct_small": str(round(100 * SMALL.cut.median())),
+        "gain_large": f1(LARGE.gain.median()), "pct_large": str(round(100 * LARGE.cut.median()))}
+assert SMALL.gain.median() > 3 * LARGE.gain.median(), "AI adds most below about 100 people"
+
+# ---- boosting small groups (rule 3, evidence map): about a point without AI, little with it
+BOOST = {}
+for line in (RES / "boost_vs_standard.md").read_text().splitlines():
+    m_ = re.match(r"\| ethnic=(Malay|Indian) \| (.+?) \| [0-9.]+ \| [0-9.]+ \| ([+-][0-9.]+) \(([+-][0-9.]+) to ([+-][0-9.]+)\)", line)
+    if m_:
+        BOOST[(m_.group(1), m_.group(2))] = tuple(float(x) for x in m_.groups()[2:])
+for g in ("Malay", "Indian"):
+    assert -1.5 < BOOST[(g, "survey alone")][0] < -0.75, g
+    assert BOOST[(g, BOTH)][0] > -0.6 and BOOST[(g, BOTH)][2] > 0, g
+
+
 # ---- analysts: every method, both countries
 LABELS = [("survey alone", "Survey alone"), ("+ chatbot kind", "With the chatbot kind"),
           ("+ record citizens (own survey)", "With record citizens learned from your own survey"), (BOTH, "With record citizens from your own survey plus the chatbot kind"),
@@ -275,6 +300,8 @@ SELF_FMT = {"match": lambda d: str(round(100 * d["match"])), "match_yes_no": lam
 
 def inline(m):
     kind, args = m.group(1), m.group(2).split("|")
+    if kind == "tree":
+        return TREE[args[0]]
     if kind == "blend":
         return BLEND_TXT[args[0]]
     if kind == "self":
@@ -334,7 +361,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self|blend):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|ppl|grp|floor|worth|self|blend|tree):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 

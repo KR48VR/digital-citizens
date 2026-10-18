@@ -109,7 +109,8 @@ Use the `c-suite-explainer` skill and `glossary.md`. Page order that worked:
 short answer → two ways to build a digital citizen, shown with one person → how we measure accuracy
 (the one test, points off, the scale, why groups rather than individuals) → what it is worth → where AI helps
 most (which AI, by whether the question was asked before; small groups; why the chatbot works better in the
-US) → five short rules → limits and what to test next → full evidence folded away. Define the yardstick before
+US) → what we tested and where it led (kept, dropped, corrected) → a decision tree for when and how to use AI
+→ five short rules → limits and what to test next → full evidence folded away. Define the yardstick before
 the first result, give every section one "so what", and say each finding once: the rules point back to the
 evidence rather than repeating it.
 Template: `templates/scorecard_page/`.

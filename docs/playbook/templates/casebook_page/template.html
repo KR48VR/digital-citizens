@@ -30,6 +30,24 @@
   .flow > div { background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 14px; display: grid; gap: 4px; align-content: start; min-width: 0; counter-increment: f; }
   .flow > div::before { content: counter(f); font-family: var(--display); font-weight: 600; font-size: 22px; color: var(--ink); }
   .flow b { color: var(--ink); }
+  .ts-sum { font-size: 15px; }
+  .tests { list-style: none; margin: 0; padding: 0; display: grid; }
+  .tests > li { position: relative; padding: 0 0 18px 40px; }
+  .tests > li::before { content: ""; position: absolute; left: 13px; top: 30px; bottom: 2px; border-left: 2px solid var(--grid); }
+  .tests > li:last-child::before { display: none; }
+  .ts-mark { position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font: 600 14px/24px var(--body); text-align: center; box-sizing: border-box; }
+  .ts-kept .ts-mark { background: var(--ink); color: var(--bg); }
+  .ts-dropped .ts-mark { border-color: var(--muted); color: var(--muted); }
+  .ts-corrected .ts-mark { border-style: dashed; }
+  .ts-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 2px 0 6px; }
+  .ts-head strong { font-family: var(--display); font-weight: 600; font-size: 17px; color: var(--ink); }
+  .ts-n { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ts-tag, .kchip { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); border: 1px solid var(--ring); border-radius: 999px; padding: 1px 8px; }
+  .kchip { color: var(--ink); border-color: var(--ink); }
+  .tests dl { margin: 0; display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 3px 10px; font-size: 15px; color: var(--ink-2); max-width: 72ch; }
+  .tests dt { color: var(--muted); font-size: 13px; padding-top: 2px; }
+  .tests dd { margin: 0; }
+  @media (max-width: 600px) { .tests dl { grid-template-columns: minmax(0, 1fr); } .tests dt { padding-top: 4px; } }
   .flow span { font-size: 14px; color: var(--ink-2); }
   @media (max-width: 700px) { .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
@@ -52,7 +70,7 @@
   .dot { stroke: var(--surface); stroke-width: 1.5; cursor: default; }
   .d-tool { fill: var(--tool); } .d-team { fill: var(--team); } .d-ind { fill: var(--ind); }
   .tick { stroke: var(--axis); stroke-width: 1; }
-  .tl { font-family: var(--body); font-size: 8px; fill: var(--muted); }
+  text.tl { font-family: var(--body); font-size: 11px; fill: var(--muted); }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
@@ -95,6 +113,7 @@
   @media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
 </style>
 
+<script>document.documentElement.lang = "en";</script>
 <main>
   <header>
     <div class="eyebrow">Digital citizens · companion to the scorecard · October 2026</div>
@@ -109,7 +128,7 @@
     <div class="eyebrow">Part 1</div>
     <h2>How we did this</h2>
     <p>The question King set: can AI stand in for real people when you want to know how different groups, in different countries, would respond to a product, strategy or policy, and how do we know it is accurate? Everything was tested against what real people actually said, on real public surveys, before any claim reached the page.</p>
-    <div class="flow" aria-label="The method in four steps">
+    <div class="flow" role="group" aria-label="The method in four steps">
       <div><b>Real survey records</b><span>Public surveys where every person's answers to many questions are published.</span></div>
       <div><b>Two kinds of digital citizen</b><span>The chatbot kind answers in character. Record citizens predict each real person's answer from their record.</span></div>
       <div><b>Draw small surveys</b><span>Small surveys of 150, 300 and 600 people are drawn many times from a large real one.</span></div>
@@ -133,23 +152,7 @@
     </table></div>
 
     <h3>The tests, in the order we ran them</h3>
-    <ol class="list">
-      <li><strong>Baselines.</strong> How close simple rules get: last wave's answers, the average of other countries, demographics alone.</li>
-      <li><strong>Chatbot stress test.</strong> Claude, standing in for the chatbot, predicted group answers blind in the US, Singapore and China. It reproduced 81%, 36% and 25% of the real differences between groups.</li>
-      <li><strong>Five fixes for flattening.</strong> Stretching the chatbot's differences, sharpening its answers and showing it real answers first did not help. Building citizens from real survey records did.</li>
-      <li><strong>Learning from more countries.</strong> Record citizens trained on 61 other countries, about 90,000 people, were more accurate than those trained on 2.</li>
-      <li><strong>Weighing sources by track record.</strong> King's superforecasting idea: record citizens earned about three times the chatbot's weight.</li>
-      <li><strong>Published findings as evidence.</strong> 96 findings were 8 points off on their own and did not improve the estimates.</li>
-      <li><strong>The survey library.</strong> King's idea: borrowing the most similar question from another survey was typically 11 points off, and about 10 for the 2 questions with near-identical wording.</li>
-      <li><strong>Small surveys, scored honestly.</strong> A re-check that corrected an earlier, too-flattering result: 300 real people plus record citizens are about as accurate for each group as 600 without AI.</li>
-      <li><strong>The United States, like for like.</strong> Starting from the real overall answer, record citizens filled in US groups more closely than the chatbot: 1.8 against 2.3 points off.</li>
-      <li><strong>Which groups stand out.</strong> Checked in the data: Indian and Malay Singaporeans and young adults most often in Singapore; Republicans, Democrats and Black Americans in the US.</li>
-      <li><strong>Independent audit.</strong> A helper agent recomputed every number on the scorecard from the raw results. Its biggest catch: the "standout groups" figures were really averages over all groups. Re-done properly, they showed the chatbot kind does not help most groups in Singapore but helps its standout groups about as much as record citizens. The page was rewritten to match (QA log, finding 24).</li>
-      <li><strong>One method for everything.</strong> King noticed the page mixed setups: the headline blended both kinds of AI, while the chatbot section used a different comparison. One new test now produces every headline number: small surveys drawn ten times, each group's answer worked out with and without each kind of AI in the same way, with 95% ranges. A second audit showed the US "past survey" result was really reuse of the same questions asked two years earlier. The final picture: AI still makes a survey about twice as valuable, the gain is biggest for small groups, and which AI to add depends on whether your question has been asked before. For a brand-new question, record citizens learned from your own survey plus the chatbot kind did best (QA log, findings 47 to 66).</li>
-      <li><strong>Three more ideas.</strong> King asked for other ways to make AI more accurate and picked three to test. A panel of five chatbots helped only when each was counted by its track record, and then about as much as the best single model; a small Asian-built open model added nothing. About 20 standard questions kept most of the benefit of 80. Boosting small groups in the survey helped them by about a point when read alone, less once AI fills in (docs/10).</li>
-      <li><strong>How consistent people are.</strong> King asked whether the claim that people don't fully agree with themselves was backed by evidence. It was, but worded too loosely: it is an average, not "most people". Checked against the Stanford paper (81% of answers repeated two weeks later) and recomputed on Twin-2K-500: 69% of answers repeated, from 81% on two-choice questions to 44% on six- or seven-choice ones, yet a typical group's answer shares moved only 1.7 points, and more for small groups. Both are now on the scorecard. The check also found mislabelled groups in an old loader and two out-of-date figures in this casebook (QA log, findings 69 to 72).</li>
-      <li><strong>Streamlining and a third audit.</strong> King asked for a thorough QA and a smoother page. The page now explains how accuracy is measured before showing any result, and says each finding once. Two independent reviewers rechecked every number, and the language, accessibility and design. No number was wrong, but three statements claimed more than the data showed. The biggest was in the short answer: for a brand-new question the two kinds of AI did about as well as each other, and record citizens clearly beat the chatbot only when the question had been asked before (QA log, findings 73 to 82).</li>
-    </ol>
+    {{TESTS_TIMELINE}}
 
     <h3>How accuracy is measured</h3>
     <ul class="list">
@@ -312,4 +315,13 @@
       });
     });
   })();
+</script>
+<script>
+  // tables that scroll sideways must be reachable by keyboard
+  document.querySelectorAll('.wrap').forEach(function (w) {
+    if (w.scrollWidth > w.clientWidth + 1 || w.scrollHeight > w.clientHeight + 1) {
+      var c = w.querySelector('caption');
+      w.tabIndex = 0; w.setAttribute('role', 'region'); w.setAttribute('aria-label', c ? c.textContent : 'Scrollable table');
+    }
+  });
 </script>

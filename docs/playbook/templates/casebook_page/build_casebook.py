@@ -63,6 +63,20 @@ def ex_block(typ):
         out.append(f'<li><span class="cut">#{r["n"]}, {r["time"]}, task {r["task"][1:]}</span><span class="q">King: “{e(r["king"])}”</span><span>Claude: {e(r["claude"])}</span></li>')
     return "".join(out)
 
+# ---------- the tests, in the order we ran them: a timeline
+TAG = {"kept": ("✓", "Kept"), "dropped": ("✗", "Dropped"), "corrected": ("↺", "Corrected"), "learned": ("•", "Learned")}
+tl_items = []
+for i, t in enumerate(FACTS["tests"], 1):
+    icon, lab = TAG[t["tag"]]
+    king = '<span class="kchip">King</span>' if t["king"] else ""
+    tl_items.append(f'<li class="ts-{t["tag"]}"><span class="ts-mark" aria-hidden="true">{icon}</span><div class="ts-head"><span class="ts-n">{i}</span><strong>{e(t["title"])}</strong>'
+                    f'<span class="ts-tag">{lab}</span>{king}</div><dl><dt>Asked</dt><dd>{e(t["asked"])}</dd><dt>Found</dt><dd>{e(t["found"])}</dd>'
+                    f'<dt>Changed</dt><dd>{e(t["changed"])}</dd></dl></li>')
+tc = Counter(t["tag"] for t in FACTS["tests"])
+tests_html = (f'<p class="ts-sum">{len(FACTS["tests"])} tests: {tc["kept"]} kept, {tc["dropped"]} dropped, {tc["corrected"]} that corrected an earlier result, '
+              f'and {tc["learned"]} that taught us something to build on. {sum(t["king"] for t in FACTS["tests"])} started from a question or idea of King\'s.</p>'
+              f'<ol class="tests">{"".join(tl_items)}</ol>')
+
 # ---------- QA log
 qa_rows = []
 for q in QA:
@@ -71,7 +85,7 @@ for q in QA:
 qa_counts = Counter(q["area"] for q in QA)
 
 tpl = (HERE / "template.html").read_text()
-out = (tpl.replace("{{TASK_ROWS}}", "\n".join(task_rows)).replace("{{TIMELINE}}", timeline).replace("{{LOG_ROWS}}", "\n".join(log_rows))
+out = (tpl.replace("{{TASK_ROWS}}", "\n".join(task_rows)).replace("{{TIMELINE}}", timeline).replace("{{TESTS_TIMELINE}}", tests_html).replace("{{LOG_ROWS}}", "\n".join(log_rows))
           .replace("{{EX_TOOL}}", ex_block("tool")).replace("{{EX_TEAM}}", ex_block("teammate")).replace("{{EX_IND}}", ex_block("independent"))
           .replace("{{QA_ROWS}}", "\n".join(qa_rows)).replace("{{N_TOOL}}", str(cnt["tool"])).replace("{{N_TEAM}}", str(cnt["teammate"]))
           .replace("{{N_IND}}", str(cnt["independent"])).replace("{{N_ALL}}", str(len(rows))).replace("{{N_QA}}", str(len(QA)))
