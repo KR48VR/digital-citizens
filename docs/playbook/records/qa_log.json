@@ -966,5 +966,13 @@
   "fix": "Every number in What to do links to where it is shown, How we know links to the analysts' tables and notes, and the casebook is linked as private, access on request. All 28 in-page links were clicked in a browser and land on their target, opening folds on the way.",
   "status": "Fixed",
   "id": 121
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accessibility",
+  "finding": "On the new light-mode colour bands, the grey label text (\"The short answer\" and the small-groups table headers) fell below 4.5:1 contrast.",
+  "fix": "Grey text inside the bands is a little darker; the accessibility check passes in light and dark mode, at desktop and phone widths.",
+  "status": "Fixed",
+  "id": 122
  }
 ]

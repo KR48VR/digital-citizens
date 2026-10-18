@@ -214,3 +214,20 @@
   .chead { justify-self: end; font-size: 12px; color: var(--muted); margin-bottom: -4px; }
   /* Text runs the full width of the column, the same as boxes, tables and charts, so no ragged gap on the right. */
   p, .key, .steps p, figcaption, .list, .note, .howto, ol.rules, .recipe, .verdict { max-width: none; }
+
+  /* sections: a number and a colour band each, so a team can say "section 4, the purple band" */
+  :root {
+    --band-1: color-mix(in srgb, var(--bg) 90%, var(--s1));
+    --band-2: color-mix(in srgb, var(--bg) 90%, var(--s3));
+    --band-3: color-mix(in srgb, var(--bg) 90%, #b58900);
+    --band-4: color-mix(in srgb, var(--bg) 90%, #8e5cc4);
+    --band-5: color-mix(in srgb, var(--bg) 90%, var(--s2));
+  }
+  main { counter-reset: sec; }
+  main > section { --muted: color-mix(in srgb, var(--ink) 66%, var(--bg)); padding: 34px 0; box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); background: var(--band); }
+  #answer { --band: var(--band-1); } #kinds { --band: var(--band-2); } #decide { --band: var(--band-3); } #know { --band: var(--band-4); } #limits { --band: var(--band-5); }
+  main > section > h2::before { counter-increment: sec; content: counter(sec) "  \00B7  "; color: var(--muted); font-weight: 400; }
+  .toc { counter-reset: toc; }
+  .toc a::before { counter-increment: toc; content: counter(toc) "  "; color: var(--muted); }
+  .toc a:nth-child(1) { background: var(--band-1); } .toc a:nth-child(2) { background: var(--band-2); } .toc a:nth-child(3) { background: var(--band-3); }
+  .toc a:nth-child(4) { background: var(--band-4); } .toc a:nth-child(5) { background: var(--band-5); }

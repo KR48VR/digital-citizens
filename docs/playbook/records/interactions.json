@@ -1315,6 +1315,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Added 19 links (every number in What to do, How we know to the analysts' evidence), a casebook link in the map of what we tested and at the foot, both marked \"private; access on request\", and checked that all 28 in-page links land, opening folds on the way."
+  },
+  {
+   "n": 126,
+   "time": "03:55 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "to make it easier for the reader to know they are reading a new set of insights, shall we make each of the major sections e.g. Two kinds of citizens, What to Do, How We know etc, a slightly different color and shade?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Mocked up two options side by side in light and dark mode (alternating neutral bands, or a colour per section, both with section numbers) and recommended the neutral bands, since colour already marks the kinds of AI."
+  },
+  {
+   "n": 127,
+   "time": "03:58 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "Option B is good. It's easier for a team to say look at point 4 the green band etc.",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Built Option B: numbered sections, each on its own colour band, with matching chips in the contents bar; darkened the grey label text inside the bands to pass contrast checks in light mode."
   }
  ],
  "tasks": {

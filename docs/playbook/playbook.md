@@ -126,7 +126,8 @@ tech background can follow the main path in a few minutes while the detail stays
 Say each finding once (explain a caveat where it is first needed, then refer back), use one label for every
 takeaway ("So what"), point cross-references at headings that exist, link every number in "What to do" to where
 it is shown and every finding in "How we know" to the full evidence for analysts (a link into a fold opens it),
-link the casebook marked "private; access on request", and test the page
+link the casebook marked "private; access on request", number the five sections and give each its own colour band
+(matched in the contents bar, so a team can say "section 4, the purple band"), and test the page
 on a cold reader (a helper agent playing an executive with no stats background) before sharing.
 Template: `templates/scorecard_page/`.
 
