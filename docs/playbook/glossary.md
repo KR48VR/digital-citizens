@@ -10,6 +10,7 @@ have been defined on the page.
 | record citizens | AI built on real people's past survey answers; predicts each real person's answer from what they said about other things | the 62-year-old woman |
 | the chatbot kind | a chatbot answering in character ("You are a 62-year-old Singaporean woman") | the 62-year-old woman |
 | survey alone | each group's answer read straight off the people in the survey; the comparison every method is measured against | the three-ways list |
+| both kinds of AI | record citizens and the chatbot kind used together. Never write "AI" alone for a result: say which kind, or "both kinds of AI", and "blended with your survey" when a survey is involved | the short answer |
 | points off | gap between an estimate and the real answer, in percentage points | 40% real vs 45% estimated = 5 points off |
 | typical group | the middle result across all groups and questions: half land closer, half further off | "How we measure accuracy" |
 | small groups | groups with few people in your survey | a 150-person survey holds about 14 Indian Singaporeans |

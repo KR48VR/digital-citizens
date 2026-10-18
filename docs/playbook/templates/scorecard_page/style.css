@@ -189,3 +189,6 @@
   .example ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: var(--ink-2); max-width: 66ch; }
   .example p { max-width: 66ch; }
   .br > li.end + li.end { border-left-width: 3px; }
+  .verdict ol { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; }
+  .verdict li { padding-left: 2px; }
+  .verdict li::marker { font-weight: 600; }

@@ -702,5 +702,13 @@
   "fix": "Stated plainly on the page as not yet known; needs a real pilot to answer.",
   "status": "Open",
   "id": 88
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "The page asked readers to remember that \"AI\" on its own meant both kinds together, and used \"AI\" for the chatbot alone, record citizens alone and both at different points (King's catch).",
+  "fix": "Every result now names what is used: the chatbot kind, record citizens, or both kinds of AI, and \"blended with your survey\" where a survey is involved; the glossary records the rule.",
+  "status": "Fixed",
+  "id": 89
  }
 ]

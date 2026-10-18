@@ -925,6 +925,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Rebuilt the page in layers (a short main path with detail folded), added a worked example, and tested it on five fresh readers playing a non-technical executive, fixing what each one tripped on."
+  },
+  {
+   "n": 87,
+   "time": "01:47 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "i think we can improve the summary upfront as follows with paragraphing and bullet points: [King's draft of the short answer] ... What do you think of the above? As for your last sentence \"On this page, \"AI\" on its own means both kinds together.\", I think we should just say in the rest of the page when we are using one type, when we are using both, and when we are using either or both in conjunction with a survey. It is too much to ask to have a new reader hold all these different definitions in the head, because given how many QA we have done, it is already hard even for you to hold this in your head.",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Adopted King's short answer with light edits for grammar and accuracy, and replaced every unqualified \"AI\" on the page with which kind is used and whether it is blended with a survey."
+  },
+  {
+   "n": 88,
+   "time": "01:50 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "i don;t know why this is here so upfront, why don't we just park it under Limits and what to test next?",
+   "screenshot": true,
+   "mid_task": true,
+   "claude": "Moved the caveats box from under the short answer into Limits, with the pointer to the pilot."
   }
  ],
  "tasks": {

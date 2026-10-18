@@ -49,7 +49,15 @@ def cut_txt(p):
 
 
 # ---- chart: survey alone vs survey + AI (brand-new question), points off by survey size
-SERIES = [("survey alone", "Survey alone", "var(--muted)"), (BOTH, "Survey + AI", "var(--s1)")]
+SERIES = [("survey alone", "Survey alone", "var(--muted)"), (BOTH, "Survey + both kinds of AI", "var(--s1)")]
+
+
+def end_label(label, x):
+    """Long line labels go on two lines ("Survey +" / "both kinds of AI") so they fit a phone-width chart."""
+    if " + " not in label:
+        return label
+    first, rest = label.split(" + ", 1)
+    return f'<tspan x="{x}">{first} +</tspan><tspan x="{x}" dy="1.15em">{rest}</tspan>'
 
 
 def panel(country, tag, ymax=7.0):
@@ -83,7 +91,7 @@ def panel(country, tag, ymax=7.0):
         yy = yy + shift
         g.append(f'<line class="key" x1="{PR+8}" y1="{y0:.1f}" x2="{PR+14}" y2="{yy:.1f}" stroke="{colour}"/>'
                  f'<line class="key" x1="{PR+14}" y1="{yy:.1f}" x2="{PR+24}" y2="{yy:.1f}" stroke="{colour}"/>'
-                 f'<text class="end" x="{PR+28}" y="{yy+4:.1f}">{label}</text>')
+                 f'<text class="end" x="{PR+28}" y="{yy+4:.1f}">' + end_label(label, PR + 28) + '</text>')
     aria = f"{country}, brand-new question: points off for a typical group by survey size. " + " ".join(
         f"{label}: " + ", ".join(f"{f1(med(tag, key, n))} at {n}" for n in SIZES) + "." for key, label, _ in SERIES)
     return (f'<div class="panel"><p class="ptitle">{country}</p><svg class="lines" viewBox="0 0 {W} {PB+42}" role="img" aria-label="{aria}">'
@@ -153,8 +161,8 @@ for key, (g, label) in GROUPS.items():
     a_, ng = grp(key, "survey alone", SMALL_N)
     b_, _ = grp(key, BOTH, SMALL_N)
     small_rows.append(f'<tr><th scope="row">{label}</th><td class="num">about {round(ng)}</td><td class="num"><b>{f1(a_)}</b></td><td class="num"><b>{f1(b_)}</b></td></tr>')
-TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 300-person survey in Singapore, brand-new question. AI here is both kinds together.</caption>\n'
-               '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With AI</th></tr></thead>\n      <tbody>\n        '
+TABLE_SMALL = ('<div class="wrap">\n    <table class="pts">\n      <caption>Points off for each group, from a 300-person survey in Singapore, brand-new question. "With both kinds of AI" means the survey blended with record citizens and the chatbot.</caption>\n'
+               '      <thead><tr><th>Group</th><th class="num">People in the survey</th><th class="num">Survey alone</th><th class="num">With both kinds of AI</th></tr></thead>\n      <tbody>\n        '
                + "\n        ".join(small_rows) + "\n      </tbody>\n    </table>\n    </div>")
 
 # ---- the blend: how much each voice counts (Singapore, survey of 300, brand-new question)
