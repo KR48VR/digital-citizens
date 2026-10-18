@@ -766,5 +766,13 @@
   "fix": "Text now runs the full column width; the column narrowed from 760 to 680 pixels so lines stay readable.",
   "status": "Fixed",
   "id": 96
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Layout",
+  "finding": "Moving \"How to read the numbers\" above the two-case diagram put the scale and other ideas between the summary and the diagram that follows from it, before the reader had any context for them (King's catch).",
+  "fix": "The diagram follows the summary directly and explains its own numbers in the caption; the fuller explanation comes after it.",
+  "status": "Fixed",
+  "id": 97
  }
 ]

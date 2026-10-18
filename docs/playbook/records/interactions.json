@@ -1045,6 +1045,16 @@
    "screenshot": true,
    "mid_task": false,
    "claude": "Explained the line-length limit on paragraphs, then made text and boxes share one column width, narrowing the column slightly so lines stay readable."
+  },
+  {
+   "n": 99,
+   "time": "02:32 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "the what the two cases looked like should still follow immediately from the summary because it follws directly from the type of AI and respective performance. your new sequence introduces concepts that have no context from the summary and only comes later in the two cases. it's confusing.",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Put the two cases straight after the summary again, with a caption that defines points off and a typical group in one line, and moved the fuller explanation after the diagram."
   }
  ],
  "tasks": {
