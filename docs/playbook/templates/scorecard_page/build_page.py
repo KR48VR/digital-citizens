@@ -218,6 +218,7 @@ for t in TAGS:
         a_, b_ = d[d.config == "survey alone"].mae.median(), d[d.config == BOTH].mae.median()
         GS.append((d.ng.mean(), a_ - b_, 1 - b_ / a_))
 GS = pd.DataFrame(GS, columns=["people", "gain", "cut"])
+NQ = {t: pd.read_csv(RES / f"one_method_{t}_cells.csv").question_id.nunique() for t in TAGS}  # questions in the one test
 SMALL, LARGE = GS[GS.people < 100], GS[GS.people >= 100]
 TREE = {"gain_small": f1(SMALL.gain.median()), "pct_small": str(round(100 * SMALL.cut.median())),
         "gain_large": f1(LARGE.gain.median()), "pct_large": str(round(100 * LARGE.cut.median()))}
@@ -337,6 +338,8 @@ SELF_FMT = {"match": lambda d: str(round(100 * d["match"])), "match_yes_no": lam
 
 def inline(m):
     kind, args = m.group(1), m.group(2).split("|")
+    if kind == "nq":
+        return str(NQ[args[0]])
     if kind == "tree":
         return TREE[args[0]]
     if kind == "blend":
@@ -412,7 +415,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree|nq):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 

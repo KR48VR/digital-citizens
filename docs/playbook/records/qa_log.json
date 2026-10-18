@@ -878,5 +878,13 @@
   "fix": "The explainer says it in words (an average in which each counts for a share; the survey's share grows with group size; each AI's share with its accuracy on other questions) and lets the bars show the shares. The fitted weights moved to the analysts' section.",
   "status": "Fixed",
   "id": 110
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "\"The other questions in our test\" assumed the reader knew the test, which is only described later under \"How we know\" (King's catch).",
+  "fix": "One sentence says what the test covered and how each AI's share was set; the question counts come from the results files.",
+  "status": "Fixed",
+  "id": 111
  }
 ]

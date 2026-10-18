@@ -1225,6 +1225,16 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Explained where each number came from (weights fitted on the other questions, an average survey's group size, made-up example answers), agreed they were the method's inner workings, and replaced them with the idea in words plus the bars; the weights moved to the analysts' section."
+  },
+  {
+   "n": 117,
+   "time": "03:26 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "i think we need to explain this briefly e.g. what test? => Each kind of AI's share depends on how accurate it was on the other questions in our test",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added one sentence on the test (20 questions in Singapore, 25 in the US; each AI's share set by what worked best on all the other questions, judged against real answers) and put the two things the shares depend on in order."
   }
  ],
  "tasks": {
