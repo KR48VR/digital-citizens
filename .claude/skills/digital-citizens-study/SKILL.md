@@ -33,4 +33,14 @@ Read `docs/playbook/playbook.md` first; it is the step-by-step method. Key facts
 - **Pages:** scorecard (private; King shares it) https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45 ;
   casebook (private; access on request: method, QA log, King and AI, package) https://claude.ai/artifact/Pqi6H7QszpxTH9KjXi5Lz2 ; index in `docs/playbook/README.md`.
 
+- **Record-reading trial (next; King approved up to $10):** when King says "Run the record-reading trial", use
+  `scripts/record_reading_trial.py`. It needs `ANTHROPIC_API_KEY` (King adds it in the environment settings; never
+  ask for it in chat) and `data/raw/wvs` (run `scripts/download_wvs.py` first if it is missing). Run `plan` (no
+  API calls), then `run` (one batch to claude-opus-5-5 at low effort; it refuses to send anything if the worst case
+  is over $10; most batches finish within an hour), then `score`. Report to King in plain words: did reading each
+  person's survey record make the chatbot more accurate than knowing only their demographics, for individuals and
+  for groups, next to the 100 people's own answers; say what it cost. It is a 100-person pilot, a signal, not a
+  result. Do not change the scorecard until King decides; then log the exchanges in the casebook
+  (`docs/playbook/templates/casebook_page/README.md`).
+
 Commit and push to the session's branch after each meaningful change; never commit raw data.
