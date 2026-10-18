@@ -1345,6 +1345,26 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Ran three helper agents (every number recomputed, a cold read as an executive, the companion documents checked against the page) alongside browser checks of both pages; fixed 23 findings, added one comparison to the test, recounted the casebook, wrote the lessons into the playbook, QA checklist, glossary, skills and casebook, and left three decisions for King."
+  },
+  {
+   "n": 129,
+   "time": "04:20 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "show me what you are thinking for 1? show me for 2?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Mocked up both on the real page: two versions of a one-line pointer to the caveats at the end of the short answer, and a new Limits item on how each kind of AI's share would be set for a new topic, with a recommendation for each."
+  },
+  {
+   "n": 130,
+   "time": "04:24 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "no need to do 1. the whole point is not to give so many nuances for the reader. ok for 2",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Left the short answer as it was, added the Limits item and the matching words in \"What to test next\", and recorded King's preference in the working guide."
   }
  ],
  "tasks": {

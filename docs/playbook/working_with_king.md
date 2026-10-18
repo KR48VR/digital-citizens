@@ -10,6 +10,8 @@ Full record with every interaction: the Digital Citizens Casebook (private; acce
 - Numbers with their meaning: what the number is, what it means, and so what.
 - One running example (the 62-year-old woman) instead of many new ones.
 - Claims backed by evidence, with the source named when asked.
+- A short answer free of caveats and nuances: they live in Limits. King declined even a one-line pointer
+  to them in the summary ("the whole point is not to give so many nuances for the reader").
 
 ## How King works
 - Reviews the live page independently and sends screenshots with highlighted text.

@@ -1051,16 +1051,16 @@
   "when": "Final QA of both pages",
   "area": "Method",
   "finding": "The cold reader would want the main caveats (no separately run survey, untested on products and prices) in the short answer, not only in Limits; King earlier chose to keep caveats in Limits.",
-  "fix": "For King to decide.",
-  "status": "Open",
+  "fix": "King's decision: keep the short answer free of nuances; the caveats stay in Limits, with no pointer in the summary.",
+  "status": "Declined",
   "id": 132
  },
  {
   "when": "Final QA of both pages",
   "area": "Method",
   "finding": "For a new topic, how each kind of AI's share would be set in practice is not shown: our test set the shares on other questions with known answers.",
-  "fix": "For King to decide whether to add this to \"What we have not shown yet\".",
-  "status": "Open",
+  "fix": "Added to \"What we have not shown yet\": a pilot gives a team the known answers to set and check the shares on; for a one-off survey the shares would be borrowed from a test like ours, which we have not tried. \"What to test next\" says the pilot would show how well the shares carry over.",
+  "status": "Fixed",
   "id": 133
  }
 ]
