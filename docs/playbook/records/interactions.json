@@ -945,6 +945,16 @@
    "screenshot": true,
    "mid_task": true,
    "claude": "Moved the caveats box from under the short answer into Limits, with the pointer to the pilot."
+  },
+  {
+   "n": 89,
+   "time": "01:56 (18 Oct)",
+   "task": "T23",
+   "type": "teammate",
+   "king": "This part is still unclear: \"For a brand-new question, the two did about as well as each other, and best together. They must be combined with a real survey, which we call blending: on its own the chatbot was only rough, and record citizens need your survey to learn from.\" what do we mean by \"best together\"? and \"on its own\" i.e. without a survey, and what is \"rough\"?? similarly when we say record citizens need a survey, isn't it already mentioned by \"combined with a real survey\" and \"blending\" => it's all jumbled up",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Rewrote the item one idea per sentence: a brand-new question needs a survey; without one the chatbot alone was much less accurate and record citizens have nothing to learn from; with one, blending in either kind helped about equally, and both together most."
   }
  ],
  "tasks": {

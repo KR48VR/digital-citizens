@@ -710,5 +710,13 @@
   "fix": "Every result now names what is used: the chatbot kind, record citizens, or both kinds of AI, and \"blended with your survey\" where a survey is involved; the glossary records the rule.",
   "status": "Fixed",
   "id": 89
+ },
+ {
+  "when": "Making the scorecard easy to follow",
+  "area": "Language",
+  "finding": "The short answer's brand-new item packed four ideas into two sentences, used \"rough\" before the page defines it, left \"best together\" and \"on its own\" unexplained, and said twice that a survey is needed (King's catch).",
+  "fix": "Rewritten one idea per sentence, with blending defined where it is first used and no undefined terms.",
+  "status": "Fixed",
+  "id": 90
  }
 ]
