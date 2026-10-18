@@ -1235,6 +1235,56 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Added one sentence on the test (20 questions in Singapore, 25 in the US; each AI's share set by what worked best on all the other questions, judged against real answers) and put the two things the shares depend on in order."
+  },
+  {
+   "n": 118,
+   "time": "03:30 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "is \"on all the other questions\" the 20 questions?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained it is the other 19 of the 20 (24 of 25 in the US), leaving out the question being answered so the test stays fair, and proposed saying so."
+  },
+  {
+   "n": 119,
+   "time": "03:31 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "and how do we kow \"what real people said.\"",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained it is the answers of the people in the big real survey who were not drawn, checked in the code, and proposed explaining it where the reader first meets it, in \"How to read the numbers\"."
+  },
+  {
+   "n": 120,
+   "time": "03:33 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "do we need to nmame the WVS and GSS to be specific?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Recommended not naming them at the top, since both are named, with sizes, under \"How we know\"; a link there instead."
+  },
+  {
+   "n": 121,
+   "time": "03:35 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "we go with your suggestion. and after whrre record citizens come from, we should show the decision tree (see screeenshot), instead of the worked example which is now very confusing",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Made both changes; put the decision tree straight after the two kinds of AI, moved the worked example's steps into a fold under it and its unknown cost into Limits, and made links open the fold they point into."
+  },
+  {
+   "n": 122,
+   "time": "03:36 (18 Oct)",
+   "task": "T24",
+   "type": "teammate",
+   "king": "And olease review the logic, flow, and language in the decision tree to be consistent with what we have discussed",
+   "screenshot": false,
+   "mid_task": true,
+   "claude": "Fixed the flow after step 4 (no ends there, yes leads to the pilot question), gave the 2.4 and 3.7 their meaning against the 3-point mark, said step 2 needs the same survey in your country, worded the same, used one phrase for blending, and shortened step 5."
   }
  ],
  "tasks": {

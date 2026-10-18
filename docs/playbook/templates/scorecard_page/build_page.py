@@ -338,8 +338,8 @@ SELF_FMT = {"match": lambda d: str(round(100 * d["match"])), "match_yes_no": lam
 
 def inline(m):
     kind, args = m.group(1), m.group(2).split("|")
-    if kind == "nq":
-        return str(NQ[args[0]])
+    if kind == "nq":  # questions in the test; "others" leaves out the one being answered
+        return str(NQ[args[0]] - (len(args) > 1 and args[1] == "others"))
     if kind == "tree":
         return TREE[args[0]]
     if kind == "blend":
@@ -391,6 +391,11 @@ for t in TAGS:  # short answer: brand new, the two kinds about as good as each o
 for t in TAGS:
     singles = {k_: med(t, k_, 300) for k_ in ("+ chatbot kind", "+ chatbot (Opus)", "+ chatbot (Sonnet)", "+ chatbot (Haiku)", "+ chatbot (Qwen, open, Asian-built)")}
     assert min(singles, key=singles.get) == "+ chatbot (Opus)" and singles["+ chatbot kind"] - singles["+ chatbot (Opus)"] < 0.5, t
+# decision tree: step 2 beats good enough; step 3 alone is a little short of it, blended matches 600 alone
+assert med(us, "last round's answers alone, no survey", 300) < 3 and abs(med(us, "+ last round's answers", 300) - med(us, "last round's answers alone, no survey", 300)) < 0.25
+assert 3 < med(sg, "record citizens alone, no survey", 300) < 4
+lo, hi = CMP[(sg, "+ record citizens", "survey alone", 300, 600)]
+assert lo < 0 < hi, "record citizens from other countries + 300 matches 600 alone"
 # the "what counts as good enough" boxes: 3 is a survey of 600 alone; 5 is a survey of 150 alone or the chatbot alone (Singapore)
 assert 2.5 < med(sg, "survey alone", 600) < 3.5 and 3.5 < med(us, "survey alone", 600) < 4
 for k_, n_ in (("survey alone", 150), ("chatbot kind alone, no survey", 150)):

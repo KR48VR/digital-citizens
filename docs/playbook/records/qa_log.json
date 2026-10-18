@@ -886,5 +886,45 @@
   "fix": "One sentence says what the test covered and how each AI's share was set; the question counts come from the results files.",
   "status": "Fixed",
   "id": 111
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "\"What people really said\" was used from the first numbers on but only explained under \"How we know\" (King's catch).",
+  "fix": "\"How to read the numbers\" now says where it comes from (the people in each large real survey who were not picked) and links to the details.",
+  "status": "Fixed",
+  "id": 112
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "\"The other questions\" in the blending note was vague (King's catch).",
+  "fix": "It says the other 19 (24 in the US), worked out from the results files.",
+  "status": "Fixed",
+  "id": 113
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Layout",
+  "finding": "The worked example came before the decision logic, with its own numbered steps clashing with the tree's (King's catch).",
+  "fix": "The tree comes straight after the two kinds of AI; the steps are a fold under it; the unknown set-up cost is in Limits; links into a fold open it.",
+  "status": "Fixed",
+  "id": 114
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Accuracy",
+  "finding": "The decision tree did not say where to go after step 4, so step 5 (the pilot) seemed to apply even when a survey alone was enough.",
+  "fix": "Step 4 \"No\" ends; \"Yes\" goes on to step 5.",
+  "status": "Fixed",
+  "id": 115
+ },
+ {
+  "when": "Tightening and integrating the scorecard",
+  "area": "Language",
+  "finding": "Steps 2 and 3 gave numbers (2.4, 3.7) without saying how they compare with the 3 points we treat as good enough.",
+  "fix": "Each says so; build checks keep it true. Step 2 also says the same survey in your country, worded the same, as the rule below it does.",
+  "status": "Fixed",
+  "id": 116
  }
 ]

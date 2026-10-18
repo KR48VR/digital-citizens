@@ -112,8 +112,9 @@ tech background can follow the main path in a few minutes while the detail stays
    picture per case it describes, with how to read the numbers (points off, groups, the median) above the bars;
    then what counts as good enough (the scale, each level explained from the tests) and why about 3 points will do.
 2. **Two kinds of digital citizen, shown with one person**; where record citizens learn from, folded.
-3. **What to do**: one worked example, then the other cases as five questions with a number at every answer,
-   then any remaining rules.
+3. **What to do**: the questions in order (a decision tree), each answer saying where to go next or what to do,
+   with a number and its meaning; the step-by-step how-to folded under it; then any remaining rules. No separate
+   worked example: a scenario before the decision logic confused readers.
 4. **How we know**: the one test in three steps, then one picture and one "so what" per finding; the blend,
    groups versus individuals, the table of each AI, the chatbot detail and the map of what we tested, folded.
 5. **Limits and what to test next**, one or two sentences each; caveats live here, not in the summary.
