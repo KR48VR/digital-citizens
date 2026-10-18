@@ -1126,5 +1126,77 @@
   "fix": "The fold says which chatbot each check covered; questions the chatbot cannot have seen are now first in What to test next after the pilot.",
   "status": "Noted",
   "id": 141
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Independent audit: every number on the draft matched the raw files, but the memory conclusion (\"its results on this page are unlikely to come from memory\") covered the page's chatbot, which was in only one of the three checks, and no check covered the United States.",
+  "fix": "The fold says which chatbot each check used and that the checks were in Singapore only; the conclusion is limited to what was tested.",
+  "status": "Fixed",
+  "id": 142
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Audit: the planned memory measure in check 2 pointed towards memory (+0.68 and +0.41) before it was replaced, and the page did not say so.",
+  "fix": "The analysts' note reports the planned values, the unnamed guesses' link (+0.76 and +0.58), the link with that held constant (+0.03 and -0.27) and the replacement; the fold mentions it in one line.",
+  "status": "Fixed",
+  "id": 143
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Audit: \"no closer when named\" holds only for the median; by the average the named guesses were closer (4.8 against 5.2).",
+  "fix": "Fold says \"about the same\"; the note gives both and the median change over all 200 cells (-0.01).",
+  "status": "Fixed",
+  "id": 144
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Audit: \"its group answers were no further off\" in the disguise check had no saved result behind it.",
+  "fix": "Removed from the fold; the note gives the saved result (the 150 people's guesses added up: 3.6 and 3.4 points off).",
+  "status": "Fixed",
+  "id": 145
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Accuracy",
+  "finding": "Audit: \"Claude Opus, the chatbot that did the reading\" is unconfirmed: the panel's Opus version was not recorded.",
+  "fix": "Removed from the fold; the note names it as the panel's Claude Opus, version not recorded.",
+  "status": "Fixed",
+  "id": 146
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Method",
+  "finding": "Audit: \"famous questions fixed before any per-question result was seen\" cannot be verified, because per-question results were saved before the list.",
+  "fix": "Now says what the record shows: written into the script before the check was run.",
+  "status": "Fixed",
+  "id": 147
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Language",
+  "finding": "Cold read: the reading fold's group paragraph had seven numbers, a second chatbot named without introduction, an unexplained \"3.1\" and the phrase \"within luck\".",
+  "fix": "Cut to three numbers, one chatbot, and the page's own wording, \"small enough to be luck\".",
+  "status": "Fixed",
+  "id": 148
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Language",
+  "finding": "Cold read: \"knowledge was frozen\", \"national answers\" and an unnamed survey were new terms; 52% for one person had no yardstick.",
+  "fix": "Now \"after the chatbot was built\", \"what the whole survey said\", the World Values Survey named, and people's own 69 to 81% repeat rate given.",
+  "status": "Fixed",
+  "id": 149
+ },
+ {
+  "when": "Record-reading tests and memory checks",
+  "area": "Language",
+  "finding": "Cold read: \"Two more findings\" did not say whether they matter for the decision, and the cost reason for not adopting looked weak next to the best median.",
+  "fix": "Heading now \"Two more findings that do not change the advice\"; the so-what says the best result is a tenth of a point better, which could be luck, for about US$30 a run.",
+  "status": "Fixed",
+  "id": 150
  }
 ]

@@ -469,14 +469,34 @@ assert round(100 * DIS["disguised"]["top_choice"]) == round(100 * DIS["original"
 CHK = {"named": f1(t1["named"]["national"]), "unnamed": f1(t1["unnamed"]["national"]), "said": str(t1["said"]["estimate"]),
        "dis_top": str(round(100 * DIS["disguised"]["top_choice"])), "orig_top": str(round(100 * DIS["original"]["top_choice"])),
        "ind_demo": str(round(100 * TRIAL["individual"]["demographics"]["top_choice"])), "ind_rec": str(round(100 * TRIAL["individual"]["record"]["top_choice"])),
-       "ind_lo": f1(100 * TRIAL["individual"]["gain"]["low"]), "ind_hi": f1(100 * TRIAL["individual"]["gain"]["high"]),
+       "ind_lo": f"{100 * TRIAL['individual']['gain']['low']:+.1f}", "ind_hi": f"{100 * TRIAL['individual']['gain']['high']:+.1f}",
        "people": f"{len(FULL_['predictions']['record']):,}", "cost": str(round(FULL_["cost_estimate_usd"])),
        "famous_chat": f"{MEM['test2']['chatbot kind']['famous']:+.1f}".replace("-", "\u2212"),
        "other_chat": f"{MEM['test2']['chatbot kind']['other']:+.1f}".replace("-", "\u2212"),
        "famous_read": f"{MEM['test2']['chatbot reading records']['famous']:+.1f}".replace("-", "\u2212"),
        "other_read": f"{MEM['test2']['chatbot reading records']['other']:+.1f}".replace("-", "\u2212"),
        "rho_chat": minus(MEM["test2"]["chatbot kind"]["spearman_with_naming_gain"]),
-       "rho_read": minus(MEM["test2"]["chatbot reading records"]["spearman_with_naming_gain"])}
+       "rho_read": minus(MEM["test2"]["chatbot reading records"]["spearman_with_naming_gain"]),
+       "planned_chat": minus(MEM["test2"]["chatbot kind"]["spearman_with_recall_error"]),
+       "planned_read": minus(MEM["test2"]["chatbot reading records"]["spearman_with_recall_error"]),
+       "unn_chat": minus(MEM["test2"]["chatbot kind"]["spearman_with_unnamed_error"]),
+       "unn_read": minus(MEM["test2"]["chatbot reading records"]["spearman_with_unnamed_error"]),
+       "part_chat": minus(MEM["test2"]["chatbot kind"]["partial_with_recall_error_given_unnamed"]),
+       "part_read": minus(MEM["test2"]["chatbot reading records"]["partial_with_recall_error_given_unnamed"]),
+       "named_avg": f1(t1["named"]["national_average"]), "unnamed_avg": f1(t1["unnamed"]["national_average"]),
+       "naming_med": minus(t1["named_minus_unnamed"]),
+       "ind_gain": f"{100 * TRIAL['individual']['gain']['top_choice']:+.1f}",
+       "orig_top_1": f"{100 * DIS['original']['top_choice']:.1f}", "dis_top_1": f"{100 * DIS['disguised']['top_choice']:.1f}",
+       "full_top_1": f"{100 * DIS['original, full test']['top_choice']:.1f}",
+       "orig_pts": f1(DIS["original"]["national_points_off"]), "dis_pts": f1(DIS["disguised"]["national_points_off"])}
+# "about the same as when we did not name the survey"; "a tenth of a point better"; "about 2,000 people"
+assert abs(t1["named_minus_unnamed"]) < 0.25
+assert 0.05 < med(RD, BOTH, 300) - med(RD, READ_BOTH, 300) < 0.15
+assert 1900 < len(FULL_["predictions"]["record"]) < 2100
+# the planned measure pointed towards memory; the unnamed guesses show the same link or stronger
+for c_ in ("chatbot kind", "chatbot reading records"):
+    m_ = MEM["test2"][c_]
+    assert m_["spearman_with_recall_error"] > 0 and m_["spearman_with_unnamed_error"] >= m_["spearman_with_recall_error"], c_
 
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),
          "US chatbot vs own RC, 300 (about the same)": (f1(med(us, "+ chatbot kind", 300)), f1(med(us, "+ record citizens (own survey)", 300))),

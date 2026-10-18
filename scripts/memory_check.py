@@ -14,7 +14,7 @@ Test 2, famous against little-known questions (`score`, free; reuses one_method_
 memory helps, the chatbots should do better, compared with record citizens on the same question, on questions
 whose results are widely published. Record citizens learned from other countries cannot remember Singapore's
 answers, so they control for how hard each question is. Two ways to say which questions are well known:
-  - FAMOUS below, fixed before any per-question result was looked at (judgement; reasons given);
+  - FAMOUS below, written into this script before the check was run (judgement; reasons given);
   - how close the "named" recall in test 1 came, question by question.
 
 Warning signs, set before running:
@@ -56,7 +56,7 @@ BUDGET = 1.0  # dollars, worst case
 PRICE_IN, PRICE_OUT = 4.0 / 1e6, 20.0 / 1e6  # per token, standard; the batch is charged half
 BATCH_DISCOUNT = 0.5
 ARMS = ("named", "unnamed")
-# Well-known questions, chosen before any per-question result was seen (2026-10-18):
+# Well-known questions, written here before the check was run (2026-10-18):
 FAMOUS = {
     "Q6": "importance of religion, a headline World Values Survey item",
     "Q14": "determination, part of the autonomy index behind the Inglehart-Welzel cultural map",
@@ -203,13 +203,16 @@ def score():
     res = {"test1": {}, "test2": {}}
     for s, e in err.items():
         nat = [v for k, v in e.items() if k[1] == "ALL"]
-        res["test1"][s] = {"national": float(np.median(nat)), "groups": float(np.median(list(e.values()))), "cells": len(e)}
+        res["test1"][s] = {"national": float(np.median(nat)), "groups": float(np.median(list(e.values()))), "cells": len(e),
+                           "national_average": float(np.mean(nat))}
         lines.append(f"| {s} | {np.median(nat):.1f} | {np.median(list(e.values())):.1f} |")
     diff = [err["named"][k] - err["unnamed"][k] for k in err["named"] if k in err["unnamed"]]
     recall = pd.Series([d.get("recall") for d in P["predictions"]["named"].values()]).value_counts().to_dict()
     res["test1"]["named_minus_unnamed"] = float(np.median(diff))
     res["test1"]["said"] = recall
-    lines += ["", f"Naming the survey changed the guesses by {np.median(diff):+.1f} points at the median (negative: closer when named).",
+    lines += ["", f"Naming the survey changed the guesses by {np.median(diff):+.2f} points at the median over all {len(diff)} group-question cells "
+              f"(negative: closer when named). National average (not median): named {res['test1']['named']['national_average']:.1f}, "
+              f"unnamed {res['test1']['unnamed']['national_average']:.1f}.",
               f"Asked whether it remembered the published figures, it said: {recall}.", ""]
 
     # Test 2: the chatbots' edge over record citizens, question by question (alone, survey of 300, averaged over draws)
@@ -234,20 +237,26 @@ def score():
         rho = float(pd.Series(edge).corr(tab["named recall, national"], method="spearman"))
         rho_g = float(pd.Series(edge).corr(guess_err.reindex(per.index), method="spearman"))
         rho_n = float(pd.Series(edge).corr(naming_gain.reindex(per.index), method="spearman"))
+        # the planned link with the unnamed guesses' error held constant (partial correlation of ranks)
+        R = pd.DataFrame({"e": edge, "r": tab["named recall, national"], "u": guess_err.reindex(per.index)}).rank().corr()
+        rho_p = float((R.at["e", "r"] - R.at["e", "u"] * R.at["r", "u"]) / np.sqrt((1 - R.at["e", "u"] ** 2) * (1 - R.at["r", "u"] ** 2)))
         res["test2"][c] = {"famous": float(f), "other": float(o), "spearman_with_recall_error": rho,
-                           "spearman_with_unnamed_error": rho_g, "spearman_with_naming_gain": rho_n}
+                           "spearman_with_unnamed_error": rho_g, "spearman_with_naming_gain": rho_n,
+                           "partial_with_recall_error_given_unnamed": rho_p}
         lines.append(f"| {c} | {f:+.1f} ({tab.famous.sum()} questions) | {o:+.1f} ({(~tab.famous).sum()} questions) | {rho:+.2f} | {rho_g:+.2f} | {rho_n:+.2f} |")
     lines += ["", "The links are rank correlations across the 20 questions (from -1 to +1). The planned one (fourth column) is",
               "positive if the better a question is recalled, the bigger the chatbot's edge. Added after seeing it: the",
               "unnamed guesses show the same link or stronger, so it measures how easy a question is for a chatbot to",
               "guess, not memory. The memory-specific link is the last column, how much closer naming the survey made the",
               "guesses (median over groups; negative = closer when named): if memory helps, it is positive (the chatbot's",
-              "edge is biggest where naming the survey helped most).", "",
+              "edge is biggest where naming the survey helped most). Holding the unnamed guesses' error constant, the",
+              "planned link becomes " + ", ".join(f"{c} {res['test2'][c]['partial_with_recall_error_given_unnamed']:+.2f}"
+                                                 for c in ("chatbot kind", "chatbot reading records")) + ".", "",
               "Question by question:", "", "| question | famous | named recall, national | edge: chatbot kind | edge: chatbot reading records |",
               "|---|---|---|---|---|"]
     for q, r in tab.iterrows():
         lines.append(f"| {q} | {'yes' if r.famous else ''} | {r['named recall, national']:.1f} | {r['edge: chatbot kind']:+.1f} | {r['edge: chatbot reading records']:+.1f} |")
-    lines += ["", "Famous questions, chosen before any per-question result was seen: " +
+    lines += ["", "Famous questions, written into the script before the check was run: " +
               "; ".join(f"{q} ({why})" for q, why in FAMOUS.items()) + ".", "",
               "Neither test proves memory or rules it out: a well-informed chatbot can also reason its way close. With 20",
               "questions, differences in test 2 of a point or so can be chance.", "", "Generated by scripts/memory_check.py."]

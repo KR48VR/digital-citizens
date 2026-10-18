@@ -110,7 +110,7 @@
   ],
   "T28": [
    "Chose to keep the summary and tables as they are and add two short folds under the short answer.",
-   "Drafted the folds with every claim checked in the build, updated Limits, What to test next, the analysts' notes, the glossary and the casebook, and sent both pages for review before publishing."
+   "Drafted the folds with every claim checked in the build, had one helper agent recompute every number and another read the folds cold as an executive, fixed what they found in one pass, updated Limits, What to test next, the analysts' notes, the glossary and the casebook, and sent both pages for review before publishing."
   ]
  },
  "examples": {
@@ -135,8 +135,8 @@
   "HOURS": "about 29 hours",
   "N_TASKS": 28,
   "N_SHOTS": 28,
-  "N_AGENTS": 23,
-  "N_BG": 52,
+  "N_AGENTS": 25,
+  "N_BG": 54,
   "N_HOOKS": 17,
   "N_IDEAS": 26,
   "N_CHALLENGES": 18,
@@ -274,8 +274,8 @@
    "tag": "learned",
    "king": true,
    "asked": "King approved a 100-person trial, asked how it compared with record citizens, then approved a test on the whole Singapore survey.",
-   "found": "For groups, about the same as record citizens and within luck of the chatbot told only who a person is. For individual people, the top guess was right 52% of the time against 47%, more than luck. It costs about $30 in chatbot fees for 2,000 people and 20 questions.",
-   "changed": "Two more findings, under the short answer: not adopted yet"
+   "found": "For groups, about the same as record citizens and close to the chatbot asked the usual way, with gaps small enough to be luck. For individual people, the top guess was right 52% of the time against 47%, a gain bigger than luck. It costs about $30 in chatbot fees for 2,000 people and 20 questions.",
+   "changed": "Two more findings that do not change the advice, under the short answer: not adopted yet"
   },
   {
    "title": "Does the chatbot remember published answers?",
@@ -283,7 +283,7 @@
    "king": true,
    "asked": "King asked how to test whether the chatbot had already seen the answers.",
    "found": "No sign in three checks: asking it directly, famous against little-known questions, and disguised questions.",
-   "changed": "Two more findings, under the short answer; Limits and What to test next"
+   "changed": "Two more findings that do not change the advice, under the short answer; Limits and What to test next"
   }
  ]
 }

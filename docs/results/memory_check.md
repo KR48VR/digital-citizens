@@ -14,7 +14,7 @@ figures would be under 1 point off.
 | chatbot kind (Fable 5.1, scorecard) | 4.9 | 5.0 |
 | chatbot reading records (Opus 5.5) | 3.9 | 4.5 |
 
-Naming the survey changed the guesses by -0.0 points at the median (negative: closer when named).
+Naming the survey changed the guesses by -0.01 points at the median over all 200 group-question cells (negative: closer when named). National average (not median): named 4.8, unnamed 5.2.
 Asked whether it remembered the published figures, it said: {'estimate': 20}.
 
 ## Test 2: famous against little-known questions
@@ -32,7 +32,8 @@ positive if the better a question is recalled, the bigger the chatbot's edge. Ad
 unnamed guesses show the same link or stronger, so it measures how easy a question is for a chatbot to
 guess, not memory. The memory-specific link is the last column, how much closer naming the survey made the
 guesses (median over groups; negative = closer when named): if memory helps, it is positive (the chatbot's
-edge is biggest where naming the survey helped most).
+edge is biggest where naming the survey helped most). Holding the unnamed guesses' error constant, the
+planned link becomes chatbot kind +0.03, chatbot reading records -0.27.
 
 Question by question:
 
@@ -59,7 +60,7 @@ Question by question:
 | Q70 |  | 5.7 | +2.6 | +1.0 |
 | Q76 |  | 5.5 | +7.1 | +4.3 |
 
-Famous questions, chosen before any per-question result was seen: Q6 (importance of religion, a headline World Values Survey item); Q14 (determination, part of the autonomy index behind the Inglehart-Welzel cultural map); Q184 (abortion, one of the items on the Inglehart-Welzel cultural map); Q209 (signing a petition, one of the items on the Inglehart-Welzel cultural map); Q237 (army rule, widely cited in the debate on support for democracy); Q240 (left-right placement, a standard headline item); Q250 (importance of democracy, widely cited).
+Famous questions, written into the script before the check was run: Q6 (importance of religion, a headline World Values Survey item); Q14 (determination, part of the autonomy index behind the Inglehart-Welzel cultural map); Q184 (abortion, one of the items on the Inglehart-Welzel cultural map); Q209 (signing a petition, one of the items on the Inglehart-Welzel cultural map); Q237 (army rule, widely cited in the debate on support for democracy); Q240 (left-right placement, a standard headline item); Q250 (importance of democracy, widely cited).
 
 Neither test proves memory or rules it out: a well-informed chatbot can also reason its way close. With 20
 questions, differences in test 2 of a point or so can be chance.

@@ -3,22 +3,26 @@
   "named": {
    "national": 5.321372732808481,
    "groups": 5.176731876247156,
-   "cells": 200
+   "cells": 200,
+   "national_average": 4.777965482967991
   },
   "unnamed": {
    "national": 4.461198059520995,
    "groups": 5.000158708268394,
-   "cells": 200
+   "cells": 200,
+   "national_average": 5.173316651284802
   },
   "chatbot kind (Fable 5.1, scorecard)": {
    "national": 4.853708300682536,
    "groups": 4.984876347071062,
-   "cells": 200
+   "cells": 200,
+   "national_average": 5.286353726280226
   },
   "chatbot reading records (Opus 5.5)": {
    "national": 3.885643602412303,
    "groups": 4.526304251023158,
-   "cells": 200
+   "cells": 200,
+   "national_average": 4.773791095084235
   },
   "named_minus_unnamed": -0.008249252918886896,
   "said": {
@@ -31,14 +35,16 @@
    "other": 0.7691327435727358,
    "spearman_with_recall_error": 0.6812030075187969,
    "spearman_with_unnamed_error": 0.7593984962406014,
-   "spearman_with_naming_gain": -0.5052631578947367
+   "spearman_with_naming_gain": -0.5052631578947367,
+   "partial_with_recall_error_given_unnamed": 0.03203312699602683
   },
   "chatbot reading records": {
    "famous": 1.6924269830729788,
    "other": 1.171616863820299,
    "spearman_with_recall_error": 0.4090225563909774,
    "spearman_with_unnamed_error": 0.5774436090225563,
-   "spearman_with_naming_gain": -0.42105263157894735
+   "spearman_with_naming_gain": -0.42105263157894735,
+   "partial_with_recall_error_given_unnamed": -0.2663180444399624
   }
  }
 }

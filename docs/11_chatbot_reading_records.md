@@ -40,6 +40,7 @@ with the main results came out identical.
 | + both kinds of AI (record citizens + chatbot kind) | 3.1 | 2.7 | 2.3 |
 | + record citizens + chatbot reading records | 2.7 | 2.6 | 2.4 |
 
+The Claude Opus row is the five-chatbot panel's (version not recorded), so it may not be the same Opus.
 Every difference between the chatbot reading records and the chatbot kind, Claude Opus asked the usual way,
 record citizens, or both kinds of AI had a 95% range crossing zero (for example, with record citizens blended
 in: -0.45 at 150, range -0.70 to +0.05; -0.12 at 300, range -0.41 to +0.16). Results:
@@ -50,13 +51,16 @@ in: -0.45 at 150, range -0.70 to +0.05; -0.12 at 300, range -0.41 to +0.16). Res
 Warning signs were written into the scripts before running.
 
 1. **Asked directly** (`scripts/memory_check.py`, about $0.18): with the survey named and its published figures
-   requested, 5.3 points off nationally; unnamed, 4.5. Exact recall would be under 1 point. It said "estimate" for
-   all 20 questions.
-2. **Famous against little-known questions** (same script, free): seven famous questions fixed in advance. The
-   chatbots' edge over record citizens (each with no survey) was no better on famous questions (chatbot kind
-   +2.2 against +0.8; chatbot reading records +1.7 against +1.2). A planned link with check 1's recall turned out
-   to track how easy a question is to guess (the unnamed guesses showed it too); the memory-specific link, how
-   much naming the survey helped, was -0.51 and -0.42, where memory would make it positive.
+   requested, 5.3 points off nationally (median over questions; 4.8 by the average); unnamed, 4.5 (5.2 by the
+   average); naming moved the median over all 200 group-question cells by -0.01. Exact recall would be under 1
+   point. It said "estimate" for all 20 questions.
+2. **Famous against little-known questions** (same script, free): seven famous questions written into the
+   script before the check was run. The chatbots' edge over record citizens (each with no survey) was no better
+   on famous questions (chatbot kind +2.2 against +0.8; chatbot reading records +1.7 against +1.2). The planned
+   rank correlation between the edge and check 1's recall pointed towards memory (+0.68 and +0.41), but the
+   unnamed guesses showed the same link or stronger (+0.76 and +0.58), so it tracks how easy a question is to
+   guess; holding that constant leaves +0.03 and -0.27. Added after seeing this: the link with how much naming
+   the survey helped, -0.51 and -0.42, where memory would make it positive.
 3. **Disguised questions** (`scripts/disguise_check.py`, about $4.85): 150 people, the original prompt run again
    and a disguised one (questions reworded, answer options reversed, survey not named), in one batch: top choice
    right 53.3% and 52.9% (53.8% in the full test); combined answers 3.6 and 3.4 points off.
