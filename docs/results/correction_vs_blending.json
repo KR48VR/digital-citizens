@@ -1,0 +1,111 @@
+{
+ "median": {
+  "Survey alone": {
+   "150": 5.077981447514512,
+   "300": 3.7439875757164893,
+   "600": 2.6833443481790775
+  },
+  "Blend: record citizens": {
+   "150": 3.6206039106036885,
+   "300": 2.896416256214395,
+   "600": 2.45556112345929
+  },
+  "Correct: record citizens": {
+   "150": 4.7525837082038755,
+   "300": 3.5562064531162867,
+   "600": 2.59510315450639
+  },
+  "Blend: chatbot reading records": {
+   "150": 3.0558840023029057,
+   "300": 2.9517855510061954,
+   "600": 2.502323751846614
+  },
+  "Correct: chatbot reading records": {
+   "150": 4.785849811451868,
+   "300": 3.485491798020253,
+   "600": 2.567028931946173
+  },
+  "Blend: record citizens + chatbot reading records": {
+   "150": 2.681417262526751,
+   "300": 2.5871248427683087,
+   "600": 2.38197814055327
+  },
+  "Correct: record citizens + chatbot reading records": {
+   "150": 4.665815221976095,
+   "300": 3.492049885775267,
+   "600": 2.545529408987557
+  },
+  "Blend: record citizens + chatbot (the scorecard's advice)": {
+   "150": 3.132421209267315,
+   "300": 2.707130855292381,
+   "600": 2.348461185446541
+  }
+ },
+ "small_groups_300": {
+  "Survey alone": 4.213309595970643,
+  "Blend: record citizens": 3.2460417640159536,
+  "Correct: record citizens": 3.980309547904634,
+  "Blend: chatbot reading records": 3.481897447621237,
+  "Correct: chatbot reading records": 3.9597403568499865,
+  "Blend: record citizens + chatbot reading records": 2.865849929883132,
+  "Correct: record citizens + chatbot reading records": 3.972937964298691,
+  "Blend: record citizens + chatbot (the scorecard's advice)": 2.985050234150215
+ },
+ "large_groups_300": {
+  "Survey alone": 2.0031343513231574,
+  "Blend: record citizens": 2.0504488647730534,
+  "Correct: record citizens": 1.8971544674299912,
+  "Blend: chatbot reading records": 1.9434618196855946,
+  "Correct: chatbot reading records": 1.8978464728106073,
+  "Blend: record citizens + chatbot reading records": 1.9223573405000773,
+  "Correct: record citizens + chatbot reading records": 1.9145595964580204,
+  "Blend: record citizens + chatbot (the scorecard's advice)": 1.7751575448774741
+ },
+ "saved_at_300": {
+  "Blend: record citizens": 0.4156985176807585,
+  "Correct: record citizens": 0.08727025621788898,
+  "Blend: chatbot reading records": 0.3911496775571949,
+  "Correct: chatbot reading records": 0.1262564763409333,
+  "Blend: record citizens + chatbot reading records": 0.5428630616065678,
+  "Correct: record citizens + chatbot reading records": 0.12267952298047258,
+  "Blend: record citizens + chatbot (the scorecard's advice)": 0.49551954838775947
+ },
+ "comparisons": [
+  {
+   "a": "corrected, tuned: record citizens (own survey)",
+   "n_a": 300,
+   "b": "survey alone",
+   "n_b": 300,
+   "difference": -0.1877811226002026,
+   "low": -0.5815505021396297,
+   "high": 0.2004008031747238
+  },
+  {
+   "a": "corrected, tuned: record citizens (own survey)",
+   "n_a": 300,
+   "b": "+ record citizens (own survey)",
+   "n_b": 300,
+   "difference": 0.6597901969018918,
+   "low": 0.260129806325688,
+   "high": 0.8988390444046017
+  },
+  {
+   "a": "corrected, tuned: record citizens + chatbot reading records",
+   "n_a": 300,
+   "b": "+ record citizens (own survey) + chatbot reading records",
+   "n_b": 300,
+   "difference": 0.9049250430069588,
+   "low": 0.5709590259247175,
+   "high": 1.2388095424164989
+  },
+  {
+   "a": "corrected, tuned: record citizens + chatbot reading records",
+   "n_a": 300,
+   "b": "survey alone",
+   "n_b": 600,
+   "difference": 0.80870553759619,
+   "low": 0.3853448110466966,
+   "high": 1.1191351534117804
+  }
+ ]
+}
