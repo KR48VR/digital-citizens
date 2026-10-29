@@ -25,6 +25,9 @@ Full record with every interaction: the Digital Citizens Casebook (private; acce
   of "typical group"). Use the standard word, explained in one line.
 - Chooses design options on practical grounds ("a team can say look at the green band"): show side-by-side
   mock-ups in light and dark mode, give a recommendation, and go with King's choice.
+- Asks to have things explained "like I am 15", and may then want that explanation on the page. Use it as
+  written; change only what the page's rules need (matching labels, a link, a claim the data no longer
+  supports) and say what changed.
 
 ## What worked
 - Admitting and correcting errors quickly, in the open (small-survey scoring, the untested chatbot claim,

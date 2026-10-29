@@ -152,7 +152,7 @@
     </table></div>
 
     <h3>The tests, in the order we ran them</h3>
-    <p class="small">The scorecard's map counts the ideas behind these tests (12: 8 kept, 3 dropped, 1 corrected) and files the chatbot fixes as dropped; here each test run is counted once, and the run that tried those fixes is marked kept because it produced record citizens.</p>
+    <p class="small">The scorecard's map counts the ideas behind these tests (13: 8 kept, 4 dropped, 1 corrected) and files the chatbot fixes as dropped; here each test run is counted once, and the run that tried those fixes is marked kept because it produced record citizens.</p>
     {{TESTS_TIMELINE}}
 
     <h3>How accuracy is measured</h3>
@@ -208,7 +208,7 @@
       <figcaption>One dot per message from King, coloured by the kind of interaction that followed. Numbers mark where each task first appears; later lines show where King switched back to it. Hover or tab to a dot for the message.</figcaption>
       <div class="legend"><span><i class="sw" style="background:var(--tool)"></i>Tool</span><span><i class="sw" style="background:var(--team)"></i>Teammate</span><span><i class="sw" style="background:var(--ind)"></i>Independent</span></div>
       <div class="wrap">{{TIMELINE}}</div>
-      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; then quick tool-style edits as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim (King asking why the methods were mixed set off one more independent rebuild); and, at the end, almost all teammate exchanges again, as King reviewed the whole page for flow, asked for one integrated pass instead of patches, and shaped the decision tree, the evidence links and the coloured sections. The record-reading tests that followed were short question-and-answer rounds, with King choosing each next step and its budget while Claude ran the tests.</p>
+      <p style="font-size:14px">The pattern: long independent runs at the start, while the evidence was built; a run of teammate exchanges in the middle, as King's questions changed what was tested; then quick tool-style edits as King polished the page section by section, broken up by teammate exchanges whenever King questioned a claim (King asking why the methods were mixed set off one more independent rebuild); and, at the end, almost all teammate exchanges again, as King reviewed the whole page for flow, asked for one integrated pass instead of patches, and shaped the decision tree, the evidence links and the coloured sections. The record-reading tests that followed were short question-and-answer rounds, with King choosing each next step and its budget while Claude ran the tests. Eleven days later, King shared another team's study: one test of its method on our data, a plain explanation King liked, and that explanation on both pages.</p>
     </figure>
 
     <h3>Examples of each kind</h3>
@@ -230,7 +230,7 @@
 
     <h3>Work done independently</h3>
     <ul class="list">
-      <li><strong>By Claude:</strong> the first build (research with three helper agents, code, baselines), downloading 62 countries' survey files through a headless browser, training record citizens on 61 countries, the survey-library test (a 26-minute background run), the published-findings search (two helper agents), and the QA rounds (helper agents that recomputed every number, read the page cold as an executive, and checked the companion documents against the page), and the record-reading tests and memory checks (five capped batches to the Claude API, about $39 in all). {{N_BG}} background jobs, helper agents and waits reported back while Claude kept working.</li>
+      <li><strong>By Claude:</strong> the first build (research with three helper agents, code, baselines), downloading 62 countries' survey files through a headless browser, training record citizens on 61 countries, the survey-library test (a 26-minute background run), the published-findings search (two helper agents), the QA rounds (helper agents that recomputed every number, read the page cold as an executive, and checked the companion documents against the page), the record-reading tests and memory checks (five capped batches to the Claude API, about $39 in all), and the test of blending against correcting (two background runs of the scorecard's own test, with no new API cost). {{N_BG}} background jobs, helper agents and waits reported back while Claude kept working.</li>
       <li><strong>By King:</strong> {{N_SHOTS}} rounds of reviewing the live page alone and sending back screenshots with the confusing parts highlighted, plus the thinking behind {{N_IDEAS}} ideas, such as the survey library and using local data weighted by track record.</li>
       <li><strong>By neither:</strong> {{N_HOOKS}} automatic reminders to save and push work, and one automatic restart of the session's worker, which Claude resumed from.</li>
     </ul>
@@ -243,7 +243,7 @@
       <button type="button" data-f="independent" aria-pressed="false">Independent {{N_IND}}</button>
     </div>
     <div class="wrap scroll"><table id="log" class="stack">
-      <caption>Each message from King, quoted as typed, and what Claude did next. Times are UTC, 17 to 18 October 2026.</caption>
+      <caption>Each message from King, quoted as typed, and what Claude did next. Times are UTC, 17, 18 and 29 October 2026.</caption>
       <thead><tr><th class="num">#</th><th class="num">Time</th><th>Task</th><th>Kind</th><th>King said</th><th>Claude did</th></tr></thead>
       <tbody>
 {{LOG_ROWS}}
@@ -275,7 +275,7 @@
     </ol>
 
     <h3>Lessons for the next page</h3>
-    <p>What the last round of work on the scorecard taught us about making a page easy to follow. Each is now in the playbook, the QA checklist or the C-suite explainer skill.</p>
+    <p>What the later rounds of work on the scorecard taught us, mostly about making a page easy to follow. Each is now in the playbook, the QA checklist, the guide to working with King or the C-suite explainer skill.</p>
     <ol class="list">
       <li><strong>Collect the comments, then make one integrated pass.</strong> Fixing one complaint at a time moved problems around. Agree the principles, change everything against them at once, and list every change before publishing.</li>
       <li><strong>The short answer is the spine.</strong> Every later section follows its order, and nothing in it goes unsupported later.</li>
@@ -288,6 +288,8 @@
       <li><strong>Number the sections and give each a colour band,</strong> matched in the contents bar, so a team can say "section 4, the purple band". Check grey text on the tints for contrast.</li>
       <li><strong>Show design choices as side-by-side mock-ups,</strong> in light and dark mode, rather than describing them.</li>
       <li><strong>Re-read the companion documents against the final page.</strong> The casebook and playbook had kept old rule numbers and old wording after the page changed.</li>
+      <li><strong>Test a rival method on your own test, not by its headline.</strong> Another study's "about a fifth of participants saved" and our "about half" measured different things; run the same way on our draws, its method saved about 1 in 10.</li>
+      <li><strong>When King likes an explanation, use it as written.</strong> Change only what the page's rules need, such as matching labels, and say what changed.</li>
     </ol>
 
     <h3>Files</h3>

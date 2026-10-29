@@ -59,7 +59,7 @@
   details[open] { display: grid; gap: 16px; }
   details summary { cursor: pointer; color: var(--ink); font-weight: 600; }
   details h3 { font-family: var(--body); font-size: 14px; font-weight: 600; margin-top: 8px; }
-  .note { font-size: 13px; color: var(--muted); max-width: 72ch; }
+  .note { font-size: 13px; color: var(--muted); max-width: 72ch; overflow-wrap: anywhere; }  /* long file paths wrap on phones */
   .scale { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
   .scale > div { display: grid; gap: 4px; align-content: start; padding: 12px; border: 1px solid var(--ring); border-radius: 6px; background: var(--surface); font-size: 13px; color: var(--ink-2); min-width: 0; }
   .scale b { font-family: var(--display); font-size: 26px; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
@@ -244,3 +244,11 @@
   .op { align-self: center; justify-self: center; font-family: var(--display); font-size: 24px; line-height: 1; color: var(--muted); }
   .eqnote { font-size: 14px; }
   @media (max-width: 600px) { .eqrow { grid-template-columns: minmax(0, 1fr); } .op { font-size: 20px; } }
+
+  /* correcting against blending, the canteen explanation: two ways side by side; stacked on phones */
+  .ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .ways > div { min-width: 0; display: grid; gap: 8px; align-content: start; background: var(--bg); border: 1px solid var(--ring); border-radius: 6px; padding: 12px 14px; }
+  .ways h4 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--ink); }
+  .ways ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; color: var(--ink-2); }
+  .ways li::marker { color: var(--muted); }
+  @media (max-width: 600px) { .ways { grid-template-columns: minmax(0, 1fr); } }

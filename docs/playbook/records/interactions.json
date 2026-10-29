@@ -1408,6 +1408,56 @@
   },
   {
    "n": 135,
+   "time": "04:43 (18 Oct)",
+   "task": "T25",
+   "type": "teammate",
+   "king": "what do i do next? [screenshot of the Add secret dialog]",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Told King to cancel the dialog: a network secret could attach the key to Claude's own work as well as the trial. Withdrew my earlier advice to name the key ANTHROPIC_API_KEY, because Claude Code reads that name, and switched the trial to its own name, DIGITAL_CITIZENS_API_KEY, tested so it stops politely without a key."
+  },
+  {
+   "n": 136,
+   "time": "04:44 (18 Oct)",
+   "task": "T25",
+   "type": "teammate",
+   "king": "what do i do? [screenshot of the cloud environment settings]",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Read the page's own note (environment variables can be seen by anyone using the environment), so went back to a network secret limited to the trial's address; tested that route with no key, and gave each field of the dialog."
+  },
+  {
+   "n": 137,
+   "time": "04:50 (18 Oct)",
+   "task": "T25",
+   "type": "tool",
+   "king": "[screenshot: the Add secret dialog saying \"Couldn't add the secret\"]",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Gave three things to try in order, most likely first: another secret type, then no path limit."
+  },
+  {
+   "n": 138,
+   "time": "04:52 (18 Oct)",
+   "task": "T25",
+   "type": "teammate",
+   "king": "[screenshot of the secret type options]",
+   "screenshot": true,
+   "mid_task": false,
+   "claude": "Saw that no secret type sends the key the way the Claude API expects, stopped the trial and error, and recommended the environment variable instead, with its trade-off (anyone using the environment can see it) for King to decide."
+  },
+  {
+   "n": 139,
+   "time": "04:53 (18 Oct)",
+   "task": "T25",
+   "type": "tool",
+   "king": "Environment updated. how do a star a new session in this project?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Started the new session from here, on the same project, branch and environment, with the instruction to run the trial, report in plain words and remind King to delete the key afterwards."
+  },
+  {
+   "n": 140,
    "time": "04:54 (18 Oct)",
    "task": "T25",
    "type": "independent",
@@ -1417,7 +1467,7 @@
    "claude": "Set up the environment, downloaded the World Values Survey, ran the free plan (worst case $7.46, under the $10 cap), sent one batch of 200 requests and scored it: about $2.58, none failed. Reported in plain words."
   },
   {
-   "n": 136,
+   "n": 141,
    "time": "05:06 (18 Oct)",
    "task": "T25",
    "type": "tool",
@@ -1427,7 +1477,7 @@
    "claude": "Cut the report to four short lines: yes, a little; about one more right guess in 20; groups a bit closer; 100 people is an early hint, not proof."
   },
   {
-   "n": 137,
+   "n": 142,
    "time": "05:07 (18 Oct)",
    "task": "T26",
    "type": "tool",
@@ -1437,7 +1487,7 @@
    "claude": "Placed the result against the scorecard: nothing overturned, not strong enough to add; offered leaving the scorecard as it is or a bigger test."
   },
   {
-   "n": 138,
+   "n": 143,
    "time": "05:08 (18 Oct)",
    "task": "T26",
    "type": "teammate",
@@ -1447,7 +1497,7 @@
    "claude": "Said plainly that the trial had not compared with record citizens and that the earlier numbers came from a different setup, so they could not be set side by side; proposed testing all three in the scorecard's own test."
   },
   {
-   "n": 139,
+   "n": 144,
    "time": "05:09 (18 Oct)",
    "task": "T26",
    "type": "tool",
@@ -1457,7 +1507,7 @@
    "claude": "Set out the test (everyone in the Singapore survey, scored in the scorecard's own test against record citizens and the chatbot) and the four questions it would answer."
   },
   {
-   "n": 140,
+   "n": 145,
    "time": "05:12 (18 Oct)",
    "task": "T26",
    "type": "teammate",
@@ -1467,7 +1517,7 @@
    "claude": "Ran the plan for 1,997 people: likely about $30, but a worst case of $82. Corrected my earlier \"$30 to $40\", which was the likely cost, not the cap, and gave three options with a recommendation."
   },
   {
-   "n": 141,
+   "n": 146,
    "time": "05:17 (18 Oct)",
    "task": "T26",
    "type": "independent",
@@ -1477,7 +1527,7 @@
    "claude": "Added a full-survey mode with an $85 cap, sent 1,997 requests (about $30.26, none failed), added the new method and a fair comparison (record citizens learned from the same 57 questions) to the scorecard's own test, and checked that every existing result came out the same."
   },
   {
-   "n": 142,
+   "n": 147,
    "time": "05:24 (18 Oct)",
    "task": "T26",
    "type": "tool",
@@ -1487,7 +1537,7 @@
    "claude": "Explained what would happen (failed answers are counted and reported; only returned answers are charged) and checked that nothing had failed so far."
   },
   {
-   "n": 143,
+   "n": 148,
    "time": "05:38 (18 Oct)",
    "task": "T27",
    "type": "teammate",
@@ -1497,7 +1547,7 @@
    "claude": "Advised against a second scorecard (one test, one story) and proposed four checks for memory, from asking the chatbot directly to questions it cannot have seen, cheapest first, with costs."
   },
   {
-   "n": 144,
+   "n": 149,
    "time": "05:41 (18 Oct)",
    "task": "T27",
    "type": "tool",
@@ -1507,7 +1557,7 @@
    "claude": "Confirmed: the cheap checks come first because their result changes what the scorecard should say, so the pages are drafted once."
   },
   {
-   "n": 145,
+   "n": 150,
    "time": "05:41 (18 Oct)",
    "task": "T27",
    "type": "tool",
@@ -1517,7 +1567,7 @@
    "claude": "Ordered the four checks: a quick warning check, a firmer check, and the final proof, which also covers the chatbot already on the scorecard."
   },
   {
-   "n": 146,
+   "n": 151,
    "time": "05:43 (18 Oct)",
    "task": "T27",
    "type": "independent",
@@ -1527,7 +1577,7 @@
    "claude": "Wrote down the famous questions and the warning signs before running, ran all three checks (about $0.18 and $4.85), found no warning sign, and replaced one planned measure that turned out to track how easy a question is, labelled as added after seeing it."
   },
   {
-   "n": 147,
+   "n": 152,
    "time": "06:09 (18 Oct)",
    "task": "T27",
    "type": "tool",
@@ -1537,7 +1587,7 @@
    "claude": "Four plain points: reading records helps a little; about as good as record citizens; the advice does not change; no sign the chatbot remembers the answers."
   },
   {
-   "n": 148,
+   "n": 153,
    "time": "06:10 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1547,7 +1597,7 @@
    "claude": "Proposed two rows in \"What we tested along the way\", updated Limits and What to test next, and one new casebook chapter, all drafted for review first."
   },
   {
-   "n": 149,
+   "n": 154,
    "time": "06:13 (18 Oct)",
    "task": "T28",
    "type": "teammate",
@@ -1557,7 +1607,7 @@
    "claude": "Adopted King's layout: two short folds under the short answer, with the summary and tables unchanged. Put every claim behind a build check, which turned \"a little better\" for groups into \"about the same, within luck\" and added the same-make chatbot to the comparison; drafted both pages for review."
   },
   {
-   "n": 150,
+   "n": 155,
    "time": "06:49 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1567,7 +1617,7 @@
    "claude": "Re-explained the three corrections in plain words, with an everyday picture for the third (doing better on textbook questions does not prove memorising if those are also the easier ones)."
   },
   {
-   "n": 151,
+   "n": 156,
    "time": "06:51 (18 Oct)",
    "task": "T28",
    "type": "teammate",
@@ -1577,7 +1627,7 @@
    "claude": "Said it was a small issue and why (the one check found no sign; the page's own estimates were about 5 points off, not the 1 point memory would give; the advice does not rest on the chatbot), offered a free extra line and the two missing checks for a few dollars, and confirmed King's reading of point 3."
   },
   {
-   "n": 152,
+   "n": 157,
    "time": "06:52 (18 Oct)",
    "task": "T28",
    "type": "independent",
@@ -1587,7 +1637,7 @@
    "claude": "Wrote checks 1 and 3 for the page's chatbot with the warning signs fixed before running and checked the price (worst case $4.16, cap $5). The first run was refused for low credit before anything was sent; added both lines to the page meanwhile. After King added credit, ran them (about $0.76): no warning sign; added a question-by-question comparison when the national medians looked misleading; updated the page, the analysts' notes and the casebook."
   },
   {
-   "n": 153,
+   "n": 158,
    "time": "07:05 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1597,7 +1647,7 @@
    "claude": "Said plainly that nothing had been sent yet, that the checks need credit (likely $1 to $2, cap about $4.50), that the balance cannot be seen from here, and asked to go ahead."
   },
   {
-   "n": 154,
+   "n": 159,
    "time": "07:07 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1607,7 +1657,7 @@
    "claude": "Ran the free plan (worst case $4.16), saved the script, sent the batch; it was refused for low credit, so reported that with the fix (add about $5 in the Console) and made the two page changes meanwhile."
   },
   {
-   "n": 155,
+   "n": 160,
    "time": "07:09 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1617,7 +1667,7 @@
    "claude": "Ran the checks (80 requests, about $0.76, one answer unreadable) and scored them."
   },
   {
-   "n": 156,
+   "n": 161,
    "time": "07:24 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1627,7 +1677,7 @@
    "claude": "Read both live pages in full, confirmed nobody had changed them since the last publish, fixed the package builder's folder path, and published the scorecard (version 72) and the casebook to their existing links."
   },
   {
-   "n": 157,
+   "n": 162,
    "time": "07:27 (18 Oct)",
    "task": "T28",
    "type": "tool",
@@ -1637,7 +1687,7 @@
    "claude": "Confirmed both pages were already published, with their links, and that they stay private until shared."
   },
   {
-   "n": 158,
+   "n": 163,
    "time": "07:28 (18 Oct)",
    "task": "T29",
    "type": "teammate",
@@ -1647,7 +1697,7 @@
    "claude": "Read the Research Factory roadmap as data from another team, mapped its four stages against our work (most of stage 1 done, including its planned next step; stages 3 and 4 untouched), compared the two projects and named what each team could give the other."
   },
   {
-   "n": 159,
+   "n": 164,
    "time": "07:36 (18 Oct)",
    "task": "T29",
    "type": "teammate",
@@ -1657,7 +1707,7 @@
    "claude": "Built the comparison as an editable doc (side-by-side table, stage by stage, the shared finding, what each team could share); agreed readers could confuse the two record-based approaches and proposed a rename, one sentence and a table."
   },
   {
-   "n": 160,
+   "n": 165,
    "time": "07:48 (18 Oct)",
    "task": "T30",
    "type": "teammate",
@@ -1667,7 +1717,7 @@
    "claude": "Confirmed King's reading (record citizens learn a pattern from people who answered; the chatbot fills the gap from general knowledge) and put it in plain words: renamed it \"the chatbot reading each person's answers\", added the sentence and a four-row table, made the table stack on phones, and updated the glossary, write-up, guide and casebook."
   },
   {
-   "n": 161,
+   "n": 166,
    "time": "07:51 (18 Oct)",
    "task": "T30",
    "type": "teammate",
@@ -1677,7 +1727,7 @@
    "claude": "Mocked up King's equation idea on the real page in two versions (equations replacing the table, or above it), at desktop and phone sizes, with a recommendation; explained that the chatbot is handed every person in the survey, one request each, and the guesses are added up by group."
   },
   {
-   "n": 162,
+   "n": 167,
    "time": "07:53 (18 Oct)",
    "task": "T30",
    "type": "teammate",
@@ -1685,6 +1735,46 @@
    "screenshot": false,
    "mid_task": false,
    "claude": "Confirmed King's reading (a statistical pattern against general understanding) and published option 1: two equations whose coloured middle box is the only difference, a line that both are done for every person and added up by group, and one line on what each needs and costs."
+  },
+  {
+   "n": 168,
+   "time": "10:42 (29 Oct)",
+   "task": "T31",
+   "type": "teammate",
+   "king": "compare this with with our digital citizens scorecard. what do you see? [uploaded page: \"Can AI reduce how many participants we need?\"]",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Compared the two pages: the same question on a different problem, about a fifth of participants saved against about half. Explained most of the gap (one overall answer against each group's; correcting never lets the AI tilt the answer, blending lets it lean), raised four questions about their headline, and offered to run their method on our own test."
+  },
+  {
+   "n": 169,
+   "time": "10:49 (29 Oct)",
+   "task": "T31",
+   "type": "independent",
+   "king": "yes do that",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added their method, correcting, to the scorecard's own Singapore test on the same draws. Caught that record citizens' guesses for the surveyed people had seen those people's answers, which made correcting look worse than the survey alone for big groups; reran with each guess made by a model that had not seen that person. Reported: blending saves about half the participants, correcting about 1 in 10."
+  },
+  {
+   "n": 170,
+   "time": "11:24 (29 Oct)",
+   "task": "T31",
+   "type": "tool",
+   "king": "explain this to me like i am 15",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Explained it with a school canteen: correcting guesses each person and knocks off the average error, like a thermometer that reads 2 degrees hot; blending guesses each group and mixes that with the few real answers; blending saves more because AI is better at guessing groups than individuals."
+  },
+  {
+   "n": 171,
+   "time": "11:26 (29 Oct)",
+   "task": "T31",
+   "type": "tool",
+   "king": "i like this explanation. if you have incorporate their study's info into our artifacts, can you include this simpler 15-year old explanation too?",
+   "screenshot": false,
+   "mid_task": false,
+   "claude": "Added a fold under the short answer with King's canteen explanation (two small changes, both reported), the Singapore results and a so-what; a row in the map of what we tested; an analysts' note; build checks for every number and phrase; and the test, QA findings and these messages to the casebook."
   }
  ],
  "tasks": {
@@ -1806,6 +1896,10 @@
   ],
   "T30": [
    "Make the two record-based approaches easy to tell apart",
+   "King"
+  ],
+  "T31": [
+   "Compare with the \"participants saved\" study",
    "King"
   ]
  }

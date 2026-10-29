@@ -98,7 +98,7 @@
   ],
   "T25": [
    "Approved the trial (up to $10) and set up an API key for it.",
-   "Built the trial: 100 Singaporeans, the chatbot told only demographics or also each person's survey record, one capped batch, scored against the rest of the survey; tested end to end without spending. Then ran it: 100 people, about $2.58, reported in plain words."
+   "Built the trial: 100 Singaporeans, the chatbot told only demographics or also each person's survey record, one capped batch, scored against the rest of the survey; tested end to end without spending. While King set up the key, withdrew my earlier advice to name it ANTHROPIC_API_KEY (Claude Code reads that name) and, when the environment's secret settings could not send the key the way the API needs, recommended an environment variable, with its trade-off. Then ran it: 100 people, about $2.58, reported in plain words."
   ],
   "T26": [
    "Asked what the trial meant for the work and for record citizens, then approved a test on the whole survey (cap $85).",
@@ -119,6 +119,10 @@
   "T30": [
    "Asked whether readers could confuse the two record-based approaches, framed the difference as a statistical pattern against general understanding, asked how the chatbot knows whom to read, and chose an equation layout.",
    "Renamed the approach, then mocked up and published two equations that differ only in their coloured middle box, and brought the glossary, write-up, guide and casebook in line."
+  ],
+  "T31": [
+   "Shared another study's page (\"Can AI reduce how many participants we need?\"), asked what we see, approved testing its method on our data, asked for a simple explanation, then for the study and that explanation on both pages.",
+   "Compared the two pages, added the study's method (correcting) to the scorecard's own test, caught and fixed a flaw that flattered record citizens' guesses, reran, explained the result with a school canteen, and added a fold, a map row and an analysts' note to the scorecard and the test, QA findings and record to this casebook."
   ]
  },
  "examples": {
@@ -140,18 +144,18 @@
   ]
  },
  "scalars": {
-  "HOURS": "about 31 hours",
-  "N_TASKS": 30,
+  "HOURS": "about 33 hours of work",
+  "N_TASKS": 31,
   "N_SHOTS": 28,
   "N_AGENTS": 25,
-  "N_BG": 56,
-  "N_HOOKS": 17,
-  "N_IDEAS": 28,
+  "N_BG": 59,
+  "N_HOOKS": 19,
+  "N_IDEAS": 30,
   "N_CHALLENGES": 19,
   "N_DRAFTS": 10,
-  "N_ACTIONS": "over 1,300",
+  "N_ACTIONS": "over 1,400",
   "N_COMMITS": "29",
-  "N_VERSIONS": "74",
+  "N_VERSIONS": "75",
   "SCORECARD_URL": "https://claude.ai/artifact/1EfjB41MM2Nn69EwY5Ht45",
   "BRANCH": "claude/eloquent-hawking-1m0amk",
   "REPO": "KR48VR/digital-citizens"
@@ -283,7 +287,7 @@
    "king": true,
    "asked": "King approved a 100-person trial, asked how it compared with record citizens, then approved a test on the whole Singapore survey.",
    "found": "For groups, about the same as record citizens and close to the chatbot asked the usual way, with gaps small enough to be luck. For individual people, the top guess was right 52% of the time against 47%, a gain bigger than luck. It costs about $30 in chatbot fees for 2,000 people and 20 questions.",
-   "changed": "Two more findings that do not change the advice, under the short answer: not adopted yet"
+   "changed": "Three more findings that do not change the advice, under the short answer: not adopted yet"
   },
   {
    "title": "Does the chatbot remember published answers?",
@@ -291,7 +295,15 @@
    "king": true,
    "asked": "King asked how to test whether the chatbot had already seen the answers.",
    "found": "No sign in three checks, run on both chatbots: asking them directly, famous against little-known questions, and disguised questions.",
-   "changed": "Two more findings that do not change the advice, under the short answer; Limits and What to test next"
+   "changed": "Three more findings that do not change the advice, under the short answer; Limits and What to test next"
+  },
+  {
+   "title": "Blending against correcting",
+   "tag": "dropped",
+   "king": true,
+   "asked": "King shared another study that uses AI with a survey in a different way, correcting, and asked how it compares with ours.",
+   "found": "Run on our own Singapore test, correcting never did worse than the survey alone but saved about 1 in 10 participants with a survey of 300; blending saved about half, and did much better for small groups (3.0 against 4.0 points off).",
+   "changed": "Three more findings that do not change the advice, under the short answer: kept blending"
   }
  ]
 }

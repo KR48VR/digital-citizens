@@ -89,6 +89,12 @@ numbers from other surveys or published reports. Always show the scorecard, agai
   Indian and Malay Singaporeans and young adults were, and in the US Republicans, Democrats and Black Americans).
 - Check that every example uses a question that is actually in the records (prayer was not; religious services was).
 - Do not generalise from too few cases (an online-polls claim rested on 3 polls and was removed).
+- Compare a rival method on your own test, not by its headline. Another study's "about a fifth of
+  participants saved" and our "about half" measured different things; run on our draws, its method
+  (correcting) saved about 1 in 10 (`scripts/correction_vs_blending.py`).
+- When AI guesses are compared with the same people's real answers, as correcting does, make each person's
+  guess with a model that never saw their answer (cross-fitting). Without it, record citizens' guesses fit
+  the surveyed people too well and the correction came out worse than the survey alone for big groups.
 
 ## Step 5. Pilot when you will survey a topic more than once
 

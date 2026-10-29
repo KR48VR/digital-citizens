@@ -1238,5 +1238,61 @@
   "fix": "Renamed \"the chatbot reading each person's answers\"; one sentence and a four-row table say how it differs (record citizens learn a pattern from people who answered your question; the chatbot fills the gap from what it has read about people in general); glossary, write-up and guide follow.",
   "status": "Fixed",
   "id": 155
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Method",
+  "finding": "In the first run of correcting, record citizens' guesses for the surveyed people came from a model trained on those same people, so the guesses fitted them too well and the correction was too small: correcting came out worse than the survey alone for big groups (2.36 against 2.00 points off).",
+  "fix": "Each surveyed person's guess now comes from a model that never saw their answer (five-fold cross-fitting); the first run's saved results were deleted and the test rerun. Correcting then never did worse than the survey alone (1.90 against 2.00 for big groups).",
+  "status": "Fixed",
+  "id": 156
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Method",
+  "finding": "Comparing blending with both kinds of AI against correcting could look unfair: the chatbot kind cannot be used to correct, because it guesses whole groups, not people.",
+  "fix": "The page says so; the analysts' note adds the like-for-like blends (39% to 54% of participants saved, against 9% to 13% for correcting).",
+  "status": "Fixed",
+  "id": 157
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Accuracy",
+  "finding": "The simple explanation for King said that for big groups correcting was \"very slightly safer\". That held against blending record citizens alone (2.05 against 1.90 points off), but the page compares blending with both kinds of AI, which was slightly ahead for big groups too (1.8 against 1.9).",
+  "fix": "The page says the two were about the same for big groups, with the numbers; correcting's safety stays in its \"good part\".",
+  "status": "Fixed",
+  "id": 158
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Accuracy",
+  "finding": "\"About as good as asking 330 people\" came from correcting with record citizens alone (9% saved); with the chatbot reading each person's answers, or both, it was about 340 (12% to 13%).",
+  "fix": "The page says 330 to 340, worked out in the build; \"about 1 in 10\", \"about half\", \"much better\" and \"about the same\" are each checked there too.",
+  "status": "Fixed",
+  "id": 159
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Language",
+  "finding": "In the canteen explanation the two ways' lists used different labels for the same kind of point: \"The good part\" and \"Why it works\".",
+  "fix": "Both say \"The good part\"; the rest of King's approved wording is unchanged apart from a link to the pilot.",
+  "status": "Fixed",
+  "id": 160
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Layout",
+  "finding": "With every fold open, the scorecard was 7 pixels too wide on a 375-pixel phone: long file paths in the analysts' notes could not wrap. This was already the case in version 74.",
+  "fix": "Notes may now break long paths; no sideways scrolling at 375 pixels with every fold open.",
+  "status": "Fixed",
+  "id": 161
+ },
+ {
+  "when": "Blending against correcting",
+  "area": "Accessibility",
+  "finding": "The contrast checker misread the colours mixed for the section bands and flagged every grey label on them.",
+  "fix": "Taught the checker to read them: no text below 4.5:1 in light or dark mode, at desktop or phone width.",
+  "status": "Noted",
+  "id": 162
  }
 ]

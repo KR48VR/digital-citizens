@@ -361,6 +361,8 @@ def inline(m):
         return str(round(WORTH[args[0]]))
     if kind == "chk":
         return CHK[args[0]]
+    if kind == "cor":
+        return cor(args)
     if kind == "v":
         return f1(med(args[0], args[1], int(args[2])))
     if kind == "gain":  # points closer than the survey alone, from unrounded values
@@ -518,6 +520,57 @@ for c_ in ("chatbot kind", "chatbot reading records"):
     m_ = MEM["test2"][c_]
     assert m_["spearman_with_recall_error"] > 0 and m_["spearman_with_unnamed_error"] >= m_["spearman_with_recall_error"], c_
 
+# ---- blending against correcting (Singapore, same draws): scripts/one_method_experiment.py singapore 10 correction,
+# then scripts/correction_vs_blending.py. Methods shared with the main results must come out the same.
+CR = "singapore_correction"
+M[CR] = load(CR)
+for k_, v_ in M["singapore"].items():
+    if k_ in M[CR]:
+        assert abs(M[CR][k_]["median"] - v_["median"]) < 1e-9, k_
+CMP_CR = {(r["a"], r["b"], int(r["n_a"]), int(r["n_b"])): (float(r["difference"]), float(r["low"]), float(r["high"]))
+          for r in csv.DictReader(open(RES / f"one_method_{CR}_comparisons.csv"))}
+CV = json.load(open(RES.parent / "correction_vs_blending.json"))
+ADV = "Blend: record citizens + chatbot (the scorecard's advice)"
+CORRS = ("Correct: record citizens", "Correct: chatbot reading records", "Correct: record citizens + chatbot reading records")
+LIKE = ("Blend: record citizens", "Blend: chatbot reading records", "Blend: record citizens + chatbot reading records")
+assert abs(CV["median"][ADV]["300"] - med(sg, BOTH, 300)) < 1e-9 and abs(CV["median"]["Survey alone"]["300"] - med(sg, "survey alone", 300)) < 1e-9
+SAVED = CV["saved_at_300"]
+EQUIV = sorted(300 / (1 - SAVED[c_]) for c_ in CORRS)
+assert 0.45 < SAVED[ADV] < 0.55 and round(300 / (1 - SAVED[ADV]), -2) == 600  # "about half"; "about as good as asking 600 people"
+assert all(0.07 < SAVED[c_] < 0.15 for c_ in CORRS)  # "about 1 in 10"
+assert all(SAVED[b_] > 3 * SAVED[c_] for b_, c_ in zip(LIKE, CORRS))  # like for like, blending saves several times as many
+SMALL_C, LARGE_C = CV["small_groups_300"], CV["large_groups_300"]
+assert len({f1(SMALL_C[c_]) for c_ in CORRS}) == 1 and len({f1(LARGE_C[c_]) for c_ in CORRS}) == 1  # one figure stands for all three
+assert min(SMALL_C[c_] for c_ in CORRS) - SMALL_C[ADV] > 0.5  # small groups: "much better"
+assert all(abs(LARGE_C[c_] - LARGE_C[ADV]) < 0.5 for c_ in CORRS)  # big groups: "about the same"
+assert all(SMALL_C[c_] < SMALL_C["Survey alone"] and LARGE_C[c_] < LARGE_C["Survey alone"] for c_ in CORRS)  # "can't really make your answer worse"
+d_, lo_, hi_ = CMP_CR[("corrected, tuned: record citizens + chatbot reading records", "+ record citizens (own survey) + chatbot reading records", 300, 300)]
+d6, lo6, hi6 = CMP_CR[("corrected, tuned: record citizens + chatbot reading records", "survey alone", 300, 600)]
+assert lo_ > 0 and lo6 > 0  # blending the same AI is clearly better; correcting 300 falls clearly short of 600 alone
+
+
+def pct_range(keys):
+    v_ = sorted(round(100 * SAVED[k_]) for k_ in keys)
+    return f"{v_[0]}% to {v_[-1]}%"
+
+
+COR = {"their_saved": "23",  # the other study's best figure, 22.6% (its page, shared by King)
+       "equiv_lo": str(int(round(EQUIV[0], -1))), "equiv_hi": str(int(round(EQUIV[-1], -1))),
+       "small_blend": f1(SMALL_C[ADV]), "small_corr": f1(SMALL_C[CORRS[0]]), "small_alone": f1(SMALL_C["Survey alone"]),
+       "large_blend": f1(LARGE_C[ADV]), "large_corr": f1(LARGE_C[CORRS[0]]), "large_alone": f1(LARGE_C["Survey alone"]),
+       "saved_corr": pct_range(CORRS), "saved_blend": f"{round(100 * SAVED[ADV])}%", "saved_like": pct_range(LIKE),
+       "cmp_both": minus(d_), "cmp_both_r": f"{minus(lo_)} to {minus(hi_)}", "cmp_600": minus(d6), "cmp_600_r": f"{minus(lo6)} to {minus(hi6)}"}
+assert EQUIV[0] > 320 and EQUIV[-1] < 350 and COR["equiv_lo"] != COR["equiv_hi"]
+
+
+def cor(args):
+    if args[0] == "m":  # surveys of 150, 300 and 600
+        return ", ".join(f1(CV["median"][args[1]][str(n)]) for n in SIZES)
+    if args[0] == "m300":
+        return f1(CV["median"][args[1]]["300"])
+    return COR[args[0]]
+
+
 CHECK = {"SG chatbot vs own RC, 300 (about the same)": (f1(med(sg, "+ chatbot kind", 300)), f1(med(sg, "+ record citizens (own survey)", 300))),
          "US chatbot vs own RC, 300 (about the same)": (f1(med(us, "+ chatbot kind", 300)), f1(med(us, "+ record citizens (own survey)", 300))),
          "SG RC past vs + chatbot (adds nothing)": (f1(med(sg, "+ record citizens", 300)), f1(med(sg, "+ record citizens + chatbot kind", 300))),
@@ -532,7 +585,7 @@ css = (HERE / "style.css").read_text()
 def fill(text):
     for k, v in FILL.items():
         text = text.replace("{{" + k + "}}", v)
-    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree|nq|chk):([^}]+)\}\}", inline, text)
+    text = re.sub(r"\{\{(v|pct|gain|ppl|grp|floor|worth|self|blend|tree|nq|chk|cor):([^}]+)\}\}", inline, text)
     assert "{{" not in text, [l for l in text.splitlines() if "{{" in l][:3]
     return text
 
