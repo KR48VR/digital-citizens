@@ -19,7 +19,7 @@ draws for each group and question, then the middle result is taken across groups
   + chatbot reading records  blended with the chatbot's guesses for each person in the group, made from that
                           person's answers to 57 other questions (scripts/record_reading_trial.py run full)
 
-Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost|reading]
+Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost|reading|correction]
        "boost" draws surveys with extra people from small groups (Singapore: Malay and Indian, 20% each; US: Black
        adults, 30%), weighted back to the population, and writes one_method_<country>_boost.*
        "reading" (Singapore) adds the chatbot reading records, and record citizens learned from the same 57
@@ -76,12 +76,21 @@ CONFIGS = {
     "+ record citizens (own survey, same 57 questions the chatbot read)": (["rec_own_57"], "blend"),
     "+ record citizens (own survey) + chatbot reading records": (["rec_own", "chat_read"], "blend"),
     "+ record citizens (own survey) + chatbot kind + chatbot reading records": (["rec_own", "chat", "chat_read"], "blend"),
+    "corrected: record citizens (own survey)": (["ppi_rec_own"], "alone"),
+    "corrected, tuned: record citizens (own survey)": (["ppi_rec_own_tuned"], "alone"),
+    "corrected: chatbot reading records": (["ppi_read"], "alone"),
+    "corrected, tuned: chatbot reading records": (["ppi_read_tuned"], "alone"),
+    "corrected, tuned: record citizens + chatbot reading records": (["ppi_both_tuned"], "alone"),
     "chatbot kind alone, no survey": (["chat"], "alone"),
     "chatbot reading records alone, no survey": (["chat_read"], "alone"),
     "record citizens alone, no survey": (["rec_past"], "alone"),
     "last round's answers alone, no survey": (["last"], "alone"),
 }
 KEY_COMPARISONS = [  # (config A, size A, config B, size B): difference A - B in points off
+    ("corrected, tuned: record citizens (own survey)", 300, "survey alone", 300),
+    ("corrected, tuned: record citizens (own survey)", 300, "+ record citizens (own survey)", 300),
+    ("corrected, tuned: record citizens + chatbot reading records", 300, "+ record citizens (own survey) + chatbot reading records", 300),
+    ("corrected, tuned: record citizens + chatbot reading records", 300, "survey alone", 600),
     ("+ record citizens", 300, "survey alone", 600),
     ("+ record citizens (own survey)", 150, "survey alone", 300),
     ("+ record citizens (own survey)", 300, "survey alone", 600),
@@ -196,7 +205,38 @@ def _reading(df: pd.DataFrame, tg, bench) -> dict:
     return out
 
 
-def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", ranking=None, tag="singapore", reading=None) -> list[dict]:
+def _corrected(F, has, Y1, w, ws, hm, cm, lam):
+    """Prediction-powered estimate of a group's answer shares: the predictions averaged over the people being
+    estimated, plus the average gap between the surveyed group members' real answers and their predictions.
+    lam scales the predictions (1 = plain; below 1 when they track answers only loosely). Negative shares are
+    clipped and the rest rescaled."""
+    tm, sm = hm & has, cm & has
+    if tm.sum() == 0:
+        return None
+    est = lam * (F[tm] * w[tm, None]).sum(0) / w[tm].sum()
+    if sm.sum() > 0:
+        est = est + ((Y1[sm] - lam * F[sm]) * ws[sm, None]).sum(0) / ws[sm].sum()
+    est = np.clip(est, 0, None)
+    return est / est.sum() if est.sum() > 0 else None
+
+
+def _tuning(F, has, Y1, ws, cal, n_target):
+    """Power tuning from everyone surveyed: covariance of answers and predictions over the variance of the
+    predictions, shrunk for the size of the surveyed group relative to the people estimated; between 0 and 1."""
+    m = cal & has
+    if m.sum() < 10:
+        return 1.0
+    wt = ws[m] / ws[m].sum()
+    fc = F[m] - (wt[:, None] * F[m]).sum(0)
+    yc = Y1[m] - (wt[:, None] * Y1[m]).sum(0)
+    var = (wt[:, None] * fc ** 2).sum()
+    if var <= 0:
+        return 0.0
+    lam = (wt[:, None] * fc * yc).sum() / var / (1 + m.sum() / max(n_target, 1))
+    return float(np.clip(lam, 0, 1))
+
+
+def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", ranking=None, tag="singapore", reading=None, correct=False) -> list[dict]:
     """One record per (draw, size, question, group): truth, the sample's group answers, and every AI estimate."""
     df = bench.respondents
     items = [q.id for q in bench.questions if q.id in df.columns]
@@ -230,6 +270,10 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                     take = rng.choice(np.where(valid)[0], size=min(n, int(valid.sum())), replace=False)
                 cal = np.zeros(len(df), bool); cal[take] = True
                 hold = valid & ~cal
+                if correct:
+                    Y1 = np.zeros((len(df), len(options)))
+                    for j, o in enumerate(options):
+                        Y1[:, j] = (y == o).to_numpy()
                 overall = _shares(y, ws, cal, options)
                 own = {}
                 if y[cal].nunique() >= 2:
@@ -274,6 +318,16 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                         src["chat_read"] = u / u.sum()
                     if "rec_own" not in src:
                         continue
+                    if correct and "rec_own" in own:
+                        everyone = np.ones(len(df), bool)
+                        R = reading[t]; has_r = ~np.isnan(R[:, 0]); Rz = np.nan_to_num(R)
+                        both = 0.5 * (own["rec_own"] + Rz); has_b = has_r
+                        n_target = int(hold.sum())
+                        for name, F, has in (("rec_own", own["rec_own"], everyone), ("read", Rz, has_r), ("both", both, has_b)):
+                            lam = _tuning(F, has, Y1, ws, cal, n_target)
+                            for suffix, l_ in (("", 1.0), ("_tuned", lam)):
+                                e_ = _corrected(F, has, Y1, w, ws, hm, cm, l_)
+                                src[f"ppi_{name}{suffix}"] = e_ if e_ is not None else np.nan_to_num(sample)
                     rows.append({"draw": d, "n": n, "question_id": t, "group": g, "n_group": n_g, "k": len(options),
                                  "truth": truth, "sample": np.nan_to_num(sample), "has_sample": n_g > 0,
                                  **{s: v / v.sum() for s, v in src.items()}})
@@ -417,7 +471,7 @@ def main() -> None:
     draws = int(sys.argv[2]) if len(sys.argv) > 2 else 10
     design = sys.argv[3] if len(sys.argv) > 3 else "standard"
     title, bench, tg, groups, demo, ext = setup(country)
-    reading = _reading(bench.respondents, tg, bench) if design == "reading" else None
+    reading = _reading(bench.respondents, tg, bench) if design in ("reading", "correction") else None
     tag0 = "us" if country == "us" else "singapore"
     cache = Path("data/cache") / f"one_method_{tag0}_{design}_{draws}_rows.pkl"
     if cache.exists():
@@ -425,12 +479,12 @@ def main() -> None:
         print(f"reused {len(rows)} cached cells from {cache}", flush=True)
     else:
         rows = draw_cells(bench, tg, groups, demo, ext, draws, design="standard" if reading else design,
-                          ranking=_ranking(tag0), tag=tag0, reading=reading)
+                          ranking=_ranking(tag0), tag=tag0, reading=reading, correct=design == "correction")
         cache.parent.mkdir(parents=True, exist_ok=True)
         pd.to_pickle(rows, cache)
     print(f"{len(rows)} cells drawn in {time.time() - t0:.0f}s", flush=True)
     cells, worth = evaluate(rows, tg)
-    tag = tag0 + ("_" + design if design in ("boost", "reading") else "")
+    tag = tag0 + ("_" + design if design in ("boost", "reading", "correction") else "")
     cells.to_csv(OUT / f"one_method_{tag}_cells.csv", index=False)
     per_cell = cells.groupby(["config", "n", "question_id", "group"], as_index=False).mae_pts.mean()
     summary = per_cell.groupby(["config", "n"]).mae_pts.agg(["median", "mean"]).reset_index()
@@ -441,7 +495,7 @@ def main() -> None:
     diffs.to_csv(OUT / f"one_method_{tag}_comparisons.csv", index=False)
     w = worth.groupby(["config", "n"]).median(numeric_only=True).round(1).reset_index()
     sizes = cells[cells.config == "survey alone"].groupby(["n", "group"]).n_group.mean().unstack("n").round(0)
-    lines = [f"# One method, {title}: a small real survey with and without AI" + {"boost": " (small groups boosted)", "reading": " (with the chatbot reading records)"}.get(design, ""), "",
+    lines = [f"# One method, {title}: a small real survey with and without AI" + {"boost": " (small groups boosted)", "reading": " (with the chatbot reading records)", "correction": " (blending against correcting)"}.get(design, ""), "",
              f"Generated {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}; runtime {time.time() - t0:.0f}s; "
              f"{draws} draws per survey size; {len(tg)} questions x {len(groups)} groups.", "",
              "Points off per answer option for each group: middle result over groups and questions of the",
