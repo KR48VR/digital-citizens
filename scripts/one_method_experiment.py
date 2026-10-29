@@ -24,6 +24,10 @@ Usage: one_method_experiment.py [singapore|us] [draws] [standard|boost|reading|c
        adults, 30%), weighted back to the population, and writes one_method_<country>_boost.*
        "reading" (Singapore) adds the chatbot reading records, and record citizens learned from the same 57
        questions it read, and writes one_method_singapore_reading.*
+       "correction" (Singapore) adds, to the reading design, corrections instead of blends (prediction-powered
+       inference): the AI's guesses for the people being estimated plus the average gap between surveyed people's
+       real answers and their guesses; record citizens' guesses for surveyed people are cross-fitted (5 folds), and
+       writes one_method_singapore_correction.*
        one_method_experiment.py [singapore|us] compare [reading]   (recompute only the comparisons from saved cells)
 Writes docs/results/stress_test/one_method_<country>.md / .csv / _cells.csv.
 """
@@ -296,6 +300,26 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                             if o in clf.classes_:
                                 M[:, j] = pr[:, list(clf.classes_).index(o)]
                         own[name] = M
+                    if correct:  # cross-fitting: each surveyed person is guessed by a model that never saw their answer
+                        X = feats["rec_own"]
+                        idx = np.where(cal)[0]
+                        fold = np.random.default_rng([seed, d, n, tg.index(t)]).permutation(len(idx)) % 5
+                        oof, avg = np.zeros((len(df), len(options))), np.zeros((len(df), len(options)))
+                        for f_ in range(5):
+                            tr, te = idx[fold != f_], idx[fold == f_]
+                            if y.iloc[tr].nunique() < 2:
+                                continue
+                            enc = OneHotEncoder(handle_unknown="ignore")
+                            clf = LogisticRegression(C=0.3, max_iter=3000)
+                            clf.fit(enc.fit_transform(X.iloc[tr]), y.iloc[tr].astype(str), sample_weight=ws[tr])
+                            pr = clf.predict_proba(enc.transform(X))
+                            Mf = np.zeros((len(df), len(options)))
+                            for j, o in enumerate(options):
+                                if o in clf.classes_:
+                                    Mf[:, j] = pr[:, list(clf.classes_).index(o)]
+                            oof[te] = Mf[te]; avg += Mf / 5
+                        cf = avg.copy(); cf[cal] = oof[cal]
+                        own_cf = cf
                 for g in groups:
                     hm = hold & gm[g]
                     if hm.sum() < MIN_HOLD:
@@ -321,9 +345,9 @@ def draw_cells(bench, tg, groups, demo, ext, draws, seed=0, design="standard", r
                     if correct and "rec_own" in own:
                         everyone = np.ones(len(df), bool)
                         R = reading[t]; has_r = ~np.isnan(R[:, 0]); Rz = np.nan_to_num(R)
-                        both = 0.5 * (own["rec_own"] + Rz); has_b = has_r
+                        both = 0.5 * (own_cf + Rz); has_b = has_r
                         n_target = int(hold.sum())
-                        for name, F, has in (("rec_own", own["rec_own"], everyone), ("read", Rz, has_r), ("both", both, has_b)):
+                        for name, F, has in (("rec_own", own_cf, everyone), ("read", Rz, has_r), ("both", both, has_b)):
                             lam = _tuning(F, has, Y1, ws, cal, n_target)
                             for suffix, l_ in (("", 1.0), ("_tuned", lam)):
                                 e_ = _corrected(F, has, Y1, w, ws, hm, cm, l_)
