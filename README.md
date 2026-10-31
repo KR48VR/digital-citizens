@@ -68,6 +68,7 @@ and a playbook for next time are in the private casebook at https://claude.ai/ar
 | [docs/09_one_method.md](docs/09_one_method.md) | The one test behind every headline number: a small survey with and without each kind of AI |
 | [docs/10_three_more_ideas.md](docs/10_three_more_ideas.md) | Three more ideas tested: a panel of chatbots, fewer standard questions, boosting small groups |
 | [docs/11_chatbot_reading_records.md](docs/11_chatbot_reading_records.md) | Letting the chatbot read each person's record (about as good as record citizens; not adopted), and three checks that it is not remembering published answers |
+| [docs/films/](docs/films/README.md) | Two films made in code: a 1:39 pitch for funders and government (plus a 35-second cut), and a 5:33 teaching film, five lessons from how King and Claude built this |
 | [docs/sources/singapore_published_findings.md](docs/sources/singapore_published_findings.md) | Singapore sources combed for the evidence ledger, with trust levels and what was unusable |
 | [docs/results/](docs/results/README.md) | Baseline numbers measured on the real data |
 | [docs/results/stress_test/](docs/results/stress_test/README.md) | First stress test: the session's own model vs real shares in the US, Singapore and China |

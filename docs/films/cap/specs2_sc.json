@@ -1,0 +1,8 @@
+[
+ {"name":"sc_consistency","sel":"#consistency","h":900,"dy":120},
+ {"name":"sc_onetest","sel":"#onetest","h":1100},
+ {"name":"sc_reading","sel":"#reading","h":1600,"open":["reading"]},
+ {"name":"sc_correcting","sel":"#correcting","h":1500,"open":["correcting"]},
+ {"name":"sc_memory2","sel":"#memory","h":1500,"open":["memory"]},
+ {"name":"sc_bands","sel":"#kinds","h":2600,"dy":200}
+]
